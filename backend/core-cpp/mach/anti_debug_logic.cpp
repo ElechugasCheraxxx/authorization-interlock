@@ -2,9 +2,9 @@
 #include <mach/task.h>
 #include <mach/thread_act.h>
 #include <iostream>
-#include "OpsecManager.hpp"
+#include "RiskManager.hpp"
 
-namespace cheraxxx::mach {
+namespace interlock::mach {
 
 /**
  * Esta función escanea todos los threads del proceso buscando Hardware Breakpoints
@@ -39,4 +39,4 @@ bool ScanForHardwareBreakpoints() {
     return detected;
 }
 
-} // namespace cheraxxx::mach
+} // namespace interlock::mach

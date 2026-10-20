@@ -18,7 +18,7 @@
 #include <queue>
 #include <thread>
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
  * @enum IPCComponentType
@@ -51,10 +51,10 @@ struct IPCMessage {
     uint32_t sequence_num;     // Número de secuencia
     IPCComponentType sender;   // Remitente
     IPCComponentType receiver; // Destinatario
-    uint32_t payload_size;     // Tamaño del payload
+    uint32_t payload_size;     // Tamaño del artifact
     uint32_t flags;            // Flags (request/response, urgency)
     uint64_t timestamp;        // Timestamp UNIX
-    uint8_t payload[MAX_PAYLOAD];  // Payload (FlatBuffers)
+    uint8_t artifact[MAX_PAYLOAD];  // Artifact (FlatBuffers)
 
     // Getters/setters
     void setRequest() { flags |= 0x01; }
@@ -180,9 +180,9 @@ private:
     std::unordered_map<int, std::shared_ptr<IPCServer>> servers_;
     std::unordered_map<int, std::shared_ptr<IPCClient>> clients_;
 
-    static constexpr const char* SOCKET_BASE = "/tmp/cheraxxx_ipc_";
+    static constexpr const char* SOCKET_BASE = "/tmp/interlock_ipc_";
 
     std::string getSocketPath(IPCComponentType component);
 };
 
-} // namespace cheraxxx
+} // namespace interlock

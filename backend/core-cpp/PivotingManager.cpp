@@ -2,7 +2,7 @@
 #include <iostream>
 #include <algorithm>
 
-namespace cheraxxx {
+namespace interlock {
 
 std::vector<Route> PivotingManager::findRoutes(const std::string& target_subnet) {
     std::lock_guard<std::mutex> lock(mtx);
@@ -40,4 +40,4 @@ void PivotingManager::closeTunnel(const std::string& tunnel_id) {
     std::cout << "[PivotingManager] Closing tunnel " << tunnel_id << std::endl;
 }
 
-} // namespace cheraxxx
+} // namespace interlock

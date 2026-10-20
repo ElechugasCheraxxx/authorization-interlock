@@ -5,7 +5,7 @@
 #include "StreamingPriority.hpp"
 #include "../C2/TaskManager.hpp"
 
-namespace cheraxxx::core::streaming {
+namespace interlock::core::streaming {
 
 /**
  * @brief Primitive Dependency Graph (PDG) Orchestrator for Streaming.
@@ -70,4 +70,4 @@ private:
     std::unordered_map<StrIndex, ResourceNode> m_nodes;
 };
 
-} // namespace cheraxxx::core::streaming
+} // namespace interlock::core::streaming

@@ -8,7 +8,7 @@
 #include <atomic>
 #include <cstdlib>
 
-namespace cheraxxx::memory {
+namespace interlock::memory {
 
 /**
  * @brief High-performance Hybrid Pool Allocator.
@@ -101,4 +101,4 @@ private:
     std::mutex m_mutex;
 };
 
-} // namespace cheraxxx::memory
+} // namespace interlock::memory

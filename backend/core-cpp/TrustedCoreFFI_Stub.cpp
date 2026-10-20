@@ -1,7 +1,7 @@
 #include "interop/TrustedCoreFFI.h"
 #include <iostream>
 
-namespace cheraxxx {
+namespace interlock {
 
 void init_ocaml_runtime(char** argv) {
     // Stub implementation
@@ -44,4 +44,4 @@ bool ocaml_verify_handle(uint32_t handle, uint32_t capacity) {
     return index < capacity;
 }
 
-} // namespace cheraxxx
+} // namespace interlock

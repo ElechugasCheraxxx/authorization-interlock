@@ -5,14 +5,14 @@
 #include <chrono>
 #include <iostream>
 
-namespace cheraxxx {
+namespace interlock {
 
 void HypothesisEngine::generateHypotheses(const std::string& context) {
     std::lock_guard<std::mutex> lock(mtx);
 
     // In production, we call the InferenceEngine to analyze the context
     InferenceRequest req;
-    req.prompt = "Analyze the following redteam context and generate potential attack hypotheses: " + context;
+    req.prompt = "Analyze the following assessment context and generate potential assess hypotheses: " + context;
     req.max_tokens = 256;
 
     // Asynchronous call (simplified for this example)
@@ -95,4 +95,4 @@ void BinaryAnalysisEngine::mapToPDG(const std::string& binary_id) {
     PDGEngine::getInstance().evaluatePrimitiveImpact(p);
 }
 
-} // namespace cheraxxx
+} // namespace interlock

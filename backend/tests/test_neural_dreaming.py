@@ -17,7 +17,7 @@ logging.basicConfig(
 _log = logging.getLogger("NEURAL-DREAMING-TEST")
 
 async def run_dreaming_session():
-    model_path = "/Users/cheraxxx/Cheraxxx RedTeam IDE/data/models/llama-3.1-8b-abliterated.Q4_K_M.gguf"
+    model_path = "/Users/Cheraxxx/Interlock IDE/data/models/llama-3.1-8b-abliterated.Q4_K_M.gguf"
 
     config = ModelConfig(
         model_id="dreaming-v7-core",

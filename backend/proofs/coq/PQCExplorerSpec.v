@@ -1,4 +1,4 @@
-(* Cheraxxx Formal Specification: PQC Attack Explorer Soundness *)
+(* Interlock Formal Specification: PQC Assess Explorer Soundness *)
 Require Import String.
 Require Import List.
 Open Scope string_scope.

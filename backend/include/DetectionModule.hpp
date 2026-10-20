@@ -7,7 +7,7 @@
 #include <chrono>
 #include "Schema.hpp"
 
-namespace cheraxxx {
+namespace interlock {
 
 struct TrafficSignal {
     std::string source_ip;
@@ -61,4 +61,4 @@ private:
     SignalMonitor() = default;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

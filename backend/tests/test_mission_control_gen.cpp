@@ -4,10 +4,10 @@
 #include <cassert>
 #include "interop/FormalValidators.hpp"
 
-using namespace cheraxxx::formal;
+using namespace interlock::formal;
 
 int main() {
-    cheraxxx::MissionControl& mc = cheraxxx::MissionControl::getInstance();
+    interlock::MissionControl& mc = interlock::MissionControl::getInstance();
 
     std::string project_name = "TestAgent";
 
@@ -17,7 +17,7 @@ int main() {
 
     mc.generateBuildEnvironment(project_name, "Windows");
 
-    std::filesystem::path expected_path = "/Users/cheraxxx/Cheraxxx RedTeam IDE/build/agent_gen/TestAgent/TestAgent.vcxproj";
+    std::filesystem::path expected_path = "/Users/Cheraxxx/Interlock IDE/build/agent_gen/TestAgent/TestAgent.vcxproj";
 
     if (std::filesystem::exists(expected_path)) {
         std::cout << "SUCCESS: .vcxproj generated at " << expected_path << std::endl;

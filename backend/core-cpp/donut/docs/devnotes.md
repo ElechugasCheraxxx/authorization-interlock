@@ -199,7 +199,7 @@
 
   <tr>
     <td><code>inst_type</code></td>
-    <td><code>DONUT_INSTANCE_EMBED</code> indicates a self-contained payload which means the file is embedded. <code>DONUT_INSTANCE_HTTP</code> indicates the file is stored on a remote HTTP server.</td>
+    <td><code>DONUT_INSTANCE_EMBED</code> indicates a self-contained artifact which means the file is embedded. <code>DONUT_INSTANCE_HTTP</code> indicates the file is stored on a remote HTTP server.</td>
   </tr>
   <tr>
     <td><code>inst_len</code></td>

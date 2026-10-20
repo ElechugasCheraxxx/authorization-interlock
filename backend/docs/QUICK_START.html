@@ -1,5 +1,5 @@
 <!-- 
-Cheraxxx RedTeam IDE - Quick Start Guide (HTML)
+Interlock Assessment IDE - Quick Start Guide (HTML)
 Describe todo lo necesario para compilar y ejecutar la arquitectura poliglota en producción
 -->
 
@@ -8,7 +8,7 @@ Describe todo lo necesario para compilar y ejecutar la arquitectura poliglota en
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cheraxxx RedTeam IDE - Production Deployment v1.0</title>
+    <title>Interlock Assessment IDE - Production Deployment v1.0</title>
     <style>
         * { margin: 0; padding: 0; }
         body {
@@ -163,15 +163,15 @@ Describe todo lo necesario para compilar y ejecutar la arquitectura poliglota en
 <body>
     <div class="container">
         <header>
-            <h1>🔮 Cheraxxx RedTeam IDE</h1>
-            <div class="subtitle">Polyglot Offensive Orchestration Platform</div>
+            <h1>🔮 Interlock Assessment IDE</h1>
+            <div class="subtitle">Polyglot Active Orchestration Platform</div>
             <div class="version">v1.0.0 • Production • May 30, 2026</div>
         </header>
 
         <!-- OVERVIEW -->
         <section>
             <h2>📋 Overview</h2>
-            <p>Cheraxxx es una plataforma de orquestación ofensiva de próxima generación que integra múltiples lenguajes de programación optimizados para máxima eficiencia y seguridad:</p>
+            <p>Interlock es una plataforma de orquestación ofensiva de próxima generación que integra múltiples lenguajes de programación optimizados para máxima eficiencia y seguridad:</p>
             <ul style="margin: 15px 0; margin-left: 20px;">
                 <li><strong>C++23</strong> - Motor de inferencia RDT con aceleración GPU (Metal)</li>
                 <li><strong>Rust</strong> - Criptografía Post-Cuántica (PQC) con seguridad de memoria</li>
@@ -265,9 +265,9 @@ Describe todo lo necesario para compilar y ejecutar la arquitectura poliglota en
             <div class="command">cd build/cmake && make -j8</div>
             
             <h3>Compilar solo módulos específicos</h3>
-            <div class="command">cd build/cmake && make cheraxxx_core</div>
+            <div class="command">cd build/cmake && make interlock_core</div>
             <div class="command">cd build/cmake && make atlas_go</div>
-            <div class="command">cd build/cmake && make cheraxxx_core_tests</div>
+            <div class="command">cd build/cmake && make interlock_core_tests</div>
             
             <div class="info-box">
                 <strong>💡 Tip:</strong> El parallelismo se detecta automáticamente. Para forzar un número específico de threads: <code>PARALLEL_JOBS=4 ./build.sh</code>
@@ -285,7 +285,7 @@ Describe todo lo necesario para compilar y ejecutar la arquitectura poliglota en
             <div class="command">./deploy.sh status</div>
             
             <h3>Ver Logs</h3>
-            <div class="command">tail -f /var/log/cheraxxx/*.log</div>
+            <div class="command">tail -f /var/log/interlock/*.log</div>
             
             <h3>Detener Servicios</h3>
             <div class="command">./deploy.sh stop</div>
@@ -294,7 +294,7 @@ Describe todo lo necesario para compilar y ejecutar la arquitectura poliglota en
             <div class="command">./deploy.sh restart</div>
             
             <div class="info-box">
-                <strong>ℹ️ Nota:</strong> Todos los logs se guardan en <code>/var/log/cheraxxx/</code>. 
+                <strong>ℹ️ Nota:</strong> Todos los logs se guardan en <code>/var/log/interlock/</code>. 
                 El nivel de log en producción se establece en "warning" para minimizar ruido.
             </div>
         </section>
@@ -304,7 +304,7 @@ Describe todo lo necesario para compilar y ejecutar la arquitectura poliglota en
             <h2>🌉 Infrastructure Components</h2>
             
             <h3>Autonomous Breadcrumb Buffer (ABB)</h3>
-            <p>Buffer circular lock-free persistente en <code>/dev/shm/cheraxxx_abb_prod</code> (256 MB).</p>
+            <p>Buffer circular lock-free persistente en <code>/dev/shm/interlock_abb_prod</code> (256 MB).</p>
             <p>Registra todas las transiciones entre módulos políglotas para auditoría post-crash.</p>
             
             <div class="command">
@@ -320,10 +320,10 @@ python3 tools/abb_inspector.py analyze
             
             <div class="command">
 # Ver sockets activos<br>
-ls -la /tmp/cheraxxx_ipc_*<br>
+ls -la /tmp/interlock_ipc_*<br>
 <br>
 # Monitorear conexiones<br>
-lsof | grep cheraxxx_ipc
+lsof | grep interlock_ipc
             </div>
             
             <h3>Swift-C++ Interop</h3>
@@ -336,9 +336,9 @@ lsof | grep cheraxxx_ipc
             
             <h3>Health Checks</h3>
             <ul class="checklist">
-                <li>Core C++ ejecutándose: <code>ps aux | grep cheraxxx_core</code></li>
-                <li>IPC Sockets: <code>ls /tmp/cheraxxx_ipc_*</code></li>
-                <li>ABB accesible: <code>ls -la /dev/shm/cheraxxx_abb_prod</code></li>
+                <li>Core C++ ejecutándose: <code>ps aux | grep interlock_core</code></li>
+                <li>IPC Sockets: <code>ls /tmp/interlock_ipc_*</code></li>
+                <li>ABB accesible: <code>ls -la /dev/shm/interlock_abb_prod</code></li>
                 <li>Database conectada: Ver logs de core</li>
             </ul>
             
@@ -369,7 +369,7 @@ lsof | grep cheraxxx_ipc
             <h3>Debugging con DTrace (macOS)</h3>
             <div class="command">
 # Rastrear syscalls del Core<br>
-sudo dtrace -n 'syscall:::entry { @[execname] = count(); }' -p $(pgrep cheraxxx_core)<br>
+sudo dtrace -n 'syscall:::entry { @[execname] = count(); }' -p $(pgrep interlock_core)<br>
 <br>
 # Rastrear boundary probes (transiciones)<br>
 sudo dtrace -P 'pid$target:::entry' -c './deploy.sh start'
@@ -396,7 +396,7 @@ rm -rf build/cmake/CMakeCache.txt<br>
                 <strong>Solución:</strong>
                 <div class="command">
 # Verificar sockets<br>
-ls -la /tmp/cheraxxx_ipc_*<br>
+ls -la /tmp/interlock_ipc_*<br>
 <br>
 # Si no existen, reiniciar<br>
 ./deploy.sh restart
@@ -405,10 +405,10 @@ ls -la /tmp/cheraxxx_ipc_*<br>
             
             <h3>ABB no accesible</h3>
             <div class="warning-box">
-                <strong>Problema:</strong> /dev/shm/cheraxxx_abb_prod no existe<br>
+                <strong>Problema:</strong> /dev/shm/interlock_abb_prod no existe<br>
                 <strong>Solución:</strong>
                 <div class="command">
-rm -f /dev/shm/cheraxxx_abb_prod<br>
+rm -f /dev/shm/interlock_abb_prod<br>
 ./deploy.sh restart
                 </div>
             </div>
@@ -417,8 +417,8 @@ rm -f /dev/shm/cheraxxx_abb_prod<br>
             <div class="warning-box">
                 <strong>Solución:</strong> Revisar logs de detalle
                 <div class="command">
-tail -100 /var/log/cheraxxx/core.log<br>
-tail -100 /var/log/cheraxxx/atlas.log
+tail -100 /var/log/interlock/core.log<br>
+tail -100 /var/log/interlock/atlas.log
                 </div>
             </div>
         </section>
@@ -428,8 +428,8 @@ tail -100 /var/log/cheraxxx/atlas.log
             <h2>✅ Production Checklist</h2>
             <ul class="checklist">
                 <li>Todos los módulos compilados exitosamente</li>
-                <li>ABB inicializado en /dev/shm/cheraxxx_abb_prod</li>
-                <li>IPC sockets creados en /tmp/cheraxxx_ipc_*</li>
+                <li>ABB inicializado en /dev/shm/interlock_abb_prod</li>
+                <li>IPC sockets creados en /tmp/interlock_ipc_*</li>
                 <li>Configuración de producción cargada</li>
                 <li>Logs con nivel "warning" (mínimo ruido)</li>
                 <li>Database PostgreSQL conectada</li>
@@ -506,7 +506,7 @@ tail -100 /var/log/cheraxxx/atlas.log
                 <li>Compilar sistema: <code>./build.sh</code></li>
                 <li>Iniciar deployment: <code>./deploy.sh start</code></li>
                 <li>Verificar componentes: <code>./deploy.sh status</code></li>
-                <li>Revisar logs: <code>tail -f /var/log/cheraxxx/*.log</code></li>
+                <li>Revisar logs: <code>tail -f /var/log/interlock/*.log</code></li>
                 <li>Inspeccionar ABB: <code>python3 tools/abb_inspector.py</code></li>
             </ol>
         </section>
@@ -523,7 +523,7 @@ tail -100 /var/log/cheraxxx/atlas.log
         </section>
 
         <footer>
-            <p>Cheraxxx RedTeam IDE v1.0.0 • Production Edition • May 30, 2026</p>
+            <p>Interlock Assessment IDE v1.0.0 • Production Edition • May 30, 2026</p>
             <p>Optimized for Apple Silicon (M4 Pro) • Polyglot Architecture • Zero-latency Model</p>
         </footer>
     </div>

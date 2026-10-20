@@ -6,7 +6,7 @@
 #include "GPUAllocator.hpp"
 #include <iostream>
 
-namespace cheraxxx {
+namespace interlock {
 
 OrchestrationEngine::OrchestrationEngine() {
     // Inicializar MoERouter para 11 agentes totales, activando los 2 mejores (N_r)
@@ -322,4 +322,4 @@ std::vector<std::string> OrchestrationEngine::getActiveAgents() {
     return active;
 }
 
-} // namespace cheraxxx
+} // namespace interlock

@@ -2,7 +2,7 @@
 #include <string_view>
 #include <map>
 
-namespace cheraxxx::embedded {
+namespace interlock::embedded {
 
 inline constexpr std::string_view BLACKBOARD_SCHEMA = R"python(
 from __future__ import annotations
@@ -67,7 +67,7 @@ class Message(CompatModel):
     channel: str = "#general"
     type: MessageType = MessageType.TASK
     priority: MessagePriority = MessagePriority.NORMAL
-    payload: MessagePayload
+    artifact: MessagePayload
     timestamp: datetime.datetime = Field(default_factory=_utcnow)
     ts_precise: str = Field(default_factory=_get_high_precision_timestamp)
     requires_ack: bool = False
@@ -229,7 +229,7 @@ inline constexpr std::string_view BLACKBOARD_LOGIC = R"python(
 from __future__ import annotations
 import asyncio
 import logging
-import cheraxxx_core_bind as core
+import interlock_core_bind as core
 from blackboard.schema import (
     OperationState, AgentState, DepartmentState, Finding,
     MapEdge, MapNode, Message, BlackboardSnapshot
@@ -276,4 +276,4 @@ inline const std::map<std::string_view, std::string_view> BLACKBOARD_MODULES = {
     {"blackboard.blackboard", BLACKBOARD_LOGIC}
 };
 
-} // namespace cheraxxx::embedded
+} // namespace interlock::embedded

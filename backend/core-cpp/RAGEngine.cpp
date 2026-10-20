@@ -13,7 +13,7 @@
 #include <algorithm>
 #include <numeric>
 
-namespace cheraxxx {
+namespace interlock {
 
 float cosine_similarity(const std::vector<float>& a, const std::vector<float>& b) {
     if (a.empty() || a.size() != b.size()) return 0.0f;
@@ -40,7 +40,7 @@ void RAGEngine::indexFinding(const Finding& finding) {
 
     // In production, we call InferenceEngine to get an embedding for the finding
     InferenceRequest req;
-    req.prompt = "Generate embedding for redteam finding: " + finding.title + " - " + finding.raw_stream;
+    req.prompt = "Generate embedding for assessment finding: " + finding.title + " - " + finding.raw_stream;
     req.max_tokens = 0; // Requesting only embedding
 
     // Use SovereignHeap for the embedding data (Registered Pointer)
@@ -202,4 +202,4 @@ void RAGEngine::loadFromBinary(const std::string& path) {
     close(fd);
 }
 
-} // namespace cheraxxx
+} // namespace interlock

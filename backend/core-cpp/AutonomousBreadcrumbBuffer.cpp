@@ -10,7 +10,7 @@
 #include <cstring>
 #include <unistd.h>
 
-namespace cheraxxx {
+namespace interlock {
 
 // ============================================================================
 // SINGLETON INSTANCE
@@ -175,4 +175,4 @@ BreadcrumbScope::~BreadcrumbScope() {
     abb.recordBreadcrumb(target_, source_, func_ptr_ | 0x8000000000000000ULL, 0);
 }
 
-} // namespace cheraxxx
+} // namespace interlock

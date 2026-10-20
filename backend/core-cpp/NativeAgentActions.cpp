@@ -2,10 +2,10 @@
 #include "Blackboard.hpp"
 #include <iostream>
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
- * Common Native Actions used by all agents to update the RedTeam context
+ * Common Native Actions used by all agents to update the Assessment context
  */
 void updateBlackboardWithFinding(const std::string& agent_alias, const std::string& type, const std::string& data) {
     Finding f;

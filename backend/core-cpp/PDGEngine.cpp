@@ -6,14 +6,14 @@
 #include <set>
 #include <dlfcn.h>
 
-namespace cheraxxx {
+namespace interlock {
 
 typedef char* (*CompileMissionFn)(const char*);
 typedef char* (*GeneratePDGFn)(const char*);
 typedef void (*FreeStringFn)(char*);
 
 std::string PDGEngine::generatePDGFromMission(const std::string& chrxSource) {
-    void* handle = dlopen("/Users/cheraxxx/Cheraxxx RedTeam IDE/backend/chrx-compiler/target/release/libchrx_compiler.dylib", RTLD_LAZY);
+    void* handle = dlopen("/Users/Cheraxxx/Interlock IDE/backend/chrx-compiler/target/release/libchrx_compiler.dylib", RTLD_LAZY);
     if (!handle) {
         std::cerr << "[PDGEngine] Error: Could not load libchrx_compiler.dylib: " << dlerror() << std::endl;
         return "{}";
@@ -41,7 +41,7 @@ std::string PDGEngine::generatePDGFromMission(const std::string& chrxSource) {
 }
 
 std::vector<AttackChain> PDGEngine::findZeroErrorChains() {
-    std::cout << "[PDGEngine] Analyzing Graph for Zero-Error Attack Chains..." << std::endl;
+    std::cout << "[PDGEngine] Analyzing Graph for Zero-Error Assess Chains..." << std::endl;
     std::vector<AttackChain> chains;
 
     auto& bb = Blackboard::getInstance();
@@ -79,7 +79,7 @@ void PDGEngine::evaluatePrimitiveImpact(const Primitive& p) {
     // Si la primitiva es de tipo 'Logic Flaw' con impacto > 0.8,
     // podría disparar una re-evaluación táctica en el Cipher (vía MessageRouter).
     if (p.impact_weight > 0.8f) {
-        std::cout << "[PDGEngine] CRITICAL PRIMITIVE DETECTED: Triggering Tactical Re-evaluation." << std::endl;
+        std::cout << "[PDGEngine] CRITICAL PRIMITIVE DETECTED: Triggering Operations Re-evaluation." << std::endl;
 
         Message alert;
         alert.from_agent = "pdg_engine";
@@ -113,4 +113,4 @@ void PDGEngine::traverseGraph(const std::string& start_node, AttackChain current
     }
 }
 
-} // namespace cheraxxx
+} // namespace interlock

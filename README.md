@@ -470,6 +470,6 @@ The author accepts no responsibility for unauthorized use.
 **José Miguel Tirado Quiroz** · Security & Infrastructure Engineer · Lima, Peru
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/jose-miguel-tirado-quiroz)
-[![GitHub](https://img.shields.io/badge/GitHub-ElechugasCheraxxx-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/ElechugasCheraxxx)
+[![GitHub](https://img.shields.io/badge/GitHub-ElechugasInterlock-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/ElechugasInterlock)
 
 </div>

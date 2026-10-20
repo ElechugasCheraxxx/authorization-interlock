@@ -1,7 +1,7 @@
 package parser
 
 import (
-	"cheraxxx/atlas/internal/model"
+	"interlock/atlas/internal/model"
 	"log"
 	"regexp"
 	"strings"
@@ -12,7 +12,7 @@ import (
 // ParseSubtasks adapta la lógica de Plandex para extraer misiones tácticas
 // del razonamiento de Cipher (DeepSeek-R1).
 func ParseSubtasks(replyContent string, agentID string) []*model.Subtask {
-	// Buscamos la sección de tareas. Soportamos "### Tasks" (estándar) o "### PDG" (Cheraxxx spec)
+	// Buscamos la sección de tareas. Soportamos "### Tasks" (estándar) o "### PDG" (Interlock spec)
 	split := strings.Split(replyContent, "### Tasks")
 	if len(split) < 2 {
 		split = strings.Split(replyContent, "### PDG") // Primitive Dependency Graph
@@ -88,6 +88,6 @@ func ParseSubtasks(replyContent string, agentID string) []*model.Subtask {
 		subtasks = append(subtasks, currentTask)
 	}
 
-	log.Printf("[Parser] Extracted %d tactical missions for agent %s", len(subtasks), agentID)
+	log.Printf("[Parser] Extracted %d operations missions for agent %s", len(subtasks), agentID)
 	return subtasks
 }

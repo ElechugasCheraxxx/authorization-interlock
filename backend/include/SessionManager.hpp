@@ -7,7 +7,7 @@
 #include <memory>
 #include <map>
 
-namespace cheraxxx {
+namespace interlock {
 
 class OperationSession {
 public:
@@ -46,4 +46,4 @@ private:
     std::mutex mtx;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

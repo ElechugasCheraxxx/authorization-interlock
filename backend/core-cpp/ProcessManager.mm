@@ -3,7 +3,7 @@
 #include <iostream>
 #include <filesystem>
 
-namespace cheraxxx {
+namespace interlock {
 
 void ProcessManager::setBasePath(const std::string& path) {
     base_path = path;
@@ -104,4 +104,4 @@ void ProcessManager::stopServices() {
     }
 }
 
-} // namespace cheraxxx
+} // namespace interlock

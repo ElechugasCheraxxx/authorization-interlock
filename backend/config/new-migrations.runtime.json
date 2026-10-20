@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "project": "Cheraxxx RedTeam IDE",
+    "project": "Interlock Assessment IDE",
     "version": "1.0",
     "codename": "HYBRID-SCAFFOLD",
-    "source_xml": "/Users/cheraxxx/Cheraxxx RedTeam IDE/new-migrations-enhanced.xml",
+    "source_xml": "/Users/Cheraxxx/Interlock IDE/new-migrations-enhanced.xml",
     "source_sha256": "6d8d659eba00a187de817962de2089d08b1c74f18387f0871ca2fe7e152ec908",
     "generated_at_utc": "2026-05-30T15:55:08.698284+00:00",
     "units_count": 14,
@@ -37,7 +37,7 @@
     {
       "id": 3,
       "language": "C",
-      "target": "Shield & Payload Generation",
+      "target": "Shield & Artifact Generation",
       "objective": "Refactorizar el Kernel Shield y el motor Donut para minimizar firmas de runtime.",
       "integration_path": "Llamadas directas al sistema y wrappers mínimos.",
       "advantages": [
@@ -109,7 +109,7 @@
     {
       "id": 9,
       "language": "Zig",
-      "target": "Stealth Payload Orchestrator",
+      "target": "Integrity Artifact Orchestrator",
       "objective": "Reemplazar la lógica de pegamento de bajo nivel y la generación de shellcode polimórfico.",
       "integration_path": "Compilación a archivos objeto (.o) compatibles con el linker de C++ o ejecutables independientes.",
       "advantages": [
@@ -148,14 +148,14 @@
       "objective": "Definir y demostrar las propiedades matemáticas de sigilo y no-interferencia en el nivel lógico profundo.",
       "integration_path": "Especificación lógica profunda para el módulo shield-c y validación del motor RDT.",
       "advantages": [
-        "Provable Stealth: Prueba matemática rigurosa de no-interferencia entre el Kernel Shield y procesos de seguridad (EDR).",
+        "Provable Integrity: Prueba matemática rigurosa de no-interferencia entre el Kernel Shield y procesos de seguridad (EDR).",
         "Mathematical Precision: Formalización de políticas de seguridad que son inmunes a bypasses basados en excepciones lógicas."
       ]
     },
     {
       "id": 13,
       "language": "C# / Unity",
-      "target": "Tactical Holo-Graph",
+      "target": "Operations Holo-Graph",
       "objective": "Proporcionar una representación 3D inmersiva de la infraestructura atacada y el estado del enjambre.",
       "integration_path": "Unity as a Library (UaaL) vinculado al Native Frontend (SwiftUI) y puente de memoria compartida con C++ Core.",
       "advantages": [

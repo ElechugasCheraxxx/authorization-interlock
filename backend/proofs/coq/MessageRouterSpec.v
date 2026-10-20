@@ -1,4 +1,4 @@
-(* Cheraxxx Formal Specification: Message Router Logic & Safety *)
+(* Interlock Formal Specification: Message Router Logic & Safety *)
 Require Import String.
 Require Import List.
 Require Import Arith.

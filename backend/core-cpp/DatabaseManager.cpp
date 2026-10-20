@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-namespace cheraxxx {
+namespace interlock {
 
 void DatabaseManager::initialize(const std::string& dsn) {
     try {
@@ -59,4 +59,4 @@ void DatabaseManager::applyPending(pqxx::work& txn, int current) {
     }
 }
 
-} // namespace cheraxxx
+} // namespace interlock

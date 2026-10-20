@@ -6,7 +6,7 @@
 #include <mutex>
 #include "llama.h"
 
-namespace cheraxxx {
+namespace interlock {
 
 struct AgentContextState {
     std::string alias;
@@ -48,4 +48,4 @@ private:
     const int KEEP_SYSTEM_TOKENS = 1024;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

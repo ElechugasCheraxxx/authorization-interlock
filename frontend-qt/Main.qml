@@ -9,7 +9,7 @@ ApplicationWindow {
     visible: true
     width: 1440
     height: 900
-    title: "RED TEAM AI OFFICE IDE - ABITERATED SYSTEMS"
+    title: "Authorization Interlock"
     color: Theme.bgDark
 
     Component.onCompleted: {

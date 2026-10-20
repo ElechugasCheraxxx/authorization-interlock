@@ -6,7 +6,7 @@
 #include "SessionManager.hpp"
 #include <iostream>
 
-namespace cheraxxx {
+namespace interlock {
 
 // RedisManager Implementation
 void RedisManager::set(const std::string& key, const nlohmann::json& value) {
@@ -56,4 +56,4 @@ void ElasticsearchManager::indexFinding(const std::string& index, const std::str
 OperationSession::OperationSession(const std::string& id) : op_id(id), is_active(false) {}
 OperationSession::~OperationSession() {}
 
-} // namespace cheraxxx
+} // namespace interlock

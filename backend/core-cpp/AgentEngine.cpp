@@ -10,7 +10,7 @@
 #include <chrono>
 #include <cmath>
 
-namespace cheraxxx {
+namespace interlock {
 
 AgentEngine::AgentEngine(const std::string& agent_id, const std::string& model_path)
     : agent_id(agent_id), model_path(model_path) {
@@ -94,7 +94,7 @@ std::future<InferenceResponse> AgentEngine::think(const std::string& prompt, con
 
         common_params_sampling sparams;
         sparams.temp = 0.7f;
-        sparams.grammar.grammar = grammar.empty() ? GrammarLibrary::REDTEAM_ACTION_XML : grammar;
+        sparams.grammar.grammar = grammar.empty() ? GrammarLibrary::ASSESSMENT_ACTION_XML : grammar;
         sparams.grammar.type = COMMON_GRAMMAR_TYPE_USER;
 
         struct ::common_sampler* smpl = common_sampler_init(model, sparams);
@@ -204,4 +204,4 @@ void AgentEngine::updateRecurrentState(const std::vector<float>& input_embedding
     }
 }
 
-} // namespace cheraxxx
+} // namespace interlock

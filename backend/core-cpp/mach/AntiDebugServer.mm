@@ -21,7 +21,7 @@ extern "C" kern_return_t anti_debug_report_violation(
     std::cerr << "[Mach-Protector] !!! SECURITY VIOLATION DETECTED !!!" << std::endl;
     std::cerr << "[Mach-Protector] Type: " << violation_type << " from PID: " << violator_pid << std::endl;
 
-    // Aquí podríamos disparar el Self-Destruct del OpsecManager
+    // Aquí podríamos disparar el Self-Destruct del RiskManager
     return KERN_SUCCESS;
 }
 
@@ -29,7 +29,7 @@ extern "C" kern_return_t anti_debug_set_stealth_mode(
     mach_port_t server_port,
     boolean_t enabled)
 {
-    std::cout << "[Mach-Protector] Stealth mode set to: " << (enabled ? "ON" : "OFF") << std::endl;
+    std::cout << "[Mach-Protector] Integrity mode set to: " << (enabled ? "ON" : "OFF") << std::endl;
     return KERN_SUCCESS;
 }
 
@@ -59,7 +59,7 @@ void* MachExceptionThread(void* arg) {
     return nullptr;
 }
 
-namespace cheraxxx::mach {
+namespace interlock::mach {
 
 void StartAntiDebugMonitor() {
     kern_return_t kr;
@@ -93,4 +93,4 @@ void StartAntiDebugMonitor() {
     }
 }
 
-} // namespace cheraxxx::mach
+} // namespace interlock::mach

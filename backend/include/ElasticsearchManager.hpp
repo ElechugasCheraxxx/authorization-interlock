@@ -2,7 +2,7 @@
 #include <string>
 #include <nlohmann/json.hpp>
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
  * @brief Motor de búsqueda y análisis de operaciones (Findings & Logs).
@@ -21,4 +21,4 @@ private:
     ElasticsearchManager() = default;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

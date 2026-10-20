@@ -7,12 +7,12 @@
 #include "Neo4jManager.hpp"
 #include "ElasticsearchManager.hpp"
 #include "ClickHouseManager.hpp"
-#include "OpsecManager.hpp"
+#include "RiskManager.hpp"
 #include <algorithm>
 #include <iostream>
 #include <pqxx/pqxx>
 
-namespace cheraxxx {
+namespace interlock {
 
 void Blackboard::updateAgentState(const AgentState& state) {
     // ⚡ REDIS: Estado efímero de agentes en tiempo real
@@ -136,7 +136,7 @@ json Blackboard::kvGet(const std::string& key) {
     };
 
     if (std::find(sensitive_keys.begin(), sensitive_keys.end(), key) != sensitive_keys.end()) {
-        if (OpsecManager::getInstance().checkAntiDebugging()) {
+        if (RiskManager::getInstance().checkAntiDebugging()) {
             std::cerr << "[Blackboard] !!! BLACK HOLE REDIRECTION TRIGGERED for key: " << key << " !!!" << std::endl;
             // Return a "Poisoned" value that leads to a sinkhole or just garbage
             return "https://127.0.0.1:65535/sinkhole/blackhole.cgi?poison=true";
@@ -290,7 +290,7 @@ std::string Blackboard::getSnapshotXML() {
     std::shared_lock lock(state_mutex);
     std::stringstream ss;
     ss << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-    ss << "<CheraxxxSnapshot timestamp=\"" << std::chrono::system_clock::now().time_since_epoch().count() << "\">\n";
+    ss << "<InterlockSnapshot timestamp=\"" << std::chrono::system_clock::now().time_since_epoch().count() << "\">\n";
 
     // Operation State
     ss << "  <Operation>\n";
@@ -350,7 +350,7 @@ std::string Blackboard::getSnapshotXML() {
     }
     ss << "  </MessageBusTail>\n";
 
-    ss << "</CheraxxxSnapshot>";
+    ss << "</InterlockSnapshot>";
     return ss.str();
 }
 
@@ -485,4 +485,4 @@ void Blackboard::tryFlushJournal() {
     } catch (...) {}
 }
 
-} // namespace cheraxxx
+} // namespace interlock

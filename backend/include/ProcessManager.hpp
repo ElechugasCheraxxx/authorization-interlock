@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
  * ProcessManager handles external service dependencies (PostgreSQL, Llama-server, etc.)
@@ -27,7 +27,7 @@ private:
     void spawnService(const std::string& command, const std::string& logFile);
 
     std::vector<int> active_pids;
-    std::string base_path = "/Users/cheraxxx/Cheraxxx RedTeam IDE";
+    std::string base_path = "/Users/Cheraxxx/Interlock Assessment IDE";
 };
 
-} // namespace cheraxxx
+} // namespace interlock

@@ -30,7 +30,7 @@
 */
 
 // Function to return the program counter.
-// Always place this at the end of payload.
+// Always place this at the end of artifact.
 // Tested with x86 build of MSVC 2019 and MinGW. YMMV.
 #if defined(_MSC_VER) 
   #if defined(_M_IX86)

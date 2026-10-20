@@ -5,7 +5,7 @@
 #include <mutex>
 #include "Schema.hpp"
 
-namespace cheraxxx {
+namespace interlock {
 
 struct TokenQuota {
     int allocated;
@@ -37,4 +37,4 @@ private:
     int global_reserve = 5000; // Tokens reservados para emergencias/OPSEC
 };
 
-} // namespace cheraxxx
+} // namespace interlock

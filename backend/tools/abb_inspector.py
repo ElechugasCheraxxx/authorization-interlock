@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Cheraxxx ABB Inspector - Análisis de Autonomous Breadcrumb Buffer
+Interlock ABB Inspector - Análisis de Autonomous Breadcrumb Buffer
 Permite inspeccionar, analizar y depurar transiciones inter-lenguajes
 """
 
@@ -24,7 +24,7 @@ class BreadcrumbEntry(NamedTuple):
 
 ENTRY_SIZE = 64
 MAX_ENTRIES = (256 * 1024 * 1024) // ENTRY_SIZE
-ABB_PATH = "/dev/shm/cheraxxx_abb_prod"
+ABB_PATH = "/dev/shm/interlock_abb_prod"
 
 # Mapeo de IDs a nombres
 COMPONENT_NAMES = {
@@ -69,7 +69,7 @@ def inspect_abb(num_entries: int = 100):
         with open(ABB_PATH, "r+b") as f:
             with mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ) as buf:
                 print(f"{'═' * 100}")
-                print(f"  Cheraxxx Autonomous Breadcrumb Buffer (ABB) Inspector")
+                print(f"  Interlock Autonomous Breadcrumb Buffer (ABB) Inspector")
                 print(f"  Archivo: {ABB_PATH}")
                 print(f"  Tamaño: {len(buf) / 1024 / 1024:.0f} MB")
                 print(f"{'═' * 100}")

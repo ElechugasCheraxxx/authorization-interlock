@@ -2,7 +2,7 @@
 #include "common.h"
 #include <stdexcept>
 
-namespace cheraxxx {
+namespace interlock {
 
 MythosTokenizer::MythosTokenizer(const struct llama_model* model) : model(model) {
     if (!model) {
@@ -32,4 +32,4 @@ int MythosTokenizer::vocab_size() const {
     return llama_vocab_n_tokens(llama_model_get_vocab(model));
 }
 
-} // namespace cheraxxx
+} // namespace interlock

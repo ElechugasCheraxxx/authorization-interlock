@@ -20,14 +20,14 @@
 #include <grpcpp/impl/service_type.h>
 #include <grpcpp/support/sync_stream.h>
 #include <grpcpp/ports_def.inc>
-namespace cheraxxx {
+namespace interlock {
 namespace atlas {
 
 static const char* SwarmOrchestrator_method_names[] = {
-  "/cheraxxx.atlas.SwarmOrchestrator/RegisterAgent",
-  "/cheraxxx.atlas.SwarmOrchestrator/TunnelTelemetria",
-  "/cheraxxx.atlas.SwarmOrchestrator/RouteMessage",
-  "/cheraxxx.atlas.SwarmOrchestrator/SubscribeMessages",
+  "/interlock.atlas.SwarmOrchestrator/RegisterAgent",
+  "/interlock.atlas.SwarmOrchestrator/TunnelTelemetria",
+  "/interlock.atlas.SwarmOrchestrator/RouteMessage",
+  "/interlock.atlas.SwarmOrchestrator/SubscribeMessages",
 };
 
 std::unique_ptr< SwarmOrchestrator::Stub> SwarmOrchestrator::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -43,123 +43,123 @@ SwarmOrchestrator::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& 
   , rpcmethod_SubscribeMessages_(SwarmOrchestrator_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   {}
 
-::grpc::Status SwarmOrchestrator::Stub::RegisterAgent(::grpc::ClientContext* context, const ::cheraxxx::atlas::AgentInfo& request, ::cheraxxx::atlas::RegistrationResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::cheraxxx::atlas::AgentInfo, ::cheraxxx::atlas::RegistrationResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_RegisterAgent_, context, request, response);
+::grpc::Status SwarmOrchestrator::Stub::RegisterAgent(::grpc::ClientContext* context, const ::interlock::atlas::AgentInfo& request, ::interlock::atlas::RegistrationResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::interlock::atlas::AgentInfo, ::interlock::atlas::RegistrationResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_RegisterAgent_, context, request, response);
 }
 
-void SwarmOrchestrator::Stub::async::RegisterAgent(::grpc::ClientContext* context, const ::cheraxxx::atlas::AgentInfo* request, ::cheraxxx::atlas::RegistrationResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::cheraxxx::atlas::AgentInfo, ::cheraxxx::atlas::RegistrationResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RegisterAgent_, context, request, response, std::move(f));
+void SwarmOrchestrator::Stub::async::RegisterAgent(::grpc::ClientContext* context, const ::interlock::atlas::AgentInfo* request, ::interlock::atlas::RegistrationResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::interlock::atlas::AgentInfo, ::interlock::atlas::RegistrationResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RegisterAgent_, context, request, response, std::move(f));
 }
 
-void SwarmOrchestrator::Stub::async::RegisterAgent(::grpc::ClientContext* context, const ::cheraxxx::atlas::AgentInfo* request, ::cheraxxx::atlas::RegistrationResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+void SwarmOrchestrator::Stub::async::RegisterAgent(::grpc::ClientContext* context, const ::interlock::atlas::AgentInfo* request, ::interlock::atlas::RegistrationResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RegisterAgent_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::cheraxxx::atlas::RegistrationResponse>* SwarmOrchestrator::Stub::PrepareAsyncRegisterAgentRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::AgentInfo& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::cheraxxx::atlas::RegistrationResponse, ::cheraxxx::atlas::AgentInfo, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_RegisterAgent_, context, request);
+::grpc::ClientAsyncResponseReader< ::interlock::atlas::RegistrationResponse>* SwarmOrchestrator::Stub::PrepareAsyncRegisterAgentRaw(::grpc::ClientContext* context, const ::interlock::atlas::AgentInfo& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::interlock::atlas::RegistrationResponse, ::interlock::atlas::AgentInfo, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_RegisterAgent_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::cheraxxx::atlas::RegistrationResponse>* SwarmOrchestrator::Stub::AsyncRegisterAgentRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::AgentInfo& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::interlock::atlas::RegistrationResponse>* SwarmOrchestrator::Stub::AsyncRegisterAgentRaw(::grpc::ClientContext* context, const ::interlock::atlas::AgentInfo& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncRegisterAgentRaw(context, request, cq);
   result->StartCall();
   return result;
 }
 
-::grpc::ClientReaderWriter< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>* SwarmOrchestrator::Stub::TunnelTelemetriaRaw(::grpc::ClientContext* context) {
-  return ::grpc::internal::ClientReaderWriterFactory< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>::Create(channel_.get(), rpcmethod_TunnelTelemetria_, context);
+::grpc::ClientReaderWriter< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>* SwarmOrchestrator::Stub::TunnelTelemetriaRaw(::grpc::ClientContext* context) {
+  return ::grpc::internal::ClientReaderWriterFactory< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>::Create(channel_.get(), rpcmethod_TunnelTelemetria_, context);
 }
 
-void SwarmOrchestrator::Stub::async::TunnelTelemetria(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::cheraxxx::atlas::TelemetryData,::cheraxxx::atlas::ControlCommand>* reactor) {
-  ::grpc::internal::ClientCallbackReaderWriterFactory< ::cheraxxx::atlas::TelemetryData,::cheraxxx::atlas::ControlCommand>::Create(stub_->channel_.get(), stub_->rpcmethod_TunnelTelemetria_, context, reactor);
+void SwarmOrchestrator::Stub::async::TunnelTelemetria(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::interlock::atlas::TelemetryData,::interlock::atlas::ControlCommand>* reactor) {
+  ::grpc::internal::ClientCallbackReaderWriterFactory< ::interlock::atlas::TelemetryData,::interlock::atlas::ControlCommand>::Create(stub_->channel_.get(), stub_->rpcmethod_TunnelTelemetria_, context, reactor);
 }
 
-::grpc::ClientAsyncReaderWriter< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>* SwarmOrchestrator::Stub::AsyncTunnelTelemetriaRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>::Create(channel_.get(), cq, rpcmethod_TunnelTelemetria_, context, true, tag);
+::grpc::ClientAsyncReaderWriter< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>* SwarmOrchestrator::Stub::AsyncTunnelTelemetriaRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>::Create(channel_.get(), cq, rpcmethod_TunnelTelemetria_, context, true, tag);
 }
 
-::grpc::ClientAsyncReaderWriter< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>* SwarmOrchestrator::Stub::PrepareAsyncTunnelTelemetriaRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>::Create(channel_.get(), cq, rpcmethod_TunnelTelemetria_, context, false, nullptr);
+::grpc::ClientAsyncReaderWriter< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>* SwarmOrchestrator::Stub::PrepareAsyncTunnelTelemetriaRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>::Create(channel_.get(), cq, rpcmethod_TunnelTelemetria_, context, false, nullptr);
 }
 
-::grpc::Status SwarmOrchestrator::Stub::RouteMessage(::grpc::ClientContext* context, const ::cheraxxx::atlas::Message& request, ::cheraxxx::atlas::RouteResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::cheraxxx::atlas::Message, ::cheraxxx::atlas::RouteResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_RouteMessage_, context, request, response);
+::grpc::Status SwarmOrchestrator::Stub::RouteMessage(::grpc::ClientContext* context, const ::interlock::atlas::Message& request, ::interlock::atlas::RouteResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::interlock::atlas::Message, ::interlock::atlas::RouteResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_RouteMessage_, context, request, response);
 }
 
-void SwarmOrchestrator::Stub::async::RouteMessage(::grpc::ClientContext* context, const ::cheraxxx::atlas::Message* request, ::cheraxxx::atlas::RouteResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::cheraxxx::atlas::Message, ::cheraxxx::atlas::RouteResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RouteMessage_, context, request, response, std::move(f));
+void SwarmOrchestrator::Stub::async::RouteMessage(::grpc::ClientContext* context, const ::interlock::atlas::Message* request, ::interlock::atlas::RouteResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::interlock::atlas::Message, ::interlock::atlas::RouteResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RouteMessage_, context, request, response, std::move(f));
 }
 
-void SwarmOrchestrator::Stub::async::RouteMessage(::grpc::ClientContext* context, const ::cheraxxx::atlas::Message* request, ::cheraxxx::atlas::RouteResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+void SwarmOrchestrator::Stub::async::RouteMessage(::grpc::ClientContext* context, const ::interlock::atlas::Message* request, ::interlock::atlas::RouteResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RouteMessage_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::cheraxxx::atlas::RouteResponse>* SwarmOrchestrator::Stub::PrepareAsyncRouteMessageRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::Message& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::cheraxxx::atlas::RouteResponse, ::cheraxxx::atlas::Message, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_RouteMessage_, context, request);
+::grpc::ClientAsyncResponseReader< ::interlock::atlas::RouteResponse>* SwarmOrchestrator::Stub::PrepareAsyncRouteMessageRaw(::grpc::ClientContext* context, const ::interlock::atlas::Message& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::interlock::atlas::RouteResponse, ::interlock::atlas::Message, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_RouteMessage_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::cheraxxx::atlas::RouteResponse>* SwarmOrchestrator::Stub::AsyncRouteMessageRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::Message& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::interlock::atlas::RouteResponse>* SwarmOrchestrator::Stub::AsyncRouteMessageRaw(::grpc::ClientContext* context, const ::interlock::atlas::Message& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncRouteMessageRaw(context, request, cq);
   result->StartCall();
   return result;
 }
 
-::grpc::ClientReader< ::cheraxxx::atlas::Message>* SwarmOrchestrator::Stub::SubscribeMessagesRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::SubscribeRequest& request) {
-  return ::grpc::internal::ClientReaderFactory< ::cheraxxx::atlas::Message>::Create(channel_.get(), rpcmethod_SubscribeMessages_, context, request);
+::grpc::ClientReader< ::interlock::atlas::Message>* SwarmOrchestrator::Stub::SubscribeMessagesRaw(::grpc::ClientContext* context, const ::interlock::atlas::SubscribeRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::interlock::atlas::Message>::Create(channel_.get(), rpcmethod_SubscribeMessages_, context, request);
 }
 
-void SwarmOrchestrator::Stub::async::SubscribeMessages(::grpc::ClientContext* context, const ::cheraxxx::atlas::SubscribeRequest* request, ::grpc::ClientReadReactor< ::cheraxxx::atlas::Message>* reactor) {
-  ::grpc::internal::ClientCallbackReaderFactory< ::cheraxxx::atlas::Message>::Create(stub_->channel_.get(), stub_->rpcmethod_SubscribeMessages_, context, request, reactor);
+void SwarmOrchestrator::Stub::async::SubscribeMessages(::grpc::ClientContext* context, const ::interlock::atlas::SubscribeRequest* request, ::grpc::ClientReadReactor< ::interlock::atlas::Message>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::interlock::atlas::Message>::Create(stub_->channel_.get(), stub_->rpcmethod_SubscribeMessages_, context, request, reactor);
 }
 
-::grpc::ClientAsyncReader< ::cheraxxx::atlas::Message>* SwarmOrchestrator::Stub::AsyncSubscribeMessagesRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::SubscribeRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::cheraxxx::atlas::Message>::Create(channel_.get(), cq, rpcmethod_SubscribeMessages_, context, request, true, tag);
+::grpc::ClientAsyncReader< ::interlock::atlas::Message>* SwarmOrchestrator::Stub::AsyncSubscribeMessagesRaw(::grpc::ClientContext* context, const ::interlock::atlas::SubscribeRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::interlock::atlas::Message>::Create(channel_.get(), cq, rpcmethod_SubscribeMessages_, context, request, true, tag);
 }
 
-::grpc::ClientAsyncReader< ::cheraxxx::atlas::Message>* SwarmOrchestrator::Stub::PrepareAsyncSubscribeMessagesRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::SubscribeRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::cheraxxx::atlas::Message>::Create(channel_.get(), cq, rpcmethod_SubscribeMessages_, context, request, false, nullptr);
+::grpc::ClientAsyncReader< ::interlock::atlas::Message>* SwarmOrchestrator::Stub::PrepareAsyncSubscribeMessagesRaw(::grpc::ClientContext* context, const ::interlock::atlas::SubscribeRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::interlock::atlas::Message>::Create(channel_.get(), cq, rpcmethod_SubscribeMessages_, context, request, false, nullptr);
 }
 
 SwarmOrchestrator::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       SwarmOrchestrator_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< SwarmOrchestrator::Service, ::cheraxxx::atlas::AgentInfo, ::cheraxxx::atlas::RegistrationResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< SwarmOrchestrator::Service, ::interlock::atlas::AgentInfo, ::interlock::atlas::RegistrationResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](SwarmOrchestrator::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::cheraxxx::atlas::AgentInfo* req,
-             ::cheraxxx::atlas::RegistrationResponse* resp) {
+             const ::interlock::atlas::AgentInfo* req,
+             ::interlock::atlas::RegistrationResponse* resp) {
                return service->RegisterAgent(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       SwarmOrchestrator_method_names[1],
       ::grpc::internal::RpcMethod::BIDI_STREAMING,
-      new ::grpc::internal::BidiStreamingHandler< SwarmOrchestrator::Service, ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>(
+      new ::grpc::internal::BidiStreamingHandler< SwarmOrchestrator::Service, ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>(
           [](SwarmOrchestrator::Service* service,
              ::grpc::ServerContext* ctx,
-             ::grpc::ServerReaderWriter<::cheraxxx::atlas::ControlCommand,
-             ::cheraxxx::atlas::TelemetryData>* stream) {
+             ::grpc::ServerReaderWriter<::interlock::atlas::ControlCommand,
+             ::interlock::atlas::TelemetryData>* stream) {
                return service->TunnelTelemetria(ctx, stream);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       SwarmOrchestrator_method_names[2],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< SwarmOrchestrator::Service, ::cheraxxx::atlas::Message, ::cheraxxx::atlas::RouteResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< SwarmOrchestrator::Service, ::interlock::atlas::Message, ::interlock::atlas::RouteResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](SwarmOrchestrator::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::cheraxxx::atlas::Message* req,
-             ::cheraxxx::atlas::RouteResponse* resp) {
+             const ::interlock::atlas::Message* req,
+             ::interlock::atlas::RouteResponse* resp) {
                return service->RouteMessage(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       SwarmOrchestrator_method_names[3],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
-      new ::grpc::internal::ServerStreamingHandler< SwarmOrchestrator::Service, ::cheraxxx::atlas::SubscribeRequest, ::cheraxxx::atlas::Message>(
+      new ::grpc::internal::ServerStreamingHandler< SwarmOrchestrator::Service, ::interlock::atlas::SubscribeRequest, ::interlock::atlas::Message>(
           [](SwarmOrchestrator::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::cheraxxx::atlas::SubscribeRequest* req,
-             ::grpc::ServerWriter<::cheraxxx::atlas::Message>* writer) {
+             const ::interlock::atlas::SubscribeRequest* req,
+             ::grpc::ServerWriter<::interlock::atlas::Message>* writer) {
                return service->SubscribeMessages(ctx, req, writer);
              }, this)));
 }
@@ -167,27 +167,27 @@ SwarmOrchestrator::Service::Service() {
 SwarmOrchestrator::Service::~Service() {
 }
 
-::grpc::Status SwarmOrchestrator::Service::RegisterAgent(::grpc::ServerContext* context, const ::cheraxxx::atlas::AgentInfo* request, ::cheraxxx::atlas::RegistrationResponse* response) {
+::grpc::Status SwarmOrchestrator::Service::RegisterAgent(::grpc::ServerContext* context, const ::interlock::atlas::AgentInfo* request, ::interlock::atlas::RegistrationResponse* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status SwarmOrchestrator::Service::TunnelTelemetria(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::cheraxxx::atlas::ControlCommand, ::cheraxxx::atlas::TelemetryData>* stream) {
+::grpc::Status SwarmOrchestrator::Service::TunnelTelemetria(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::interlock::atlas::ControlCommand, ::interlock::atlas::TelemetryData>* stream) {
   (void) context;
   (void) stream;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status SwarmOrchestrator::Service::RouteMessage(::grpc::ServerContext* context, const ::cheraxxx::atlas::Message* request, ::cheraxxx::atlas::RouteResponse* response) {
+::grpc::Status SwarmOrchestrator::Service::RouteMessage(::grpc::ServerContext* context, const ::interlock::atlas::Message* request, ::interlock::atlas::RouteResponse* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status SwarmOrchestrator::Service::SubscribeMessages(::grpc::ServerContext* context, const ::cheraxxx::atlas::SubscribeRequest* request, ::grpc::ServerWriter< ::cheraxxx::atlas::Message>* writer) {
+::grpc::Status SwarmOrchestrator::Service::SubscribeMessages(::grpc::ServerContext* context, const ::interlock::atlas::SubscribeRequest* request, ::grpc::ServerWriter< ::interlock::atlas::Message>* writer) {
   (void) context;
   (void) request;
   (void) writer;
@@ -195,7 +195,7 @@ SwarmOrchestrator::Service::~Service() {
 }
 
 
-}  // namespace cheraxxx
+}  // namespace interlock
 }  // namespace atlas
 #include <grpcpp/ports_undef.inc>
 

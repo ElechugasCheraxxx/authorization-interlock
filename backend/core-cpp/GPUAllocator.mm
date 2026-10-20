@@ -6,9 +6,9 @@
 #include <chrono>
 #include <sys/sysctl.h>
 #include <mach/mach.h>
-#include "interop/ZigPayloads.h"
+#include "interop/ZigTransfer.h"
 
-namespace cheraxxx {
+namespace interlock {
 
 GPUAllocator::GPUAllocator() : current_temp(42.0f), current_fan_speed(0.0f) {
     @autoreleasepool {
@@ -154,7 +154,7 @@ bool GPUAllocator::reserveVRAM(const std::string& pool_id, float amount_gb) {
         return false;
     }
 
-    // Uso de Zig Stealth Allocator para la gestión de buffers de agentes en memoria unificada.
+    // Uso de Zig Integrity Allocator para la gestión de buffers de agentes en memoria unificada.
     // Esto evita que los EDRs detecten la reserva masiva de memoria para "IA" como sospechosa.
     size_t allocation_size = static_cast<size_t>(amount_gb * 1024 * 1024 * 1024);
     void* stealth_ptr = zig_stealth_alloc(allocation_size);
@@ -214,4 +214,4 @@ void GPUAllocator::setComputePriority(const std::string& agent_alias, int priori
     NSLog(@"[GPUAllocator] Setting compute priority %d for agent %s", priority, agent_alias.c_str());
 }
 
-} // namespace cheraxxx
+} // namespace interlock

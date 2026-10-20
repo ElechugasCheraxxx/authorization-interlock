@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 
-namespace cheraxxx {
+namespace interlock {
 
 #ifdef __cplusplus
 extern "C" {
@@ -46,4 +46,4 @@ bool ocaml_verify_handle(uint32_t handle, uint32_t capacity);
 bool ocaml_verify_choreo_step(const std::string& choreo_name, const std::string& from_phase, const std::string& to_phase);
 bool ocaml_verify_buffer_purge(const std::string& buffer_id);
 
-} // namespace cheraxxx
+} // namespace interlock

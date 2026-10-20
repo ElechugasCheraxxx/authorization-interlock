@@ -2,7 +2,7 @@
 #include <cstdint>
 #include <concepts>
 
-namespace cheraxxx::math {
+namespace interlock::math {
 
 /**
  * @brief Deterministic Fixed-Point Math (FP16).
@@ -45,4 +45,4 @@ struct FixedPoint {
 using Fixed16 = FixedPoint<int16_t, 8>; // 8.8 fixed point
 using Fixed32 = FixedPoint<int32_t, 16>; // 16.16 fixed point
 
-} // namespace cheraxxx::math
+} // namespace interlock::math

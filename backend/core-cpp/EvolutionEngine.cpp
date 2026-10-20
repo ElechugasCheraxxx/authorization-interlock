@@ -6,7 +6,7 @@
 #include "GPUAllocator.hpp"
 #include "Blackboard.hpp"
 
-namespace cheraxxx {
+namespace interlock {
 
 EvolutionEngine::EvolutionEngine() : is_generating_synthetic(false), running(true) {
     improvement_thread = std::thread(&EvolutionEngine::startAutonomousSelfImprovement, this);
@@ -111,4 +111,4 @@ void EvolutionEngine::applyWeightAdaptation(const std::string& agent, const std:
     std::cout << "[EvolutionEngine] Applying Real-Time Weight Adaptation to " << agent << " VRAM buffers." << std::endl;
 }
 
-} // namespace cheraxxx
+} // namespace interlock

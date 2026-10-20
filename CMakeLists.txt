@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(CheraxxxRedTeamIDE LANGUAGES CXX C OBJC OBJCXX ASM)
+project(InterlockIDE LANGUAGES CXX C OBJC OBJCXX ASM)
 
 # ============================================================================
 # CONFIGURACIÓN GLOBAL DE PRODUCCIÓN
@@ -8,8 +8,8 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CHERAXXX_VERSION "1.0.0-production")
-set(CHERAXXX_BUILD_TYPE "Release")
+set(INTERLOCK_VERSION "1.0.0-production")
+set(INTERLOCK_BUILD_TYPE "Release")
 
 # Soporte para Apple Silicon (M4 Pro)
 if(APPLE)
@@ -80,7 +80,7 @@ if(BUILD_RUST_CIPHER)
         WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/backend/cipher-rs"
         COMMENT "Compilando Cipher Module (Rust)..."
     )
-    add_dependencies(cheraxxx_core cipher_rust)
+    add_dependencies(interlock_core cipher_rust)
 endif()
 
 # --- GO (atlas-go) ---
@@ -90,17 +90,17 @@ if(BUILD_GO_ATLAS)
         WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/backend/atlas-go"
         COMMENT "Compilando Atlas Swarm Orchestrator (Go)..."
     )
-    add_dependencies(cheraxxx_core atlas_go)
+    add_dependencies(interlock_core atlas_go)
 endif()
 
-# --- ZIG (payloads-zig) ---
+# --- ZIG (transfer-zig) ---
 if(BUILD_ZIG_PAYLOADS)
     add_custom_target(payloads_zig
         COMMAND ${ZIG} build -Doptimize=ReleaseFast
-        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/backend/payloads-zig"
-        COMMENT "Compilando Payload Orchestrator (Zig)..."
+        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/backend/transfer-zig"
+        COMMENT "Compilando Artifact Orchestrator (Zig)..."
     )
-    add_dependencies(cheraxxx_core payloads_zig)
+    add_dependencies(interlock_core payloads_zig)
 endif()
 
 # ============================================================================
@@ -109,7 +109,7 @@ endif()
 if(ENABLE_ABB)
     message(STATUS "Habilitando Autonomous Breadcrumb Buffer (ABB)...")
     add_compile_definitions(ENABLE_ABB=1)
-    # El ABB se inicializa en CheraxxxCore.cpp
+    # El ABB se inicializa en InterlockCore.cpp
 endif()
 
 if(ENABLE_DTRACE_PROBES)
@@ -123,10 +123,10 @@ endif()
 # CONFIGURACIÓN DE PRODUCCIÓN
 # ============================================================================
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
-    message(STATUS "BUILD PRODUCTION: Cheraxxx v${CHERAXXX_VERSION}")
+    message(STATUS "BUILD PRODUCTION: Interlock v${INTERLOCK_VERSION}")
     add_compile_definitions(
-        CHERAXXX_PRODUCTION=1
-        CHERAXXX_VERSION="${CHERAXXX_VERSION}"
+        INTERLOCK_PRODUCTION=1
+        INTERLOCK_VERSION="${INTERLOCK_VERSION}"
     )
 
     # Striping de símbolos en Release
@@ -151,18 +151,18 @@ add_subdirectory(backend/tests)
 # ============================================================================
 # INSTALACIÓN
 # ============================================================================
-install(TARGETS cheraxxx_core DESTINATION lib)
-install(DIRECTORY backend/include/ DESTINATION include/cheraxxx)
-install(FILES backend/config/ide.toml backend/config/agents.toml DESTINATION etc/cheraxxx)
+install(TARGETS interlock_core DESTINATION lib)
+install(DIRECTORY backend/include/ DESTINATION include/interlock)
+install(FILES backend/config/ide.toml backend/config/agents.toml DESTINATION etc/interlock)
 
 # ============================================================================
 # RESUMEN DE COMPILACIÓN
 # ============================================================================
 message(STATUS "")
 message(STATUS "========================================")
-message(STATUS "Cheraxxx RedTeam IDE - Build Configuration")
+message(STATUS "Interlock Assessment IDE - Build Configuration")
 message(STATUS "========================================")
-message(STATUS "Version: ${CHERAXXX_VERSION}")
+message(STATUS "Version: ${INTERLOCK_VERSION}")
 message(STATUS "Build Type: ${CMAKE_BUILD_TYPE}")
 message(STATUS "C++ Standard: ${CMAKE_CXX_STANDARD}")
 message(STATUS "")
@@ -190,7 +190,7 @@ if(APPLE OR LINUX)
     set(CMAKE_AUTORCC ON)
     set(CMAKE_AUTOUIC ON)
 
-    set(APP_NAME "CheraxxxRedTeamIDE_Qt")
+    set(APP_NAME "InterlockIDE_Qt")
 
     # 2. Definir recursos y fuentes
     file(GLOB_RECURSE QT_SOURCES
@@ -209,10 +209,10 @@ if(APPLE OR LINUX)
 
     # 5. Configuración del Bundle (Info.plist metadata)
     set_target_properties(${APP_NAME} PROPERTIES
-        MACOSX_BUNDLE_GUI_IDENTIFIER "com.abiterated.cheraxxx.ide"
-        MACOSX_BUNDLE_BUNDLE_NAME "Cheraxxx RedTeam IDE"
-        MACOSX_BUNDLE_BUNDLE_VERSION "${CHERAXXX_VERSION}"
-        MACOSX_BUNDLE_SHORT_VERSION_STRING "${CHERAXXX_VERSION}"
+        MACOSX_BUNDLE_GUI_IDENTIFIER "com.abiterated.interlock.ide"
+        MACOSX_BUNDLE_BUNDLE_NAME "Interlock Assessment IDE"
+        MACOSX_BUNDLE_BUNDLE_VERSION "${INTERLOCK_VERSION}"
+        MACOSX_BUNDLE_SHORT_VERSION_STRING "${INTERLOCK_VERSION}"
         MACOSX_BUNDLE_COPYRIGHT "Copyright © 2024 Abiterated Systems"
         MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/frontend-qt/Info.plist"
     )
@@ -224,7 +224,7 @@ if(APPLE OR LINUX)
         Qt6::Quick
         Qt6::Qml
         Qt6::Widgets
-        cheraxxx_core
+        interlock_core
     )
 
     # 7. Empaquetado Exhaustivo del Backend en el Bundle
@@ -236,23 +236,23 @@ if(APPLE OR LINUX)
     endforeach()
 
     # Data Surgery (Perl)
-    file(GLOB_RECURSE SURGERY_FILES "backend/surgery-pl/*.pl" "backend/surgery-pl/*.pm")
+    file(GLOB_RECURSE SURGERY_FILES "backend/artifact-pl/*.pl" "backend/artifact-pl/*.pm")
     foreach(FILE ${SURGERY_FILES})
         target_sources(${APP_NAME} PRIVATE "${FILE}")
-        set_source_files_properties("${FILE}" PROPERTIES MACOSX_BUNDLE_LOCATION "Resources/backend/surgery-pl")
+        set_source_files_properties("${FILE}" PROPERTIES MACOSX_BUNDLE_LOCATION "Resources/backend/artifact-pl")
     endforeach()
 
     # Web Intel (TypeScript/JS)
-    file(GLOB_RECURSE INTEL_FILES "backend/intel-ts/src/*.ts" "backend/intel-ts/package.json")
+    file(GLOB_RECURSE INTEL_FILES "backend/discovery-ts/src/*.ts" "backend/discovery-ts/package.json")
     foreach(FILE ${INTEL_FILES})
         target_sources(${APP_NAME} PRIVATE "${FILE}")
-        set_source_files_properties("${FILE}" PROPERTIES MACOSX_BUNDLE_LOCATION "Resources/backend/intel-ts")
+        set_source_files_properties("${FILE}" PROPERTIES MACOSX_BUNDLE_LOCATION "Resources/backend/discovery-ts")
     endforeach()
 
     # 8. Binarios Críticos (Go, Rust, Zig) -> Van a Contents/MacOS
     set(BINARY_MODULES
         "${CMAKE_BINARY_DIR}/bin/atlas_orchestrator"
-        "${CMAKE_BINARY_DIR}/bin/cheraxxx_payload_orchestrator"
+        "${CMAKE_BINARY_DIR}/bin/interlock_payload_orchestrator"
         "${CMAKE_BINARY_DIR}/lib/libcipher_rs.dylib"
     )
 
@@ -285,7 +285,7 @@ if(APPLE OR LINUX)
         # Firmado final para ejecución en M4 Pro
         COMMAND codesign --force --deep --sign - "$<TARGET_FILE_DIR:${APP_NAME}>/../.."
 
-        COMMENT "Generando Bundle unificado CheraxxxRedTeamIDE.app..."
+        COMMENT "Generando Bundle unificado InterlockIDE.app..."
     )
 
     message(STATUS "Frontend Qt6 configurado como macOS Bundle: ${APP_NAME}.app")

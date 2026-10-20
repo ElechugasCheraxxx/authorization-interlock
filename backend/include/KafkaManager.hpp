@@ -2,7 +2,7 @@
 #include <string>
 #include <nlohmann/json.hpp>
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
  * @brief Backbone de eventos para Replay Mode y desacoplamiento de servicios.
@@ -22,4 +22,4 @@ private:
     KafkaManager() = default;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

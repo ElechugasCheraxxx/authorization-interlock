@@ -1,7 +1,7 @@
 #include "EventSystem.hpp"
 #include <iostream>
 
-namespace cheraxxx {
+namespace interlock {
 
 void EventBus::publish(const Event& event) {
     std::lock_guard<std::mutex> lock(mtx);
@@ -70,4 +70,4 @@ void ReplayEngine::createBranch(const std::string& branch_name, long long start_
     branches[branch_name] = branch_events;
 }
 
-} // namespace cheraxxx
+} // namespace interlock

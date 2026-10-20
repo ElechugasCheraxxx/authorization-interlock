@@ -7,7 +7,7 @@
 #include <mutex>
 #include <mutex>
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
  * AdaptivePromptEngine (M4 Pro Optimized)
@@ -40,8 +40,8 @@ private:
     std::mutex mtx;
 
     // XML Templates (Hardcoded as base, but filled dynamically)
-    const std::string XML_HEADER = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<redteam_session>";
-    const std::string XML_FOOTER = "\n</redteam_session>";
+    const std::string XML_HEADER = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<assessment_session>";
+    const std::string XML_FOOTER = "\n</assessment_session>";
 };
 
-} // namespace cheraxxx
+} // namespace interlock

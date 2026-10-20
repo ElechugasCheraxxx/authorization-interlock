@@ -1,4 +1,4 @@
-# Kernel Safety & Recovery Protocol (Cheraxxx Shield)
+# Kernel Safety & Recovery Protocol (Interlock Shield)
 
 To avoid "bricking" your Mac or entering an infinite Kernel Panic boot loop, follow these protocols strictly.
 
@@ -17,7 +17,7 @@ echo "[!] Emergency Recovery Initiated..."
 
 # 1. Identify System Volume
 DISK=$(ls /Volumes | grep "Macintosh HD" | head -n 1)
-TARGET="/Volumes/${DISK}/Library/Extensions/CheraxxxShield.kext"
+TARGET="/Volumes/${DISK}/Library/Extensions/InterlockShield.kext"
 
 if [ -d "$TARGET" ]; then
     echo "[+] Found malformed KEXT. Removing..."
@@ -26,7 +26,7 @@ if [ -d "$TARGET" ]; then
     kmutil clear-staging
     echo "[+] Done. You can now reboot safely."
 else
-    echo "[-] CheraxxxShield.kext not found in system extensions."
+    echo "[-] InterlockShield.kext not found in system extensions."
 fi
 ```
 

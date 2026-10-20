@@ -5,7 +5,7 @@
 #include <map>
 #include <mutex>
 
-namespace cheraxxx {
+namespace interlock {
 
 struct Route {
     std::vector<std::string> path;
@@ -36,4 +36,4 @@ private:
     std::map<std::string, std::vector<std::string>> network_graph;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

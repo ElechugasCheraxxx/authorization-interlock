@@ -5,7 +5,7 @@
 #include <mutex>
 #include <regex>
 
-namespace cheraxxx {
+namespace interlock {
 
 struct ROERule {
     std::string pattern;
@@ -26,7 +26,7 @@ public:
     // Carga reglas desde una configuración estática o memoria
     void loadRules(const std::vector<ROERule>& new_rules);
 
-    // Logs de violaciones de scope (sin tocar disco si es posible, o vía OpsecManager)
+    // Logs de violaciones de scope (sin tocar disco si es posible, o vía RiskManager)
     void logViolation(const std::string& action, const std::string& target);
 
 private:
@@ -35,4 +35,4 @@ private:
     std::mutex mtx;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

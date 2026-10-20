@@ -3,7 +3,7 @@
 #include "Schema.hpp"
 #include "NativeAgent.hpp"
 #include "MoERouter.hpp"
-#include "DataSurgeryEngine.hpp" // Para SurgeryResult
+#include "ArtifactEngine.hpp" // Para SurgeryResult
 #include <string>
 #include <mutex>
 #include <map>
@@ -11,7 +11,7 @@
 #include <thread>
 #include <atomic>
 
-namespace cheraxxx {
+namespace interlock {
 
 // Sincronizado con RustAgentState en Rust
 enum class AgentLifecycleState : int {
@@ -49,7 +49,7 @@ struct AgentRuntimeContext {
 
 /**
  * OrchestrationEngine (M4 Pro Advanced Agent Manager)
- * Manages the "Hibernate-on-Idle" lifecycle for the RedTeam agent swarm.
+ * Manages the "Hibernate-on-Idle" lifecycle for the Assessment agent swarm.
  */
 class OrchestrationEngine {
 public:
@@ -109,7 +109,7 @@ private:
 
     // Configuration
     const int IDLE_TIMEOUT_SECONDS = 45;
-    std::string models_base_path = "/Users/cheraxxx/Cheraxxx RedTeam IDE/data/models/";
+    std::string models_base_path = "/Users/Cheraxxx/Interlock IDE/data/models/";
 };
 
-} // namespace cheraxxx
+} // namespace interlock

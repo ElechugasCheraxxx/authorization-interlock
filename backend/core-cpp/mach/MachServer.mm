@@ -5,28 +5,28 @@
 #include <pthread.h>
 #include "mach/MachServer.hpp"
 #include "mach/MachPriority.hpp"
-#include "cheraxxx_ipc.h" // Generado por Mig
+#include "interlock_ipc.h" // Generado por Mig
 
-extern "C" boolean_t cheraxxx_ipc_server(mach_msg_header_t *InHeadP, mach_msg_header_t *OutHeadP);
+extern "C" boolean_t interlock_ipc_server(mach_msg_header_t *InHeadP, mach_msg_header_t *OutHeadP);
 
 /*
- * MachServer.mm - Implementación del servidor Mach IPC para la orquesta Cheraxxx.
+ * MachServer.mm - Implementación del servidor Mach IPC para la orquesta Interlock.
  * Sustituye gradualmente a los Sockets Unix con comunicación nativa de Kernel.
  */
 
-extern "C" kern_return_t cheraxxx_dispatch_tactical_node(
+extern "C" kern_return_t interlock_dispatch_tactical_node(
     mach_port_t server_port,
     int sender_id,
     int msg_type,
     int priority,
-    char* payload,
+    char* artifact,
     mach_msg_type_number_t payloadCnt)
 {
-    // std::cout << "[Mach-IPC] Tactical Dispatch from " << sender_id << " type " << msg_type << std::endl;
+    // std::cout << "[Mach-IPC] Operations Dispatch from " << sender_id << " type " << msg_type << std::endl;
     return KERN_SUCCESS;
 }
 
-extern "C" kern_return_t cheraxxx_fetch_blackboard_state(
+extern "C" kern_return_t interlock_fetch_blackboard_state(
     mach_port_t server_port,
     char* state_data,
     mach_msg_type_number_t *state_dataCnt)
@@ -35,7 +35,7 @@ extern "C" kern_return_t cheraxxx_fetch_blackboard_state(
     return KERN_SUCCESS;
 }
 
-extern "C" kern_return_t cheraxxx_signal_escalation(
+extern "C" kern_return_t interlock_signal_escalation(
     mach_port_t server_port,
     int escalation_lvl,
     int reason_code)
@@ -50,14 +50,14 @@ void* MachServerMainLoop(void* arg) {
     mach_port_t port = (mach_port_t)(uintptr_t)arg;
 
     // Optimizar para P-Cores (M4 Pro)
-    cheraxxx::mach::SetThreadPriority(mach_thread_self(), cheraxxx::mach::TaskPriority::HIGH);
-    cheraxxx::mach::SetThreadAffinity(mach_thread_self(), 1); // Cluster 1 (P-Cores)
+    interlock::mach::SetThreadPriority(mach_thread_self(), interlock::mach::TaskPriority::HIGH);
+    interlock::mach::SetThreadAffinity(mach_thread_self(), 1); // Cluster 1 (P-Cores)
 
     std::cout << "[Mach-IPC] Main Server Loop active on port " << port << " [P-Core Affinity]" << std::endl;
 
     // Despachador generado por Mig
     while (true) {
-        kern_return_t kr = mach_msg_server(cheraxxx_ipc_server, 4096, port, 0);
+        kern_return_t kr = mach_msg_server(interlock_ipc_server, 4096, port, 0);
         if (kr != KERN_SUCCESS) {
             std::cerr << "[Mach-IPC] Server error: " << mach_error_string(kr) << std::endl;
             break;
@@ -66,7 +66,7 @@ void* MachServerMainLoop(void* arg) {
     return nullptr;
 }
 
-namespace cheraxxx::mach {
+namespace interlock::mach {
 
 bool StartMachServer() {
     kern_return_t kr;
@@ -94,4 +94,4 @@ mach_port_t GetServerPort() {
     return g_main_server_port;
 }
 
-} // namespace cheraxxx::mach
+} // namespace interlock::mach

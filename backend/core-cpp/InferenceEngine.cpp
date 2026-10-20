@@ -5,7 +5,7 @@
 
 namespace fs = std::filesystem;
 
-namespace cheraxxx {
+namespace interlock {
 
 InferenceEngine::~InferenceEngine() {
     shutdown();
@@ -203,4 +203,4 @@ InferenceEngine::NeuralMetrics InferenceEngine::getMetrics() const {
     return last_metrics;
 }
 
-} // namespace cheraxxx
+} // namespace interlock

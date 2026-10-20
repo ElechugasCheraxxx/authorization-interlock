@@ -1,9 +1,9 @@
 #!/bin/bash
-# Cheraxxx RedTeam - Parachute Protocol (Phase 0)
+# Interlock Assessment - Parachute Protocol (Phase 0)
 # Emergency rescue script to be run from macOS Recovery Mode Terminal.
 
 echo "----------------------------------------------------"
-echo "CHERAXXX SHIELD: EMERGENCY PARACHUTE ACTIVATED"
+echo "INTERLOCK SHIELD: EMERGENCY PARACHUTE ACTIVATED"
 echo "----------------------------------------------------"
 
 # 1. Identificar el volumen principal (saltando volúmenes de sistema/recuperación)
@@ -18,7 +18,7 @@ fi
 echo "[*] Target Volume identified: ${TARGET_VOL}"
 
 # 2. Rutas críticas de la KEXT
-KEXT_PATH="${TARGET_VOL}/Library/Extensions/CheraxxxShield.kext"
+KEXT_PATH="${TARGET_VOL}/Library/Extensions/InterlockShield.kext"
 STAGING_PATH="${TARGET_VOL}/Library/KernelCollections"
 
 # 3. Eliminación quirúrgica
@@ -30,8 +30,8 @@ if [ -d "$KEXT_PATH" ]; then
     # kmutil es esencial en macOS Big Sur y superiores
     kmutil clear-staging --volume-root "${TARGET_VOL}" 2>/dev/null
 
-    echo "[SUCCESS] Cheraxxx Shield has been neutralized."
+    echo "[SUCCESS] Interlock Shield has been neutralized."
     echo "[i] You can now reboot normally."
 else
-    echo "[-] CheraxxxShield.kext not found. System might be clean or KEXT was loaded in-memory only."
+    echo "[-] InterlockShield.kext not found. System might be clean or KEXT was loaded in-memory only."
 fi

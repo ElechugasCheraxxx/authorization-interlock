@@ -2,7 +2,7 @@
 #include "ToolDispatcher.hpp"
 #include <iostream>
 
-namespace cheraxxx {
+namespace interlock {
 
 BeaconAgent::BeaconAgent(const std::string& model_path)
     : NativeAgent("beacon", model_path) {}
@@ -16,4 +16,4 @@ void BeaconAgent::onResponseGenerated(const std::string& raw_output) {
     }
 }
 
-} // namespace cheraxxx
+} // namespace interlock

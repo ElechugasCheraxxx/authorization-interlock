@@ -1,6 +1,6 @@
 # Core C++ Module (RDT & GPU Inference)
 cmake_minimum_required(VERSION 3.24)
-project(cheraxxx_core LANGUAGES C CXX ASM OBJC OBJCXX)
+project(interlock_core LANGUAGES C CXX ASM OBJC OBJCXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -56,7 +56,7 @@ set(LLAMA_DIR "${CMAKE_CURRENT_SOURCE_DIR}/llama_sourcecode/llama.cpp-master")
 
 # --- Dual-Backend Configuration (MLX + Llama) ---
 if(APPLE)
-    message(STATUS "[Cheraxxx Core] Configurando Dual-Backend (MLX + Llama) para macOS")
+    message(STATUS "[Interlock Core] Configurando Dual-Backend (MLX + Llama) para macOS")
     add_definitions(-DUSE_MLX)
     add_definitions(-DUSE_LLAMA)
 
@@ -87,7 +87,7 @@ if(APPLE)
         "-framework MetalPerformanceShaders"
     )
 else()
-    message(STATUS "[Cheraxxx Core] Configurando Backend GGUF (Windows/Universal)")
+    message(STATUS "[Interlock Core] Configurando Backend GGUF (Windows/Universal)")
     add_definitions(-DUSE_LLAMA)
 
     # Configure llama.cpp options before including it
@@ -111,7 +111,7 @@ set(MIG_OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/mach_gen")
 file(MAKE_DIRECTORY "${MIG_OUTPUT_DIR}")
 
 set(MIG_DEFS
-    "${CMAKE_CURRENT_SOURCE_DIR}/mach/cheraxxx_ipc.defs"
+    "${CMAKE_CURRENT_SOURCE_DIR}/mach/interlock_ipc.defs"
     "${CMAKE_CURRENT_SOURCE_DIR}/mach/anti_debug.defs"
 )
 
@@ -157,20 +157,20 @@ list(REMOVE_ITEM CORE_SOURCES
 list(APPEND CORE_SOURCES ${INFERENCE_SOURCES})
 
 # --- MachInjector target ---
-add_executable(cheraxxx_mach_injector "${CMAKE_CURRENT_SOURCE_DIR}/mach/MachInjector.cpp" "${MIG_OUTPUT_DIR}/cheraxxx_ipcUser.c")
-add_dependencies(cheraxxx_mach_injector cheraxxx_core_bin) # Ensure MIG runs
-target_include_directories(cheraxxx_mach_injector PRIVATE ${MIG_OUTPUT_DIR})
-target_include_directories(cheraxxx_mach_injector PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/mach")
-target_link_libraries(cheraxxx_mach_injector PRIVATE "-framework Foundation")
+add_executable(interlock_mach_injector "${CMAKE_CURRENT_SOURCE_DIR}/mach/MachInjector.cpp" "${MIG_OUTPUT_DIR}/interlock_ipcUser.c")
+add_dependencies(interlock_mach_injector interlock_core_bin) # Ensure MIG runs
+target_include_directories(interlock_mach_injector PRIVATE ${MIG_OUTPUT_DIR})
+target_include_directories(interlock_mach_injector PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/mach")
+target_link_libraries(interlock_mach_injector PRIVATE "-framework Foundation")
 
 # Build standalone executable
-add_executable(cheraxxx_core_bin ${CORE_SOURCES} ${PB_SOURCES} ${MIG_GENERATED_SOURCES})
-set_target_properties(cheraxxx_core_bin PROPERTIES
-    OUTPUT_NAME cheraxxx_core
+add_executable(interlock_core_bin ${CORE_SOURCES} ${PB_SOURCES} ${MIG_GENERATED_SOURCES})
+set_target_properties(interlock_core_bin PROPERTIES
+    OUTPUT_NAME interlock_core
     LINK_FLAGS "-Wl,-dead_strip"
 )
-target_include_directories(cheraxxx_core_bin PRIVATE ${MIG_OUTPUT_DIR})
-target_include_directories(cheraxxx_core_bin PUBLIC
+target_include_directories(interlock_core_bin PRIVATE ${MIG_OUTPUT_DIR})
+target_include_directories(interlock_core_bin PUBLIC
     "${CMAKE_CURRENT_SOURCE_DIR}/../include"
     "${CMAKE_CURRENT_SOURCE_DIR}"
     "${CMAKE_CURRENT_SOURCE_DIR}/agents"
@@ -191,7 +191,7 @@ target_include_directories(cheraxxx_core_bin PUBLIC
 )
 
 # Link requirements for executable
-target_link_libraries(cheraxxx_core_bin PRIVATE
+target_link_libraries(interlock_core_bin PRIVATE
     ${INFERENCE_LIBS}
     nanobind-static
     Python::Python
@@ -202,7 +202,7 @@ target_link_libraries(cheraxxx_core_bin PRIVATE
     ${PROTOBUF_LDFLAGS}
     ${GRPC_LDFLAGS}
     "${CMAKE_CURRENT_SOURCE_DIR}/../cipher-rs/target/release/libcipher_rs.a"
-    "${CMAKE_CURRENT_SOURCE_DIR}/../payloads-zig/zig-out/lib/libcheraxxx_payloads.a"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../payloads-zig/zig-out/lib/libinterlock_payloads.a"
     "-framework Foundation"
     "-framework Metal"
     "-framework MetalPerformanceShaders"
@@ -214,10 +214,10 @@ target_link_libraries(cheraxxx_core_bin PRIVATE
 )
 
 # Crear librería ESTÁTICA
-add_library(cheraxxx_core STATIC ${CORE_SOURCES} ${AGENT_SOURCES} ${PB_SOURCES} ${MIG_GENERATED_SOURCES})
-target_include_directories(cheraxxx_core PRIVATE ${MIG_OUTPUT_DIR})
+add_library(interlock_core STATIC ${CORE_SOURCES} ${AGENT_SOURCES} ${PB_SOURCES} ${MIG_GENERATED_SOURCES})
+target_include_directories(interlock_core PRIVATE ${MIG_OUTPUT_DIR})
 
-target_include_directories(cheraxxx_core PUBLIC
+target_include_directories(interlock_core PUBLIC
     "${CMAKE_CURRENT_SOURCE_DIR}/../include"
     "${CMAKE_CURRENT_SOURCE_DIR}"
     "${CMAKE_CURRENT_SOURCE_DIR}/agents"
@@ -237,15 +237,15 @@ target_include_directories(cheraxxx_core PUBLIC
     "${GRPC_INCLUDE_DIRS}"
 )
 
-set_target_properties(cheraxxx_core PROPERTIES
+set_target_properties(interlock_core PROPERTIES
     FRAMEWORK TRUE
-    MACOSX_FRAMEWORK_IDENTIFIER com.cheraxxx.core
+    MACOSX_FRAMEWORK_IDENTIFIER com.interlock.core
     VERSION 1.0.0
     SOVERSION 1
 )
 
 # Link requirements
-target_link_libraries(cheraxxx_core PRIVATE
+target_link_libraries(interlock_core PRIVATE
     ${INFERENCE_LIBS}
     nanobind-static
     Python::Python
@@ -256,7 +256,7 @@ target_link_libraries(cheraxxx_core PRIVATE
     ${PROTOBUF_LDFLAGS}
     ${GRPC_LDFLAGS}
     "${CMAKE_CURRENT_SOURCE_DIR}/../cipher-rs/target/release/libcipher_rs.a"
-    "${CMAKE_CURRENT_SOURCE_DIR}/../payloads-zig/zig-out/lib/libcheraxxx_payloads.a"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../payloads-zig/zig-out/lib/libinterlock_payloads.a"
     "-framework Foundation"
     "-framework Metal"
     "-framework MetalPerformanceShaders"

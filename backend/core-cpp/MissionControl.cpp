@@ -1,7 +1,7 @@
 #include "MissionControl.hpp"
 #include "OrchestrationEngine.hpp"
 #include "AgentEngine.hpp"
-#include "OpsecManager.hpp"
+#include "RiskManager.hpp"
 #include "security/Harden.hpp"
 #include "PDGEngine.hpp"
 #include <iostream>
@@ -9,7 +9,7 @@
 #include <filesystem>
 #include <dlfcn.h>
 
-namespace cheraxxx {
+namespace interlock {
 
 namespace fs = std::filesystem;
 
@@ -20,7 +20,7 @@ void MissionControl::executeSovereignSwarm(const std::string& chrxSource) {
     std::cout << "[MissionControl] [ALPHA STRIKE] Initiating Sovereign Swarm Mission..." << std::endl;
 
     // 1. Compile .chrxxx to C++
-    void* handle = dlopen("/Users/cheraxxx/Cheraxxx RedTeam IDE/backend/chrx-compiler/target/release/libchrx_compiler.dylib", RTLD_LAZY);
+    void* handle = dlopen("/Users/Cheraxxx/Interlock IDE/backend/chrx-compiler/target/release/libchrx_compiler.dylib", RTLD_LAZY);
     if (!handle) {
         std::cerr << "[MissionControl] Error: Could not load libchrx_compiler.dylib" << std::endl;
         return;
@@ -88,11 +88,11 @@ std::string MissionControl::submitMission(const Mission& mission) {
 void MissionControl::enableOvernightMode(bool enable) {
     overnight_mode = enable;
     if (enable) {
-        std::cout << "[MissionControl] Overnight Mode ENABLED. Stealth and autonomy maximized." << std::endl;
-        OpsecManager::getInstance().setStealthLevel(5); // Maximum stealth
+        std::cout << "[MissionControl] Overnight Mode ENABLED. Integrity and autonomy maximized." << std::endl;
+        RiskManager::getInstance().setStealthLevel(5); // Maximum integrity
     } else {
         std::cout << "[MissionControl] Overnight Mode DISABLED." << std::endl;
-        OpsecManager::getInstance().setStealthLevel(3); // Normal operation
+        RiskManager::getInstance().setStealthLevel(3); // Normal operation
     }
 }
 
@@ -196,7 +196,7 @@ void MissionControl::generateBuildEnvironment(const std::string& project_name, c
     vcxproj << "  <Import Project=\"$(VCTargetsPath)\\Microsoft.Cpp.targets\" />\n";
     vcxproj << "</Project>\n";
 
-    fs::path build_dir = fs::path("/Users/cheraxxx/Cheraxxx RedTeam IDE/build/agent_gen") / project_name;
+    fs::path build_dir = fs::path("/Users/Cheraxxx/Interlock IDE/build/agent_gen") / project_name;
     fs::create_directories(build_dir);
 
     std::ofstream file(build_dir / (project_name + ".vcxproj"));
@@ -206,4 +206,4 @@ void MissionControl::generateBuildEnvironment(const std::string& project_name, c
     std::cout << "[MissionControl] Build environment generated at: " << build_dir << std::endl;
 }
 
-} // namespace cheraxxx
+} // namespace interlock

@@ -8,7 +8,7 @@
 #include "InferenceEngine.hpp"
 #include "SessionManager.hpp"
 #include "AutomationModule.hpp"
-#include "OpsecManager.hpp"
+#include "RiskManager.hpp"
 #include "ProcessManager.hpp"
 #include "PythonBridge.hpp"
 #include "GPUAllocator.hpp"
@@ -20,7 +20,7 @@
 #include <atomic>
 #include <fstream>
 
-using namespace cheraxxx;
+using namespace interlock;
 
 std::atomic<bool> keep_running(true);
 void signal_handler(int signal) {
@@ -38,11 +38,11 @@ int main(int argc, char** argv) {
         }
     }
 
-    std::cout << "--- Cheraxxx RedTeam IDE : C2 Master Core ---" << std::endl;
+    std::cout << "--- Interlock Assessment IDE : C2 Master Core ---" << std::endl;
     std::cout << "Hardware Target: Apple M4 Pro (Unified Memory Optimized)" << std::endl;
 
     // 0. Initialize Trusted Core (OCaml Runtime)
-    cheraxxx::init_ocaml_runtime(argv);
+    interlock::init_ocaml_runtime(argv);
 
     // 1. Start Services (Postgres, etc.)
     // Esto ejecutará initdb y createdb si es la primera vez (instalación limpia)
@@ -70,7 +70,7 @@ int main(int argc, char** argv) {
     auto& inference = InferenceEngine::getInstance();
 
     inference.initialize();
-    GhidraBridge::getInstance().initialize("/Applications/ghidra_11.0.3_PUBLIC", "/Users/cheraxxx/CheraxxxProjects");
+    GhidraBridge::getInstance().initialize("/Applications/ghidra_11.0.3_PUBLIC", "/Users/Cheraxxx/InterlockProjects");
     router.start();
 
     // 4. Priming VRAM Pools
@@ -83,9 +83,9 @@ int main(int argc, char** argv) {
     // --- SOVEREIGN SWARM MISSION TEST ---
     for (int i = 1; i < argc; ++i) {
         if (std::string(argv[i]) == "--test-swarm") {
-            std::ifstream file("/Users/cheraxxx/Cheraxxx RedTeam IDE/tests/sovereign_swarm_test.chrxxx");
+            std::ifstream file("/Users/Cheraxxx/Interlock IDE/tests/sovereign_swarm_test.chrxxx");
             std::string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
-            cheraxxx::MissionControl::getInstance().executeSovereignSwarm(content);
+            interlock::MissionControl::getInstance().executeSovereignSwarm(content);
             return 0;
         }
     }
@@ -94,7 +94,7 @@ int main(int argc, char** argv) {
     std::thread python_thread([]() {
         try {
             std::cout << "[Core] Python thread started. Launching core_main..." << std::endl;
-            PythonBridge::getInstance().executeString("import cheraxxx.core_main as main; main.run_core()");
+            PythonBridge::getInstance().executeString("import interlock.core_main as main; main.run_core()");
             std::cout << "[Core] Python core_main execution finished." << std::endl;
         } catch (const std::exception& e) {
             std::cerr << "[PythonBridge] Failed to launch core_main: " << e.what() << std::endl;
@@ -109,9 +109,9 @@ int main(int argc, char** argv) {
         std::this_thread::sleep_for(std::chrono::seconds(1));
         gpu.updateHardwareStats();
 
-        // Verificamos Opsec Status (sin llamar a initialize() inexistente)
-        auto opsec = OpsecManager::getInstance().getStatus();
-        if (opsec.level == RiskLevel::CRITICAL) {
+        // Verificamos Risk Status (sin llamar a initialize() inexistente)
+        auto risk = RiskManager::getInstance().getStatus();
+        if (risk.level == RiskLevel::CRITICAL) {
             std::cerr << "[Core] CRITICAL OPSEC DEVIATION. Shutting down." << std::endl;
             break;
         }

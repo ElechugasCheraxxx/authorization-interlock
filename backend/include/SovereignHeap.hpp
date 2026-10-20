@@ -13,7 +13,7 @@
 #include <mutex>
 #include <map>
 
-namespace cheraxxx::memory {
+namespace interlock::memory {
 
 enum class MemoryID : uint8_t {
     FREE = 0,
@@ -77,4 +77,4 @@ private:
     void combine_free_blocks(HeapBlock* block);
 };
 
-} // namespace cheraxxx::memory
+} // namespace interlock::memory

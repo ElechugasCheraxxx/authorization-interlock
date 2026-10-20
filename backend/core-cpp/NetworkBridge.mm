@@ -3,7 +3,7 @@
 #import <Foundation/Foundation.h>
 #include <iostream>
 
-namespace cheraxxx {
+namespace interlock {
 
 NetworkBridge& NetworkBridge::getInstance() {
     static NetworkBridge instance;
@@ -11,7 +11,7 @@ NetworkBridge& NetworkBridge::getInstance() {
 }
 
 void NetworkBridge::initialize() {
-    NSLog(@"[NetworkBridge] Initializing Stealth Network Stack via Network.framework");
+    NSLog(@"[NetworkBridge] Initializing Integrity Network Stack via Network.framework");
     // Initialization of Network.framework components if needed
 }
 
@@ -37,7 +37,7 @@ bool NetworkBridge::transmitStealthy(const std::string& destination, const std::
             NW_PARAMETERS_DEFAULT_CONFIGURATION
         );
 
-        // Stealth configuration: Avoid common fingerprints
+        // Integrity configuration: Avoid common fingerprints
         nw_connection_t connection = nw_connection_create(endpoint, parameters);
 
         nw_connection_set_queue(connection, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0));
@@ -72,4 +72,4 @@ NetworkStats NetworkBridge::getStats() const {
     return stats;
 }
 
-} // namespace cheraxxx
+} // namespace interlock

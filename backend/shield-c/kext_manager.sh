@@ -1,13 +1,13 @@
 #!/bin/bash
-# Cheraxxx RedTeam IDE - KEXT Manager (Backup & Load)
+# Interlock Assessment IDE - KEXT Manager (Backup & Load)
 # Task 0.3 of KERNEL_ROADMAP.xml
 
-KEXT_NAME="CheraxxxShield.kext"
+KEXT_NAME="InterlockShield.kext"
 BUILD_PATH="./build/Debug/$KEXT_NAME"
-BACKUP_DIR="$HOME/cheraxxx_kext_backups"
+BACKUP_DIR="$HOME/interlock_kext_backups"
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
-echo "[*] Cheraxxx KEXT Manager starting..."
+echo "[*] Interlock KEXT Manager starting..."
 
 # 1. Create backup directory if it doesn't exist
 mkdir -p "$BACKUP_DIR"
@@ -43,7 +43,7 @@ load_kext() {
 # 4. Function to unload
 unload_kext() {
     echo "[*] Unloading $KEXT_NAME..."
-    sudo kextunload -b com.cheraxxx.Shield
+    sudo kextunload -b com.interlock.Shield
 }
 
 case "$1" in

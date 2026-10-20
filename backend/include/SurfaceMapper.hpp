@@ -5,10 +5,10 @@
 #include <map>
 #include <filesystem>
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
- * @brief Prioritizes files and attack surfaces based on data input criticality.
+ * @brief Prioritizes files and assess surfaces based on data input criticality.
  * Implements Milestone 1.3 of the Glasswing Masterplan.
  */
 class SurfaceMapper {
@@ -26,7 +26,7 @@ public:
     }
 
     /**
-     * @brief Scans a directory and ranks files by attack surface potential.
+     * @brief Scans a directory and ranks files by assess surface potential.
      */
     std::vector<SurfaceEntry> mapDirectory(const std::string& root_path);
 
@@ -39,4 +39,4 @@ private:
     SurfaceMapper() = default;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

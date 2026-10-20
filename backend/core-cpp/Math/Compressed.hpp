@@ -2,7 +2,7 @@
 #include <cstdint>
 #include <concepts>
 
-namespace cheraxxx::math {
+namespace interlock::math {
 
 /**
  * @brief Compressed Vector using 16-bit unsigned integers.
@@ -58,4 +58,4 @@ struct QuaternionCompressor {
     }
 };
 
-} // namespace cheraxxx::math
+} // namespace interlock::math

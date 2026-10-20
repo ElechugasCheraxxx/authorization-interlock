@@ -1,7 +1,7 @@
 #include "HealthMonitor.hpp"
 #include <chrono>
 
-namespace cheraxxx {
+namespace interlock {
 
 void HealthMonitor::reportHeartbeat(const std::string& component_name, const json& metrics) {
     std::lock_guard<std::mutex> lock(mtx);
@@ -18,4 +18,4 @@ std::map<std::string, ComponentStatus> HealthMonitor::getFullStatus() const {
     return statuses;
 }
 
-} // namespace cheraxxx
+} // namespace interlock

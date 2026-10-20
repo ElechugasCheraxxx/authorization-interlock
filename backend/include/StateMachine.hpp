@@ -5,7 +5,7 @@
 #include <functional>
 #include <mutex>
 
-namespace cheraxxx {
+namespace interlock {
 
 enum class OperationPhase {
     INIT,
@@ -41,4 +41,4 @@ private:
     mutable std::mutex mtx;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

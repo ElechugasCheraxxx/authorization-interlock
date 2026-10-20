@@ -37,8 +37,8 @@ The Orchestration Engine on the M4 Pro manages all remote nodes via REST.
 
 | Model         | Quant  | VRAM    | Agent       |
 |---------------|--------|---------|-------------|
-| R1 70B        | Q4_K_M | ~40GB   | Rex/Cipher  |
-| Llama4 Scout  | Q4     | ~22GB   | Atlas/Ghost |
+| R1 70B        | Q4_K_M | ~40GB   | Coordinator/Cipher  |
+| Llama4 Scout  | Q4     | ~22GB   | Atlas/Probe |
 | Qwen 32B      | Q4     | ~18GB   | Vector/Mirage|
 | R1 14B        | Q5     | ~10GB   | Spectre/Archive|
 | 7B models     | Q4_K_M | ~5-6GB  | Echo/proxies|

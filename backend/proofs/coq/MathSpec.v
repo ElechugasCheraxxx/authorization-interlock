@@ -1,4 +1,4 @@
-(* Cheraxxx Formal Specification: Math & Compression Correctness *)
+(* Interlock Formal Specification: Math & Compression Correctness *)
 Require Import ZArith.
 Require Import Extraction.
 

@@ -7,7 +7,7 @@
 #include <chrono>
 #include <pqxx/pqxx>
 
-namespace cheraxxx {
+namespace interlock {
 
 void OperationSession::start() {
     if (is_active) return;
@@ -78,4 +78,4 @@ void SessionManager::removeSession(const std::string& op_id) {
     active_sessions.erase(op_id);
 }
 
-} // namespace cheraxxx
+} // namespace interlock

@@ -26,124 +26,124 @@
 #include <grpcpp/support/sync_stream.h>
 #include <grpcpp/ports_def.inc>
 
-namespace cheraxxx {
+namespace interlock {
 namespace atlas {
 
 class SwarmOrchestrator final {
  public:
   static constexpr char const* service_full_name() {
-    return "cheraxxx.atlas.SwarmOrchestrator";
+    return "interlock.atlas.SwarmOrchestrator";
   }
   class StubInterface {
    public:
     virtual ~StubInterface() {}
     // Registro de un nuevo agente en la Swarm
-    virtual ::grpc::Status RegisterAgent(::grpc::ClientContext* context, const ::cheraxxx::atlas::AgentInfo& request, ::cheraxxx::atlas::RegistrationResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cheraxxx::atlas::RegistrationResponse>> AsyncRegisterAgent(::grpc::ClientContext* context, const ::cheraxxx::atlas::AgentInfo& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cheraxxx::atlas::RegistrationResponse>>(AsyncRegisterAgentRaw(context, request, cq));
+    virtual ::grpc::Status RegisterAgent(::grpc::ClientContext* context, const ::interlock::atlas::AgentInfo& request, ::interlock::atlas::RegistrationResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::interlock::atlas::RegistrationResponse>> AsyncRegisterAgent(::grpc::ClientContext* context, const ::interlock::atlas::AgentInfo& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::interlock::atlas::RegistrationResponse>>(AsyncRegisterAgentRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cheraxxx::atlas::RegistrationResponse>> PrepareAsyncRegisterAgent(::grpc::ClientContext* context, const ::cheraxxx::atlas::AgentInfo& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cheraxxx::atlas::RegistrationResponse>>(PrepareAsyncRegisterAgentRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::interlock::atlas::RegistrationResponse>> PrepareAsyncRegisterAgent(::grpc::ClientContext* context, const ::interlock::atlas::AgentInfo& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::interlock::atlas::RegistrationResponse>>(PrepareAsyncRegisterAgentRaw(context, request, cq));
     }
     // Stream de telemetría bidireccional
-    std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>> TunnelTelemetria(::grpc::ClientContext* context) {
-      return std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>>(TunnelTelemetriaRaw(context));
+    std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>> TunnelTelemetria(::grpc::ClientContext* context) {
+      return std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>>(TunnelTelemetriaRaw(context));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>> AsyncTunnelTelemetria(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>>(AsyncTunnelTelemetriaRaw(context, cq, tag));
+    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>> AsyncTunnelTelemetria(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>>(AsyncTunnelTelemetriaRaw(context, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>> PrepareAsyncTunnelTelemetria(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>>(PrepareAsyncTunnelTelemetriaRaw(context, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>> PrepareAsyncTunnelTelemetria(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>>(PrepareAsyncTunnelTelemetriaRaw(context, cq));
     }
     // Bus de Mensajes Centralizado (MessageRouter Go-native)
-    virtual ::grpc::Status RouteMessage(::grpc::ClientContext* context, const ::cheraxxx::atlas::Message& request, ::cheraxxx::atlas::RouteResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cheraxxx::atlas::RouteResponse>> AsyncRouteMessage(::grpc::ClientContext* context, const ::cheraxxx::atlas::Message& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cheraxxx::atlas::RouteResponse>>(AsyncRouteMessageRaw(context, request, cq));
+    virtual ::grpc::Status RouteMessage(::grpc::ClientContext* context, const ::interlock::atlas::Message& request, ::interlock::atlas::RouteResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::interlock::atlas::RouteResponse>> AsyncRouteMessage(::grpc::ClientContext* context, const ::interlock::atlas::Message& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::interlock::atlas::RouteResponse>>(AsyncRouteMessageRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cheraxxx::atlas::RouteResponse>> PrepareAsyncRouteMessage(::grpc::ClientContext* context, const ::cheraxxx::atlas::Message& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cheraxxx::atlas::RouteResponse>>(PrepareAsyncRouteMessageRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::interlock::atlas::RouteResponse>> PrepareAsyncRouteMessage(::grpc::ClientContext* context, const ::interlock::atlas::Message& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::interlock::atlas::RouteResponse>>(PrepareAsyncRouteMessageRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientReaderInterface< ::cheraxxx::atlas::Message>> SubscribeMessages(::grpc::ClientContext* context, const ::cheraxxx::atlas::SubscribeRequest& request) {
-      return std::unique_ptr< ::grpc::ClientReaderInterface< ::cheraxxx::atlas::Message>>(SubscribeMessagesRaw(context, request));
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::interlock::atlas::Message>> SubscribeMessages(::grpc::ClientContext* context, const ::interlock::atlas::SubscribeRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::interlock::atlas::Message>>(SubscribeMessagesRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::cheraxxx::atlas::Message>> AsyncSubscribeMessages(::grpc::ClientContext* context, const ::cheraxxx::atlas::SubscribeRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::cheraxxx::atlas::Message>>(AsyncSubscribeMessagesRaw(context, request, cq, tag));
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::interlock::atlas::Message>> AsyncSubscribeMessages(::grpc::ClientContext* context, const ::interlock::atlas::SubscribeRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::interlock::atlas::Message>>(AsyncSubscribeMessagesRaw(context, request, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::cheraxxx::atlas::Message>> PrepareAsyncSubscribeMessages(::grpc::ClientContext* context, const ::cheraxxx::atlas::SubscribeRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::cheraxxx::atlas::Message>>(PrepareAsyncSubscribeMessagesRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::interlock::atlas::Message>> PrepareAsyncSubscribeMessages(::grpc::ClientContext* context, const ::interlock::atlas::SubscribeRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::interlock::atlas::Message>>(PrepareAsyncSubscribeMessagesRaw(context, request, cq));
     }
     class async_interface {
      public:
       virtual ~async_interface() {}
       // Registro de un nuevo agente en la Swarm
-      virtual void RegisterAgent(::grpc::ClientContext* context, const ::cheraxxx::atlas::AgentInfo* request, ::cheraxxx::atlas::RegistrationResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void RegisterAgent(::grpc::ClientContext* context, const ::cheraxxx::atlas::AgentInfo* request, ::cheraxxx::atlas::RegistrationResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void RegisterAgent(::grpc::ClientContext* context, const ::interlock::atlas::AgentInfo* request, ::interlock::atlas::RegistrationResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void RegisterAgent(::grpc::ClientContext* context, const ::interlock::atlas::AgentInfo* request, ::interlock::atlas::RegistrationResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       // Stream de telemetría bidireccional
-      virtual void TunnelTelemetria(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::cheraxxx::atlas::TelemetryData,::cheraxxx::atlas::ControlCommand>* reactor) = 0;
+      virtual void TunnelTelemetria(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::interlock::atlas::TelemetryData,::interlock::atlas::ControlCommand>* reactor) = 0;
       // Bus de Mensajes Centralizado (MessageRouter Go-native)
-      virtual void RouteMessage(::grpc::ClientContext* context, const ::cheraxxx::atlas::Message* request, ::cheraxxx::atlas::RouteResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void RouteMessage(::grpc::ClientContext* context, const ::cheraxxx::atlas::Message* request, ::cheraxxx::atlas::RouteResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void SubscribeMessages(::grpc::ClientContext* context, const ::cheraxxx::atlas::SubscribeRequest* request, ::grpc::ClientReadReactor< ::cheraxxx::atlas::Message>* reactor) = 0;
+      virtual void RouteMessage(::grpc::ClientContext* context, const ::interlock::atlas::Message* request, ::interlock::atlas::RouteResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void RouteMessage(::grpc::ClientContext* context, const ::interlock::atlas::Message* request, ::interlock::atlas::RouteResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void SubscribeMessages(::grpc::ClientContext* context, const ::interlock::atlas::SubscribeRequest* request, ::grpc::ClientReadReactor< ::interlock::atlas::Message>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cheraxxx::atlas::RegistrationResponse>* AsyncRegisterAgentRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::AgentInfo& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cheraxxx::atlas::RegistrationResponse>* PrepareAsyncRegisterAgentRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::AgentInfo& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientReaderWriterInterface< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>* TunnelTelemetriaRaw(::grpc::ClientContext* context) = 0;
-    virtual ::grpc::ClientAsyncReaderWriterInterface< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>* AsyncTunnelTelemetriaRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) = 0;
-    virtual ::grpc::ClientAsyncReaderWriterInterface< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>* PrepareAsyncTunnelTelemetriaRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cheraxxx::atlas::RouteResponse>* AsyncRouteMessageRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::Message& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cheraxxx::atlas::RouteResponse>* PrepareAsyncRouteMessageRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::Message& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientReaderInterface< ::cheraxxx::atlas::Message>* SubscribeMessagesRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::SubscribeRequest& request) = 0;
-    virtual ::grpc::ClientAsyncReaderInterface< ::cheraxxx::atlas::Message>* AsyncSubscribeMessagesRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::SubscribeRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
-    virtual ::grpc::ClientAsyncReaderInterface< ::cheraxxx::atlas::Message>* PrepareAsyncSubscribeMessagesRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::SubscribeRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::interlock::atlas::RegistrationResponse>* AsyncRegisterAgentRaw(::grpc::ClientContext* context, const ::interlock::atlas::AgentInfo& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::interlock::atlas::RegistrationResponse>* PrepareAsyncRegisterAgentRaw(::grpc::ClientContext* context, const ::interlock::atlas::AgentInfo& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderWriterInterface< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>* TunnelTelemetriaRaw(::grpc::ClientContext* context) = 0;
+    virtual ::grpc::ClientAsyncReaderWriterInterface< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>* AsyncTunnelTelemetriaRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderWriterInterface< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>* PrepareAsyncTunnelTelemetriaRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::interlock::atlas::RouteResponse>* AsyncRouteMessageRaw(::grpc::ClientContext* context, const ::interlock::atlas::Message& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::interlock::atlas::RouteResponse>* PrepareAsyncRouteMessageRaw(::grpc::ClientContext* context, const ::interlock::atlas::Message& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::interlock::atlas::Message>* SubscribeMessagesRaw(::grpc::ClientContext* context, const ::interlock::atlas::SubscribeRequest& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::interlock::atlas::Message>* AsyncSubscribeMessagesRaw(::grpc::ClientContext* context, const ::interlock::atlas::SubscribeRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::interlock::atlas::Message>* PrepareAsyncSubscribeMessagesRaw(::grpc::ClientContext* context, const ::interlock::atlas::SubscribeRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status RegisterAgent(::grpc::ClientContext* context, const ::cheraxxx::atlas::AgentInfo& request, ::cheraxxx::atlas::RegistrationResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cheraxxx::atlas::RegistrationResponse>> AsyncRegisterAgent(::grpc::ClientContext* context, const ::cheraxxx::atlas::AgentInfo& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cheraxxx::atlas::RegistrationResponse>>(AsyncRegisterAgentRaw(context, request, cq));
+    ::grpc::Status RegisterAgent(::grpc::ClientContext* context, const ::interlock::atlas::AgentInfo& request, ::interlock::atlas::RegistrationResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::interlock::atlas::RegistrationResponse>> AsyncRegisterAgent(::grpc::ClientContext* context, const ::interlock::atlas::AgentInfo& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::interlock::atlas::RegistrationResponse>>(AsyncRegisterAgentRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cheraxxx::atlas::RegistrationResponse>> PrepareAsyncRegisterAgent(::grpc::ClientContext* context, const ::cheraxxx::atlas::AgentInfo& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cheraxxx::atlas::RegistrationResponse>>(PrepareAsyncRegisterAgentRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::interlock::atlas::RegistrationResponse>> PrepareAsyncRegisterAgent(::grpc::ClientContext* context, const ::interlock::atlas::AgentInfo& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::interlock::atlas::RegistrationResponse>>(PrepareAsyncRegisterAgentRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientReaderWriter< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>> TunnelTelemetria(::grpc::ClientContext* context) {
-      return std::unique_ptr< ::grpc::ClientReaderWriter< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>>(TunnelTelemetriaRaw(context));
+    std::unique_ptr< ::grpc::ClientReaderWriter< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>> TunnelTelemetria(::grpc::ClientContext* context) {
+      return std::unique_ptr< ::grpc::ClientReaderWriter< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>>(TunnelTelemetriaRaw(context));
     }
-    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>> AsyncTunnelTelemetria(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>>(AsyncTunnelTelemetriaRaw(context, cq, tag));
+    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>> AsyncTunnelTelemetria(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>>(AsyncTunnelTelemetriaRaw(context, cq, tag));
     }
-    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>> PrepareAsyncTunnelTelemetria(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>>(PrepareAsyncTunnelTelemetriaRaw(context, cq));
+    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>> PrepareAsyncTunnelTelemetria(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>>(PrepareAsyncTunnelTelemetriaRaw(context, cq));
     }
-    ::grpc::Status RouteMessage(::grpc::ClientContext* context, const ::cheraxxx::atlas::Message& request, ::cheraxxx::atlas::RouteResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cheraxxx::atlas::RouteResponse>> AsyncRouteMessage(::grpc::ClientContext* context, const ::cheraxxx::atlas::Message& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cheraxxx::atlas::RouteResponse>>(AsyncRouteMessageRaw(context, request, cq));
+    ::grpc::Status RouteMessage(::grpc::ClientContext* context, const ::interlock::atlas::Message& request, ::interlock::atlas::RouteResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::interlock::atlas::RouteResponse>> AsyncRouteMessage(::grpc::ClientContext* context, const ::interlock::atlas::Message& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::interlock::atlas::RouteResponse>>(AsyncRouteMessageRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cheraxxx::atlas::RouteResponse>> PrepareAsyncRouteMessage(::grpc::ClientContext* context, const ::cheraxxx::atlas::Message& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cheraxxx::atlas::RouteResponse>>(PrepareAsyncRouteMessageRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::interlock::atlas::RouteResponse>> PrepareAsyncRouteMessage(::grpc::ClientContext* context, const ::interlock::atlas::Message& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::interlock::atlas::RouteResponse>>(PrepareAsyncRouteMessageRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientReader< ::cheraxxx::atlas::Message>> SubscribeMessages(::grpc::ClientContext* context, const ::cheraxxx::atlas::SubscribeRequest& request) {
-      return std::unique_ptr< ::grpc::ClientReader< ::cheraxxx::atlas::Message>>(SubscribeMessagesRaw(context, request));
+    std::unique_ptr< ::grpc::ClientReader< ::interlock::atlas::Message>> SubscribeMessages(::grpc::ClientContext* context, const ::interlock::atlas::SubscribeRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::interlock::atlas::Message>>(SubscribeMessagesRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReader< ::cheraxxx::atlas::Message>> AsyncSubscribeMessages(::grpc::ClientContext* context, const ::cheraxxx::atlas::SubscribeRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReader< ::cheraxxx::atlas::Message>>(AsyncSubscribeMessagesRaw(context, request, cq, tag));
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::interlock::atlas::Message>> AsyncSubscribeMessages(::grpc::ClientContext* context, const ::interlock::atlas::SubscribeRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::interlock::atlas::Message>>(AsyncSubscribeMessagesRaw(context, request, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReader< ::cheraxxx::atlas::Message>> PrepareAsyncSubscribeMessages(::grpc::ClientContext* context, const ::cheraxxx::atlas::SubscribeRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReader< ::cheraxxx::atlas::Message>>(PrepareAsyncSubscribeMessagesRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::interlock::atlas::Message>> PrepareAsyncSubscribeMessages(::grpc::ClientContext* context, const ::interlock::atlas::SubscribeRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::interlock::atlas::Message>>(PrepareAsyncSubscribeMessagesRaw(context, request, cq));
     }
     class async final :
       public StubInterface::async_interface {
      public:
-      void RegisterAgent(::grpc::ClientContext* context, const ::cheraxxx::atlas::AgentInfo* request, ::cheraxxx::atlas::RegistrationResponse* response, std::function<void(::grpc::Status)>) override;
-      void RegisterAgent(::grpc::ClientContext* context, const ::cheraxxx::atlas::AgentInfo* request, ::cheraxxx::atlas::RegistrationResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void TunnelTelemetria(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::cheraxxx::atlas::TelemetryData,::cheraxxx::atlas::ControlCommand>* reactor) override;
-      void RouteMessage(::grpc::ClientContext* context, const ::cheraxxx::atlas::Message* request, ::cheraxxx::atlas::RouteResponse* response, std::function<void(::grpc::Status)>) override;
-      void RouteMessage(::grpc::ClientContext* context, const ::cheraxxx::atlas::Message* request, ::cheraxxx::atlas::RouteResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void SubscribeMessages(::grpc::ClientContext* context, const ::cheraxxx::atlas::SubscribeRequest* request, ::grpc::ClientReadReactor< ::cheraxxx::atlas::Message>* reactor) override;
+      void RegisterAgent(::grpc::ClientContext* context, const ::interlock::atlas::AgentInfo* request, ::interlock::atlas::RegistrationResponse* response, std::function<void(::grpc::Status)>) override;
+      void RegisterAgent(::grpc::ClientContext* context, const ::interlock::atlas::AgentInfo* request, ::interlock::atlas::RegistrationResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void TunnelTelemetria(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::interlock::atlas::TelemetryData,::interlock::atlas::ControlCommand>* reactor) override;
+      void RouteMessage(::grpc::ClientContext* context, const ::interlock::atlas::Message* request, ::interlock::atlas::RouteResponse* response, std::function<void(::grpc::Status)>) override;
+      void RouteMessage(::grpc::ClientContext* context, const ::interlock::atlas::Message* request, ::interlock::atlas::RouteResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void SubscribeMessages(::grpc::ClientContext* context, const ::interlock::atlas::SubscribeRequest* request, ::grpc::ClientReadReactor< ::interlock::atlas::Message>* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -155,16 +155,16 @@ class SwarmOrchestrator final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::cheraxxx::atlas::RegistrationResponse>* AsyncRegisterAgentRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::AgentInfo& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::cheraxxx::atlas::RegistrationResponse>* PrepareAsyncRegisterAgentRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::AgentInfo& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientReaderWriter< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>* TunnelTelemetriaRaw(::grpc::ClientContext* context) override;
-    ::grpc::ClientAsyncReaderWriter< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>* AsyncTunnelTelemetriaRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) override;
-    ::grpc::ClientAsyncReaderWriter< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>* PrepareAsyncTunnelTelemetriaRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::cheraxxx::atlas::RouteResponse>* AsyncRouteMessageRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::Message& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::cheraxxx::atlas::RouteResponse>* PrepareAsyncRouteMessageRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::Message& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientReader< ::cheraxxx::atlas::Message>* SubscribeMessagesRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::SubscribeRequest& request) override;
-    ::grpc::ClientAsyncReader< ::cheraxxx::atlas::Message>* AsyncSubscribeMessagesRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::SubscribeRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
-    ::grpc::ClientAsyncReader< ::cheraxxx::atlas::Message>* PrepareAsyncSubscribeMessagesRaw(::grpc::ClientContext* context, const ::cheraxxx::atlas::SubscribeRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::interlock::atlas::RegistrationResponse>* AsyncRegisterAgentRaw(::grpc::ClientContext* context, const ::interlock::atlas::AgentInfo& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::interlock::atlas::RegistrationResponse>* PrepareAsyncRegisterAgentRaw(::grpc::ClientContext* context, const ::interlock::atlas::AgentInfo& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReaderWriter< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>* TunnelTelemetriaRaw(::grpc::ClientContext* context) override;
+    ::grpc::ClientAsyncReaderWriter< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>* AsyncTunnelTelemetriaRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReaderWriter< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>* PrepareAsyncTunnelTelemetriaRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::interlock::atlas::RouteResponse>* AsyncRouteMessageRaw(::grpc::ClientContext* context, const ::interlock::atlas::Message& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::interlock::atlas::RouteResponse>* PrepareAsyncRouteMessageRaw(::grpc::ClientContext* context, const ::interlock::atlas::Message& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::interlock::atlas::Message>* SubscribeMessagesRaw(::grpc::ClientContext* context, const ::interlock::atlas::SubscribeRequest& request) override;
+    ::grpc::ClientAsyncReader< ::interlock::atlas::Message>* AsyncSubscribeMessagesRaw(::grpc::ClientContext* context, const ::interlock::atlas::SubscribeRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::interlock::atlas::Message>* PrepareAsyncSubscribeMessagesRaw(::grpc::ClientContext* context, const ::interlock::atlas::SubscribeRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_RegisterAgent_;
     const ::grpc::internal::RpcMethod rpcmethod_TunnelTelemetria_;
     const ::grpc::internal::RpcMethod rpcmethod_RouteMessage_;
@@ -177,12 +177,12 @@ class SwarmOrchestrator final {
     Service();
     virtual ~Service();
     // Registro de un nuevo agente en la Swarm
-    virtual ::grpc::Status RegisterAgent(::grpc::ServerContext* context, const ::cheraxxx::atlas::AgentInfo* request, ::cheraxxx::atlas::RegistrationResponse* response);
+    virtual ::grpc::Status RegisterAgent(::grpc::ServerContext* context, const ::interlock::atlas::AgentInfo* request, ::interlock::atlas::RegistrationResponse* response);
     // Stream de telemetría bidireccional
-    virtual ::grpc::Status TunnelTelemetria(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::cheraxxx::atlas::ControlCommand, ::cheraxxx::atlas::TelemetryData>* stream);
+    virtual ::grpc::Status TunnelTelemetria(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::interlock::atlas::ControlCommand, ::interlock::atlas::TelemetryData>* stream);
     // Bus de Mensajes Centralizado (MessageRouter Go-native)
-    virtual ::grpc::Status RouteMessage(::grpc::ServerContext* context, const ::cheraxxx::atlas::Message* request, ::cheraxxx::atlas::RouteResponse* response);
-    virtual ::grpc::Status SubscribeMessages(::grpc::ServerContext* context, const ::cheraxxx::atlas::SubscribeRequest* request, ::grpc::ServerWriter< ::cheraxxx::atlas::Message>* writer);
+    virtual ::grpc::Status RouteMessage(::grpc::ServerContext* context, const ::interlock::atlas::Message* request, ::interlock::atlas::RouteResponse* response);
+    virtual ::grpc::Status SubscribeMessages(::grpc::ServerContext* context, const ::interlock::atlas::SubscribeRequest* request, ::grpc::ServerWriter< ::interlock::atlas::Message>* writer);
   };
   template <class BaseClass>
   class WithAsyncMethod_RegisterAgent : public BaseClass {
@@ -196,11 +196,11 @@ class SwarmOrchestrator final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RegisterAgent(::grpc::ServerContext* /*context*/, const ::cheraxxx::atlas::AgentInfo* /*request*/, ::cheraxxx::atlas::RegistrationResponse* /*response*/) override {
+    ::grpc::Status RegisterAgent(::grpc::ServerContext* /*context*/, const ::interlock::atlas::AgentInfo* /*request*/, ::interlock::atlas::RegistrationResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestRegisterAgent(::grpc::ServerContext* context, ::cheraxxx::atlas::AgentInfo* request, ::grpc::ServerAsyncResponseWriter< ::cheraxxx::atlas::RegistrationResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestRegisterAgent(::grpc::ServerContext* context, ::interlock::atlas::AgentInfo* request, ::grpc::ServerAsyncResponseWriter< ::interlock::atlas::RegistrationResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -216,11 +216,11 @@ class SwarmOrchestrator final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TunnelTelemetria(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::cheraxxx::atlas::ControlCommand, ::cheraxxx::atlas::TelemetryData>* /*stream*/)  override {
+    ::grpc::Status TunnelTelemetria(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::interlock::atlas::ControlCommand, ::interlock::atlas::TelemetryData>* /*stream*/)  override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestTunnelTelemetria(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::cheraxxx::atlas::ControlCommand, ::cheraxxx::atlas::TelemetryData>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestTunnelTelemetria(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::interlock::atlas::ControlCommand, ::interlock::atlas::TelemetryData>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncBidiStreaming(1, context, stream, new_call_cq, notification_cq, tag);
     }
   };
@@ -236,11 +236,11 @@ class SwarmOrchestrator final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RouteMessage(::grpc::ServerContext* /*context*/, const ::cheraxxx::atlas::Message* /*request*/, ::cheraxxx::atlas::RouteResponse* /*response*/) override {
+    ::grpc::Status RouteMessage(::grpc::ServerContext* /*context*/, const ::interlock::atlas::Message* /*request*/, ::interlock::atlas::RouteResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestRouteMessage(::grpc::ServerContext* context, ::cheraxxx::atlas::Message* request, ::grpc::ServerAsyncResponseWriter< ::cheraxxx::atlas::RouteResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestRouteMessage(::grpc::ServerContext* context, ::interlock::atlas::Message* request, ::grpc::ServerAsyncResponseWriter< ::interlock::atlas::RouteResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -256,11 +256,11 @@ class SwarmOrchestrator final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SubscribeMessages(::grpc::ServerContext* /*context*/, const ::cheraxxx::atlas::SubscribeRequest* /*request*/, ::grpc::ServerWriter< ::cheraxxx::atlas::Message>* /*writer*/) override {
+    ::grpc::Status SubscribeMessages(::grpc::ServerContext* /*context*/, const ::interlock::atlas::SubscribeRequest* /*request*/, ::grpc::ServerWriter< ::interlock::atlas::Message>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestSubscribeMessages(::grpc::ServerContext* context, ::cheraxxx::atlas::SubscribeRequest* request, ::grpc::ServerAsyncWriter< ::cheraxxx::atlas::Message>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestSubscribeMessages(::grpc::ServerContext* context, ::interlock::atlas::SubscribeRequest* request, ::grpc::ServerAsyncWriter< ::interlock::atlas::Message>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncServerStreaming(3, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
@@ -272,25 +272,25 @@ class SwarmOrchestrator final {
    public:
     WithCallbackMethod_RegisterAgent() {
       ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::cheraxxx::atlas::AgentInfo, ::cheraxxx::atlas::RegistrationResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::interlock::atlas::AgentInfo, ::interlock::atlas::RegistrationResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::cheraxxx::atlas::AgentInfo* request, ::cheraxxx::atlas::RegistrationResponse* response) { return this->RegisterAgent(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::interlock::atlas::AgentInfo* request, ::interlock::atlas::RegistrationResponse* response) { return this->RegisterAgent(context, request, response); }));}
     void SetMessageAllocatorFor_RegisterAgent(
-        ::grpc::MessageAllocator< ::cheraxxx::atlas::AgentInfo, ::cheraxxx::atlas::RegistrationResponse>* allocator) {
+        ::grpc::MessageAllocator< ::interlock::atlas::AgentInfo, ::interlock::atlas::RegistrationResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::cheraxxx::atlas::AgentInfo, ::cheraxxx::atlas::RegistrationResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::interlock::atlas::AgentInfo, ::interlock::atlas::RegistrationResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~WithCallbackMethod_RegisterAgent() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RegisterAgent(::grpc::ServerContext* /*context*/, const ::cheraxxx::atlas::AgentInfo* /*request*/, ::cheraxxx::atlas::RegistrationResponse* /*response*/) override {
+    ::grpc::Status RegisterAgent(::grpc::ServerContext* /*context*/, const ::interlock::atlas::AgentInfo* /*request*/, ::interlock::atlas::RegistrationResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* RegisterAgent(
-      ::grpc::CallbackServerContext* /*context*/, const ::cheraxxx::atlas::AgentInfo* /*request*/, ::cheraxxx::atlas::RegistrationResponse* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::interlock::atlas::AgentInfo* /*request*/, ::interlock::atlas::RegistrationResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_TunnelTelemetria : public BaseClass {
@@ -299,7 +299,7 @@ class SwarmOrchestrator final {
    public:
     WithCallbackMethod_TunnelTelemetria() {
       ::grpc::Service::MarkMethodCallback(1,
-          new ::grpc::internal::CallbackBidiHandler< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>(
+          new ::grpc::internal::CallbackBidiHandler< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>(
             [this](
                    ::grpc::CallbackServerContext* context) { return this->TunnelTelemetria(context); }));
     }
@@ -307,11 +307,11 @@ class SwarmOrchestrator final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TunnelTelemetria(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::cheraxxx::atlas::ControlCommand, ::cheraxxx::atlas::TelemetryData>* /*stream*/)  override {
+    ::grpc::Status TunnelTelemetria(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::interlock::atlas::ControlCommand, ::interlock::atlas::TelemetryData>* /*stream*/)  override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerBidiReactor< ::cheraxxx::atlas::TelemetryData, ::cheraxxx::atlas::ControlCommand>* TunnelTelemetria(
+    virtual ::grpc::ServerBidiReactor< ::interlock::atlas::TelemetryData, ::interlock::atlas::ControlCommand>* TunnelTelemetria(
       ::grpc::CallbackServerContext* /*context*/)
       { return nullptr; }
   };
@@ -322,25 +322,25 @@ class SwarmOrchestrator final {
    public:
     WithCallbackMethod_RouteMessage() {
       ::grpc::Service::MarkMethodCallback(2,
-          new ::grpc::internal::CallbackUnaryHandler< ::cheraxxx::atlas::Message, ::cheraxxx::atlas::RouteResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::interlock::atlas::Message, ::interlock::atlas::RouteResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::cheraxxx::atlas::Message* request, ::cheraxxx::atlas::RouteResponse* response) { return this->RouteMessage(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::interlock::atlas::Message* request, ::interlock::atlas::RouteResponse* response) { return this->RouteMessage(context, request, response); }));}
     void SetMessageAllocatorFor_RouteMessage(
-        ::grpc::MessageAllocator< ::cheraxxx::atlas::Message, ::cheraxxx::atlas::RouteResponse>* allocator) {
+        ::grpc::MessageAllocator< ::interlock::atlas::Message, ::interlock::atlas::RouteResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::cheraxxx::atlas::Message, ::cheraxxx::atlas::RouteResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::interlock::atlas::Message, ::interlock::atlas::RouteResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~WithCallbackMethod_RouteMessage() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RouteMessage(::grpc::ServerContext* /*context*/, const ::cheraxxx::atlas::Message* /*request*/, ::cheraxxx::atlas::RouteResponse* /*response*/) override {
+    ::grpc::Status RouteMessage(::grpc::ServerContext* /*context*/, const ::interlock::atlas::Message* /*request*/, ::interlock::atlas::RouteResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* RouteMessage(
-      ::grpc::CallbackServerContext* /*context*/, const ::cheraxxx::atlas::Message* /*request*/, ::cheraxxx::atlas::RouteResponse* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::interlock::atlas::Message* /*request*/, ::interlock::atlas::RouteResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_SubscribeMessages : public BaseClass {
@@ -349,20 +349,20 @@ class SwarmOrchestrator final {
    public:
     WithCallbackMethod_SubscribeMessages() {
       ::grpc::Service::MarkMethodCallback(3,
-          new ::grpc::internal::CallbackServerStreamingHandler< ::cheraxxx::atlas::SubscribeRequest, ::cheraxxx::atlas::Message>(
+          new ::grpc::internal::CallbackServerStreamingHandler< ::interlock::atlas::SubscribeRequest, ::interlock::atlas::Message>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::cheraxxx::atlas::SubscribeRequest* request) { return this->SubscribeMessages(context, request); }));
+                   ::grpc::CallbackServerContext* context, const ::interlock::atlas::SubscribeRequest* request) { return this->SubscribeMessages(context, request); }));
     }
     ~WithCallbackMethod_SubscribeMessages() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SubscribeMessages(::grpc::ServerContext* /*context*/, const ::cheraxxx::atlas::SubscribeRequest* /*request*/, ::grpc::ServerWriter< ::cheraxxx::atlas::Message>* /*writer*/) override {
+    ::grpc::Status SubscribeMessages(::grpc::ServerContext* /*context*/, const ::interlock::atlas::SubscribeRequest* /*request*/, ::grpc::ServerWriter< ::interlock::atlas::Message>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerWriteReactor< ::cheraxxx::atlas::Message>* SubscribeMessages(
-      ::grpc::CallbackServerContext* /*context*/, const ::cheraxxx::atlas::SubscribeRequest* /*request*/)  { return nullptr; }
+    virtual ::grpc::ServerWriteReactor< ::interlock::atlas::Message>* SubscribeMessages(
+      ::grpc::CallbackServerContext* /*context*/, const ::interlock::atlas::SubscribeRequest* /*request*/)  { return nullptr; }
   };
   typedef WithCallbackMethod_RegisterAgent<WithCallbackMethod_TunnelTelemetria<WithCallbackMethod_RouteMessage<WithCallbackMethod_SubscribeMessages<Service > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
@@ -378,7 +378,7 @@ class SwarmOrchestrator final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RegisterAgent(::grpc::ServerContext* /*context*/, const ::cheraxxx::atlas::AgentInfo* /*request*/, ::cheraxxx::atlas::RegistrationResponse* /*response*/) override {
+    ::grpc::Status RegisterAgent(::grpc::ServerContext* /*context*/, const ::interlock::atlas::AgentInfo* /*request*/, ::interlock::atlas::RegistrationResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -395,7 +395,7 @@ class SwarmOrchestrator final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TunnelTelemetria(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::cheraxxx::atlas::ControlCommand, ::cheraxxx::atlas::TelemetryData>* /*stream*/)  override {
+    ::grpc::Status TunnelTelemetria(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::interlock::atlas::ControlCommand, ::interlock::atlas::TelemetryData>* /*stream*/)  override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -412,7 +412,7 @@ class SwarmOrchestrator final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RouteMessage(::grpc::ServerContext* /*context*/, const ::cheraxxx::atlas::Message* /*request*/, ::cheraxxx::atlas::RouteResponse* /*response*/) override {
+    ::grpc::Status RouteMessage(::grpc::ServerContext* /*context*/, const ::interlock::atlas::Message* /*request*/, ::interlock::atlas::RouteResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -429,7 +429,7 @@ class SwarmOrchestrator final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SubscribeMessages(::grpc::ServerContext* /*context*/, const ::cheraxxx::atlas::SubscribeRequest* /*request*/, ::grpc::ServerWriter< ::cheraxxx::atlas::Message>* /*writer*/) override {
+    ::grpc::Status SubscribeMessages(::grpc::ServerContext* /*context*/, const ::interlock::atlas::SubscribeRequest* /*request*/, ::grpc::ServerWriter< ::interlock::atlas::Message>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -446,7 +446,7 @@ class SwarmOrchestrator final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RegisterAgent(::grpc::ServerContext* /*context*/, const ::cheraxxx::atlas::AgentInfo* /*request*/, ::cheraxxx::atlas::RegistrationResponse* /*response*/) override {
+    ::grpc::Status RegisterAgent(::grpc::ServerContext* /*context*/, const ::interlock::atlas::AgentInfo* /*request*/, ::interlock::atlas::RegistrationResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -466,7 +466,7 @@ class SwarmOrchestrator final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TunnelTelemetria(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::cheraxxx::atlas::ControlCommand, ::cheraxxx::atlas::TelemetryData>* /*stream*/)  override {
+    ::grpc::Status TunnelTelemetria(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::interlock::atlas::ControlCommand, ::interlock::atlas::TelemetryData>* /*stream*/)  override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -486,7 +486,7 @@ class SwarmOrchestrator final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RouteMessage(::grpc::ServerContext* /*context*/, const ::cheraxxx::atlas::Message* /*request*/, ::cheraxxx::atlas::RouteResponse* /*response*/) override {
+    ::grpc::Status RouteMessage(::grpc::ServerContext* /*context*/, const ::interlock::atlas::Message* /*request*/, ::interlock::atlas::RouteResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -506,7 +506,7 @@ class SwarmOrchestrator final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SubscribeMessages(::grpc::ServerContext* /*context*/, const ::cheraxxx::atlas::SubscribeRequest* /*request*/, ::grpc::ServerWriter< ::cheraxxx::atlas::Message>* /*writer*/) override {
+    ::grpc::Status SubscribeMessages(::grpc::ServerContext* /*context*/, const ::interlock::atlas::SubscribeRequest* /*request*/, ::grpc::ServerWriter< ::interlock::atlas::Message>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -529,7 +529,7 @@ class SwarmOrchestrator final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RegisterAgent(::grpc::ServerContext* /*context*/, const ::cheraxxx::atlas::AgentInfo* /*request*/, ::cheraxxx::atlas::RegistrationResponse* /*response*/) override {
+    ::grpc::Status RegisterAgent(::grpc::ServerContext* /*context*/, const ::interlock::atlas::AgentInfo* /*request*/, ::interlock::atlas::RegistrationResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -551,7 +551,7 @@ class SwarmOrchestrator final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TunnelTelemetria(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::cheraxxx::atlas::ControlCommand, ::cheraxxx::atlas::TelemetryData>* /*stream*/)  override {
+    ::grpc::Status TunnelTelemetria(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::interlock::atlas::ControlCommand, ::interlock::atlas::TelemetryData>* /*stream*/)  override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -574,7 +574,7 @@ class SwarmOrchestrator final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RouteMessage(::grpc::ServerContext* /*context*/, const ::cheraxxx::atlas::Message* /*request*/, ::cheraxxx::atlas::RouteResponse* /*response*/) override {
+    ::grpc::Status RouteMessage(::grpc::ServerContext* /*context*/, const ::interlock::atlas::Message* /*request*/, ::interlock::atlas::RouteResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -596,7 +596,7 @@ class SwarmOrchestrator final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SubscribeMessages(::grpc::ServerContext* /*context*/, const ::cheraxxx::atlas::SubscribeRequest* /*request*/, ::grpc::ServerWriter< ::cheraxxx::atlas::Message>* /*writer*/) override {
+    ::grpc::Status SubscribeMessages(::grpc::ServerContext* /*context*/, const ::interlock::atlas::SubscribeRequest* /*request*/, ::grpc::ServerWriter< ::interlock::atlas::Message>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -611,10 +611,10 @@ class SwarmOrchestrator final {
     WithStreamedUnaryMethod_RegisterAgent() {
       ::grpc::Service::MarkMethodStreamed(0,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::cheraxxx::atlas::AgentInfo, ::cheraxxx::atlas::RegistrationResponse>(
+          ::interlock::atlas::AgentInfo, ::interlock::atlas::RegistrationResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::cheraxxx::atlas::AgentInfo, ::cheraxxx::atlas::RegistrationResponse>* streamer) {
+                     ::interlock::atlas::AgentInfo, ::interlock::atlas::RegistrationResponse>* streamer) {
                        return this->StreamedRegisterAgent(context,
                          streamer);
                   }));
@@ -623,12 +623,12 @@ class SwarmOrchestrator final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status RegisterAgent(::grpc::ServerContext* /*context*/, const ::cheraxxx::atlas::AgentInfo* /*request*/, ::cheraxxx::atlas::RegistrationResponse* /*response*/) override {
+    ::grpc::Status RegisterAgent(::grpc::ServerContext* /*context*/, const ::interlock::atlas::AgentInfo* /*request*/, ::interlock::atlas::RegistrationResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedRegisterAgent(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::cheraxxx::atlas::AgentInfo,::cheraxxx::atlas::RegistrationResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedRegisterAgent(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::interlock::atlas::AgentInfo,::interlock::atlas::RegistrationResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_RouteMessage : public BaseClass {
@@ -638,10 +638,10 @@ class SwarmOrchestrator final {
     WithStreamedUnaryMethod_RouteMessage() {
       ::grpc::Service::MarkMethodStreamed(2,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::cheraxxx::atlas::Message, ::cheraxxx::atlas::RouteResponse>(
+          ::interlock::atlas::Message, ::interlock::atlas::RouteResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::cheraxxx::atlas::Message, ::cheraxxx::atlas::RouteResponse>* streamer) {
+                     ::interlock::atlas::Message, ::interlock::atlas::RouteResponse>* streamer) {
                        return this->StreamedRouteMessage(context,
                          streamer);
                   }));
@@ -650,12 +650,12 @@ class SwarmOrchestrator final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status RouteMessage(::grpc::ServerContext* /*context*/, const ::cheraxxx::atlas::Message* /*request*/, ::cheraxxx::atlas::RouteResponse* /*response*/) override {
+    ::grpc::Status RouteMessage(::grpc::ServerContext* /*context*/, const ::interlock::atlas::Message* /*request*/, ::interlock::atlas::RouteResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedRouteMessage(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::cheraxxx::atlas::Message,::cheraxxx::atlas::RouteResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedRouteMessage(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::interlock::atlas::Message,::interlock::atlas::RouteResponse>* server_unary_streamer) = 0;
   };
   typedef WithStreamedUnaryMethod_RegisterAgent<WithStreamedUnaryMethod_RouteMessage<Service > > StreamedUnaryService;
   template <class BaseClass>
@@ -666,10 +666,10 @@ class SwarmOrchestrator final {
     WithSplitStreamingMethod_SubscribeMessages() {
       ::grpc::Service::MarkMethodStreamed(3,
         new ::grpc::internal::SplitServerStreamingHandler<
-          ::cheraxxx::atlas::SubscribeRequest, ::cheraxxx::atlas::Message>(
+          ::interlock::atlas::SubscribeRequest, ::interlock::atlas::Message>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerSplitStreamer<
-                     ::cheraxxx::atlas::SubscribeRequest, ::cheraxxx::atlas::Message>* streamer) {
+                     ::interlock::atlas::SubscribeRequest, ::interlock::atlas::Message>* streamer) {
                        return this->StreamedSubscribeMessages(context,
                          streamer);
                   }));
@@ -678,19 +678,19 @@ class SwarmOrchestrator final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status SubscribeMessages(::grpc::ServerContext* /*context*/, const ::cheraxxx::atlas::SubscribeRequest* /*request*/, ::grpc::ServerWriter< ::cheraxxx::atlas::Message>* /*writer*/) override {
+    ::grpc::Status SubscribeMessages(::grpc::ServerContext* /*context*/, const ::interlock::atlas::SubscribeRequest* /*request*/, ::grpc::ServerWriter< ::interlock::atlas::Message>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with split streamed
-    virtual ::grpc::Status StreamedSubscribeMessages(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::cheraxxx::atlas::SubscribeRequest,::cheraxxx::atlas::Message>* server_split_streamer) = 0;
+    virtual ::grpc::Status StreamedSubscribeMessages(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::interlock::atlas::SubscribeRequest,::interlock::atlas::Message>* server_split_streamer) = 0;
   };
   typedef WithSplitStreamingMethod_SubscribeMessages<Service > SplitStreamedService;
   typedef WithStreamedUnaryMethod_RegisterAgent<WithStreamedUnaryMethod_RouteMessage<WithSplitStreamingMethod_SubscribeMessages<Service > > > StreamedService;
 };
 
 }  // namespace atlas
-}  // namespace cheraxxx
+}  // namespace interlock
 
 
 #include <grpcpp/ports_undef.inc>

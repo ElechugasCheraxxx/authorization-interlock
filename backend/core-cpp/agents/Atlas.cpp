@@ -2,7 +2,7 @@
 #include "ToolDispatcher.hpp"
 #include <iostream>
 
-namespace cheraxxx {
+namespace interlock {
 
 AtlasAgent::AtlasAgent(const std::string& model_path)
     : NativeAgent("atlas", model_path) {}
@@ -16,4 +16,4 @@ void AtlasAgent::onResponseGenerated(const std::string& raw_output) {
     }
 }
 
-} // namespace cheraxxx
+} // namespace interlock

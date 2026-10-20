@@ -55,7 +55,7 @@
 
 <p>As of v1.0, ETW is also bypassed. Like with AMSI/WLDP, this a modular system that allows you to swap out the default bypass with your own. The default bypass is derived from research by XPN. Read <a href="https://blog.xpnsec.com/hiding-your-dotnet-etw/">Hiding your .NET - ETW</a> for more information.</p>
 
-<p>By default, the loader will overwrite the PE headers of unmanaged PEs (from the base address to `IMAGE_OPTIONAL_HEADER.SizeOfHeaders`). If no decoy module is used (module overloading), then the PE headers will be zeroed. If a decoy module is used, the PE headers of the decoy module will be used to overwrite those of the payload module. This is to deter detection by comparing the PE headers of modules in memory with the file backing them on disk. The user may request that all PE headers be preserved in their original state. This is helpful for scenarios when the payload module needs to access its PE headers, such as when looking up embedded PE resources.</p>
+<p>By default, the loader will overwrite the PE headers of unmanaged PEs (from the base address to `IMAGE_OPTIONAL_HEADER.SizeOfHeaders`). If no decoy module is used (module overloading), then the PE headers will be zeroed. If a decoy module is used, the PE headers of the decoy module will be used to overwrite those of the artifact module. This is to deter detection by comparing the PE headers of modules in memory with the file backing them on disk. The user may request that all PE headers be preserved in their original state. This is helpful for scenarios when the artifact module needs to access its PE headers, such as when looking up embedded PE resources.</p>
 
 <p>For a detailed walkthrough using the generator and how Donut affects tradecraft, read <a href="https://thewover.github.io/Introducing-Donut/">Donut - Injecting .NET Assemblies as Shellcode</a>. For more information about the loader, read <a href="https://modexp.wordpress.com/2019/05/10/dotnet-loader-shellcode/">Loading .NET Assemblies From Memory</a>.</p>
 
@@ -283,9 +283,9 @@
   </tr>
 </table>
 
-<h3 id="requirements">Payload Requirements</h2>
+<h3 id="requirements">Artifact Requirements</h2>
 
-<p>There are some specific requirements that your payload must meet in order for Donut to successfully load it.</p>
+<p>There are some specific requirements that your artifact must meet in order for Donut to successfully load it.</p>
 
 <h3 id="requirements-dotnet">.NET Assemblies</h2>
 
@@ -334,7 +334,7 @@
   </tr>
   <tr>
     <td>ProcessManager</td>
-    <td>A Process Discovery tool that offensive operators may use to determine what to inject into and defensive operators may use to determine what is running, what properties those processes have, and whether or not they have the CLR loaded. </td>
+    <td>A Process Discovery tool that active operators may use to determine what to inject into and defensive operators may use to determine what is running, what properties those processes have, and whether or not they have the CLR loaded. </td>
   </tr>
 </table>
 

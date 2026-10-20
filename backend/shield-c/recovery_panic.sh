@@ -1,8 +1,8 @@
 #!/bin/bash
-# Cheraxxx RedTeam IDE - Emergency Kernel Recovery
+# Interlock Assessment IDE - Emergency Kernel Recovery
 # Usage: boot into Recovery Mode -> Terminal -> sh this_script.sh
 
-echo "[!] Cheraxxx Shield: Emergency Recovery Initiated..."
+echo "[!] Interlock Shield: Emergency Recovery Initiated..."
 
 # 1. Mount the main volume
 DISK_NAME=$(ls /Volumes | grep -v "Recovery" | grep -v "External" | head -n 1)
@@ -11,7 +11,7 @@ TARGET_VOL="/Volumes/${DISK_NAME}"
 echo "[*] Target Volume: ${TARGET_VOL}"
 
 # 2. Path to the KEXT
-KEXT_PATH="${TARGET_VOL}/Library/Extensions/CheraxxxShield.kext"
+KEXT_PATH="${TARGET_VOL}/Library/Extensions/InterlockShield.kext"
 
 if [ -d "$KEXT_PATH" ]; then
     echo "[+] Malformed KEXT detected. Deleting..."
@@ -23,6 +23,6 @@ if [ -d "$KEXT_PATH" ]; then
 
     echo "[SUCCESS] KEXT removed. You can now reboot safely."
 else
-    echo "[-] CheraxxxShield.kext was not found in the system extensions."
+    echo "[-] InterlockShield.kext was not found in the system extensions."
     echo "Check if it was loaded manually via kextload (which doesn't persist after reboot)."
 fi

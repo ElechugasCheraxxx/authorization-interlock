@@ -163,7 +163,7 @@ deploy_migrations() {
 
 case "$MODE" in
     install)
-        info "=== RedTeam IDE Install ==="
+        info "=== Assessment IDE Install ==="
         check_python
         check_node
         check_hardware

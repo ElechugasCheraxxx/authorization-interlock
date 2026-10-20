@@ -111,11 +111,11 @@ class TestPolyglotMigrationDeploy(unittest.TestCase):
         self.assertEqual(report.risks, 1)
         self.assertEqual(report.tactics, 1)
 
-        payload = json.loads(runtime_json.read_text(encoding="utf-8"))
-        self.assertEqual(payload["metadata"]["project"], "Test Project")
-        self.assertEqual(payload["metadata"]["units_count"], 1)
-        self.assertEqual(payload["metadata"]["tactics_count"], 1)
-        self.assertEqual(len(payload["metadata"]["source_sha256"]), 64)
+        artifact = json.loads(runtime_json.read_text(encoding="utf-8"))
+        self.assertEqual(artifact["metadata"]["project"], "Test Project")
+        self.assertEqual(artifact["metadata"]["units_count"], 1)
+        self.assertEqual(artifact["metadata"]["tactics_count"], 1)
+        self.assertEqual(len(artifact["metadata"]["source_sha256"]), 64)
 
 
 if __name__ == "__main__":

@@ -7,12 +7,12 @@
 #include "GPUAllocator.hpp"
 #include "InferenceEngine.hpp"
 #include "CognitiveEngines.hpp"
-#include "CheraxxxCore.h"
+#include "InterlockCore.h"
 #include "EventSystem.hpp"
 #include "interop/FormalValidators.hpp"
 
-using namespace cheraxxx;
-using namespace cheraxxx::formal;
+using namespace interlock;
+using namespace interlock::formal;
 
 #define TEST(name) void name()
 #define RUN_TEST(name) \
@@ -27,7 +27,7 @@ TEST(test_e2e_multi_model_loading) {
     inference.initialize();
 
     // Carga masiva de todos los GGUF detectados
-    std::string model_dir = "/Users/cheraxxx/Cheraxxx RedTeam IDE/data/models";
+    std::string model_dir = "/Users/Cheraxxx/Interlock IDE/data/models";
     inference.loadAllModels(model_dir);
 
     // En un entorno real, verificaríamos cuántos se cargaron.
@@ -35,7 +35,7 @@ TEST(test_e2e_multi_model_loading) {
 
     // Intentar una inferencia con el primer modelo cargado (o el activo por defecto)
     InferenceRequest req;
-    req.prompt = "User: Hello Cheraxxx. System: Hi. How can I assist in your RedTeam mission today?";
+    req.prompt = "User: Hello Interlock. System: Hi. How can I assist in your Assessment mission today?";
     req.max_tokens = 32;
     req.sampling_params = {{"rdt_factor", 1}};
 
@@ -52,7 +52,7 @@ TEST(test_e2e_multi_model_loading) {
     assert(!resp.text.empty());
 
     // New Interop Performance Metric
-    double overhead = CheraxxxCore::benchmarkInterop(1000000);
+    double overhead = InterlockCore::benchmarkInterop(1000000);
     std::cout << "[Performance] Swift-C++ Interop Latency (approx): " << overhead << " microseconds/call" << std::endl;
 
     std::cout << "--- Multi-Model Loading Test Completed ---" << std::endl;
@@ -62,12 +62,12 @@ TEST(test_stress_maintenance_loop) {
     std::cout << "--- Starting Stress Test: Maintenance Loop & Concurrency ---" << std::endl;
 
     // Use boot() to start the core and maintenance thread
-    CheraxxxCore::boot();
+    InterlockCore::boot();
 
     // Simulate heavy load by injecting many events and checking VRAM metrics
     for (int i = 0; i < 50; ++i) {
         std::string msg = "Stress Message " + std::to_string(i);
-        CheraxxxCore::injectMessage("system", msg.c_str());
+        InterlockCore::injectMessage("system", msg.c_str());
 
         auto metrics = GPUAllocator::getInstance().getMetrics();
         if (i % 10 == 0) {
@@ -80,7 +80,7 @@ TEST(test_stress_maintenance_loop) {
 }
 
 int main() {
-    std::cout << "=== Cheraxxx Multi-Model E2E Test (M4 Pro Unified Memory) ===" << std::endl;
+    std::cout << "=== Interlock Multi-Model E2E Test (M4 Pro Unified Memory) ===" << std::endl;
 
     try {
         RUN_TEST(test_e2e_multi_model_loading);

@@ -5,7 +5,7 @@
 #include <string>
 #include <future>
 
-namespace cheraxxx {
+namespace interlock {
 
 struct VectorEntry {
     std::string id;
@@ -44,4 +44,4 @@ private:
     std::mutex db_mtx;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

@@ -39,21 +39,21 @@ fun is_path :: "graph ⇒ node_id ⇒ node_id ⇒ bool" where
   "is_path ((x, y) # es) u v =
     (if u = x then is_path es y v ∨ is_path es u v else is_path es u v)"
 
-(* Isabelle implementation of acyclicity for small tactical graphs *)
+(* Isabelle implementation of acyclicity for small operations graphs *)
 definition is_acyclic :: "graph ⇒ bool" where
   "is_acyclic g = (∀(u, v) ∈ set g. ¬(u = v ∨ (∃es. set es ⊆ set g ∧ is_path es v u)))"
 
 section ‹MessageRouter & Protocol Safety›
 
-datatype agent = Cipher | Overseer | Apex | Rex | Ghost | Wraith | Atlas | Archive | PDG_Engine
+datatype agent = Cipher | Overseer | Apex | Coordinator | Probe | Minimizer | Atlas | Archive | PDG_Engine
 
 fun can_message :: "agent ⇒ agent ⇒ bool" where
   "can_message Cipher _ = True" |
   "can_message Overseer _ = True" |
   "can_message _ Cipher = True" |
   "can_message _ Overseer = True" |
-  "can_message Rex Ghost = True" |
-  "can_message Ghost Rex = True" |
+  "can_message Coordinator Probe = True" |
+  "can_message Probe Coordinator = True" |
   "can_message PDG_Engine Cipher = True" |
   "can_message _ _ = False"
 

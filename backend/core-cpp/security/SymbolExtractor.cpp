@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <regex>
 
-namespace cheraxxx::security {
+namespace interlock::security {
 
 std::vector<Symbol> SymbolExtractor::parseBsdOutput(const std::string& output) {
     std::vector<Symbol> symbols;
@@ -98,4 +98,4 @@ bool SymbolExtractor::parseSysvLine(const std::string& line, Symbol& out_symbol)
     return true;
 }
 
-} // namespace cheraxxx::security
+} // namespace interlock::security

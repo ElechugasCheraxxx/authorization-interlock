@@ -1,6 +1,6 @@
 #pragma once
 
-#include "TacticalPool.hpp"
+#include "ResourcePool.hpp"
 #include <string>
 #include <vector>
 #include <mutex>
@@ -10,7 +10,7 @@
 #include <memory>
 #include "Schema.hpp"
 
-namespace cheraxxx {
+namespace interlock {
 
 struct C2Session {
     char id[64];
@@ -50,8 +50,8 @@ private:
     C2Manager() = default;
     std::mutex mtx;
 
-    // GTA-style Tactical Pool for high-performance session management
-    TacticalPool<C2Session, 4096> session_pool;
+    // GTA-style Operations Pool for high-performance session management
+    ResourcePool<C2Session, 4096> session_pool;
     std::map<std::string, C2Session*> session_map;
 
     // Socket handlers
@@ -61,4 +61,4 @@ private:
     void acceptLoop();
 };
 
-} // namespace cheraxxx
+} // namespace interlock

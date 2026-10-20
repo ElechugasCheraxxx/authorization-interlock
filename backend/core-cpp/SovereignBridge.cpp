@@ -5,18 +5,18 @@
 #ifdef _WIN32
 #include "shield-win/shield_kernel.h"
 #else
-#include "cheraxxx_shared_types.h"
+#include "interlock_shared_types.h"
 #include <IOKit/IOKitLib.h>
 #include <unistd.h>
 #endif
 
-namespace cheraxxx {
+namespace interlock {
 
 bool SovereignBridge::connect() {
     if (m_connected) return true;
 
 #ifdef _WIN32
-    m_hDevice = CreateFileW(L"\\\\.\\CheraxxxShield",
+    m_hDevice = CreateFileW(L"\\\\.\\InterlockShield",
                             GENERIC_READ | GENERIC_WRITE,
                             0, NULL, OPEN_EXISTING,
                             FILE_ATTRIBUTE_NORMAL, NULL);
@@ -27,7 +27,7 @@ bool SovereignBridge::connect() {
         protectProcess(GetCurrentProcessId());
     }
 #else
-    CFMutableDictionaryRef matchingDict = IOServiceMatching("com_cheraxxx_Shield");
+    CFMutableDictionaryRef matchingDict = IOServiceMatching("com_interlock_Shield");
     io_service_t service = IOServiceGetMatchingService(kIOMasterPortDefault, matchingDict);
 
     if (service) {
@@ -74,7 +74,7 @@ bool SovereignBridge::hideProcess(uint32_t pid) {
                            &req, sizeof(req), NULL, 0, &bytesReturned, NULL);
 #else
     uint64_t input = pid;
-    return IOConnectCallScalarMethod(m_connection, kCheraxxxHideProcess, &input, 1, nullptr, nullptr) == kIOReturnSuccess;
+    return IOConnectCallScalarMethod(m_connection, kInterlockHideProcess, &input, 1, nullptr, nullptr) == kIOReturnSuccess;
 #endif
 }
 
@@ -88,7 +88,7 @@ bool SovereignBridge::protectProcess(uint32_t pid) {
                            &req, sizeof(req), NULL, 0, &bytesReturned, NULL);
 #else
     uint64_t input = pid;
-    return IOConnectCallScalarMethod(m_connection, kCheraxxxProtectProcess, &input, 1, nullptr, nullptr) == kIOReturnSuccess;
+    return IOConnectCallScalarMethod(m_connection, kInterlockProtectProcess, &input, 1, nullptr, nullptr) == kIOReturnSuccess;
 #endif
 }
 
@@ -115,7 +115,7 @@ bool SovereignBridge::stealthNetwork(bool enable) {
 #else
     if (enable) {
         const char* iface = "en0"; // Default interface
-        return IOConnectCallMethod(m_connection, kCheraxxxInstallNetFilter, nullptr, 0, iface, strlen(iface) + 1, nullptr, nullptr, nullptr, nullptr) == kIOReturnSuccess;
+        return IOConnectCallMethod(m_connection, kInterlockInstallNetFilter, nullptr, 0, iface, strlen(iface) + 1, nullptr, nullptr, nullptr, nullptr) == kIOReturnSuccess;
     }
     return true;
 #endif
@@ -131,12 +131,12 @@ bool SovereignBridge::hidePort(uint16_t port) {
                            &req, sizeof(req), NULL, 0, &bytesReturned, NULL);
 #else
     uint64_t input = port;
-    return IOConnectCallScalarMethod(m_connection, kCheraxxxHidePort, &input, 1, nullptr, nullptr) == kIOReturnSuccess;
+    return IOConnectCallScalarMethod(m_connection, kInterlockHidePort, &input, 1, nullptr, nullptr) == kIOReturnSuccess;
 #endif
 }
 
-bool SovereignBridge::injectPayload(uint32_t targetPid, const std::vector<uint8_t>& payload) {
-    if (!m_connected || payload.empty()) return false;
+bool SovereignBridge::injectPayload(uint32_t targetPid, const std::vector<uint8_t>& artifact) {
+    if (!m_connected || artifact.empty()) return false;
 
     // --- FORMAL VERIFICATION LAYER (Coq Extract) ---
     // Precondition: Target must not be the Core itself (Injection Safety Invariant)
@@ -147,15 +147,15 @@ bool SovereignBridge::injectPayload(uint32_t targetPid, const std::vector<uint8_
     }
 
 #ifdef _WIN32
-    std::vector<uint8_t> buffer(sizeof(uint32_t) + payload.size());
+    std::vector<uint8_t> buffer(sizeof(uint32_t) + artifact.size());
     std::memcpy(buffer.data(), &targetPid, sizeof(uint32_t));
-    std::memcpy(buffer.data() + sizeof(uint32_t), payload.data(), payload.size());
+    std::memcpy(buffer.data() + sizeof(uint32_t), artifact.data(), artifact.size());
 
     DWORD bytesReturned;
     return DeviceIoControl(m_hDevice, IOCTL_SHIELD_INJECT_PAYLOAD,
                            buffer.data(), (DWORD)buffer.size(), NULL, 0, &bytesReturned, NULL);
 #else
-    return false; // macOS payload injection not implemented in this bridge yet
+    return false; // macOS artifact injection not implemented in this bridge yet
 #endif
 }
 
@@ -181,4 +181,4 @@ bool SovereignBridge::hideFile(const std::string& path) {
 #endif
 }
 
-} // namespace cheraxxx
+} // namespace interlock

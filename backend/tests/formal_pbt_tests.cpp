@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <cassert>
 
-using namespace cheraxxx::formal;
+using namespace interlock::formal;
 
 // --- Property-Based Testing (PBT) Infrastructure ---
 // In a full environment, we would use RapidCheck. Here we implement a custom generator.
@@ -67,7 +67,7 @@ void property_state_machine_integrity() {
 }
 
 int main() {
-    std::cout << "=== Cheraxxx Formal Property-Based Tests ===" << std::endl;
+    std::cout << "=== Interlock Formal Property-Based Tests ===" << std::endl;
     std::srand(time(0));
 
     try {

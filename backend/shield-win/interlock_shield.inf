@@ -1,0 +1,46 @@
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = System
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = %ManufacturerName%
+CatalogFile = interlock_shield.cat
+DriverVer   = 05/20/2024,1.0.0.0
+PnpLockdown = 1
+
+[DestinationDirs]
+DefaultDestDir = 13
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+interlock_shield.sys = 1,,
+
+[Manufacturer]
+%ManufacturerName% = Standard,NT$ARCH$
+
+[Standard.NT$ARCH$]
+%interlock_shield.DeviceDesc% = interlock_shield_Device, Root\interlock_shield
+
+[interlock_shield_Device.NT]
+CopyFiles = File_Copy
+
+[File_Copy]
+interlock_shield.sys
+
+[interlock_shield_Device.NT.Services]
+AddService = interlock_shield,%SPSVCINST_ASSOCSERVICE%,interlock_shield_Service
+
+[interlock_shield_Service]
+DisplayName    = %interlock_shield.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 1               ; SERVICE_SYSTEM_START (Vanguard-style boot start)
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\interlock_shield.sys
+
+[Strings]
+SPSVCINST_ASSOCSERVICE = 0x00000002
+ManufacturerName = "Interlock Sovereignty"
+DiskName = "Interlock Shield Installation Disk"
+interlock_shield.DeviceDesc = "Interlock Shield Kernel Guard"
+interlock_shield.SVCDESC = "Interlock Shield Service"

@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <filesystem>
 
-namespace cheraxxx {
+namespace interlock {
 
 RecurrentEngine::RecurrentEngine() : running(true) {
     slots.resize(MAX_BATCH_SIZE);
@@ -21,7 +21,7 @@ RecurrentEngine::RecurrentEngine(int n_embd) : running(true) {
 void RecurrentEngine::step(std::vector<float>& hidden, const std::vector<float>& input, const std::vector<float>& delta) {
     std::lock_guard<std::mutex> lock(batch_mtx);
     for (size_t i = 0; i < hidden.size() && i < input.size() && i < delta.size(); ++i) {
-        // Milestone 2.10: Latent Tactical Injection
+        // Milestone 2.10: Latent Operations Injection
         // simplified RNN-like update: h = h + (input * delta)
         hidden[i] += input[i] * delta[i];
     }
@@ -134,4 +134,4 @@ void RecurrentEngine::performLatentHop(const std::string& model_id, int hop_inde
     if (convergence_score > 1.0f) convergence_score = 0.99f;
 }
 
-} // namespace cheraxxx
+} // namespace interlock

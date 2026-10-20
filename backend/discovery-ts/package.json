@@ -1,0 +1,27 @@
+{
+  "name": "interlock-intel-ts",
+  "version": "1.0.0",
+  "description": "Interlock Assessment IDE - Web Intel & Cloud Automation Module",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "bun src/index.ts",
+    "build": "bun build ./src/index.ts --outdir ./dist --target node",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12",
+    "playwright": "^1.40.0",
+    "@azure/identity": "^4.0.0",
+    "@azure/arm-resources": "^5.2.0",
+    "aws-sdk": "^2.1500.0",
+    "@grpc/grpc-js": "^1.9.0",
+    "@grpc/proto-loader": "^0.7.10",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.0",
+    "@types/node": "^20.8.0",
+    "vitest": "^0.34.0"
+  }
+}

@@ -444,11 +444,11 @@ def deploy_plan(
         source_for_runtime = enhanced_output
 
     plan = parse_plan_strict(source_for_runtime)
-    payload = _plan_to_runtime_payload(plan, source_for_runtime)
+    artifact = _plan_to_runtime_payload(plan, source_for_runtime)
 
     runtime_output.parent.mkdir(parents=True, exist_ok=True)
     runtime_output.write_text(
-        json.dumps(payload, indent=2, ensure_ascii=False) + "\n",
+        json.dumps(artifact, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
     )
 

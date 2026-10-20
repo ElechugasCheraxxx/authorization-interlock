@@ -5,7 +5,7 @@
 #include <nlohmann/json.hpp>
 
 // Usaremos nanobind/pybind11 conceptualmente, pero definimos la interfaz
-namespace cheraxxx {
+namespace interlock {
 
 class PythonBridge {
 public:
@@ -33,4 +33,4 @@ private:
     std::mutex interpreter_mtx;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

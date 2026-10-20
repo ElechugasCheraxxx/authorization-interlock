@@ -3,12 +3,12 @@ package model
 import "time"
 
 // Subtask representa una unidad mínima de operación táctica.
-// Adaptado de Plandex para el dominio de Red Team (Cheraxxx).
+// Adapted from Plandex for the assessment domain (Interlock).
 type Subtask struct {
 	ID          string    `json:"id"`
 	Title       string    `json:"title"`       // Título de la tarea (ej: "Escalada de privilegios vía SeBackupPrivilege")
 	Description string    `json:"description"` // Detalles de ejecución
-	UsesFiles   []string  `json:"uses_files"`  // Archivos/Scripts necesarios (ej: ["exploit.zig", "payload.bin"])
+	UsesFiles   []string  `json:"uses_files"`  // Archivos/Scripts necesarios (ej: ["assess.zig", "artifact.bin"])
 	Status      string    `json:"status"`      // pending, running, completed, failed, verified
 	CreatedAt   time.Time `json:"created_at"`
 }

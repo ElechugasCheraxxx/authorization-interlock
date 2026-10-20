@@ -2,13 +2,13 @@
 #include <string_view>
 #include <map>
 
-namespace cheraxxx::embedded {
+namespace interlock::embedded {
 
 inline constexpr std::string_view AGENT_BASE = R"python(
 from __future__ import annotations
 import asyncio
 import logging
-import cheraxxx_core_bind as core
+import interlock_core_bind as core
 from blackboard.blackboard import Blackboard
 from blackboard.schema import AgentState, AgentStatus, Message, MessageType
 
@@ -44,7 +44,7 @@ inline constexpr std::string_view AGENT_REX = R"python(
 from blackboard.schema import Message, MessageType
 from agents.base import BaseAgent
 
-class Rex(BaseAgent):
+class Coordinator(BaseAgent):
     """Exploitation & Payloads Orchestrator."""
     async def _on_message(self, msg: Message):
         if msg.type == MessageType.TASK:
@@ -57,4 +57,4 @@ inline const std::map<std::string_view, std::string_view> AGENT_MODULES = {
     {"agents.orchestrators.rex", AGENT_REX}
 };
 
-} // namespace cheraxxx::embedded
+} // namespace interlock::embedded

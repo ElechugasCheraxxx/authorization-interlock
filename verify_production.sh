@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 ##############################################################################
-# Cheraxxx Production Verification Suite
+# Interlock Production Verification Suite
 # Verifica la integridad completa de la instalación productiva
 ##############################################################################
 
@@ -82,7 +82,7 @@ print_section() {
 verify_build_artifacts() {
     print_section "Build Artifacts"
     
-    local base_dir="/Users/cheraxxx/Cheraxxx RedTeam IDE"
+    local base_dir="/Users/Cheraxxx/Interlock Assessment IDE"
     
     check_dir "Build directory" "$base_dir/build"
     check_file "Main CMakeLists.txt" "$base_dir/CMakeLists.txt"
@@ -93,7 +93,7 @@ verify_build_artifacts() {
 verify_configuration() {
     print_section "Configuration Files"
     
-    local config_dir="/Users/cheraxxx/Cheraxxx RedTeam IDE/backend/config"
+    local config_dir="/Users/Cheraxxx/Interlock IDE/backend/config"
     
     check_file "Production config" "$config_dir/production.toml"
     check_file "IDE config" "$config_dir/ide.toml"
@@ -103,12 +103,12 @@ verify_configuration() {
 verify_source_modules() {
     print_section "Source Modules"
     
-    local backend="/Users/cheraxxx/Cheraxxx RedTeam IDE/backend"
+    local backend="/Users/Cheraxxx/Interlock IDE/backend"
     
     check_dir "C++ Core" "$backend/core-cpp"
     check_dir "Rust Cipher" "$backend/cipher-rs"
     check_dir "Go Atlas" "$backend/atlas-go"
-    check_dir "Zig Payloads" "$backend/payloads-zig"
+    check_dir "Zig Payloads" "$backend/transfer-zig"
     check_dir "C Shield" "$backend/shield-c"
     check_dir "ASM Stubs" "$backend/stubs-asm"
     check_dir "Headers" "$backend/include"
@@ -118,12 +118,12 @@ verify_source_modules() {
 verify_infrastructure() {
     print_section "Infrastructure Components"
     
-    local include_dir="/Users/cheraxxx/Cheraxxx RedTeam IDE/backend/include"
+    local include_dir="/Users/Cheraxxx/Interlock IDE/backend/include"
     
     check_file "ABB Header" "$include_dir/AutonomousBreadcrumbBuffer.hpp"
     check_file "IPC Header" "$include_dir/IPCBridge.hpp"
     
-    local core_dir="/Users/cheraxxx/Cheraxxx RedTeam IDE/backend/core-cpp"
+    local core_dir="/Users/Cheraxxx/Interlock IDE/backend/core-cpp"
     
     check_file "ABB Implementation" "$core_dir/AutonomousBreadcrumbBuffer.cpp"
     check_file "IPC Implementation" "$core_dir/IPCBridge.cpp"
@@ -132,7 +132,7 @@ verify_infrastructure() {
 verify_tools() {
     print_section "Tools & Scripts"
     
-    local tools_dir="/Users/cheraxxx/Cheraxxx RedTeam IDE/backend/tools"
+    local tools_dir="/Users/Cheraxxx/Interlock IDE/backend/tools"
     
     check_file "ABB Inspector" "$tools_dir/abb_inspector.py"
     check "ABB Inspector executable" "[ -x \"$tools_dir/abb_inspector.py\" ]"
@@ -178,7 +178,7 @@ main() {
     
     echo -e "${BLUE}"
     echo "╔════════════════════════════════════════════════════════════╗"
-    echo "║     Cheraxxx RedTeam IDE - Production Verification         ║"
+    echo "║     Interlock Assessment IDE - Production Verification         ║"
     echo "║            Build System v1.0 (Polyglot)                   ║"
     echo "╚════════════════════════════════════════════════════════════╝"
     echo -e "${NC}"
@@ -210,7 +210,7 @@ main() {
     if [ $FAILED_CHECKS -eq 0 ]; then
         echo -e "\n${GREEN}✓ Sistema listo para compilación y deployment${NC}\n"
         echo "Próximos pasos:"
-        echo "  1. cd /Users/cheraxxx/Cheraxxx\\ RedTeam\\ IDE"
+        echo "  1. cd /Users/Cheraxxx/Interlock\\ Assessment\\ IDE"
         echo "  2. ./build.sh"
         echo "  3. ./deploy.sh start"
         echo ""

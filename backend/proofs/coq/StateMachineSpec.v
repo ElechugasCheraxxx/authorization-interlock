@@ -1,4 +1,4 @@
-(* Cheraxxx Formal Specification: Mission State Machine Transitions *)
+(* Interlock Formal Specification: Mission State Machine Transitions *)
 Require Import String.
 Require Import List.
 

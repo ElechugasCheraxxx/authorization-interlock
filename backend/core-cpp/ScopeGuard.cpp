@@ -1,9 +1,9 @@
 #include "ScopeGuard.hpp"
-#include "OpsecManager.hpp"
+#include "RiskManager.hpp"
 #include <iostream>
 #include <regex>
 
-namespace cheraxxx {
+namespace interlock {
 
 ScopeGuard::ScopeGuard() {
     // Default rules: Allow local communication for orchestration, block external sensitive ranges.
@@ -36,12 +36,12 @@ void ScopeGuard::loadRules(const std::vector<ROERule>& new_rules) {
 }
 
 void ScopeGuard::logViolation(const std::string& action, const std::string& target) {
-    // In a real scenario, this would notify the OpsecManager and potentially trigger a lockdown
+    // In a real scenario, this would notify the RiskManager and potentially trigger a lockdown
     std::cerr << "[ScopeGuard] SECURITY VIOLATION: Action '" << action
               << "' on target '" << target << "' is NOT authorized by ROE." << std::endl;
 
-    // Notify OpsecManager of a major deviation
-    OpsecManager::getInstance().reportDeviation("ScopeGuard", "ROE Violation: " + action + " -> " + target, 8);
+    // Notify RiskManager of a major deviation
+    RiskManager::getInstance().reportDeviation("ScopeGuard", "ROE Violation: " + action + " -> " + target, 8);
 }
 
-} // namespace cheraxxx
+} // namespace interlock

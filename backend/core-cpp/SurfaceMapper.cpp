@@ -4,7 +4,7 @@
 #include <iostream>
 #include <algorithm>
 
-namespace cheraxxx {
+namespace interlock {
 
 std::vector<SurfaceMapper::SurfaceEntry> SurfaceMapper::mapDirectory(const std::string& root_path) {
     std::vector<SurfaceEntry> entries;
@@ -74,4 +74,4 @@ SurfaceMapper::SurfaceEntry SurfaceMapper::analyzeFile(const std::filesystem::pa
     return entry;
 }
 
-} // namespace cheraxxx
+} // namespace interlock

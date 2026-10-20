@@ -5,7 +5,7 @@
 #include <mutex>
 #include <algorithm>
 
-namespace cheraxxx::memory {
+namespace interlock::memory {
 
 class TrackableEntity;
 
@@ -74,4 +74,4 @@ public:
     }
 };
 
-} // namespace cheraxxx::memory
+} // namespace interlock::memory

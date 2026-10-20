@@ -39,7 +39,7 @@ func (b *Blackboard) PublishTacticalPlan(plan interface{}) error {
 	err = b.client.XAdd(b.ctx, &redis.XAddArgs{
 		Stream: "blackboard:tactical_plans",
 		Values: map[string]interface{}{
-			"payload": string(data),
+			"artifact": string(data),
 			"type":    "PLAN_CREATED",
 		},
 	}).Err()

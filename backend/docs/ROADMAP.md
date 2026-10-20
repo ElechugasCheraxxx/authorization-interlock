@@ -5,14 +5,14 @@
 - [x] FastAPI + WebSocket
 - [x] MessageRouter + StateMachine
 - [ ] mlx-lm server running stable on M4 Pro
-- [ ] TEST: Cipher → Rex → Wraith message round-trip
+- [ ] TEST: Cipher → Coordinator → Minimizer message round-trip
 
 ## Phase 1 — Orchestration Complete (Weeks 3-5)
 - [x] ContextManager + HealthMonitor + HeadlessController
 - [x] All agents defined
 - [x] Headless Constitution generated at session start
 - [x] Operation Brief API (backend)
-- [ ] Full pipeline: Cipher → Rex → Wraith (without UI, CLI test)
+- [ ] Full pipeline: Cipher → Coordinator → Minimizer (without UI, CLI test)
 
 ## Phase 2 — Full Communication (Weeks 6-8)
 - [ ] All agents active and messaging

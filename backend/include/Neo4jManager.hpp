@@ -2,7 +2,7 @@
 #include <string>
 #include <nlohmann/json.hpp>
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
  * @brief Gestiona el grafo de infraestructura y relaciones de ataque (Global Map).
@@ -21,4 +21,4 @@ private:
     Neo4jManager() = default;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

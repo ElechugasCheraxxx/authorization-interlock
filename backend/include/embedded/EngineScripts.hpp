@@ -2,13 +2,13 @@
 #include <string_view>
 #include <map>
 
-namespace cheraxxx::embedded {
+namespace interlock::embedded {
 
 inline constexpr std::string_view MESSAGE_ROUTER_LOGIC = R"python(
 from __future__ import annotations
 import asyncio
 import logging
-import cheraxxx_core_bind as core
+import interlock_core_bind as core
 from blackboard.schema import Message, MessagePriority
 
 _log = logging.getLogger(__name__)
@@ -37,4 +37,4 @@ inline const std::map<std::string_view, std::string_view> ENGINE_MODULES = {
     {"engine.message_router", MESSAGE_ROUTER_LOGIC}
 };
 
-} // namespace cheraxxx::embedded
+} // namespace interlock::embedded

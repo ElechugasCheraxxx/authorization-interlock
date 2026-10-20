@@ -7,7 +7,7 @@
 #include <future>
 #include <vector>
 
-namespace cheraxxx {
+namespace interlock {
 
 class AgentEngine {
 public:
@@ -43,4 +43,4 @@ private:
     void updateRecurrentState(const std::vector<float>& input_embeddings, const std::vector<float>& delta);
 };
 
-} // namespace cheraxxx
+} // namespace interlock

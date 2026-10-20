@@ -1,7 +1,7 @@
 #pragma once
 #include <mach/mach_types.h>
 
-namespace cheraxxx::mach {
+namespace interlock::mach {
 
 enum class TaskPriority {
     BACKGROUND,    // E-Cores (Efficiency)
@@ -24,4 +24,4 @@ void SetThreadPriority(thread_port_t thread_port, TaskPriority priority);
  */
 void SetThreadAffinity(thread_port_t thread_port, int tag);
 
-} // namespace cheraxxx::mach
+} // namespace interlock::mach

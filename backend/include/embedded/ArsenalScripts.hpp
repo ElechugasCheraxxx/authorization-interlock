@@ -2,7 +2,7 @@
 #include <string_view>
 #include <map>
 
-namespace cheraxxx::embedded {
+namespace interlock::embedded {
 
 // 1. OSINT Wrapper
 inline constexpr std::string_view ARSENAL_OSINT = R"python(
@@ -47,7 +47,7 @@ class NetworkManager:
 
 // 3. C2 Bridge
 inline constexpr std::string_view ARSENAL_C2 = R"python(
-import cheraxxx_core_bind as core
+import interlock_core_bind as core
 
 class C2Agent:
     def __init__(self):
@@ -64,7 +64,7 @@ class C2Agent:
 
 // 4. PIVOTING Bridge
 inline constexpr std::string_view ARSENAL_PIVOTING = R"python(
-import cheraxxx_core_bind as core
+import interlock_core_bind as core
 
 class PivotingAgent:
     def __init__(self):
@@ -86,7 +86,7 @@ import json
 import httpx
 from collections import Counter
 from datetime import datetime, timezone
-import cheraxxx_core_bind as core
+import interlock_core_bind as core
 
 class UberBugBountyRunner:
     def __init__(self, timeout_seconds: float = 20.0):
@@ -123,11 +123,11 @@ class UberBugBountyRunner:
 
 // Mapa global para el Import Hook de C++
 inline const std::map<std::string_view, std::string_view> ARSENAL_MODULES = {
-    {"cheraxxx.arsenal.osint", ARSENAL_OSINT},
-    {"cheraxxx.arsenal.network", ARSENAL_NETWORK},
-    {"cheraxxx.arsenal.c2", ARSENAL_C2},
-    {"cheraxxx.arsenal.pivoting", ARSENAL_PIVOTING},
-    {"cheraxxx.arsenal.bug_bounty_uber", ARSENAL_BUG_BOUNTY_UBER}
+    {"interlock.arsenal.osint", ARSENAL_OSINT},
+    {"interlock.arsenal.network", ARSENAL_NETWORK},
+    {"interlock.arsenal.c2", ARSENAL_C2},
+    {"interlock.arsenal.pivoting", ARSENAL_PIVOTING},
+    {"interlock.arsenal.bug_bounty_uber", ARSENAL_BUG_BOUNTY_UBER}
 };
 
-} // namespace cheraxxx::embedded
+} // namespace interlock::embedded

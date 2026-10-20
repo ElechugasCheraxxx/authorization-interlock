@@ -7,7 +7,7 @@
 #include <thread>
 #include <atomic>
 
-namespace cheraxxx {
+namespace interlock {
 
 struct EvolutionTask {
     std::string agent_alias;
@@ -52,4 +52,4 @@ private:
     std::thread dreaming_thread;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

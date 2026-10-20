@@ -1,7 +1,7 @@
 require 'json'
 require 'socket'
 
-# Cheraxxx Ruby Tool Dispatcher DSL
+# Interlock Ruby Tool Dispatcher DSL
 # Provee una interfaz flexible para orquestar herramientas externas.
 
 class ToolOrchestrator
@@ -33,7 +33,7 @@ orchestrator.register_tool("nmap_scan") do |params|
 end
 
 # Comunicación vía IPC (Unix Domain Socket)
-socket_path = "/tmp/cheraxxx_ipc_12" # RUBY_DISPATCHER = 12
+socket_path = "/tmp/interlock_ipc_12" # RUBY_DISPATCHER = 12
 
 begin
   File.unlink(socket_path) if File.exist?(socket_path)
@@ -44,8 +44,8 @@ begin
     client = server.accept
     begin
       data = client.read(65536) # IPCMessage::MAX_PAYLOAD
-      # El protocolo IPCMessage tiene un header de 32 bytes antes del payload
-      # Para simplificar este prototipo, asumimos que el payload es JSON directo
+      # El protocolo IPCMessage tiene un header de 32 bytes antes del artifact
+      # Para simplificar este prototipo, asumimos que el artifact es JSON directo
       # En una integración final, usaríamos una gema para parsear el struct de C++
 
       request = JSON.parse(data[32..-1].strip)

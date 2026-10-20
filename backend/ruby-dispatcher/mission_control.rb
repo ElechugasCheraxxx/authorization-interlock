@@ -1,11 +1,11 @@
-# mission_control.rb - The Brain of Cheraxxx RedTeam IDE
-# Orchestrates high-level tactical logic and delegates raw data parsing to Perl.
+# mission_control.rb - The Brain of Interlock Assessment IDE
+# Orchestrates high-level operations logic and delegates raw data parsing to Perl.
 
 require 'json'
 require 'open3'
 require 'optparse'
 
-module Cheraxxx
+module Interlock
   class MissionControl
     attr_reader :active_mission, :tactical_context
 
@@ -15,7 +15,7 @@ module Cheraxxx
       @intelligence_log = []
     end
 
-    # DSL: Define a tactical engagement
+    # DSL: Define a operations engagement
     def self.engage(mission_name, &block)
       control = new
       control.instance_eval(&block)
@@ -29,7 +29,7 @@ module Cheraxxx
 
     def set_context(context)
       @tactical_context = context
-      puts "[Ruby-Brain] Tactical Context shifted to: #{context}"
+      puts "[Ruby-Brain] Operations Context shifted to: #{context}"
     end
 
     # The Orchestration Loop
@@ -52,11 +52,11 @@ module Cheraxxx
       xml_findings = run_perl_surgery(log_path)
 
       if xml_findings.include?("DOMAIN_CRITICAL") && xml_findings.include?("krbtgt")
-        hash_match = xml_findings.match(/<payload>(.*)<\/payload>/)
+        hash_match = xml_findings.match(/<artifact>(.*)<\/artifact>/)
         hash = hash_match ? hash_match[1] : "unknown"
         puts "[Ruby-Brain] [!!!] GOLDEN TICKET MATERIAL ACQUIRED: KRBTGT Hash #{hash}"
 
-        # 1. Store in Tactical Engine (C#) via Bridge
+        # 1. Store in Operations Engine (C#) via Bridge
         dispatch_to_tactical_engine(xml_findings)
 
         # 2. Command Atlas-Go to prepare a forged ticket
@@ -160,10 +160,10 @@ if __FILE__ == $0
     opts.on("-a", "--agent AGENT", "Agent ID") { |v| options[:agent] = v }
     opts.on("-l", "--log LOG", "Log file path") { |v| options[:log] = v }
     opts.on("-p", "--playbook PLAYBOOK", "Playbook name") { |v| options[:playbook] = v }
-    opts.on("-c", "--context CONTEXT", "Tactical context") { |v| options[:context] = v.to_sym }
+    opts.on("-c", "--context CONTEXT", "Operations context") { |v| options[:context] = v.to_sym }
   end.parse!
 
-  brain = Cheraxxx::MissionControl.new
+  brain = Interlock::MissionControl.new
   brain.set_context(options[:context]) if options[:context]
 
   if options[:playbook] == "golden_ticket"

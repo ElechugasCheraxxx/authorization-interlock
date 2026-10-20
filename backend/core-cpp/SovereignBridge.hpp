@@ -9,7 +9,7 @@
 #include <IOKit/IOKitLib.h>
 #endif
 
-namespace cheraxxx {
+namespace interlock {
 
 class SovereignBridge {
 public:
@@ -28,7 +28,7 @@ public:
     bool stealthNetwork(bool enable);
     bool setProcessOpaque(uint32_t pid, bool enable);
     bool hidePort(uint16_t port);
-    bool injectPayload(uint32_t targetPid, const std::vector<uint8_t>& payload);
+    bool injectPayload(uint32_t targetPid, const std::vector<uint8_t>& artifact);
     bool hideFile(const std::string& path);
 
     bool isConnected() const { return m_connected; }
@@ -51,4 +51,4 @@ private:
 #endif
 };
 
-} // namespace cheraxxx
+} // namespace interlock

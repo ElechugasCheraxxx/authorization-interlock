@@ -7,7 +7,7 @@
 #include <mutex>
 #include <thread>
 
-namespace cheraxxx {
+namespace interlock {
 
 enum class HeadlessState {
     CIPHER_ACTIVE,
@@ -51,4 +51,4 @@ private:
     std::atomic<bool> running;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

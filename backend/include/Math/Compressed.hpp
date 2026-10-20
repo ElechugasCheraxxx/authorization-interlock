@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <cmath>
 
-namespace cheraxxx::math {
+namespace interlock::math {
 
 /**
  * @brief Compressed 3D Vector using 16-bit fixed-point representation.
@@ -53,4 +53,4 @@ struct CompressedQuaternion {
     }
 };
 
-} // namespace cheraxxx::math
+} // namespace interlock::math

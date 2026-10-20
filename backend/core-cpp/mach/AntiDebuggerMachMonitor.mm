@@ -7,9 +7,9 @@
 #include <iostream>
 #include "mach/MachProtector.hpp"
 #include "EventSystem.hpp"
-#include "OpsecManager.hpp"
+#include "RiskManager.hpp"
 
-namespace cheraxxx::mach {
+namespace interlock::mach {
 
 static mach_port_t g_exception_port = MACH_PORT_NULL;
 
@@ -30,9 +30,9 @@ void* AntiDebugThread(void* arg) {
         if (kr == KERN_SUCCESS) {
             std::cerr << "[AntiDebug] !!! DETECTED DEBUG EXCEPTION !!! Intercepting and neutralizing..." << std::endl;
 
-            // Trigger the crash induction ported from referencia previa via OpsecManager
-            OpsecManager::getInstance().reportDeviation("MachMonitor", "Debug Exception Detected", 10);
-            OpsecManager::getInstance().induceCrash(false);
+            // Trigger the crash induction ported from referencia previa via RiskManager
+            RiskManager::getInstance().reportDeviation("MachMonitor", "Debug Exception Detected", 10);
+            RiskManager::getInstance().induceCrash(false);
 
             // Simplemente no reenviamos la excepción al debugger.
             // Esto causa que el debugger se cuelgue o pierda el rastro del proceso.
@@ -70,4 +70,4 @@ void StartAntiDebugMonitor() {
     }
 }
 
-} // namespace cheraxxx::mach
+} // namespace interlock::mach

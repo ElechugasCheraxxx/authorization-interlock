@@ -5,7 +5,7 @@
 #include <memory>
 #include <stdexcept>
 
-namespace cheraxxx::crypto {
+namespace interlock::crypto {
 
 class PqcKey {
 public:
@@ -52,4 +52,4 @@ public:
     }
 };
 
-} // namespace cheraxxx::crypto
+} // namespace interlock::crypto

@@ -9,7 +9,7 @@
 #include <iostream>
 #include <vector>
 
-namespace cheraxxx::security {
+namespace interlock::security {
 
 /**
  * @brief Multi-level anti-debugging engine.
@@ -87,7 +87,7 @@ public:
 
     /**
      * @brief Scans ARM64 hardware registers for breakpoints (DBGWVR).
-     * Ported from Cheraxxx's ARM64 Security Research.
+     * Ported from Interlock's ARM64 Security Research.
      */
     bool checkHardwareBreakpoints() {
 #if defined(__arm64__) || defined(__aarch64__)
@@ -110,4 +110,4 @@ private:
     AntiDebug() = default;
 };
 
-} // namespace cheraxxx::security
+} // namespace interlock::security

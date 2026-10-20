@@ -77,7 +77,7 @@
 // return pointer to code in memory
 char *get_pc(void);
 
-// PC-relative addressing for x86 code. Similar to RVA2VA except using functions in payload
+// PC-relative addressing for x86 code. Similar to RVA2VA except using functions in artifact
 #define ADR(type, addr) (type)(get_pc() - ((ULONG_PTR)&get_pc - (ULONG_PTR)addr))
 #else
 #define ADR(type, addr) (type)(addr) // do nothing on 64-bit

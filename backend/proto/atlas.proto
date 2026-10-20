@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package cheraxxx.atlas;
-option go_package = "cheraxxx/atlas/pb";
+package interlock.atlas;
+option go_package = "interlock/atlas/pb";
 
 service SwarmOrchestrator {
     // Registro de un nuevo agente en la Swarm
@@ -20,7 +20,7 @@ message Message {
     string from = 2;
     string to = 3;
     string subject = 4;
-    bytes payload = 5;
+    bytes artifact = 5;
     uint32 priority = 6;
     uint64 timestamp = 7;
 }
@@ -51,7 +51,7 @@ message RegistrationResponse {
 message TelemetryData {
     string agent_id = 1;
     uint64 timestamp = 2;
-    bytes payload = 3;
+    bytes artifact = 3;
     map<string, string> metadata = 4;
 }
 

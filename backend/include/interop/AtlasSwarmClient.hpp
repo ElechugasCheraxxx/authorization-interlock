@@ -7,9 +7,9 @@
 #include <iostream>
 #include <ctime>
 
-namespace cheraxxx::network {
+namespace interlock::network {
 
-namespace pb = cheraxxx::atlas;
+namespace pb = interlock::atlas;
 
 class AtlasSwarmClient {
 public:
@@ -48,18 +48,18 @@ public:
      * @brief Routes a message through the Atlas Swarm.
      * Used to send REASONING_OUTPUT from Cipher/Vantage to the Go-native parser.
      */
-    bool route_message(const std::string& from, const std::string& to, const std::string& subject, const std::string& payload) {
+    bool route_message(const std::string& from, const std::string& to, const std::string& subject, const std::string& artifact) {
         pb::Message msg;
         msg.set_from(from);
         msg.set_to(to);
         msg.set_subject(subject);
-        msg.set_payload(payload);
+        msg.set_payload(artifact);
 
         // Security Hardening: SHA-256 Integrity Verification (Ported from referencia previa TunablesVerifier)
-        // We include a hash of the payload to ensure it hasn't been tampered with in transit/IPC.
-        std::string payload_hash = security::IntegrityVerifier::calculateHash(payload.c_str(), payload.size());
+        // We include a hash of the artifact to ensure it hasn't been tampered with in transit/IPC.
+        std::string payload_hash = security::IntegrityVerifier::calculateHash(artifact.c_str(), artifact.size());
         // For now, we print it. In a real scenario, we'd add this to the gRPC metadata or a specific field.
-        std::cout << "[AtlasClient] Payload Integrity Hash: " << payload_hash << std::endl;
+        std::cout << "[AtlasClient] Artifact Integrity Hash: " << payload_hash << std::endl;
 
         // Use current timestamp if needed (uint64)
         msg.set_timestamp(static_cast<uint64_t>(std::time(nullptr)));
@@ -85,4 +85,4 @@ private:
     std::unique_ptr<pb::SwarmOrchestrator::Stub> stub_;
 };
 
-} // namespace cheraxxx::network
+} // namespace interlock::network

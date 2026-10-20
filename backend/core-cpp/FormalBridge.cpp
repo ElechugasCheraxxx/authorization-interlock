@@ -6,7 +6,7 @@
 #include <vector>
 #include <string>
 
-namespace cheraxxx {
+namespace interlock {
 namespace formal {
 
 /**
@@ -182,7 +182,7 @@ bool DataSurgeryValidator::verifyExtraction(const std::string& raw, const Artifa
     bool res_b = path_b();
 
     if (res_a != res_b) {
-        std::cerr << "🚨 [WARNING] Path A/B Divergence in DataSurgery: Defaulting to Path B (OCaml)" << std::endl;
+        std::cerr << "🚨 [WARNING] Path A/B Divergence in Artifact: Defaulting to Path B (OCaml)" << std::endl;
         return res_b;
     }
     return res_a;
@@ -288,4 +288,4 @@ bool ChoreographyValidator::verifyPurge(const std::string& buffer_id) {
 }
 
 } // namespace formal
-} // namespace cheraxxx
+} // namespace interlock

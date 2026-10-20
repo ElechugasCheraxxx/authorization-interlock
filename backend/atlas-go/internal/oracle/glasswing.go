@@ -20,7 +20,7 @@ type GlasswingOracle struct {
 func NewGlasswingOracle(path string) *GlasswingOracle {
 	if path == "" {
 		// Use project-local compiled binary for M4 Pro dev environment
-		path = "/Users/cheraxxx/Cheraxxx RedTeam IDE/backend/proofs/coq/cheraxxx_coq_validator"
+		path = "/Users/Cheraxxx/Interlock IDE/backend/proofs/coq/interlock_coq_validator"
 	}
 	return &GlasswingOracle{
 		trustedPath: path,
@@ -91,12 +91,12 @@ func (o *GlasswingOracle) ValidateArtifactIntegrity(raw string, art Artifact) (b
 
 func (o *GlasswingOracle) hasCycles(tasks []string) bool {
 	// Implementación básica de detección de ciclos
-	// En Cheraxxx, esto se delega al Trusted Core (Path B)
+	// En Interlock, esto se delega al Trusted Core (Path B)
 	return false
 }
 
-// VerifyRedTeamConstraint asegura que el plan sigue la constitución de Cheraxxx.
-func (o *GlasswingOracle) VerifyRedTeamConstraint(plan string) bool {
+// VerifyAssessmentConstraint asegura que el plan sigue la constitución de Interlock.
+func (o *GlasswingOracle) VerifyAssessmentConstraint(plan string) bool {
 	// Aquí se podrían integrar reglas LTL (Linear Temporal Logic) portadas de Coq
 	if strings.Contains(plan, "destructive") && !strings.Contains(plan, "authorized") {
 		log.Println("🚨 [ORACLE] Violation detected: Destructive action without explicit authorization!")

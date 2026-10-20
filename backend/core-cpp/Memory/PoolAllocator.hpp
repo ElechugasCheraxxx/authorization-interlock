@@ -10,7 +10,7 @@
 #include <new>
 #include <cstring>
 
-namespace cheraxxx::memory {
+namespace interlock::memory {
 
 /**
  * @brief High-performance Hybrid Pool Allocator.
@@ -99,7 +99,7 @@ public:
 
         std::lock_guard<std::mutex> lock(m_mutex);
         if (index >= m_elementCount || m_instanceIds[index] != id) {
-            // Invalid or stale handle (potential attack or bug)
+            // Invalid or stale handle (potential assess or bug)
             return;
         }
 
@@ -139,4 +139,4 @@ private:
     mutable std::mutex m_mutex;
 };
 
-} // namespace cheraxxx::memory
+} // namespace interlock::memory

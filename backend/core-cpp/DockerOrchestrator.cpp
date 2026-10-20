@@ -7,7 +7,7 @@
 #include <sstream>
 #include <algorithm>
 
-namespace cheraxxx {
+namespace interlock {
 
 static bool isValidDockerName(const std::string& name) {
     if (name.empty()) return false;
@@ -117,4 +117,4 @@ std::string DockerOrchestrator::runDockerCLI(const std::string& command) {
     return result;
 }
 
-} // namespace cheraxxx
+} // namespace interlock

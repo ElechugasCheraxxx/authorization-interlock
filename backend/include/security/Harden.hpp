@@ -9,7 +9,7 @@
 #include <sstream>
 #include <iomanip>
 
-namespace cheraxxx::security {
+namespace interlock::security {
 
 /**
  * @brief Logic adapted from referencia previa TunablesVerifier.
@@ -117,9 +117,9 @@ public:
     static void induceGpuCrash() {
         // Port of RageSecInduceGpuCrash logic
         // This usually involves feeding illegal state to the GPU driver
-        // Placeholder for Cheraxxx RedTeam's GBuffer manipulation
+        // Placeholder for Interlock Assessment's GBuffer manipulation
         induceCrash();
     }
 };
 
-} // namespace cheraxxx::security
+} // namespace interlock::security

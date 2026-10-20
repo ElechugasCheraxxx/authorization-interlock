@@ -5,8 +5,8 @@
 #include "../core-cpp/Math/FixedPoint.hpp"
 #include "interop/FormalValidators.hpp"
 
-using namespace cheraxxx::math;
-using namespace cheraxxx::formal;
+using namespace interlock::math;
+using namespace interlock::formal;
 
 void test_vector_compression() {
     float x = 10.5f, y = -2.25f, z = 100.0f;

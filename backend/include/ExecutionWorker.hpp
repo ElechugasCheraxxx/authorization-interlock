@@ -7,7 +7,7 @@
 #include <future>
 #include "Schema.hpp"
 
-namespace cheraxxx {
+namespace interlock {
 
 struct ProcessResult {
     int exit_code;
@@ -37,4 +37,4 @@ private:
     int max_parallel_jobs = 8;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

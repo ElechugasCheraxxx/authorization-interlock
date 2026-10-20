@@ -5,7 +5,7 @@
 #include <mutex>
 #include "Schema.hpp"
 
-namespace cheraxxx {
+namespace interlock {
 
 struct ComponentStatus {
     std::string name;
@@ -31,4 +31,4 @@ private:
     mutable std::mutex mtx;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

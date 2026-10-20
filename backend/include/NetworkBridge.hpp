@@ -5,7 +5,7 @@
 #include <vector>
 #include <functional>
 
-namespace cheraxxx {
+namespace interlock {
 
 struct NetworkStats {
     uint64_t bytesSent;
@@ -34,6 +34,6 @@ private:
     NetworkStats stats = {0, 0, 0};
 };
 
-} // namespace cheraxxx
+} // namespace interlock
 
 #endif // NETWORK_BRIDGE_HPP

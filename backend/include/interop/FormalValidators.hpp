@@ -4,7 +4,7 @@
 #include <vector>
 #include <optional>
 
-namespace cheraxxx {
+namespace interlock {
 namespace formal {
 
 // This header defines the interface for the OCaml code extracted from Coq.
@@ -90,4 +90,4 @@ public:
 };
 
 } // namespace formal
-} // namespace cheraxxx
+} // namespace interlock

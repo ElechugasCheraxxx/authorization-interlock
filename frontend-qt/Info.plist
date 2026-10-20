@@ -5,17 +5,17 @@
     <key>CFBundleDevelopmentRegion</key>
     <string>English</string>
     <key>CFBundleExecutable</key>
-    <string>CheraxxxRedTeamIDE_Qt</string>
+    <string>InterlockIDE_Qt</string>
     <key>CFBundleGetInfoString</key>
-    <string>Cheraxxx RedTeam IDE by Abiterated Systems</string>
+    <string>Interlock Assessment IDE by Abiterated Systems</string>
     <key>CFBundleIconFile</key>
     <string></string>
     <key>CFBundleIdentifier</key>
-    <string>com.abiterated.cheraxxx.ide</string>
+    <string>com.abiterated.interlock.ide</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
-    <string>Cheraxxx RedTeam IDE</string>
+    <string>Interlock Assessment IDE</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>

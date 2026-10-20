@@ -5,7 +5,7 @@
 #include "InferenceEngine.hpp"
 #include "GPUAllocator.hpp"
 
-using namespace cheraxxx;
+using namespace interlock;
 
 struct BenchmarkResult {
     std::string model_id;
@@ -59,12 +59,12 @@ void run_rdt_benchmark(const std::string& model_id, int rdt_factor, std::vector<
 }
 
 int main() {
-    std::cout << "=== Cheraxxx RDT Performance Benchmark (M4 Pro - NATIVE GGUF) ===" << std::endl;
+    std::cout << "=== Interlock RDT Performance Benchmark (M4 Pro - NATIVE GGUF) ===" << std::endl;
 
     auto& engine = InferenceEngine::getInstance();
     engine.initialize();
 
-    std::string model_dir = "/Users/cheraxxx/Cheraxxx RedTeam IDE/data/models";
+    std::string model_dir = "/Users/Cheraxxx/Interlock IDE/data/models";
     std::cout << "[Benchmark] Loading all real GGUF models from: " << model_dir << std::endl;
     engine.loadAllModels(model_dir);
 

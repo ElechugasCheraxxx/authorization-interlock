@@ -1,4 +1,4 @@
-# RedTeam IDE — Architecture
+# Assessment IDE — Architecture
 
 ## Overview
 
@@ -34,7 +34,7 @@ Swap adapter (MLX ↔ llama_cpp) without touching agent code.
 
 ### HeadlessController
 Plan B for Cipher failure. Activates headless mode using the pre-generated Headless Constitution.
-Rex/Atlas/Vector operate peer-to-peer until Cipher recovers or operator intervenes.
+Coordinator/Atlas/Vector operate peer-to-peer until Cipher recovers or operator intervenes.
 
 ## Security Boundaries
 

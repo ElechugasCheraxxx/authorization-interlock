@@ -5,7 +5,7 @@
 #include <vector>
 #include "../Memory/PoolAllocator.hpp"
 
-namespace cheraxxx::core::streaming {
+namespace interlock::core::streaming {
 
 using StrIndex = uint32_t;
 
@@ -28,7 +28,7 @@ struct StreamingInfo {
  *
  * Features:
  * - 4-channel parallel streaming simulation.
- * - LSN (Logical Sector Number) ordering for payload exfiltration.
+ * - LSN (Logical Sector Number) ordering for artifact exfiltration.
  * - Cache-aligned priority entries.
  */
 class StreamingPrioritySystem {
@@ -85,4 +85,4 @@ private:
     uint32_t m_currentHeadPos;
 };
 
-} // namespace cheraxxx::core::streaming
+} // namespace interlock::core::streaming

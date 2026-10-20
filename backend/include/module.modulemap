@@ -1,5 +1,5 @@
-module CheraxxxNative [system] {
-    header "CheraxxxCore.h"
+module InterlockNative [system] {
+    header "InterlockCore.h"
     requires cplusplus
     export *
 }

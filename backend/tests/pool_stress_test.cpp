@@ -5,8 +5,8 @@
 #include "../core-cpp/Memory/PoolAllocator.hpp"
 #include "interop/FormalValidators.hpp"
 
-using namespace cheraxxx::memory;
-using namespace cheraxxx::formal;
+using namespace interlock::memory;
+using namespace interlock::formal;
 
 void test_pool_basic() {
     PoolAllocator pool(100, 10);

@@ -2,7 +2,7 @@
 #include "EventSystem.hpp"
 #include <algorithm>
 
-namespace cheraxxx {
+namespace interlock {
 
 bool WAFDetector::analyze(const TrafficSignal& signal) {
     std::string content = signal.path + " " + signal.body;
@@ -48,4 +48,4 @@ void SignalMonitor::reportAnomaly(const std::string& type, const json& details) 
     EventBus::getInstance().publish(e);
 }
 
-} // namespace cheraxxx
+} // namespace interlock

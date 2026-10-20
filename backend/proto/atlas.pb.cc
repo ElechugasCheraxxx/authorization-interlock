@@ -29,26 +29,26 @@ namespace _fl = ::google::protobuf::internal::field_layout;
 namespace {
 PROTOBUF_CONSTINIT ::google::protobuf::internal::ReflectionData
     file_reflection_data[] = {
-        // ::cheraxxx::atlas::Message
+        // ::interlock::atlas::Message
         {&::_pbi::kDescriptorMethods, &::descriptor_table_atlas_2eproto, /* tracker*/ nullptr,},
-        // ::cheraxxx::atlas::RouteResponse
+        // ::interlock::atlas::RouteResponse
         {&::_pbi::kDescriptorMethods, &::descriptor_table_atlas_2eproto, /* tracker*/ nullptr,},
-        // ::cheraxxx::atlas::SubscribeRequest
+        // ::interlock::atlas::SubscribeRequest
         {&::_pbi::kDescriptorMethods, &::descriptor_table_atlas_2eproto, /* tracker*/ nullptr,},
-        // ::cheraxxx::atlas::AgentInfo
+        // ::interlock::atlas::AgentInfo
         {&::_pbi::kDescriptorMethods, &::descriptor_table_atlas_2eproto, /* tracker*/ nullptr,},
-        // ::cheraxxx::atlas::RegistrationResponse
+        // ::interlock::atlas::RegistrationResponse
         {&::_pbi::kDescriptorMethods, &::descriptor_table_atlas_2eproto, /* tracker*/ nullptr,},
-        // ::cheraxxx::atlas::TelemetryData_MetadataEntry_DoNotUse
+        // ::interlock::atlas::TelemetryData_MetadataEntry_DoNotUse
         {&::_pbi::kDescriptorMethods, &::descriptor_table_atlas_2eproto, /* tracker*/ nullptr,},
-        // ::cheraxxx::atlas::TelemetryData
+        // ::interlock::atlas::TelemetryData
         {&::_pbi::kDescriptorMethods, &::descriptor_table_atlas_2eproto, /* tracker*/ nullptr,},
-        // ::cheraxxx::atlas::ControlCommand
+        // ::interlock::atlas::ControlCommand
         {&::_pbi::kDescriptorMethods, &::descriptor_table_atlas_2eproto, /* tracker*/ nullptr,},
 };
 }  // namespace
 #endif
-namespace cheraxxx {
+namespace interlock {
 namespace atlas {
 constexpr TelemetryData_MetadataEntry_DoNotUse::ParseTableT_ TelemetryData_MetadataEntry_DoNotUse::InternalGenerateParseTable_(const ::_pbi::ClassData* class_data) {
   return ParseTableT_{
@@ -66,7 +66,7 @@ constexpr TelemetryData_MetadataEntry_DoNotUse::ParseTableT_ TelemetryData_Metad
       nullptr,  // post_loop_handler
       ::_pbi::TcParser::DiscardEverythingFallback,  // fallback
       #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-      ::_pbi::TcParser::GetTable<::cheraxxx::atlas::TelemetryData_MetadataEntry_DoNotUse>(),  // to_prefetch
+      ::_pbi::TcParser::GetTable<::interlock::atlas::TelemetryData_MetadataEntry_DoNotUse>(),  // to_prefetch
       #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
     }, {{
       // string value = 2;
@@ -88,7 +88,7 @@ constexpr TelemetryData_MetadataEntry_DoNotUse::ParseTableT_ TelemetryData_Metad
     // no aux_entries
     {{
       "\52\3\5\0\0\0\0\0"
-      "cheraxxx.atlas.TelemetryData.MetadataEntry"
+      "interlock.atlas.TelemetryData.MetadataEntry"
       "key"
       "value"
     }},
@@ -210,7 +210,7 @@ constexpr SubscribeRequest::ParseTableT_ SubscribeRequest::InternalGenerateParse
       nullptr,  // post_loop_handler
       ::_pbi::TcParser::GenericFallback,  // fallback
       #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-      ::_pbi::TcParser::GetTable<::cheraxxx::atlas::SubscribeRequest>(),  // to_prefetch
+      ::_pbi::TcParser::GetTable<::interlock::atlas::SubscribeRequest>(),  // to_prefetch
       #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
     }, {{
       // repeated string topics = 2;
@@ -232,7 +232,7 @@ constexpr SubscribeRequest::ParseTableT_ SubscribeRequest::InternalGenerateParse
     // no aux_entries
     {{
       "\37\11\6\0\0\0\0\0"
-      "cheraxxx.atlas.SubscribeRequest"
+      "interlock.atlas.SubscribeRequest"
       "client_id"
       "topics"
     }},
@@ -245,8 +245,8 @@ inline constexpr SubscribeRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
         topics_ { visibility, ::_pbi::InternalMetadataOffset::Build<
-            ::cheraxxx::atlas::SubscribeRequest,
-            PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::SubscribeRequest, _impl_.topics_)>()
+            ::interlock::atlas::SubscribeRequest,
+            PROTOBUF_FIELD_OFFSET(::interlock::atlas::SubscribeRequest, _impl_.topics_)>()
          }
         ,
         client_id_(
@@ -368,7 +368,7 @@ constexpr RouteResponse::ParseTableT_ RouteResponse::InternalGenerateParseTable_
       nullptr,  // post_loop_handler
       ::_pbi::TcParser::GenericFallback,  // fallback
       #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-      ::_pbi::TcParser::GetTable<::cheraxxx::atlas::RouteResponse>(),  // to_prefetch
+      ::_pbi::TcParser::GetTable<::interlock::atlas::RouteResponse>(),  // to_prefetch
       #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
     }, {{
       // string error = 2;
@@ -390,7 +390,7 @@ constexpr RouteResponse::ParseTableT_ RouteResponse::InternalGenerateParseTable_
     // no aux_entries
     {{
       "\34\0\5\0\0\0\0\0"
-      "cheraxxx.atlas.RouteResponse"
+      "interlock.atlas.RouteResponse"
       "error"
     }},
   };
@@ -521,7 +521,7 @@ constexpr RegistrationResponse::ParseTableT_ RegistrationResponse::InternalGener
       nullptr,  // post_loop_handler
       ::_pbi::TcParser::GenericFallback,  // fallback
       #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-      ::_pbi::TcParser::GetTable<::cheraxxx::atlas::RegistrationResponse>(),  // to_prefetch
+      ::_pbi::TcParser::GetTable<::interlock::atlas::RegistrationResponse>(),  // to_prefetch
       #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
     }, {{
       {::_pbi::TcParser::MiniParse, {}},
@@ -550,7 +550,7 @@ constexpr RegistrationResponse::ParseTableT_ RegistrationResponse::InternalGener
     // no aux_entries
     {{
       "\43\0\15\15\0\0\0\0"
-      "cheraxxx.atlas.RegistrationResponse"
+      "interlock.atlas.RegistrationResponse"
       "session_token"
       "error_message"
     }},
@@ -685,7 +685,7 @@ constexpr Message::ParseTableT_ Message::InternalGenerateParseTable_(const ::_pb
       nullptr,  // post_loop_handler
       ::_pbi::TcParser::GenericFallback,  // fallback
       #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-      ::_pbi::TcParser::GetTable<::cheraxxx::atlas::Message>(),  // to_prefetch
+      ::_pbi::TcParser::GetTable<::interlock::atlas::Message>(),  // to_prefetch
       #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
     }, {{
       {::_pbi::TcParser::MiniParse, {}},
@@ -705,7 +705,7 @@ constexpr Message::ParseTableT_ Message::InternalGenerateParseTable_(const ::_pb
       {::_pbi::TcParser::FastUS1,
        {34, 3, 0,
         PROTOBUF_FIELD_OFFSET(Message, _impl_.subject_)}},
-      // bytes payload = 5;
+      // bytes artifact = 5;
       {::_pbi::TcParser::FastBS1,
        {42, 4, 0,
         PROTOBUF_FIELD_OFFSET(Message, _impl_.payload_)}},
@@ -728,7 +728,7 @@ constexpr Message::ParseTableT_ Message::InternalGenerateParseTable_(const ::_pb
       {PROTOBUF_FIELD_OFFSET(Message, _impl_.to_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
       // string subject = 4;
       {PROTOBUF_FIELD_OFFSET(Message, _impl_.subject_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-      // bytes payload = 5;
+      // bytes artifact = 5;
       {PROTOBUF_FIELD_OFFSET(Message, _impl_.payload_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kBytes | ::_fl::kRepAString)},
       // uint32 priority = 6;
       {PROTOBUF_FIELD_OFFSET(Message, _impl_.priority_), _Internal::kHasBitsOffset + 6, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
@@ -738,7 +738,7 @@ constexpr Message::ParseTableT_ Message::InternalGenerateParseTable_(const ::_pb
     // no aux_entries
     {{
       "\26\2\4\2\7\0\0\0"
-      "cheraxxx.atlas.Message"
+      "interlock.atlas.Message"
       "id"
       "from"
       "to"
@@ -885,7 +885,7 @@ constexpr ControlCommand::ParseTableT_ ControlCommand::InternalGenerateParseTabl
       nullptr,  // post_loop_handler
       ::_pbi::TcParser::GenericFallback,  // fallback
       #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-      ::_pbi::TcParser::GetTable<::cheraxxx::atlas::ControlCommand>(),  // to_prefetch
+      ::_pbi::TcParser::GetTable<::interlock::atlas::ControlCommand>(),  // to_prefetch
       #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
     }, {{
       {::_pbi::TcParser::MiniParse, {}},
@@ -914,7 +914,7 @@ constexpr ControlCommand::ParseTableT_ ControlCommand::InternalGenerateParseTabl
     // no aux_entries
     {{
       "\35\12\6\0\0\0\0\0"
-      "cheraxxx.atlas.ControlCommand"
+      "interlock.atlas.ControlCommand"
       "command_id"
       "action"
     }},
@@ -1051,7 +1051,7 @@ constexpr AgentInfo::ParseTableT_ AgentInfo::InternalGenerateParseTable_(const :
       nullptr,  // post_loop_handler
       ::_pbi::TcParser::GenericFallback,  // fallback
       #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-      ::_pbi::TcParser::GetTable<::cheraxxx::atlas::AgentInfo>(),  // to_prefetch
+      ::_pbi::TcParser::GetTable<::interlock::atlas::AgentInfo>(),  // to_prefetch
       #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
     }, {{
       // string connection_type = 4;
@@ -1085,7 +1085,7 @@ constexpr AgentInfo::ParseTableT_ AgentInfo::InternalGenerateParseTable_(const :
     // no aux_entries
     {{
       "\30\10\11\4\17\0\0\0"
-      "cheraxxx.atlas.AgentInfo"
+      "interlock.atlas.AgentInfo"
       "agent_id"
       "target_os"
       "arch"
@@ -1227,7 +1227,7 @@ constexpr TelemetryData::ParseTableT_ TelemetryData::InternalGenerateParseTable_
       nullptr,  // post_loop_handler
       ::_pbi::TcParser::GenericFallback,  // fallback
       #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-      ::_pbi::TcParser::GetTable<::cheraxxx::atlas::TelemetryData>(),  // to_prefetch
+      ::_pbi::TcParser::GetTable<::interlock::atlas::TelemetryData>(),  // to_prefetch
       #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
     }, {{
       {::_pbi::TcParser::MiniParse, {}},
@@ -1239,7 +1239,7 @@ constexpr TelemetryData::ParseTableT_ TelemetryData::InternalGenerateParseTable_
       {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(TelemetryData, _impl_.timestamp_), 2>(),
        {16, 2, 0,
         PROTOBUF_FIELD_OFFSET(TelemetryData, _impl_.timestamp_)}},
-      // bytes payload = 3;
+      // bytes artifact = 3;
       {::_pbi::TcParser::FastBS1,
        {26, 1, 0,
         PROTOBUF_FIELD_OFFSET(TelemetryData, _impl_.payload_)}},
@@ -1250,7 +1250,7 @@ constexpr TelemetryData::ParseTableT_ TelemetryData::InternalGenerateParseTable_
       {PROTOBUF_FIELD_OFFSET(TelemetryData, _impl_.agent_id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
       // uint64 timestamp = 2;
       {PROTOBUF_FIELD_OFFSET(TelemetryData, _impl_.timestamp_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
-      // bytes payload = 3;
+      // bytes artifact = 3;
       {PROTOBUF_FIELD_OFFSET(TelemetryData, _impl_.payload_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kBytes | ::_fl::kRepAString)},
       // map<string, string> metadata = 4;
       {PROTOBUF_FIELD_OFFSET(TelemetryData, _impl_.metadata_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
@@ -1261,7 +1261,7 @@ constexpr TelemetryData::ParseTableT_ TelemetryData::InternalGenerateParseTable_
     }},
     {{
       "\34\10\0\0\10\0\0\0"
-      "cheraxxx.atlas.TelemetryData"
+      "interlock.atlas.TelemetryData"
       "agent_id"
       "metadata"
     }},
@@ -1281,8 +1281,8 @@ inline constexpr TelemetryData::Impl_::Impl_(
             ::_pbi::ConstantInitialized()),
         timestamp_{::uint64_t{0u}},
         metadata_ { visibility, ::_pbi::InternalMetadataOffset::Build<
-            ::cheraxxx::atlas::TelemetryData,
-            PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::TelemetryData, _impl_.metadata_)>()
+            ::interlock::atlas::TelemetryData,
+            PROTOBUF_FIELD_OFFSET(::interlock::atlas::TelemetryData, _impl_.metadata_)>()
          }
      {}
 
@@ -1379,7 +1379,7 @@ const ::_pbi::ClassData* TelemetryData_get_class_data() {
 }  // namespace
 #endif  // PROTOBUF_CUSTOM_VTABLE
 }  // namespace atlas
-}  // namespace cheraxxx
+}  // namespace interlock
 static constexpr const ::_pb::EnumDescriptor* PROTOBUF_NONNULL* PROTOBUF_NULLABLE
     file_level_enum_descriptors_atlas_2eproto = nullptr;
 static constexpr const ::_pb::ServiceDescriptor* PROTOBUF_NONNULL* PROTOBUF_NULLABLE
@@ -1388,15 +1388,15 @@ const ::uint32_t
     TableStruct_atlas_2eproto::offsets[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
         protodesc_cold) = {
         0x081, // bitmap
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::Message, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::Message, _impl_._has_bits_),
         10, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::Message, _impl_.id_),
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::Message, _impl_.from_),
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::Message, _impl_.to_),
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::Message, _impl_.subject_),
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::Message, _impl_.payload_),
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::Message, _impl_.priority_),
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::Message, _impl_.timestamp_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::Message, _impl_.id_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::Message, _impl_.from_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::Message, _impl_.to_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::Message, _impl_.subject_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::Message, _impl_.payload_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::Message, _impl_.priority_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::Message, _impl_.timestamp_),
         0,
         1,
         2,
@@ -1405,63 +1405,63 @@ const ::uint32_t
         6,
         5,
         0x081, // bitmap
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::RouteResponse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::RouteResponse, _impl_._has_bits_),
         5, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::RouteResponse, _impl_.delivered_),
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::RouteResponse, _impl_.error_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::RouteResponse, _impl_.delivered_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::RouteResponse, _impl_.error_),
         1,
         0,
         0x081, // bitmap
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::SubscribeRequest, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::SubscribeRequest, _impl_._has_bits_),
         5, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::SubscribeRequest, _impl_.client_id_),
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::SubscribeRequest, _impl_.topics_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::SubscribeRequest, _impl_.client_id_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::SubscribeRequest, _impl_.topics_),
         1,
         0,
         0x081, // bitmap
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::AgentInfo, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::AgentInfo, _impl_._has_bits_),
         7, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::AgentInfo, _impl_.agent_id_),
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::AgentInfo, _impl_.target_os_),
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::AgentInfo, _impl_.arch_),
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::AgentInfo, _impl_.connection_type_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::AgentInfo, _impl_.agent_id_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::AgentInfo, _impl_.target_os_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::AgentInfo, _impl_.arch_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::AgentInfo, _impl_.connection_type_),
         0,
         1,
         2,
         3,
         0x081, // bitmap
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::RegistrationResponse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::RegistrationResponse, _impl_._has_bits_),
         6, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::RegistrationResponse, _impl_.success_),
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::RegistrationResponse, _impl_.session_token_),
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::RegistrationResponse, _impl_.error_message_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::RegistrationResponse, _impl_.success_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::RegistrationResponse, _impl_.session_token_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::RegistrationResponse, _impl_.error_message_),
         2,
         0,
         1,
         0x081, // bitmap
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::TelemetryData_MetadataEntry_DoNotUse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::TelemetryData_MetadataEntry_DoNotUse, _impl_._has_bits_),
         5, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::TelemetryData_MetadataEntry_DoNotUse, _impl_.key_),
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::TelemetryData_MetadataEntry_DoNotUse, _impl_.value_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::TelemetryData_MetadataEntry_DoNotUse, _impl_.key_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::TelemetryData_MetadataEntry_DoNotUse, _impl_.value_),
         0,
         1,
         0x081, // bitmap
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::TelemetryData, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::TelemetryData, _impl_._has_bits_),
         7, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::TelemetryData, _impl_.agent_id_),
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::TelemetryData, _impl_.timestamp_),
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::TelemetryData, _impl_.payload_),
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::TelemetryData, _impl_.metadata_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::TelemetryData, _impl_.agent_id_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::TelemetryData, _impl_.timestamp_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::TelemetryData, _impl_.payload_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::TelemetryData, _impl_.metadata_),
         0,
         2,
         1,
         3,
         0x081, // bitmap
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::ControlCommand, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::ControlCommand, _impl_._has_bits_),
         6, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::ControlCommand, _impl_.command_id_),
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::ControlCommand, _impl_.action_),
-        PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::ControlCommand, _impl_.params_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::ControlCommand, _impl_.command_id_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::ControlCommand, _impl_.action_),
+        PROTOBUF_FIELD_OFFSET(::interlock::atlas::ControlCommand, _impl_.params_),
         0,
         1,
         2,
@@ -1469,29 +1469,29 @@ const ::uint32_t
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-        {0, sizeof(::cheraxxx::atlas::Message)},
-        {17, sizeof(::cheraxxx::atlas::RouteResponse)},
-        {24, sizeof(::cheraxxx::atlas::SubscribeRequest)},
-        {31, sizeof(::cheraxxx::atlas::AgentInfo)},
-        {42, sizeof(::cheraxxx::atlas::RegistrationResponse)},
-        {51, sizeof(::cheraxxx::atlas::TelemetryData_MetadataEntry_DoNotUse)},
-        {58, sizeof(::cheraxxx::atlas::TelemetryData)},
-        {69, sizeof(::cheraxxx::atlas::ControlCommand)},
+        {0, sizeof(::interlock::atlas::Message)},
+        {17, sizeof(::interlock::atlas::RouteResponse)},
+        {24, sizeof(::interlock::atlas::SubscribeRequest)},
+        {31, sizeof(::interlock::atlas::AgentInfo)},
+        {42, sizeof(::interlock::atlas::RegistrationResponse)},
+        {51, sizeof(::interlock::atlas::TelemetryData_MetadataEntry_DoNotUse)},
+        {58, sizeof(::interlock::atlas::TelemetryData)},
+        {69, sizeof(::interlock::atlas::ControlCommand)},
 };
 static const ::_pbi::MessageGlobalsBase* PROTOBUF_NONNULL const
     file_message_globals[] = {
-        &::cheraxxx::atlas::Message_globals_,
-        &::cheraxxx::atlas::RouteResponse_globals_,
-        &::cheraxxx::atlas::SubscribeRequest_globals_,
-        &::cheraxxx::atlas::AgentInfo_globals_,
-        &::cheraxxx::atlas::RegistrationResponse_globals_,
-        &::cheraxxx::atlas::TelemetryData_MetadataEntry_DoNotUse_globals_,
-        &::cheraxxx::atlas::TelemetryData_globals_,
-        &::cheraxxx::atlas::ControlCommand_globals_,
+        &::interlock::atlas::Message_globals_,
+        &::interlock::atlas::RouteResponse_globals_,
+        &::interlock::atlas::SubscribeRequest_globals_,
+        &::interlock::atlas::AgentInfo_globals_,
+        &::interlock::atlas::RegistrationResponse_globals_,
+        &::interlock::atlas::TelemetryData_MetadataEntry_DoNotUse_globals_,
+        &::interlock::atlas::TelemetryData_globals_,
+        &::interlock::atlas::ControlCommand_globals_,
 };
 const char descriptor_table_protodef_atlas_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
-    "\n\013atlas.proto\022\016cheraxxx.atlas\"v\n\007Message"
+    "\n\013atlas.proto\022\016interlock.atlas\"v\n\007Message"
     "\022\n\n\002id\030\001 \001(\t\022\014\n\004from\030\002 \001(\t\022\n\n\002to\030\003 \001(\t\022\017"
     "\n\007subject\030\004 \001(\t\022\017\n\007payload\030\005 \001(\014\022\020\n\010prio"
     "rity\030\006 \001(\r\022\021\n\ttimestamp\030\007 \001(\004\"1\n\rRouteRe"
@@ -1504,19 +1504,19 @@ const char descriptor_table_protodef_atlas_2eproto[] ABSL_ATTRIBUTE_SECTION_VARI
     "en\030\002 \001(\t\022\025\n\rerror_message\030\003 \001(\t\"\265\001\n\rTele"
     "metryData\022\020\n\010agent_id\030\001 \001(\t\022\021\n\ttimestamp"
     "\030\002 \001(\004\022\017\n\007payload\030\003 \001(\014\022=\n\010metadata\030\004 \003("
-    "\0132+.cheraxxx.atlas.TelemetryData.Metadat"
+    "\0132+.interlock.atlas.TelemetryData.Metadat"
     "aEntry\032/\n\rMetadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005"
     "value\030\002 \001(\t:\0028\001\"D\n\016ControlCommand\022\022\n\ncom"
     "mand_id\030\001 \001(\t\022\016\n\006action\030\002 \001(\t\022\016\n\006params\030"
     "\003 \001(\0142\326\002\n\021SwarmOrchestrator\022P\n\rRegisterA"
-    "gent\022\031.cheraxxx.atlas.AgentInfo\032$.cherax"
+    "gent\022\031.interlock.atlas.AgentInfo\032$.cherax"
     "xx.atlas.RegistrationResponse\022U\n\020TunnelT"
-    "elemetria\022\035.cheraxxx.atlas.TelemetryData"
-    "\032\036.cheraxxx.atlas.ControlCommand(\0010\001\022F\n\014"
-    "RouteMessage\022\027.cheraxxx.atlas.Message\032\035."
-    "cheraxxx.atlas.RouteResponse\022P\n\021Subscrib"
-    "eMessages\022 .cheraxxx.atlas.SubscribeRequ"
-    "est\032\027.cheraxxx.atlas.Message0\001B\023Z\021cherax"
+    "elemetria\022\035.interlock.atlas.TelemetryData"
+    "\032\036.interlock.atlas.ControlCommand(\0010\001\022F\n\014"
+    "RouteMessage\022\027.interlock.atlas.Message\032\035."
+    "interlock.atlas.RouteResponse\022P\n\021Subscrib"
+    "eMessages\022 .interlock.atlas.SubscribeRequ"
+    "est\032\027.interlock.atlas.Message0\001B\023Z\021cherax"
     "xx/atlas/pbb\006proto3"
 };
 static ::absl::once_flag descriptor_table_atlas_2eproto_once;
@@ -1536,7 +1536,7 @@ PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_atlas_2eproto 
     file_level_enum_descriptors_atlas_2eproto,
     file_level_service_descriptors_atlas_2eproto,
 };
-namespace cheraxxx {
+namespace interlock {
 namespace atlas {
 // ===================================================================
 
@@ -1547,12 +1547,12 @@ Message::Message(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:cheraxxx.atlas.Message)
+  // @@protoc_insertion_point(arena_constructor:interlock.atlas.Message)
 }
 PROTOBUF_NDEBUG_INLINE Message::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-    [[maybe_unused]] const ::cheraxxx::atlas::Message& from_msg)
+    [[maybe_unused]] const ::interlock::atlas::Message& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         id_(arena, from.id_),
@@ -1583,7 +1583,7 @@ Message::Message(
                offsetof(Impl_, timestamp_) +
                sizeof(Impl_::priority_));
 
-  // @@protoc_insertion_point(copy_constructor:cheraxxx.atlas.Message)
+  // @@protoc_insertion_point(copy_constructor:interlock.atlas.Message)
 }
 PROTOBUF_NDEBUG_INLINE Message::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
@@ -1605,7 +1605,7 @@ inline void Message::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
                sizeof(Impl_::priority_));
 }
 Message::~Message() {
-  // @@protoc_insertion_point(destructor:cheraxxx.atlas.Message)
+  // @@protoc_insertion_point(destructor:interlock.atlas.Message)
   SharedDtor(*this);
 }
 inline void Message::SharedDtor(MessageLite& self) {
@@ -1650,7 +1650,7 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const Message::ParseTableT_
         Message::InternalGenerateParseTable_(Message_class_data_.base());
 #endif  // !PROTOBUF_MESSAGE_GLOBALS
 PROTOBUF_NOINLINE void Message::Clear() {
-// @@protoc_insertion_point(message_clear_start:cheraxxx.atlas.Message)
+// @@protoc_insertion_point(message_clear_start:interlock.atlas.Message)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -1697,7 +1697,7 @@ PROTOBUF_NOINLINE void Message::Clear() {
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(serialize_to_array_start:cheraxxx.atlas.Message)
+  // @@protoc_insertion_point(serialize_to_array_start:interlock.atlas.Message)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -1707,7 +1707,7 @@ PROTOBUF_NOINLINE void Message::Clear() {
     if (!this_._internal_id().empty()) {
       const ::std::string& _s = this_._internal_id();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cheraxxx.atlas.Message.id");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "interlock.atlas.Message.id");
       target = stream->WriteStringMaybeAliased(1, _s, target);
     }
   }
@@ -1717,7 +1717,7 @@ PROTOBUF_NOINLINE void Message::Clear() {
     if (!this_._internal_from().empty()) {
       const ::std::string& _s = this_._internal_from();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cheraxxx.atlas.Message.from");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "interlock.atlas.Message.from");
       target = stream->WriteStringMaybeAliased(2, _s, target);
     }
   }
@@ -1727,7 +1727,7 @@ PROTOBUF_NOINLINE void Message::Clear() {
     if (!this_._internal_to().empty()) {
       const ::std::string& _s = this_._internal_to();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cheraxxx.atlas.Message.to");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "interlock.atlas.Message.to");
       target = stream->WriteStringMaybeAliased(3, _s, target);
     }
   }
@@ -1737,12 +1737,12 @@ PROTOBUF_NOINLINE void Message::Clear() {
     if (!this_._internal_subject().empty()) {
       const ::std::string& _s = this_._internal_subject();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cheraxxx.atlas.Message.subject");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "interlock.atlas.Message.subject");
       target = stream->WriteStringMaybeAliased(4, _s, target);
     }
   }
 
-  // bytes payload = 5;
+  // bytes artifact = 5;
   if (CheckHasBit(cached_has_bits, 0x00000010U)) {
     if (!this_._internal_payload().empty()) {
       const ::std::string& _s = this_._internal_payload();
@@ -1773,7 +1773,7 @@ PROTOBUF_NOINLINE void Message::Clear() {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:cheraxxx.atlas.Message)
+  // @@protoc_insertion_point(serialize_to_array_end:interlock.atlas.Message)
   return target;
 }
 
@@ -1784,7 +1784,7 @@ PROTOBUF_NOINLINE void Message::Clear() {
 ::size_t Message::ByteSizeLong() const {
   const Message& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(message_byte_size_start:cheraxxx.atlas.Message)
+  // @@protoc_insertion_point(message_byte_size_start:interlock.atlas.Message)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -1822,7 +1822,7 @@ PROTOBUF_NOINLINE void Message::Clear() {
                                         this_._internal_subject());
       }
     }
-    // bytes payload = 5;
+    // bytes artifact = 5;
     if (CheckHasBit(cached_has_bits, 0x00000010U)) {
       if (!this_._internal_payload().empty()) {
         total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
@@ -1855,7 +1855,7 @@ void Message::MergeImpl(::google::protobuf::MessageLite& to_msg,
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     from.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(class_specific_merge_from_start:cheraxxx.atlas.Message)
+  // @@protoc_insertion_point(class_specific_merge_from_start:interlock.atlas.Message)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
@@ -1924,7 +1924,7 @@ void Message::MergeImpl(::google::protobuf::MessageLite& to_msg,
 }
 
 void Message::CopyFrom(const Message& from) {
-  // @@protoc_insertion_point(class_specific_copy_from_start:cheraxxx.atlas.Message)
+  // @@protoc_insertion_point(class_specific_copy_from_start:interlock.atlas.Message)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -1962,12 +1962,12 @@ RouteResponse::RouteResponse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:cheraxxx.atlas.RouteResponse)
+  // @@protoc_insertion_point(arena_constructor:interlock.atlas.RouteResponse)
 }
 PROTOBUF_NDEBUG_INLINE RouteResponse::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-    [[maybe_unused]] const ::cheraxxx::atlas::RouteResponse& from_msg)
+    [[maybe_unused]] const ::interlock::atlas::RouteResponse& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         error_(arena, from.error_) {}
@@ -1988,7 +1988,7 @@ RouteResponse::RouteResponse(
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
   _impl_.delivered_ = from._impl_.delivered_;
 
-  // @@protoc_insertion_point(copy_constructor:cheraxxx.atlas.RouteResponse)
+  // @@protoc_insertion_point(copy_constructor:interlock.atlas.RouteResponse)
 }
 PROTOBUF_NDEBUG_INLINE RouteResponse::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
@@ -2001,7 +2001,7 @@ inline void RouteResponse::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   _impl_.delivered_ = {};
 }
 RouteResponse::~RouteResponse() {
-  // @@protoc_insertion_point(destructor:cheraxxx.atlas.RouteResponse)
+  // @@protoc_insertion_point(destructor:interlock.atlas.RouteResponse)
   SharedDtor(*this);
 }
 inline void RouteResponse::SharedDtor(MessageLite& self) {
@@ -2042,7 +2042,7 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const RouteResponse::ParseTableT_
         RouteResponse::InternalGenerateParseTable_(RouteResponse_class_data_.base());
 #endif  // !PROTOBUF_MESSAGE_GLOBALS
 PROTOBUF_NOINLINE void RouteResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:cheraxxx.atlas.RouteResponse)
+// @@protoc_insertion_point(message_clear_start:interlock.atlas.RouteResponse)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -2071,7 +2071,7 @@ PROTOBUF_NOINLINE void RouteResponse::Clear() {
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(serialize_to_array_start:cheraxxx.atlas.RouteResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:interlock.atlas.RouteResponse)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -2090,7 +2090,7 @@ PROTOBUF_NOINLINE void RouteResponse::Clear() {
     if (!this_._internal_error().empty()) {
       const ::std::string& _s = this_._internal_error();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cheraxxx.atlas.RouteResponse.error");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "interlock.atlas.RouteResponse.error");
       target = stream->WriteStringMaybeAliased(2, _s, target);
     }
   }
@@ -2100,7 +2100,7 @@ PROTOBUF_NOINLINE void RouteResponse::Clear() {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:cheraxxx.atlas.RouteResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:interlock.atlas.RouteResponse)
   return target;
 }
 
@@ -2111,7 +2111,7 @@ PROTOBUF_NOINLINE void RouteResponse::Clear() {
 ::size_t RouteResponse::ByteSizeLong() const {
   const RouteResponse& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(message_byte_size_start:cheraxxx.atlas.RouteResponse)
+  // @@protoc_insertion_point(message_byte_size_start:interlock.atlas.RouteResponse)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -2146,7 +2146,7 @@ void RouteResponse::MergeImpl(::google::protobuf::MessageLite& to_msg,
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     from.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(class_specific_merge_from_start:cheraxxx.atlas.RouteResponse)
+  // @@protoc_insertion_point(class_specific_merge_from_start:interlock.atlas.RouteResponse)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
@@ -2174,7 +2174,7 @@ void RouteResponse::MergeImpl(::google::protobuf::MessageLite& to_msg,
 }
 
 void RouteResponse::CopyFrom(const RouteResponse& from) {
-  // @@protoc_insertion_point(class_specific_copy_from_start:cheraxxx.atlas.RouteResponse)
+  // @@protoc_insertion_point(class_specific_copy_from_start:interlock.atlas.RouteResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -2203,18 +2203,18 @@ SubscribeRequest::SubscribeRequest(::google::protobuf::Arena* PROTOBUF_NULLABLE 
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:cheraxxx.atlas.SubscribeRequest)
+  // @@protoc_insertion_point(arena_constructor:interlock.atlas.SubscribeRequest)
 }
 PROTOBUF_NDEBUG_INLINE SubscribeRequest::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-    [[maybe_unused]] const ::cheraxxx::atlas::SubscribeRequest& from_msg)
+    [[maybe_unused]] const ::interlock::atlas::SubscribeRequest& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         topics_ {
           visibility, ::_pbi::InternalMetadataOffset::Build<
-              ::cheraxxx::atlas::SubscribeRequest,
-              PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::SubscribeRequest, _impl_.topics_)>()
+              ::interlock::atlas::SubscribeRequest,
+              PROTOBUF_FIELD_OFFSET(::interlock::atlas::SubscribeRequest, _impl_.topics_)>()
           , from.topics_
         }
         ,
@@ -2235,15 +2235,15 @@ SubscribeRequest::SubscribeRequest(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
 
-  // @@protoc_insertion_point(copy_constructor:cheraxxx.atlas.SubscribeRequest)
+  // @@protoc_insertion_point(copy_constructor:interlock.atlas.SubscribeRequest)
 }
 PROTOBUF_NDEBUG_INLINE SubscribeRequest::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
       : _cached_size_{0},
         topics_ { visibility, ::_pbi::InternalMetadataOffset::Build<
-            ::cheraxxx::atlas::SubscribeRequest,
-            PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::SubscribeRequest, _impl_.topics_)>()
+            ::interlock::atlas::SubscribeRequest,
+            PROTOBUF_FIELD_OFFSET(::interlock::atlas::SubscribeRequest, _impl_.topics_)>()
          }
         ,
         client_id_(arena) {}
@@ -2252,7 +2252,7 @@ inline void SubscribeRequest::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) 
   new (&_impl_) Impl_(internal_visibility(), arena);
 }
 SubscribeRequest::~SubscribeRequest() {
-  // @@protoc_insertion_point(destructor:cheraxxx.atlas.SubscribeRequest)
+  // @@protoc_insertion_point(destructor:interlock.atlas.SubscribeRequest)
   SharedDtor(*this);
 }
 inline void SubscribeRequest::SharedDtor(MessageLite& self) {
@@ -2293,7 +2293,7 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const SubscribeRequest::ParseTableT_
         SubscribeRequest::InternalGenerateParseTable_(SubscribeRequest_class_data_.base());
 #endif  // !PROTOBUF_MESSAGE_GLOBALS
 PROTOBUF_NOINLINE void SubscribeRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:cheraxxx.atlas.SubscribeRequest)
+// @@protoc_insertion_point(message_clear_start:interlock.atlas.SubscribeRequest)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -2326,7 +2326,7 @@ PROTOBUF_NOINLINE void SubscribeRequest::Clear() {
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(serialize_to_array_start:cheraxxx.atlas.SubscribeRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:interlock.atlas.SubscribeRequest)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -2336,7 +2336,7 @@ PROTOBUF_NOINLINE void SubscribeRequest::Clear() {
     if (!this_._internal_client_id().empty()) {
       const ::std::string& _s = this_._internal_client_id();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cheraxxx.atlas.SubscribeRequest.client_id");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "interlock.atlas.SubscribeRequest.client_id");
       target = stream->WriteStringMaybeAliased(1, _s, target);
     }
   }
@@ -2346,7 +2346,7 @@ PROTOBUF_NOINLINE void SubscribeRequest::Clear() {
     for (int i = 0, n = this_._internal_topics_size(); i < n; ++i) {
       const auto& s = this_._internal_topics().Get(i);
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cheraxxx.atlas.SubscribeRequest.topics");
+          s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "interlock.atlas.SubscribeRequest.topics");
       target = stream->WriteString(2, s, target);
     }
   }
@@ -2356,7 +2356,7 @@ PROTOBUF_NOINLINE void SubscribeRequest::Clear() {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:cheraxxx.atlas.SubscribeRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:interlock.atlas.SubscribeRequest)
   return target;
 }
 
@@ -2367,7 +2367,7 @@ PROTOBUF_NOINLINE void SubscribeRequest::Clear() {
 ::size_t SubscribeRequest::ByteSizeLong() const {
   const SubscribeRequest& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(message_byte_size_start:cheraxxx.atlas.SubscribeRequest)
+  // @@protoc_insertion_point(message_byte_size_start:interlock.atlas.SubscribeRequest)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -2406,7 +2406,7 @@ void SubscribeRequest::MergeImpl(::google::protobuf::MessageLite& to_msg,
     from.CheckHasBitConsistency();
   }
   ::google::protobuf::Arena* arena = _this->GetArena();
-  // @@protoc_insertion_point(class_specific_merge_from_start:cheraxxx.atlas.SubscribeRequest)
+  // @@protoc_insertion_point(class_specific_merge_from_start:interlock.atlas.SubscribeRequest)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
@@ -2434,7 +2434,7 @@ void SubscribeRequest::MergeImpl(::google::protobuf::MessageLite& to_msg,
 }
 
 void SubscribeRequest::CopyFrom(const SubscribeRequest& from) {
-  // @@protoc_insertion_point(class_specific_copy_from_start:cheraxxx.atlas.SubscribeRequest)
+  // @@protoc_insertion_point(class_specific_copy_from_start:interlock.atlas.SubscribeRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -2463,12 +2463,12 @@ AgentInfo::AgentInfo(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:cheraxxx.atlas.AgentInfo)
+  // @@protoc_insertion_point(arena_constructor:interlock.atlas.AgentInfo)
 }
 PROTOBUF_NDEBUG_INLINE AgentInfo::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-    [[maybe_unused]] const ::cheraxxx::atlas::AgentInfo& from_msg)
+    [[maybe_unused]] const ::interlock::atlas::AgentInfo& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         agent_id_(arena, from.agent_id_),
@@ -2491,7 +2491,7 @@ AgentInfo::AgentInfo(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
 
-  // @@protoc_insertion_point(copy_constructor:cheraxxx.atlas.AgentInfo)
+  // @@protoc_insertion_point(copy_constructor:interlock.atlas.AgentInfo)
 }
 PROTOBUF_NDEBUG_INLINE AgentInfo::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
@@ -2506,7 +2506,7 @@ inline void AgentInfo::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
 }
 AgentInfo::~AgentInfo() {
-  // @@protoc_insertion_point(destructor:cheraxxx.atlas.AgentInfo)
+  // @@protoc_insertion_point(destructor:interlock.atlas.AgentInfo)
   SharedDtor(*this);
 }
 inline void AgentInfo::SharedDtor(MessageLite& self) {
@@ -2550,7 +2550,7 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const AgentInfo::ParseTableT_
         AgentInfo::InternalGenerateParseTable_(AgentInfo_class_data_.base());
 #endif  // !PROTOBUF_MESSAGE_GLOBALS
 PROTOBUF_NOINLINE void AgentInfo::Clear() {
-// @@protoc_insertion_point(message_clear_start:cheraxxx.atlas.AgentInfo)
+// @@protoc_insertion_point(message_clear_start:interlock.atlas.AgentInfo)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -2589,7 +2589,7 @@ PROTOBUF_NOINLINE void AgentInfo::Clear() {
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(serialize_to_array_start:cheraxxx.atlas.AgentInfo)
+  // @@protoc_insertion_point(serialize_to_array_start:interlock.atlas.AgentInfo)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -2599,7 +2599,7 @@ PROTOBUF_NOINLINE void AgentInfo::Clear() {
     if (!this_._internal_agent_id().empty()) {
       const ::std::string& _s = this_._internal_agent_id();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cheraxxx.atlas.AgentInfo.agent_id");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "interlock.atlas.AgentInfo.agent_id");
       target = stream->WriteStringMaybeAliased(1, _s, target);
     }
   }
@@ -2609,7 +2609,7 @@ PROTOBUF_NOINLINE void AgentInfo::Clear() {
     if (!this_._internal_target_os().empty()) {
       const ::std::string& _s = this_._internal_target_os();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cheraxxx.atlas.AgentInfo.target_os");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "interlock.atlas.AgentInfo.target_os");
       target = stream->WriteStringMaybeAliased(2, _s, target);
     }
   }
@@ -2619,7 +2619,7 @@ PROTOBUF_NOINLINE void AgentInfo::Clear() {
     if (!this_._internal_arch().empty()) {
       const ::std::string& _s = this_._internal_arch();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cheraxxx.atlas.AgentInfo.arch");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "interlock.atlas.AgentInfo.arch");
       target = stream->WriteStringMaybeAliased(3, _s, target);
     }
   }
@@ -2629,7 +2629,7 @@ PROTOBUF_NOINLINE void AgentInfo::Clear() {
     if (!this_._internal_connection_type().empty()) {
       const ::std::string& _s = this_._internal_connection_type();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cheraxxx.atlas.AgentInfo.connection_type");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "interlock.atlas.AgentInfo.connection_type");
       target = stream->WriteStringMaybeAliased(4, _s, target);
     }
   }
@@ -2639,7 +2639,7 @@ PROTOBUF_NOINLINE void AgentInfo::Clear() {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:cheraxxx.atlas.AgentInfo)
+  // @@protoc_insertion_point(serialize_to_array_end:interlock.atlas.AgentInfo)
   return target;
 }
 
@@ -2650,7 +2650,7 @@ PROTOBUF_NOINLINE void AgentInfo::Clear() {
 ::size_t AgentInfo::ByteSizeLong() const {
   const AgentInfo& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(message_byte_size_start:cheraxxx.atlas.AgentInfo)
+  // @@protoc_insertion_point(message_byte_size_start:interlock.atlas.AgentInfo)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -2700,7 +2700,7 @@ void AgentInfo::MergeImpl(::google::protobuf::MessageLite& to_msg,
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     from.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(class_specific_merge_from_start:cheraxxx.atlas.AgentInfo)
+  // @@protoc_insertion_point(class_specific_merge_from_start:interlock.atlas.AgentInfo)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
@@ -2750,7 +2750,7 @@ void AgentInfo::MergeImpl(::google::protobuf::MessageLite& to_msg,
 }
 
 void AgentInfo::CopyFrom(const AgentInfo& from) {
-  // @@protoc_insertion_point(class_specific_copy_from_start:cheraxxx.atlas.AgentInfo)
+  // @@protoc_insertion_point(class_specific_copy_from_start:interlock.atlas.AgentInfo)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -2781,12 +2781,12 @@ RegistrationResponse::RegistrationResponse(::google::protobuf::Arena* PROTOBUF_N
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:cheraxxx.atlas.RegistrationResponse)
+  // @@protoc_insertion_point(arena_constructor:interlock.atlas.RegistrationResponse)
 }
 PROTOBUF_NDEBUG_INLINE RegistrationResponse::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-    [[maybe_unused]] const ::cheraxxx::atlas::RegistrationResponse& from_msg)
+    [[maybe_unused]] const ::interlock::atlas::RegistrationResponse& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         session_token_(arena, from.session_token_),
@@ -2808,7 +2808,7 @@ RegistrationResponse::RegistrationResponse(
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
   _impl_.success_ = from._impl_.success_;
 
-  // @@protoc_insertion_point(copy_constructor:cheraxxx.atlas.RegistrationResponse)
+  // @@protoc_insertion_point(copy_constructor:interlock.atlas.RegistrationResponse)
 }
 PROTOBUF_NDEBUG_INLINE RegistrationResponse::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
@@ -2822,7 +2822,7 @@ inline void RegistrationResponse::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE are
   _impl_.success_ = {};
 }
 RegistrationResponse::~RegistrationResponse() {
-  // @@protoc_insertion_point(destructor:cheraxxx.atlas.RegistrationResponse)
+  // @@protoc_insertion_point(destructor:interlock.atlas.RegistrationResponse)
   SharedDtor(*this);
 }
 inline void RegistrationResponse::SharedDtor(MessageLite& self) {
@@ -2864,7 +2864,7 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const RegistrationResponse::ParseTableT_
         RegistrationResponse::InternalGenerateParseTable_(RegistrationResponse_class_data_.base());
 #endif  // !PROTOBUF_MESSAGE_GLOBALS
 PROTOBUF_NOINLINE void RegistrationResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:cheraxxx.atlas.RegistrationResponse)
+// @@protoc_insertion_point(message_clear_start:interlock.atlas.RegistrationResponse)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -2898,7 +2898,7 @@ PROTOBUF_NOINLINE void RegistrationResponse::Clear() {
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(serialize_to_array_start:cheraxxx.atlas.RegistrationResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:interlock.atlas.RegistrationResponse)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -2917,7 +2917,7 @@ PROTOBUF_NOINLINE void RegistrationResponse::Clear() {
     if (!this_._internal_session_token().empty()) {
       const ::std::string& _s = this_._internal_session_token();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cheraxxx.atlas.RegistrationResponse.session_token");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "interlock.atlas.RegistrationResponse.session_token");
       target = stream->WriteStringMaybeAliased(2, _s, target);
     }
   }
@@ -2927,7 +2927,7 @@ PROTOBUF_NOINLINE void RegistrationResponse::Clear() {
     if (!this_._internal_error_message().empty()) {
       const ::std::string& _s = this_._internal_error_message();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cheraxxx.atlas.RegistrationResponse.error_message");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "interlock.atlas.RegistrationResponse.error_message");
       target = stream->WriteStringMaybeAliased(3, _s, target);
     }
   }
@@ -2937,7 +2937,7 @@ PROTOBUF_NOINLINE void RegistrationResponse::Clear() {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:cheraxxx.atlas.RegistrationResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:interlock.atlas.RegistrationResponse)
   return target;
 }
 
@@ -2948,7 +2948,7 @@ PROTOBUF_NOINLINE void RegistrationResponse::Clear() {
 ::size_t RegistrationResponse::ByteSizeLong() const {
   const RegistrationResponse& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(message_byte_size_start:cheraxxx.atlas.RegistrationResponse)
+  // @@protoc_insertion_point(message_byte_size_start:interlock.atlas.RegistrationResponse)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -2990,7 +2990,7 @@ void RegistrationResponse::MergeImpl(::google::protobuf::MessageLite& to_msg,
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     from.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(class_specific_merge_from_start:cheraxxx.atlas.RegistrationResponse)
+  // @@protoc_insertion_point(class_specific_merge_from_start:interlock.atlas.RegistrationResponse)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
@@ -3027,7 +3027,7 @@ void RegistrationResponse::MergeImpl(::google::protobuf::MessageLite& to_msg,
 }
 
 void RegistrationResponse::CopyFrom(const RegistrationResponse& from) {
-  // @@protoc_insertion_point(class_specific_copy_from_start:cheraxxx.atlas.RegistrationResponse)
+  // @@protoc_insertion_point(class_specific_copy_from_start:interlock.atlas.RegistrationResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -3095,20 +3095,20 @@ TelemetryData::TelemetryData(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:cheraxxx.atlas.TelemetryData)
+  // @@protoc_insertion_point(arena_constructor:interlock.atlas.TelemetryData)
 }
 PROTOBUF_NDEBUG_INLINE TelemetryData::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-    [[maybe_unused]] const ::cheraxxx::atlas::TelemetryData& from_msg)
+    [[maybe_unused]] const ::interlock::atlas::TelemetryData& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         agent_id_(arena, from.agent_id_),
         payload_(arena, from.payload_),
         metadata_ {
           visibility, ::_pbi::InternalMetadataOffset::Build<
-              ::cheraxxx::atlas::TelemetryData,
-              PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::TelemetryData, _impl_.metadata_)>()
+              ::interlock::atlas::TelemetryData,
+              PROTOBUF_FIELD_OFFSET(::interlock::atlas::TelemetryData, _impl_.metadata_)>()
           , from.metadata_
         }
      {}
@@ -3129,7 +3129,7 @@ TelemetryData::TelemetryData(
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
   _impl_.timestamp_ = from._impl_.timestamp_;
 
-  // @@protoc_insertion_point(copy_constructor:cheraxxx.atlas.TelemetryData)
+  // @@protoc_insertion_point(copy_constructor:interlock.atlas.TelemetryData)
 }
 PROTOBUF_NDEBUG_INLINE TelemetryData::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
@@ -3138,8 +3138,8 @@ PROTOBUF_NDEBUG_INLINE TelemetryData::Impl_::Impl_(
         agent_id_(arena),
         payload_(arena),
         metadata_ { visibility, ::_pbi::InternalMetadataOffset::Build<
-            ::cheraxxx::atlas::TelemetryData,
-            PROTOBUF_FIELD_OFFSET(::cheraxxx::atlas::TelemetryData, _impl_.metadata_)>()
+            ::interlock::atlas::TelemetryData,
+            PROTOBUF_FIELD_OFFSET(::interlock::atlas::TelemetryData, _impl_.metadata_)>()
          }
      {}
 
@@ -3148,7 +3148,7 @@ inline void TelemetryData::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   _impl_.timestamp_ = {};
 }
 TelemetryData::~TelemetryData() {
-  // @@protoc_insertion_point(destructor:cheraxxx.atlas.TelemetryData)
+  // @@protoc_insertion_point(destructor:interlock.atlas.TelemetryData)
   SharedDtor(*this);
 }
 inline void TelemetryData::SharedDtor(MessageLite& self) {
@@ -3190,7 +3190,7 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const TelemetryData::ParseTableT_
         TelemetryData::InternalGenerateParseTable_(TelemetryData_class_data_.base());
 #endif  // !PROTOBUF_MESSAGE_GLOBALS
 PROTOBUF_NOINLINE void TelemetryData::Clear() {
-// @@protoc_insertion_point(message_clear_start:cheraxxx.atlas.TelemetryData)
+// @@protoc_insertion_point(message_clear_start:interlock.atlas.TelemetryData)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -3229,7 +3229,7 @@ PROTOBUF_NOINLINE void TelemetryData::Clear() {
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(serialize_to_array_start:cheraxxx.atlas.TelemetryData)
+  // @@protoc_insertion_point(serialize_to_array_start:interlock.atlas.TelemetryData)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -3239,7 +3239,7 @@ PROTOBUF_NOINLINE void TelemetryData::Clear() {
     if (!this_._internal_agent_id().empty()) {
       const ::std::string& _s = this_._internal_agent_id();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cheraxxx.atlas.TelemetryData.agent_id");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "interlock.atlas.TelemetryData.agent_id");
       target = stream->WriteStringMaybeAliased(1, _s, target);
     }
   }
@@ -3253,7 +3253,7 @@ PROTOBUF_NOINLINE void TelemetryData::Clear() {
     }
   }
 
-  // bytes payload = 3;
+  // bytes artifact = 3;
   if (CheckHasBit(cached_has_bits, 0x00000002U)) {
     if (!this_._internal_payload().empty()) {
       const ::std::string& _s = this_._internal_payload();
@@ -3276,10 +3276,10 @@ PROTOBUF_NOINLINE void TelemetryData::Clear() {
               4, entry.first, entry.second, target, stream);
           ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
               entry.first.data(), static_cast<int>(entry.first.length()),
- ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cheraxxx.atlas.TelemetryData.metadata");
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "interlock.atlas.TelemetryData.metadata");
           ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
               entry.second.data(), static_cast<int>(entry.second.length()),
- ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cheraxxx.atlas.TelemetryData.metadata");
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "interlock.atlas.TelemetryData.metadata");
         }
       } else {
         for (const auto& entry : field) {
@@ -3287,10 +3287,10 @@ PROTOBUF_NOINLINE void TelemetryData::Clear() {
               4, entry.first, entry.second, target, stream);
           ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
               entry.first.data(), static_cast<int>(entry.first.length()),
- ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cheraxxx.atlas.TelemetryData.metadata");
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "interlock.atlas.TelemetryData.metadata");
           ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
               entry.second.data(), static_cast<int>(entry.second.length()),
- ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cheraxxx.atlas.TelemetryData.metadata");
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "interlock.atlas.TelemetryData.metadata");
         }
       }
     }
@@ -3301,7 +3301,7 @@ PROTOBUF_NOINLINE void TelemetryData::Clear() {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:cheraxxx.atlas.TelemetryData)
+  // @@protoc_insertion_point(serialize_to_array_end:interlock.atlas.TelemetryData)
   return target;
 }
 
@@ -3312,7 +3312,7 @@ PROTOBUF_NOINLINE void TelemetryData::Clear() {
 ::size_t TelemetryData::ByteSizeLong() const {
   const TelemetryData& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(message_byte_size_start:cheraxxx.atlas.TelemetryData)
+  // @@protoc_insertion_point(message_byte_size_start:interlock.atlas.TelemetryData)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -3329,7 +3329,7 @@ PROTOBUF_NOINLINE void TelemetryData::Clear() {
                                         this_._internal_agent_id());
       }
     }
-    // bytes payload = 3;
+    // bytes artifact = 3;
     if (CheckHasBit(cached_has_bits, 0x00000002U)) {
       if (!this_._internal_payload().empty()) {
         total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
@@ -3365,7 +3365,7 @@ void TelemetryData::MergeImpl(::google::protobuf::MessageLite& to_msg,
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     from.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(class_specific_merge_from_start:cheraxxx.atlas.TelemetryData)
+  // @@protoc_insertion_point(class_specific_merge_from_start:interlock.atlas.TelemetryData)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
@@ -3405,7 +3405,7 @@ void TelemetryData::MergeImpl(::google::protobuf::MessageLite& to_msg,
 }
 
 void TelemetryData::CopyFrom(const TelemetryData& from) {
-  // @@protoc_insertion_point(class_specific_copy_from_start:cheraxxx.atlas.TelemetryData)
+  // @@protoc_insertion_point(class_specific_copy_from_start:interlock.atlas.TelemetryData)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -3436,12 +3436,12 @@ ControlCommand::ControlCommand(::google::protobuf::Arena* PROTOBUF_NULLABLE aren
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:cheraxxx.atlas.ControlCommand)
+  // @@protoc_insertion_point(arena_constructor:interlock.atlas.ControlCommand)
 }
 PROTOBUF_NDEBUG_INLINE ControlCommand::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-    [[maybe_unused]] const ::cheraxxx::atlas::ControlCommand& from_msg)
+    [[maybe_unused]] const ::interlock::atlas::ControlCommand& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         command_id_(arena, from.command_id_),
@@ -3463,7 +3463,7 @@ ControlCommand::ControlCommand(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
 
-  // @@protoc_insertion_point(copy_constructor:cheraxxx.atlas.ControlCommand)
+  // @@protoc_insertion_point(copy_constructor:interlock.atlas.ControlCommand)
 }
 PROTOBUF_NDEBUG_INLINE ControlCommand::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
@@ -3477,7 +3477,7 @@ inline void ControlCommand::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
 }
 ControlCommand::~ControlCommand() {
-  // @@protoc_insertion_point(destructor:cheraxxx.atlas.ControlCommand)
+  // @@protoc_insertion_point(destructor:interlock.atlas.ControlCommand)
   SharedDtor(*this);
 }
 inline void ControlCommand::SharedDtor(MessageLite& self) {
@@ -3520,7 +3520,7 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const ControlCommand::ParseTableT_
         ControlCommand::InternalGenerateParseTable_(ControlCommand_class_data_.base());
 #endif  // !PROTOBUF_MESSAGE_GLOBALS
 PROTOBUF_NOINLINE void ControlCommand::Clear() {
-// @@protoc_insertion_point(message_clear_start:cheraxxx.atlas.ControlCommand)
+// @@protoc_insertion_point(message_clear_start:interlock.atlas.ControlCommand)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -3556,7 +3556,7 @@ PROTOBUF_NOINLINE void ControlCommand::Clear() {
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(serialize_to_array_start:cheraxxx.atlas.ControlCommand)
+  // @@protoc_insertion_point(serialize_to_array_start:interlock.atlas.ControlCommand)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -3566,7 +3566,7 @@ PROTOBUF_NOINLINE void ControlCommand::Clear() {
     if (!this_._internal_command_id().empty()) {
       const ::std::string& _s = this_._internal_command_id();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cheraxxx.atlas.ControlCommand.command_id");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "interlock.atlas.ControlCommand.command_id");
       target = stream->WriteStringMaybeAliased(1, _s, target);
     }
   }
@@ -3576,7 +3576,7 @@ PROTOBUF_NOINLINE void ControlCommand::Clear() {
     if (!this_._internal_action().empty()) {
       const ::std::string& _s = this_._internal_action();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "cheraxxx.atlas.ControlCommand.action");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "interlock.atlas.ControlCommand.action");
       target = stream->WriteStringMaybeAliased(2, _s, target);
     }
   }
@@ -3594,7 +3594,7 @@ PROTOBUF_NOINLINE void ControlCommand::Clear() {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:cheraxxx.atlas.ControlCommand)
+  // @@protoc_insertion_point(serialize_to_array_end:interlock.atlas.ControlCommand)
   return target;
 }
 
@@ -3605,7 +3605,7 @@ PROTOBUF_NOINLINE void ControlCommand::Clear() {
 ::size_t ControlCommand::ByteSizeLong() const {
   const ControlCommand& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(message_byte_size_start:cheraxxx.atlas.ControlCommand)
+  // @@protoc_insertion_point(message_byte_size_start:interlock.atlas.ControlCommand)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -3648,7 +3648,7 @@ void ControlCommand::MergeImpl(::google::protobuf::MessageLite& to_msg,
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     from.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(class_specific_merge_from_start:cheraxxx.atlas.ControlCommand)
+  // @@protoc_insertion_point(class_specific_merge_from_start:interlock.atlas.ControlCommand)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
@@ -3689,7 +3689,7 @@ void ControlCommand::MergeImpl(::google::protobuf::MessageLite& to_msg,
 }
 
 void ControlCommand::CopyFrom(const ControlCommand& from) {
-  // @@protoc_insertion_point(class_specific_copy_from_start:cheraxxx.atlas.ControlCommand)
+  // @@protoc_insertion_point(class_specific_copy_from_start:interlock.atlas.ControlCommand)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -3712,7 +3712,7 @@ void ControlCommand::InternalSwap(ControlCommand* PROTOBUF_RESTRICT PROTOBUF_NON
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace atlas
-}  // namespace cheraxxx
+}  // namespace interlock
 namespace google {
 namespace protobuf {
 }  // namespace protobuf

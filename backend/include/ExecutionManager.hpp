@@ -7,7 +7,7 @@
 #include <memory>
 #include <functional>
 
-namespace cheraxxx {
+namespace interlock {
 
 struct ProcessInfo {
     int pid;
@@ -44,4 +44,4 @@ private:
     std::map<int, std::string> active_tasks;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

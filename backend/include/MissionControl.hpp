@@ -11,7 +11,7 @@
 #include <mutex>
 #include <condition_variable>
 
-namespace cheraxxx {
+namespace interlock {
 
 struct Mission {
     std::string id;
@@ -33,7 +33,7 @@ struct MissionReport {
 /**
  * Overnight Mission Control
  * Handles long-running autonomous operations while the operator is away.
- * Orchestrates agents, manages resource duty cycles, and ensures stealth (OpSec).
+ * Orchestrates agents, manages resource duty cycles, and ensures integrity (OpSec).
  */
 class MissionControl {
 public:
@@ -82,4 +82,4 @@ private:
     std::mutex reports_mtx;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

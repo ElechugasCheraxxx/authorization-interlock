@@ -9,10 +9,10 @@
 
 using json = nlohmann::json;
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
- * @brief Helper for XML escaping to ensure precision in RedTeam operations.
+ * @brief Helper for XML escaping to ensure precision in Assessment operations.
  */
 inline std::string xml_escape(const std::string& data) {
     std::string buffer;
@@ -293,4 +293,4 @@ struct HypothesisTree {
     }
 };
 
-} // namespace cheraxxx
+} // namespace interlock

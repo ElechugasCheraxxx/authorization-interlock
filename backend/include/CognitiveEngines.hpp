@@ -6,7 +6,7 @@
 #include <map>
 #include <mutex>
 
-namespace cheraxxx {
+namespace interlock {
 
 class HypothesisEngine {
 public:
@@ -52,4 +52,4 @@ private:
     BinaryAnalysisEngine() = default;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

@@ -3,7 +3,7 @@
 #include <chrono>
 #include <regex>
 
-namespace cheraxxx {
+namespace interlock {
 
 bool SandboxManager::prepareEnvironment(const std::string& env_id, const std::string& docker_image) {
     std::cout << "[SandboxManager] Spawning isolated environment: " << env_id << " using " << docker_image << std::endl;
@@ -48,4 +48,4 @@ std::string SandboxManager::parseSanitizerOutput(const std::string& raw_stderr) 
     return "Unknown Crash";
 }
 
-} // namespace cheraxxx
+} // namespace interlock

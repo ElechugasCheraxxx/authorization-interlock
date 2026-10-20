@@ -5,7 +5,7 @@
 #include <map>
 #include <mutex>
 
-namespace cheraxxx {
+namespace interlock {
 
 struct GPUMetrics {
     float vram_total_gb;
@@ -65,4 +65,4 @@ private:
     float system_total_ram_gb = 48.0f;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

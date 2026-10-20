@@ -1,4 +1,4 @@
-(* Cheraxxx Formal Specification: Primitive Dependency Graph (PDG) Correctness *)
+(* Interlock Formal Specification: Primitive Dependency Graph (PDG) Correctness *)
 Require Import List.
 Require Import String.
 Require Import Arith.
@@ -12,7 +12,7 @@ Record Primitive : Type := {
 
 Parameter Edge : Primitive -> Primitive -> Prop.
 
-(* Definition of a Valid Attack Chain *)
+(* Definition of a Valid Assess Chain *)
 Definition IsValidChain (chain : list Primitive) : Prop :=
   match chain with
   | nil => True

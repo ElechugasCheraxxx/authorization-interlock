@@ -7,7 +7,7 @@
 #include <vector>
 #include <sstream>
 
-namespace cheraxxx {
+namespace interlock {
 
 NativeAgent::NativeAgent(const std::string& alias, const std::string& model_path)
     : alias(alias) {
@@ -98,4 +98,4 @@ std::string NativeAgent::executeInMemory(const std::string& interpreter, const s
     }
 }
 
-} // namespace cheraxxx
+} // namespace interlock

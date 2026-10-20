@@ -6,7 +6,7 @@
 #include <iostream>
 #include <chrono>
 
-namespace cheraxxx {
+namespace interlock {
 
 bool EvidenceVault::store(const Evidence& ev) {
     // 1. 🧠 POSTGRESQL: Permanent Storage (Source of Truth)
@@ -73,4 +73,4 @@ std::vector<Evidence> EvidenceVault::getBySession(const std::string& session_id)
     return results;
 }
 
-} // namespace cheraxxx
+} // namespace interlock

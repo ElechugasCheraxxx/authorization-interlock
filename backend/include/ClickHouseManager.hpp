@@ -2,7 +2,7 @@
 #include <string>
 #include <nlohmann/json.hpp>
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
  * @brief Almacén de métricas y rendimiento para dashboards instantáneos (Performance Layer).
@@ -21,4 +21,4 @@ private:
     ClickHouseManager() = default;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

@@ -3,7 +3,7 @@
 #include "Blackboard.hpp"
 #include <iostream>
 
-namespace cheraxxx {
+namespace interlock {
 
 VantageAgent::VantageAgent(const std::string& model_path)
     : NativeAgent("vantage", model_path) {}
@@ -23,4 +23,4 @@ void VantageAgent::onResponseGenerated(const std::string& raw_output) {
     }
 }
 
-} // namespace cheraxxx
+} // namespace interlock

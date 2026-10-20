@@ -9,7 +9,7 @@
 
 using json = nlohmann::json;
 
-namespace cheraxxx {
+namespace interlock {
 
 ToolDispatcher::ToolDispatcher() {
     // Registro de herramientas base nativas
@@ -131,7 +131,7 @@ std::string ToolDispatcher::parseGBNFResponse(const std::string& response) {
 
     try {
         // Extracción de etiquetas XML comunes forzadas por GBNF
-        std::vector<std::string> tags = {"code", "filepath", "explanation", "reasoning", "vulnerability", "payload", "action", "status"};
+        std::vector<std::string> tags = {"code", "filepath", "explanation", "reasoning", "vulnerability", "artifact", "action", "status"};
 
         bool found_any = false;
         for (const auto& tag : tags) {
@@ -159,4 +159,4 @@ std::string ToolDispatcher::parseGBNFResponse(const std::string& response) {
     return ss.str();
 }
 
-} // namespace cheraxxx
+} // namespace interlock

@@ -1,27 +1,27 @@
 #pragma once
 #include <string>
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
  * GBNF Grammars for forcing LLM output structure.
- * Optimized for RedTeam Agents (Royal Family) on M4 Pro.
+ * Optimized for Assessment Agents (Royal Family) on M4 Pro.
  */
 struct GrammarLibrary {
     // Default fallback grammar
-    static inline const std::string REDTEAM_ACTION_XML = R"gbnf(
+    static inline const std::string ASSESSMENT_ACTION_XML = R"gbnf(
 root ::= thought action
 thought ::= "<thought>" [^<]* "</thought>"
 action ::= "<action type=\"" action_type "\">" action_body "</action>"
-action_type ::= "command" | "exploit" | "pivot" | "report" | "wait"
+action_type ::= "command" | "assess" | "pivot" | "report" | "wait"
 action_body ::= [^<]*
 )gbnf";
 
-    // Rex: Especialista en Exploitation
+    // Coordinator: Especialista en Exploitation
     static inline const std::string REX_GBNF = R"gbnf(
-root ::= thought payload execution
+root ::= thought artifact execution
 thought ::= "<thought>" [^<]* "</thought>"
-payload ::= "<payload type=\"" p_type "\">" [^<]* "</payload>"
+artifact ::= "<artifact type=\"" p_type "\">" [^<]* "</artifact>"
 execution ::= "<execution method=\"" e_method "\">" [^<]* "</execution>"
 p_type ::= "shellcode" | "binary" | "script" | "memory_injection"
 e_method ::= "pipe" | "process_hollowing" | "direct_exec"
@@ -91,7 +91,7 @@ score ::= "<score>" [0-9]+ "</score>"
 feedback ::= "<feedback>" [^<]* "</feedback>"
 )gbnf";
 
-    // Wraith: Evasión y Anti-Forensics
+    // Minimizer: Evasión y Anti-Forensics
     static inline const std::string WRAITH_GBNF = R"gbnf(
 root ::= thought evasion cleanup
 thought ::= "<thought>" [^<]* "</thought>"
@@ -117,4 +117,4 @@ telemetry ::= "<telemetry>" [^<]* "</telemetry>"
 )gbnf";
 };
 
-} // namespace cheraxxx
+} // namespace interlock

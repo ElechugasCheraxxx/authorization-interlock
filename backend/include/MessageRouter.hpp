@@ -13,7 +13,7 @@
 #include <condition_variable>
 #include <thread>
 
-namespace cheraxxx {
+namespace interlock {
 
 using MessageHandler = std::function<void(const Message&)>;
 
@@ -66,4 +66,4 @@ private:
     static const std::map<std::string, std::string> CHANNEL_MAP;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

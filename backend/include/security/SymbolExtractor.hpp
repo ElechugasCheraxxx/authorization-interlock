@@ -4,7 +4,7 @@
 #include <vector>
 #include <cstdint>
 
-namespace cheraxxx::security {
+namespace interlock::security {
 
 struct Symbol {
     uint32_t rva = 0;
@@ -28,4 +28,4 @@ private:
     static bool parseSysvLine(const std::string& line, Symbol& out_symbol);
 };
 
-} // namespace cheraxxx::security
+} // namespace interlock::security

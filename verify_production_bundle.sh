@@ -1,7 +1,7 @@
 #!/bin/bash
-# Script de verificación para el Bundle de producción de Cheraxxx RedTeam IDE
+# Script de verificación para el Bundle de producción de Interlock Assessment IDE
 
-APP_PATH="build_xcode/bin/Release/CheraxxxRedTeamIDE_Qt.app"
+APP_PATH="build_xcode/bin/Release/InterlockIDE_Qt.app"
 
 if [ ! -d "$APP_PATH" ]; then
     echo "Error: Bundle no encontrado en $APP_PATH"
@@ -14,10 +14,10 @@ echo " VERIFICACIÓN DE BUNDLE DE PRODUCCIÓN (macOS)"
 echo "================================================================"
 
 echo -e "\n1. Verificando RPATHs del binario principal..."
-otool -l "$APP_PATH/Contents/MacOS/CheraxxxRedTeamIDE_Qt" | grep -A 2 LC_RPATH
+otool -l "$APP_PATH/Contents/MacOS/InterlockIDE_Qt" | grep -A 2 LC_RPATH
 
 echo -e "\n2. Verificando vinculación de Python..."
-otool -L "$APP_PATH/Contents/MacOS/CheraxxxRedTeamIDE_Qt" | grep -i python
+otool -L "$APP_PATH/Contents/MacOS/InterlockIDE_Qt" | grep -i python
 
 echo -e "\n3. Verificando existencia de librerías críticas en Frameworks..."
 for lib in libpython3.14.dylib libllama.0.dylib libggml.0.dylib; do

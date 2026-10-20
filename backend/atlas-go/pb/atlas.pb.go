@@ -27,7 +27,7 @@ type Message struct {
 	From          string                 `protobuf:"bytes,2,opt,name=from,proto3" json:"from,omitempty"`
 	To            string                 `protobuf:"bytes,3,opt,name=to,proto3" json:"to,omitempty"`
 	Subject       string                 `protobuf:"bytes,4,opt,name=subject,proto3" json:"subject,omitempty"`
-	Payload       []byte                 `protobuf:"bytes,5,opt,name=payload,proto3" json:"payload,omitempty"`
+	Artifact       []byte                 `protobuf:"bytes,5,opt,name=artifact,proto3" json:"artifact,omitempty"`
 	Priority      uint32                 `protobuf:"varint,6,opt,name=priority,proto3" json:"priority,omitempty"`
 	Timestamp     uint64                 `protobuf:"varint,7,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -94,7 +94,7 @@ func (x *Message) GetSubject() string {
 
 func (x *Message) GetPayload() []byte {
 	if x != nil {
-		return x.Payload
+		return x.Artifact
 	}
 	return nil
 }
@@ -349,7 +349,7 @@ type TelemetryData struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	AgentId       string                 `protobuf:"bytes,1,opt,name=agent_id,json=agentId,proto3" json:"agent_id,omitempty"`
 	Timestamp     uint64                 `protobuf:"varint,2,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
-	Payload       []byte                 `protobuf:"bytes,3,opt,name=payload,proto3" json:"payload,omitempty"`
+	Artifact       []byte                 `protobuf:"bytes,3,opt,name=artifact,proto3" json:"artifact,omitempty"`
 	Metadata      map[string]string      `protobuf:"bytes,4,rep,name=metadata,proto3" json:"metadata,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -401,7 +401,7 @@ func (x *TelemetryData) GetTimestamp() uint64 {
 
 func (x *TelemetryData) GetPayload() []byte {
 	if x != nil {
-		return x.Payload
+		return x.Artifact
 	}
 	return nil
 }
@@ -477,7 +477,7 @@ var File_atlas_proto protoreflect.FileDescriptor
 
 const file_atlas_proto_rawDesc = "" +
 	"\n" +
-	"\vatlas.proto\x12\x0echeraxxx.atlas\"\xab\x01\n" +
+	"\vatlas.proto\x12\x0einterlock.atlas\"\xab\x01\n" +
 	"\aMessage\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04from\x18\x02 \x01(\tR\x04from\x12\x0e\n" +
@@ -505,7 +505,7 @@ const file_atlas_proto_rawDesc = "" +
 	"\bagent_id\x18\x01 \x01(\tR\aagentId\x12\x1c\n" +
 	"\ttimestamp\x18\x02 \x01(\x04R\ttimestamp\x12\x18\n" +
 	"\apayload\x18\x03 \x01(\fR\apayload\x12G\n" +
-	"\bmetadata\x18\x04 \x03(\v2+.cheraxxx.atlas.TelemetryData.MetadataEntryR\bmetadata\x1a;\n" +
+	"\bmetadata\x18\x04 \x03(\v2+.interlock.atlas.TelemetryData.MetadataEntryR\bmetadata\x1a;\n" +
 	"\rMetadataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"_\n" +
@@ -515,10 +515,10 @@ const file_atlas_proto_rawDesc = "" +
 	"\x06action\x18\x02 \x01(\tR\x06action\x12\x16\n" +
 	"\x06params\x18\x03 \x01(\fR\x06params2\xd6\x02\n" +
 	"\x11SwarmOrchestrator\x12P\n" +
-	"\rRegisterAgent\x12\x19.cheraxxx.atlas.AgentInfo\x1a$.cheraxxx.atlas.RegistrationResponse\x12U\n" +
-	"\x10TunnelTelemetria\x12\x1d.cheraxxx.atlas.TelemetryData\x1a\x1e.cheraxxx.atlas.ControlCommand(\x010\x01\x12F\n" +
-	"\fRouteMessage\x12\x17.cheraxxx.atlas.Message\x1a\x1d.cheraxxx.atlas.RouteResponse\x12P\n" +
-	"\x11SubscribeMessages\x12 .cheraxxx.atlas.SubscribeRequest\x1a\x17.cheraxxx.atlas.Message0\x01B\x13Z\x11cheraxxx/atlas/pbb\x06proto3"
+	"\rRegisterAgent\x12\x19.interlock.atlas.AgentInfo\x1a$.interlock.atlas.RegistrationResponse\x12U\n" +
+	"\x10TunnelTelemetria\x12\x1d.interlock.atlas.TelemetryData\x1a\x1e.interlock.atlas.ControlCommand(\x010\x01\x12F\n" +
+	"\fRouteMessage\x12\x17.interlock.atlas.Message\x1a\x1d.interlock.atlas.RouteResponse\x12P\n" +
+	"\x11SubscribeMessages\x12 .interlock.atlas.SubscribeRequest\x1a\x17.interlock.atlas.Message0\x01B\x13Z\x11interlock/atlas/pbb\x06proto3"
 
 var (
 	file_atlas_proto_rawDescOnce sync.Once
@@ -534,25 +534,25 @@ func file_atlas_proto_rawDescGZIP() []byte {
 
 var file_atlas_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_atlas_proto_goTypes = []any{
-	(*Message)(nil),              // 0: cheraxxx.atlas.Message
-	(*RouteResponse)(nil),        // 1: cheraxxx.atlas.RouteResponse
-	(*SubscribeRequest)(nil),     // 2: cheraxxx.atlas.SubscribeRequest
-	(*AgentInfo)(nil),            // 3: cheraxxx.atlas.AgentInfo
-	(*RegistrationResponse)(nil), // 4: cheraxxx.atlas.RegistrationResponse
-	(*TelemetryData)(nil),        // 5: cheraxxx.atlas.TelemetryData
-	(*ControlCommand)(nil),       // 6: cheraxxx.atlas.ControlCommand
-	nil,                          // 7: cheraxxx.atlas.TelemetryData.MetadataEntry
+	(*Message)(nil),              // 0: interlock.atlas.Message
+	(*RouteResponse)(nil),        // 1: interlock.atlas.RouteResponse
+	(*SubscribeRequest)(nil),     // 2: interlock.atlas.SubscribeRequest
+	(*AgentInfo)(nil),            // 3: interlock.atlas.AgentInfo
+	(*RegistrationResponse)(nil), // 4: interlock.atlas.RegistrationResponse
+	(*TelemetryData)(nil),        // 5: interlock.atlas.TelemetryData
+	(*ControlCommand)(nil),       // 6: interlock.atlas.ControlCommand
+	nil,                          // 7: interlock.atlas.TelemetryData.MetadataEntry
 }
 var file_atlas_proto_depIdxs = []int32{
-	7, // 0: cheraxxx.atlas.TelemetryData.metadata:type_name -> cheraxxx.atlas.TelemetryData.MetadataEntry
-	3, // 1: cheraxxx.atlas.SwarmOrchestrator.RegisterAgent:input_type -> cheraxxx.atlas.AgentInfo
-	5, // 2: cheraxxx.atlas.SwarmOrchestrator.TunnelTelemetria:input_type -> cheraxxx.atlas.TelemetryData
-	0, // 3: cheraxxx.atlas.SwarmOrchestrator.RouteMessage:input_type -> cheraxxx.atlas.Message
-	2, // 4: cheraxxx.atlas.SwarmOrchestrator.SubscribeMessages:input_type -> cheraxxx.atlas.SubscribeRequest
-	4, // 5: cheraxxx.atlas.SwarmOrchestrator.RegisterAgent:output_type -> cheraxxx.atlas.RegistrationResponse
-	6, // 6: cheraxxx.atlas.SwarmOrchestrator.TunnelTelemetria:output_type -> cheraxxx.atlas.ControlCommand
-	1, // 7: cheraxxx.atlas.SwarmOrchestrator.RouteMessage:output_type -> cheraxxx.atlas.RouteResponse
-	0, // 8: cheraxxx.atlas.SwarmOrchestrator.SubscribeMessages:output_type -> cheraxxx.atlas.Message
+	7, // 0: interlock.atlas.TelemetryData.metadata:type_name -> interlock.atlas.TelemetryData.MetadataEntry
+	3, // 1: interlock.atlas.SwarmOrchestrator.RegisterAgent:input_type -> interlock.atlas.AgentInfo
+	5, // 2: interlock.atlas.SwarmOrchestrator.TunnelTelemetria:input_type -> interlock.atlas.TelemetryData
+	0, // 3: interlock.atlas.SwarmOrchestrator.RouteMessage:input_type -> interlock.atlas.Message
+	2, // 4: interlock.atlas.SwarmOrchestrator.SubscribeMessages:input_type -> interlock.atlas.SubscribeRequest
+	4, // 5: interlock.atlas.SwarmOrchestrator.RegisterAgent:output_type -> interlock.atlas.RegistrationResponse
+	6, // 6: interlock.atlas.SwarmOrchestrator.TunnelTelemetria:output_type -> interlock.atlas.ControlCommand
+	1, // 7: interlock.atlas.SwarmOrchestrator.RouteMessage:output_type -> interlock.atlas.RouteResponse
+	0, // 8: interlock.atlas.SwarmOrchestrator.SubscribeMessages:output_type -> interlock.atlas.Message
 	5, // [5:9] is the sub-list for method output_type
 	1, // [1:5] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name

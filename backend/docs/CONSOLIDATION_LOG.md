@@ -12,7 +12,7 @@ Se consolid\u00f3 toda la estructura del backend moviendo directorios dispersos 
 
 ### Antes (Estructura Dispersa)
 ```
-/Cheraxxx RedTeam IDE/
+/Interlock Assessment IDE/
 \u251c\u2500\u2500 backend/                    # Core modules
 \u251c\u2500\u2500 stubs-asm/                 # ❌ En ra\u00edz (deb\u00eda estar en backend)
 \u251c\u2500\u2500 proofs/                    # ❌ En ra\u00edz (deb\u00eda estar en backend)
@@ -29,12 +29,12 @@ Se consolid\u00f3 toda la estructura del backend moviendo directorios dispersos 
 
 ### Despu\u00e9s (Estructura Consolidada)
 ```
-/Cheraxxx RedTeam IDE/
+/Interlock Assessment IDE/
 \u251c\u2500\u2500 backend/
 \u2502   \u251c\u2500\u2500 config/               # ✅ Config de producci\u00f3n
 \u2502   \u251c\u2500\u2500 data/                 # ✅ Runtime data
 \u2502   \u251c\u2500\u2500 docs/                 # ✅ Documentaci\u00f3n
-\u2502   \u251c\u2500\u2500 models/               # ✅ ML models\n\u2502   \u251c\u2500\u2500 platform/              # ✅ Infraestructura\n\u2502   \u251c\u2500\u2500 proofs/                # ✅ Verificaci\u00f3n formal\n\u2502   \u251c\u2500\u2500 services/              # ✅ Microservicios\n\u2502   \u251c\u2500\u2500 stubs-asm/             # ✅ ARM64 stubs\n\u2502   \u251c\u2500\u2500 tests/                 # ✅ Test suite consolidada\n\u2502   \u251c\u2500\u2500 tools/                 # ✅ Herramientas\n\u2502   \u251c\u2500\u2500 core-cpp/              # ✅ Motor RDT\n\u2502   \u251c\u2500\u2500 middleware-swift/     # ✅ Middleware\n\u2502   \u251c\u2500\u2500 cipher-rs/             # ✅ PQC\n\u2502   \u251c\u2500\u2500 atlas-go/              # ✅ Swarm\n\u2502   \u251c\u2500\u2500 payloads-zig/          # ✅ Payloads\n\u2502   \u2514\u2500\u2500 ... (20+ subdirectorios)\n\u251c\u2500\u2500 Cheraxxx RedTeam IDE/      # ✅ Frontend nativo (SwiftUI)\n\u251c\u2500\u2500 frontend-windows/         # ✅ Frontend Windows (Electron)\n\u2514\u2500\u2500 build.sh, deploy.sh, etc.  # ✅ Scripts de raíz\n```
+\u2502   \u251c\u2500\u2500 models/               # ✅ ML models\n\u2502   \u251c\u2500\u2500 platform/              # ✅ Infraestructura\n\u2502   \u251c\u2500\u2500 proofs/                # ✅ Verificaci\u00f3n formal\n\u2502   \u251c\u2500\u2500 services/              # ✅ Microservicios\n\u2502   \u251c\u2500\u2500 stubs-asm/             # ✅ ARM64 stubs\n\u2502   \u251c\u2500\u2500 tests/                 # ✅ Test suite consolidada\n\u2502   \u251c\u2500\u2500 tools/                 # ✅ Herramientas\n\u2502   \u251c\u2500\u2500 core-cpp/              # ✅ Motor RDT\n\u2502   \u251c\u2500\u2500 middleware-swift/     # ✅ Middleware\n\u2502   \u251c\u2500\u2500 cipher-rs/             # ✅ PQC\n\u2502   \u251c\u2500\u2500 atlas-go/              # ✅ Swarm\n\u2502   \u251c\u2500\u2500 transfer-zig/          # ✅ Payloads\n\u2502   \u2514\u2500\u2500 ... (20+ subdirectorios)\n\u251c\u2500\u2500 Interlock Assessment IDE/      # ✅ Frontend nativo (SwiftUI)\n\u251c\u2500\u2500 frontend-windows/         # ✅ Frontend Windows (Electron)\n\u2514\u2500\u2500 build.sh, deploy.sh, etc.  # ✅ Scripts de raíz\n```
 
 ---
 
@@ -139,14 +139,14 @@ backend/data/logs/                  # Logs
 
 ```bash
 # Antiguo
-export CHERAXXX_CONFIG="/path/to/config/production.toml"
+export INTERLOCK_CONFIG="/path/to/config/production.toml"
 
 # Nuevo
-export CHERAXXX_CONFIG="/path/to/backend/config/production.toml"
-export CHERAXXX_BACKEND="/path/to/backend"
-export CHERAXXX_TOOLS="/path/to/backend/tools"
-export CHERAXXX_DATA="/path/to/backend/data"
-export CHERAXXX_TESTS="/path/to/backend/tests"
+export INTERLOCK_CONFIG="/path/to/backend/config/production.toml"
+export INTERLOCK_BACKEND="/path/to/backend"
+export INTERLOCK_TOOLS="/path/to/backend/tools"
+export INTERLOCK_DATA="/path/to/backend/data"
+export INTERLOCK_TESTS="/path/to/backend/tests"
 ```
 
 ---
@@ -194,7 +194,7 @@ export CHERAXXX_TESTS="/path/to/backend/tests"
 La consolidación está completa. Para compilar y desplegar:
 
 ```bash
-cd /Users/cheraxxx/Cheraxxx\ RedTeam\ IDE
+cd /Users/Cheraxxx/Interlock\ Assessment\ IDE
 
 # 1. Verificar
 ./verify_production.sh

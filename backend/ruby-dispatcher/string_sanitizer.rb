@@ -3,7 +3,7 @@
 
 require 'fileutils'
 
-module Cheraxxx
+module Interlock
   class StringSanitizer
     def self.sanitize(file_path, blacklist_patterns)
       puts "[StringSanitizer] Dissecting binary: #{File.basename(file_path)}"

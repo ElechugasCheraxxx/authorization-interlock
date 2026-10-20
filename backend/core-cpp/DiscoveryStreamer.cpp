@@ -2,7 +2,7 @@
 #include <chrono>
 #include <iostream>
 
-namespace cheraxxx::rag {
+namespace interlock::rag {
 
 DiscoveryStreamer::DiscoveryStreamer() : running(false) {}
 
@@ -92,4 +92,4 @@ void DiscoveryStreamer::enforceMemoryLimit(size_t limit_bytes) {
     }
 }
 
-} // namespace cheraxxx::rag
+} // namespace interlock::rag

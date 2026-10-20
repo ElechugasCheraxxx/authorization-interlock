@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 ##############################################################################
-# Production Deployment Script for Cheraxxx RedTeam IDE
+# Production Deployment Script for Interlock Assessment IDE
 # 
 # Este script configura el entorno de producción, inicia servicios,
 # y verifica la salud de todos los componentes.
@@ -25,7 +25,7 @@ CONFIG_DIR="${DEPLOY_ROOT}/backend/config"
 ABB_DIR="${DEPLOY_ROOT}/build/abb"
 
 echo -e "${BLUE}╔════════════════════════════════════════════════════════╗${NC}"
-echo -e "${BLUE}║  Cheraxxx RedTeam IDE - Production Deployment v1.0   ║${NC}"
+echo -e "${BLUE}║  Interlock Assessment IDE - Production Deployment v1.0   ║${NC}"
 echo -e "${BLUE}╚════════════════════════════════════════════════════════╝${NC}"
 
 ##############################################################################
@@ -63,7 +63,7 @@ check_prerequisites() {
     fi
     
     # Verificar ejecutables principales
-    for exe in cheraxxx_core atlas_orchestrator; do
+    for exe in interlock_core atlas_orchestrator; do
         if [ ! -f "$INSTALL_DIR/bin/$exe" ]; then
             log_warning "Ejecutable no encontrado: $exe"
         fi
@@ -91,14 +91,14 @@ setup_environment() {
     chmod 700 "$PID_DIR"
 
     # Cargar variables de entorno
-    export CHERAXXX_HOME="$DEPLOY_ROOT"
-    export CHERAXXX_CONFIG="$CONFIG_DIR/production.toml"
-    export CHERAXXX_LOG_DIR="$LOG_DIR"
-    export CHERAXXX_PID_DIR="$PID_DIR"
-    export CHERAXXX_ABB_PATH="$ABB_DIR/cheraxxx_abb_prod"
+    export INTERLOCK_HOME="$DEPLOY_ROOT"
+    export INTERLOCK_CONFIG="$CONFIG_DIR/production.toml"
+    export INTERLOCK_LOG_DIR="$LOG_DIR"
+    export INTERLOCK_PID_DIR="$PID_DIR"
+    export INTERLOCK_ABB_PATH="$ABB_DIR/interlock_abb_prod"
 
     # Security: No mostrar paths en error
-    export CHERAXXX_PRODUCTION=1
+    export INTERLOCK_PRODUCTION=1
     
     log_success "Entorno configurado"
 }
@@ -110,14 +110,14 @@ setup_environment() {
 start_core() {
     log_info "Iniciando Core C++ (Inferencia RDT)..."
     
-    "$INSTALL_DIR/bin/cheraxxx_core" \
+    "$INSTALL_DIR/bin/interlock_core" \
         --config "$CONFIG_DIR/production.toml" \
         --log-dir "$LOG_DIR" \
         --daemon \
         > "$LOG_DIR/core.log" 2>&1 &
     
     local core_pid=$!
-    echo $core_pid > "$PID_DIR/cheraxxx_core.pid"
+    echo $core_pid > "$PID_DIR/interlock_core.pid"
     
     sleep 2
     
@@ -172,8 +172,8 @@ health_check() {
     local all_healthy=true
     
     # Verificar Core
-    if [ -f "$PID_DIR/cheraxxx_core.pid" ]; then
-        local core_pid=$(cat "$PID_DIR/cheraxxx_core.pid")
+    if [ -f "$PID_DIR/interlock_core.pid" ]; then
+        local core_pid=$(cat "$PID_DIR/interlock_core.pid")
         if kill -0 $core_pid 2>/dev/null; then
             log_success "Core está activo (PID: $core_pid)"
         else
@@ -193,7 +193,7 @@ health_check() {
     fi
     
     # Verificar ABB
-    if [ -f "$ABB_DIR/cheraxxx_abb_prod" ]; then
+    if [ -f "$ABB_DIR/interlock_abb_prod" ]; then
         log_success "ABB (Breadcrumb Buffer) disponible"
     else
         log_warning "ABB no inicializado"
@@ -218,7 +218,7 @@ print_deployment_info() {
     echo -e "${GREEN}  DEPLOYMENT EXITOSO${NC}"
     echo -e "${GREEN}════════════════════════════════════════════════════════${NC}"
     echo ""
-    echo "Versión: Cheraxxx v1.0.0-production"
+    echo "Versión: Interlock v1.0.0-production"
     echo "Fecha: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
     echo "Hostname: $(hostname)"
     echo ""
@@ -233,8 +233,8 @@ print_deployment_info() {
     echo ""
     echo "Próximos pasos:"
     echo "  1. Monitorear logs: tail -f $LOG_DIR/*.log"
-    echo "  2. Verificar IPC: ls -la /tmp/cheraxxx_ipc_*"
-    echo "  3. Ver ABB: hexdump -C $ABB_DIR/cheraxxx_abb_prod | head -20"
+    echo "  2. Verificar IPC: ls -la /tmp/interlock_ipc_*"
+    echo "  3. Ver ABB: hexdump -C $ABB_DIR/interlock_abb_prod | head -20"
     echo ""
     echo -e "${GREEN}════════════════════════════════════════════════════════${NC}"
     echo ""

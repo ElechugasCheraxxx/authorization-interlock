@@ -1,8 +1,8 @@
-# Cheraxxx RedTeam IDE - Production Polyglot Architecture
+# Interlock Assessment IDE - Production Polyglot Architecture
 
 ## Descripción General
 
-**Cheraxxx RedTeam IDE** es una plataforma de orquestación ofensiva de próxima generación construida con arquitectura poliglota. Integra el mejor de cada lenguaje de programación:
+**Interlock Assessment IDE** es una plataforma de orquestación ofensiva de próxima generación construida con arquitectura poliglota. Integra el mejor de cada lenguaje de programación:
 
 - **C++ 23**: Motor de inferencia RDT con aceleración GPU (Metal Performance Shaders)
 - **Rust**: Criptografía post-cuántica (PQC) segura en memoria
@@ -18,7 +18,7 @@
 ## Arquitectura de Infraestructura
 
 ### Autonomous Breadcrumb Buffer (ABB)
-Buffer circular lock-free persistente en memoria compartida (`/dev/shm/cheraxxx_abb_prod`). Registra todas las transiciones entre módulos políglotas para auditoría y depuración post-crash.
+Buffer circular lock-free persistente en memoria compartida (`/dev/shm/interlock_abb_prod`). Registra todas las transiciones entre módulos políglotas para auditoría y depuración post-crash.
 
 ```
 [Timestamp] [Source ID] [Target ID] [Func Pointer] [Stack Depth]
@@ -39,7 +39,7 @@ Integración nativa sin wrappers `extern "C"`, aprovechando Swift 5.9+ para impo
 ### 1. Compilar Todo
 
 ```bash
-cd /Users/cheraxxx/Cheraxxx\ RedTeam\ IDE
+cd /Users/Cheraxxx/Interlock\ Assessment\ IDE
 
 # Compilación limpia
 ./build.sh
@@ -74,7 +74,7 @@ chmod +x ./build.sh ./deploy.sh
 ./deploy.sh status
 
 # Ver logs
-tail -f /var/log/cheraxxx/*.log
+tail -f /var/log/interlock/*.log
 
 # Detener
 ./deploy.sh stop
@@ -84,36 +84,36 @@ tail -f /var/log/cheraxxx/*.log
 
 ```bash
 # Listar procesos activos
-ps aux | grep cheraxxx
+ps aux | grep interlock
 
 # Verificar IPC sockets
-ls -la /tmp/cheraxxx_ipc_*
+ls -la /tmp/interlock_ipc_*
 
 # Inspeccionar ABB
-hexdump -C /dev/shm/cheraxxx_abb_prod | head -50
+hexdump -C /dev/shm/interlock_abb_prod | head -50
 
 # Ver logs del core
-tail -100 /var/log/cheraxxx/core.log
+tail -100 /var/log/interlock/core.log
 ```
 
 ## Estructura de Directorios
 
 ```
-/Cheraxxx RedTeam IDE/
+/Interlock Assessment IDE/
 ├── backend/
 │   ├── core-cpp/                 # Motor C++23 + RDT
-│   │   ├── CheraxxxCore.cpp
+│   │   ├── InterlockCore.cpp
 │   │   ├── AutonomousBreadcrumbBuffer.cpp
 │   │   ├── IPCBridge.cpp
 │   │   └── ... (60+ módulos)
 │   ├── middleware-swift/         # Orquestación segura
 │   ├── cipher-rs/                # Criptografía PQC (Rust)
 │   ├── atlas-go/                 # Swarm orchestrator
-│   ├── payloads-zig/             # Polimorfismo de payloads
+│   ├── transfer-zig/             # Polimorfismo de payloads
 │   ├── shield-c/                 # Kernel Shield
 │   ├── stubs-asm/                # Syscalls ARM64
-│   ├── intel-ts/                 # Web intelligence
-│   ├── surgery-pl/               # Data surgery (Perl)
+│   ├── discovery-ts/                 # Web intelligence
+│   ├── artifact-pl/               # Data surgery (Perl)
 │   ├── proofs/                   # Verificación formal
 │   ├── tests/                    # Test suite
 │   ├── tools/                    # Herramientas (abb_inspector.py)
@@ -145,35 +145,35 @@ tail -100 /var/log/cheraxxx/core.log
 
 ```bash
 # Rutas
-export CHERAXXX_HOME="/Users/cheraxxx/Cheraxxx RedTeam IDE"
-export CHERAXXX_BACKEND="$CHERAXXX_HOME/backend"
-export CHERAXXX_CONFIG="$CHERAXXX_BACKEND/config/production.toml"
-export CHERAXXX_LOG_DIR="/var/log/cheraxxx"
-export CHERAXXX_PID_DIR="/var/run/cheraxxx"
+export INTERLOCK_HOME="/Users/Cheraxxx/Interlock Assessment IDE"
+export INTERLOCK_BACKEND="$INTERLOCK_HOME/backend"
+export INTERLOCK_CONFIG="$INTERLOCK_BACKEND/config/production.toml"
+export INTERLOCK_LOG_DIR="/var/log/interlock"
+export INTERLOCK_PID_DIR="/var/run/interlock"
 
 # Credenciales (usar siempre desde env)
-export CHERAXXX_DB_PASSWORD="<base64-encoded>"
-export CHERAXXX_REDIS_PASSWORD="<base64-encoded>"
+export INTERLOCK_DB_PASSWORD="<base64-encoded>"
+export INTERLOCK_REDIS_PASSWORD="<base64-encoded>"
 
 # Modo producción
-export CHERAXXX_PRODUCTION=1
-export CHERAXXX_BUILD_TYPE=Release
+export INTERLOCK_PRODUCTION=1
+export INTERLOCK_BUILD_TYPE=Release
 ```
 
 ## Componentes Principales
 
 ### Core C++ (Inferencia RDT)
 ```cpp
-#include "CheraxxxCore.h"
+#include "InterlockCore.h"
 
 // Inicializar ABB
-cheraxxx::AutonomousBreadcrumbBuffer::getInstance(true);
+interlock::AutonomousBreadcrumbBuffer::getInstance(true);
 
 // Inicializar IPC Bridge
-cheraxxx::IPCBridge::getInstance().initializeServers();
+interlock::IPCBridge::getInstance().initializeServers();
 
 // Ejecutar inferencia
-cheraxxx::CheraxxxCore core;
+interlock::InterlockCore core;
 core.initialize();
 ```
 
@@ -181,15 +181,15 @@ core.initialize();
 
 ```cpp
 // Cliente que envía a Go Atlas
-cheraxxx::IPCClient client(COMPONENT_CPP_CORE);
-client.connect("/tmp/cheraxxx_ipc_4");
+interlock::IPCClient client(COMPONENT_CPP_CORE);
+client.connect("/tmp/interlock_ipc_4");
 
-cheraxxx::IPCMessage msg{};
+interlock::IPCMessage msg{};
 msg.sender = COMPONENT_CPP_CORE;
 msg.receiver = COMPONENT_GO_ATLAS;
 msg.message_id = 0x1001;
 
-cheraxxx::IPCMessage response;
+interlock::IPCMessage response;
 client.sendRequest(msg, response, 5000);
 ```
 
@@ -197,10 +197,10 @@ client.sendRequest(msg, response, 5000);
 
 ```swift
 // Integración directa con C++
-import CheraxxxCore
+import InterlockCore
 
 // Usar el Core desde Swift (sin wrappers)
-let core = CheraxxxCore()
+let core = InterlockCore()
 core.initialize()
 
 // Actor para orquestación segura
@@ -242,8 +242,8 @@ sudo dtrace -P 'pid$target:::entry' -p <core_pid>
 ### Checklist Pre-Deployment
 
 - [ ] Todos los módulos compilados correctamente
-- [ ] ABB inicializado en `/dev/shm/cheraxxx_abb_prod`
-- [ ] IPC sockets creados en `/tmp/cheraxxx_ipc_*`
+- [ ] ABB inicializado en `/dev/shm/interlock_abb_prod`
+- [ ] IPC sockets creados en `/tmp/interlock_ipc_*`
 - [ ] Configuración de producción cargada desde `backend/config/production.toml`
 - [ ] Logs con nivel "warning" (mínimo noise)
 - [ ] Base de datos conectada y replicada
@@ -254,16 +254,16 @@ sudo dtrace -P 'pid$target:::entry' -p <core_pid>
 
 ```bash
 # 1. Logs en tiempo real
-tail -f /var/log/cheraxxx/*.log
+tail -f /var/log/interlock/*.log
 
 # 2. Métricas de ABB
 ./tools/inspect_abb.sh
 
 # 3. Estado de IPC
-lsof | grep cheraxxx_ipc
+lsof | grep interlock_ipc
 
 # 4. Performance
-top -p $(cat /var/run/cheraxxx/cheraxxx_core.pid)
+top -p $(cat /var/run/interlock/interlock_core.pid)
 ```
 
 ## Troubleshooting
@@ -280,19 +280,19 @@ rm -rf build/cmake/CMakeCache.txt
 ### IPC Timeout
 ```bash
 # Verificar que los sockets existan
-ls -la /tmp/cheraxxx_ipc_*
+ls -la /tmp/interlock_ipc_*
 
 # Si no existen, el servidor no inició
-journalctl -u cheraxxx-core -n 50
+journalctl -u interlock-core -n 50
 ```
 
 ### ABB no accesible
 ```bash
 # Verificar permisos de /dev/shm
-ls -la /dev/shm/cheraxxx_abb_prod
+ls -la /dev/shm/interlock_abb_prod
 
 # Limpiar y reiniciar
-rm /dev/shm/cheraxxx_abb_prod
+rm /dev/shm/interlock_abb_prod
 ./deploy.sh restart
 ```
 
@@ -325,14 +325,14 @@ rm /dev/shm/cheraxxx_abb_prod
 
 ## Licencia
 
-Privada - Cheraxxx RedTeam
+Privada - Interlock Assessment
 
 ## Soporte
 
 Para issues:
-1. Revisar logs en `/var/log/cheraxxx/`
+1. Revisar logs en `/var/log/interlock/`
 2. Ejecutar `./deploy.sh status`
-3. Inspeccionar ABB: `hexdump -C /dev/shm/cheraxxx_abb_prod`
+3. Inspeccionar ABB: `hexdump -C /dev/shm/interlock_abb_prod`
 4. Recompila si es necesario: `./build.sh clean && ./build.sh`
 
 ---

@@ -5,9 +5,9 @@
 #include <vector>
 #include "InferenceEngine.hpp"
 #include "GPUAllocator.hpp"
-#include "CheraxxxCore.h"
+#include "InterlockCore.h"
 
-using namespace cheraxxx;
+using namespace interlock;
 
 #define TEST(name) void name()
 #define RUN_TEST(name) \
@@ -51,7 +51,7 @@ TEST(test_long_duration_lru_swapping) {
     std::cout << "[Step 4] Starting Long-Duration LRU Swapping Stability Run (500 iterations)..." << std::endl;
 
     // Start the Core to enable the maintenance loop (Auto-GC)
-    CheraxxxCore::boot();
+    InterlockCore::boot();
 
     int successful_swaps = 0;
     int eviction_count = 0;
@@ -92,7 +92,7 @@ TEST(test_long_duration_lru_swapping) {
         std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
 
-    CheraxxxCore::shutdown();
+    InterlockCore::shutdown();
     std::cout << "  - Long-duration stability run completed." << std::endl;
     std::cout << "  - Total attempted swaps: 500, Successful: " << successful_swaps << std::endl;
 
@@ -100,7 +100,7 @@ TEST(test_long_duration_lru_swapping) {
 }
 
 int main() {
-    std::cout << "=== Cheraxxx Native Stability Tests (M4 Pro) ===" << std::endl;
+    std::cout << "=== Interlock Native Stability Tests (M4 Pro) ===" << std::endl;
 
     try {
         RUN_TEST(test_rdt_native_scaling);

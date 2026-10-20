@@ -1,4 +1,4 @@
-#include "CrypterPayload.hpp"
+#include "SecureContainer.hpp"
 #include <iostream>
 #include <cassert>
 #include <chrono>
@@ -8,12 +8,12 @@
 #include "GPUAllocator.hpp"
 #include "InferenceEngine.hpp"
 #include "CognitiveEngines.hpp"
-#include "CheraxxxCore.h"
+#include "InterlockCore.h"
 #include "EventSystem.hpp"
 #include "interop/FormalValidators.hpp"
 
-using namespace cheraxxx;
-using namespace cheraxxx::formal;
+using namespace interlock;
+using namespace interlock::formal;
 
 // Simple test macro
 #define TEST(name) void name()
@@ -94,7 +94,7 @@ TEST(test_cognitive_engines) {
 TEST(test_maintenance_loop_trigger) {
     // This test ensures the maintenance loop starts and can be stopped
     // Using the public static methods as designed.
-    CheraxxxCore::boot();
+    InterlockCore::boot();
 
     // [FORMAL CERTIFICATION] Verify transition to INIT via Isabelle-backed State Machine
     assert(StateMachineValidator::isLegalTransition(StateMachineValidator::Phase::INIT, StateMachineValidator::Phase::BRIEFING));
@@ -102,11 +102,11 @@ TEST(test_maintenance_loop_trigger) {
     // Give it a second to run a few cycles
     std::this_thread::sleep_for(std::chrono::seconds(1));
 
-    CheraxxxCore::shutdown();
+    InterlockCore::shutdown();
 }
 
 TEST(test_pqc_crypter_integration) {
-    auto& crypter = CrypterPayload::getInstance();
+    auto& crypter = SecureContainer::getInstance();
 
     std::cout << "  [PQC] Generating KeyPairs (ML-KEM-768 + ML-DSA-65)..." << std::endl;
     auto config = crypter.generateKeyPair();
@@ -118,7 +118,7 @@ TEST(test_pqc_crypter_integration) {
     assert(PQCExplorerValidator::isReliableReport(res));
 
     std::string original_payload = "MISSION_START: TARGET_XNU_KERNEL_Bypass_PAC";
-    std::cout << "  [PQC] Protecting payload: " << original_payload << std::endl;
+    std::cout << "  [PQC] Protecting artifact: " << original_payload << std::endl;
 
     auto package = crypter.protect(original_payload, config);
     assert(package.has_value());
@@ -126,7 +126,7 @@ TEST(test_pqc_crypter_integration) {
     assert(!package->signature.empty());
     assert(!package->encapsulated_key.empty());
 
-    std::cout << "  [PQC] Recovering payload..." << std::endl;
+    std::cout << "  [PQC] Recovering artifact..." << std::endl;
     auto recovered = crypter.recover(*package, config);
     assert(recovered.has_value());
     assert(*recovered == original_payload);
@@ -138,7 +138,7 @@ TEST(test_pqc_crypter_integration) {
 }
 
 int main() {
-    std::cout << "=== Cheraxxx C++ Core Unit Tests ===" << std::endl;
+    std::cout << "=== Interlock C++ Core Unit Tests ===" << std::endl;
 
     try {
         RUN_TEST(test_pqc_crypter_integration);

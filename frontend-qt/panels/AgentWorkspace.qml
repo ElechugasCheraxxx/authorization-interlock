@@ -37,7 +37,7 @@ Rectangle {
         phase EXPLOIT:
             lock(target_buffer);
             call ghost_injector;
-            commit(payload);
+            commit(artifact);
     }
 }`
         }

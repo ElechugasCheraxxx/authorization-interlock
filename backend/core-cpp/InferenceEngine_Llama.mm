@@ -20,7 +20,7 @@
 
 namespace fs = std::filesystem;
 
-namespace cheraxxx {
+namespace interlock {
 
 void InferenceEngine::initializeLlama() {
     @autoreleasepool {
@@ -150,7 +150,7 @@ std::future<InferenceResponse> InferenceEngine::generateLlama(const InferenceReq
         common_params_sampling sparams;
         sparams.temp = request.temperature;
         if (request.grammar.empty()) {
-            sparams.grammar.grammar = GrammarLibrary::REDTEAM_ACTION_XML;
+            sparams.grammar.grammar = GrammarLibrary::ASSESSMENT_ACTION_XML;
         } else {
             sparams.grammar.grammar = request.grammar;
         }
@@ -270,4 +270,4 @@ bool InferenceEngine::evictOldestModelLlama(const std::string& except_id) {
     return false;
 }
 
-} // namespace cheraxxx
+} // namespace interlock

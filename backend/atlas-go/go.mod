@@ -1,4 +1,4 @@
-module cheraxxx/atlas
+module interlock/atlas
 
 go 1.26.2
 

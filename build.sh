@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 ##############################################################################
-# Build Script for Cheraxxx RedTeam IDE (Polyglot Architecture)
+# Build Script for Interlock Assessment IDE (Polyglot Architecture)
 # 
 # Este script automatiza la compilación de todos los módulos políglotas
 # en el orden correcto, con manejo de dependencias y verificación de errores.
@@ -138,7 +138,7 @@ build_go_modules() {
     
     if [ ! -f "go.mod" ]; then
         log_warning "go.mod no encontrado, inicializando..."
-        go mod init github.com/cheraxxx/atlas-go 2>&1 | tee -a "$BUILD_LOG"
+        go mod init github.com/interlock/atlas-go 2>&1 | tee -a "$BUILD_LOG"
     fi
     
     CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 \
@@ -152,9 +152,9 @@ build_go_modules() {
 ##############################################################################
 
 build_zig_modules() {
-    log_info "Compilando módulos Zig (Payload Orchestrator)..."
+    log_info "Compilando módulos Zig (Artifact Orchestrator)..."
     
-    cd "$PROJECT_ROOT/backend/payloads-zig"
+    cd "$PROJECT_ROOT/backend/transfer-zig"
     
     if [ ! -f "build.zig" ]; then
         log_warning "build.zig no encontrado, saltando..."
@@ -166,7 +166,7 @@ build_zig_modules() {
     # Copiar binarios compilados
     cp zig-out/bin/* "$BUILD_DIR/bin/" 2>/dev/null || true
     
-    log_success "Payload Orchestrator compilado"
+    log_success "Artifact Orchestrator compilado"
 }
 
 
@@ -195,7 +195,7 @@ build_cpp_core() {
           "$PROJECT_ROOT" 2>&1 | tee -a "$BUILD_LOG"
     
     # Compilar Core usando CMake
-    cmake --build . --target cheraxxx_core --config $BUILD_TYPE -j "$PARALLEL_JOBS" 2>&1 | tee -a "$BUILD_LOG"
+    cmake --build . --target interlock_core --config $BUILD_TYPE -j "$PARALLEL_JOBS" 2>&1 | tee -a "$BUILD_LOG"
 
     log_success "Core y Middleware compilados"
 }
@@ -252,9 +252,9 @@ verify_build() {
     local errors=0
     
     # Verificar framework principal
-    local core_framework="$BUILD_DIR/cmake/cheraxxx_core.framework/cheraxxx_core"
+    local core_framework="$BUILD_DIR/cmake/interlock_core.framework/interlock_core"
     if [ ! -f "$core_framework" ]; then
-        log_error "Framework cheraxxx_core no encontrado en $core_framework"
+        log_error "Framework interlock_core no encontrado en $core_framework"
         ((errors++))
     fi
     
@@ -295,7 +295,7 @@ print_summary() {
     echo "=========================================="
     echo -e "${GREEN}BUILD COMPLETADO EXITOSAMENTE${NC}"
     echo "=========================================="
-    echo "Versión: Cheraxxx v1.0.0-production"
+    echo "Versión: Interlock v1.0.0-production"
     echo "Build Type: $BUILD_TYPE"
     echo "Parallelismo: $PARALLEL_JOBS threads"
     echo ""
@@ -340,7 +340,7 @@ build_frontend_and_bundle() {
     cd "$BUILD_DIR/cmake"
 
     # Compilar el target del App Bundle
-    cmake --build . --target CheraxxxRedTeamIDE_Qt --config $BUILD_TYPE -j "$PARALLEL_JOBS" 2>&1 | tee -a "$BUILD_LOG"
+    cmake --build . --target InterlockIDE_Qt --config $BUILD_TYPE -j "$PARALLEL_JOBS" 2>&1 | tee -a "$BUILD_LOG"
 
     log_success "Frontend y Bundle generados"
 }
@@ -348,13 +348,13 @@ build_frontend_and_bundle() {
 move_to_final_product() {
     log_info "Moviendo el producto final a 'Final Product'..."
 
-    local BUNDLE_PATH="$BUILD_DIR/cmake/CheraxxxRedTeamIDE_Qt.app"
+    local BUNDLE_PATH="$BUILD_DIR/cmake/InterlockIDE_Qt.app"
     local DEST_DIR="$PROJECT_ROOT/Final Product"
 
     if [ -d "$BUNDLE_PATH" ]; then
-        rm -rf "$DEST_DIR/Cheraxxx RedTeam IDE.app"
-        cp -R "$BUNDLE_PATH" "$DEST_DIR/Cheraxxx RedTeam IDE.app"
-        log_success "App bundle copiada a: $DEST_DIR/Cheraxxx RedTeam IDE.app"
+        rm -rf "$DEST_DIR/Interlock Assessment IDE.app"
+        cp -R "$BUNDLE_PATH" "$DEST_DIR/Interlock Assessment IDE.app"
+        log_success "App bundle copiada a: $DEST_DIR/Interlock Assessment IDE.app"
     else
         log_error "No se encontró el bundle en $BUNDLE_PATH"
         return 1
@@ -370,7 +370,7 @@ main() {
     setup_directories
 
     log_info "=========================================="
-    log_info "Cheraxxx RedTeam IDE - Build System v1.0"
+    log_info "Interlock Assessment IDE - Build System v1.0"
     log_info "=========================================="
     verify_prerequisites || exit 1
     

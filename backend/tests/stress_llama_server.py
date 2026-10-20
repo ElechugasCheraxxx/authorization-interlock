@@ -112,7 +112,7 @@ async def main():
 
     if not model_path and not args.model:
         # Fallback to the newly downloaded abliterated model
-        model_path = "/Users/cheraxxx/Cheraxxx RedTeam IDE/data/models/llama-3.1-8b-abliterated.Q4_K_M.gguf"
+        model_path = "/Users/Cheraxxx/Interlock IDE/data/models/llama-3.1-8b-abliterated.Q4_K_M.gguf"
         _log.info(f"Using default model path: {model_path}")
 
     config = ModelConfig(

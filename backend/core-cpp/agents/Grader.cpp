@@ -1,7 +1,7 @@
 #include "Grader.hpp"
 #include <iostream>
 
-namespace cheraxxx {
+namespace interlock {
 
 GraderAgent::GraderAgent(const std::string& model_path)
     : NativeAgent("grader", model_path) {}
@@ -11,4 +11,4 @@ void GraderAgent::onResponseGenerated(const std::string& raw_output) {
     std::cout << "[Grader] Logical Audit Complete." << std::endl;
 }
 
-} // namespace cheraxxx
+} // namespace interlock

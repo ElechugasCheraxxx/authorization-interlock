@@ -8,7 +8,7 @@
 
 namespace fs = std::filesystem;
 
-namespace cheraxxx {
+namespace interlock {
 
 bool GhidraBridge::initialize(const std::string& ghidra_path, const std::string& project_path) {
     std::lock_guard<std::mutex> lock(mtx);
@@ -39,7 +39,7 @@ bool GhidraBridge::analyzeBinary(const std::string& binary_path) {
     // analyzeHeadless <project_path> <project_name> -import <binary_path> -postScript <DecompileAll.java>
 
     std::string headless_cmd = ghidra_home + "/support/analyzeHeadless " +
-                               current_project + " CheraxxxProject -import " + binary_path + " -overwrite";
+                               current_project + " InterlockProject -import " + binary_path + " -overwrite";
 
     // We would use ExecutionManager here
     // ExecutionManager::getInstance().spawnProcess(headless_cmd, {}, true);
@@ -56,7 +56,7 @@ std::string GhidraBridge::decompileFunction(const std::string& binary_path, cons
     // Production Command: Execute Ghidra Headless with the decompiler script.
     // The script DecompileFunction.py must exist in the Ghidra script path or the project.
     std::string script_cmd = ghidra_home + "/support/analyzeHeadless " +
-                             current_project + " CheraxxxProject -process " + fs::path(binary_path).filename().string() +
+                             current_project + " InterlockProject -process " + fs::path(binary_path).filename().string() +
                              " -postScript DecompileFunction.py " + function_name + " " + output_file;
 
     // Use ExecutionManager to spawn the analyzer process.
@@ -87,4 +87,4 @@ std::map<uint64_t, std::string> GhidraBridge::getMemoryMap(const std::string& bi
     return mmap;
 }
 
-} // namespace cheraxxx
+} // namespace interlock

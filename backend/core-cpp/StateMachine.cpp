@@ -2,7 +2,7 @@
 #include "interop/FormalValidators.hpp"
 #include <iostream>
 
-namespace cheraxxx {
+namespace interlock {
 
 StateMachine::StateMachine(OperationPhase initial_phase) : current_phase(initial_phase) {}
 
@@ -78,4 +78,4 @@ OperationPhase StateMachine::stringToPhase(const std::string& phase_str) {
     return OperationPhase::INIT;
 }
 
-} // namespace cheraxxx
+} // namespace interlock

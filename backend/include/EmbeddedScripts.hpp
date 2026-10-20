@@ -1,7 +1,7 @@
 #pragma once
 #include <string_view>
 
-namespace cheraxxx::embedded {
+namespace interlock::embedded {
 
 /**
  * M4 Pro Optimized: Python code as static resources.
@@ -10,7 +10,7 @@ namespace cheraxxx::embedded {
 
 inline constexpr std::string_view BLACKBOARD_PROXY = R"python(
 from __future__ import annotations
-import cheraxxx_core_bind as core
+import interlock_core_bind as core
 import json
 from datetime import datetime, timezone
 from typing import Any, Optional, Dict, List
@@ -28,7 +28,7 @@ class Blackboard:
 )python";
 
 inline constexpr std::string_view MESSAGE_ROUTER_LOGIC = R"python(
-import cheraxxx_core_bind as core
+import interlock_core_bind as core
 import asyncio
 
 class MessageRouter:
@@ -51,4 +51,4 @@ class MessageRouter:
         self._cpp.route(msg)
 )python";
 
-} // namespace cheraxxx::embedded
+} // namespace interlock::embedded

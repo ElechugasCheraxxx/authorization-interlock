@@ -8,7 +8,7 @@
 
 namespace nb = nanobind;
 
-namespace cheraxxx {
+namespace interlock {
 
 void PythonBridge::initialize(const std::string& python_path) {
     std::lock_guard<std::mutex> lock(interpreter_mtx);
@@ -108,4 +108,4 @@ void PythonBridge::executeString(const std::string& code) {
     }
 }
 
-} // namespace cheraxxx
+} // namespace interlock

@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <type_traits>
 
-namespace cheraxxx::c2 {
+namespace interlock::c2 {
 
 /**
  * @brief Base class for Agent Tasks.
@@ -61,4 +61,4 @@ private:
     std::unique_ptr<Task> m_tasks[MAX_SLOTS];
 };
 
-} // namespace cheraxxx::c2
+} // namespace interlock::c2

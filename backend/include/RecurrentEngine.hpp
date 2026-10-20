@@ -9,7 +9,7 @@
 #include <chrono>
 #include "InferenceEngine.hpp"
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
  * @brief Recurrent-Depth Transformer (RDT) Core.
@@ -90,4 +90,4 @@ private:
     void performLatentHop(const std::string& model_id, int hop_index, float& convergence_score);
 };
 
-} // namespace cheraxxx
+} // namespace interlock

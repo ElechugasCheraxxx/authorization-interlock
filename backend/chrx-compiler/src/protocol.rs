@@ -37,7 +37,7 @@ pub struct ChrxxxMessage {
     pub timestamp: u64,
     pub sender_id: [u8; 32],
     pub flags: AgentFlags,
-    pub payload: ChrxxxPayload,
+    pub artifact: ChrxxxPayload,
     pub signature: Option<Vec<u8>>, // ML-DSA-65 signature
 }
 

@@ -370,8 +370,8 @@ impl<'a> Parser<'a> {
         let name = self.expect_ident()?;
         self.expect(Token::BraceOpen)?;
         let mut role = "EXECUTION".to_string();
-        let mut payload = None;
-        let mut stealth = None;
+        let mut artifact = None;
+        let mut integrity = None;
         let mut target = None;
         let mut trigger = None;
         let mut on_success = None;
@@ -399,8 +399,8 @@ impl<'a> Parser<'a> {
                     self.expect(Token::Semicolon)?;
                     match key.as_str() {
                         "role" => role = value,
-                        "payload" => payload = Some(value),
-                        "stealth" => stealth = Some(value),
+                        "artifact" => artifact = Some(value),
+                        "integrity" => integrity = Some(value),
                         "target" => target = Some(value),
                         "trigger" => trigger = Some(value),
                         "task" => tasks.push(value),
@@ -411,7 +411,7 @@ impl<'a> Parser<'a> {
         }
 
         self.expect(Token::BraceClose)?;
-        Ok(Agent { name, role, payload, stealth, target, trigger, on_success, on_fail, tasks })
+        Ok(Agent { name, role, artifact, integrity, target, trigger, on_success, on_fail, tasks })
     }
 
     fn parse_flow(&mut self) -> Result<Flow, ParserError> {

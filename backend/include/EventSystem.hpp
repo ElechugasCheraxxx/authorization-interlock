@@ -8,7 +8,7 @@
 #include <functional>
 #include "Schema.hpp"
 
-namespace cheraxxx {
+namespace interlock {
 
 struct Event {
     std::string id;
@@ -93,4 +93,4 @@ private:
     std::mutex mtx;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

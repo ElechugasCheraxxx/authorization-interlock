@@ -2,7 +2,7 @@
 #define KERNEL_BRIDGE_HPP
 
 #include <IOKit/IOKitLib.h>
-#include "../shield-c/cheraxxx_shared_types.h"
+#include "../shield-c/interlock_shared_types.h"
 #include <iostream>
 #include <sys/syscall.h>
 
@@ -13,7 +13,7 @@ extern "C" {
     uint64_t get_nanoseconds_arm();
 }
 
-namespace cheraxxx {
+namespace interlock {
 
 class KernelBridge {
 public:
@@ -41,7 +41,7 @@ public:
 
     bool connect() {
         // ... (resto del código igual o llamar vía direct_syscall si es posible)
-        io_service_t service = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("com_cheraxxx_Shield"));
+        io_service_t service = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("com_interlock_Shield"));
         if (!service) {
             std::cerr << "[!] KernelBridge: Shield service not found. Is the KEXT loaded?" << std::endl;
             return false;
@@ -55,7 +55,7 @@ public:
             return false;
         }
 
-        std::cout << "[+] KernelBridge: Connected to Cheraxxx Shield." << std::endl;
+        std::cout << "[+] KernelBridge: Connected to Interlock Shield." << std::endl;
         return true;
     }
 
@@ -66,11 +66,11 @@ public:
         }
     }
 
-    bool getShieldStatus(CheraxxxStatusResponse& status) {
+    bool getShieldStatus(InterlockStatusResponse& status) {
         if (connection == IO_OBJECT_NULL) return false;
 
-        size_t outputSize = sizeof(CheraxxxStatusResponse);
-        kern_return_t kr = IOConnectCallStructMethod(connection, kCheraxxxGetStatus, nullptr, 0, &status, &outputSize);
+        size_t outputSize = sizeof(InterlockStatusResponse);
+        kern_return_t kr = IOConnectCallStructMethod(connection, kInterlockGetStatus, nullptr, 0, &status, &outputSize);
 
         return (kr == KERN_SUCCESS);
     }
@@ -79,6 +79,6 @@ private:
     io_connect_t connection;
 };
 
-} // namespace cheraxxx
+} // namespace interlock
 
 #endif

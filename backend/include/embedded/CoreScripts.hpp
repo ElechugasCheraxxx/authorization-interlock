@@ -5,10 +5,10 @@
 #include "EngineScripts.hpp"
 #include "ArsenalScripts.hpp"
 #include "AgentScripts.hpp"
-#include "OpsecScripts.hpp"
-#include "PayloadScripts.hpp"
+#include "RiskScripts.hpp"
+#include "ArtifactScripts.hpp"
 
-namespace cheraxxx::embedded {
+namespace interlock::embedded {
 
 // Este script es el "Cargador Mágico". Inyecta un buscador en sys.meta_path
 inline constexpr std::string_view IMPORT_HOOK = R"python(
@@ -16,7 +16,7 @@ import sys
 import types
 import importlib.machinery
 
-class CheraxxxEmbeddedLoader:
+class InterlockEmbeddedLoader:
     def __init__(self, modules_map):
         self.modules = modules_map
 
@@ -34,11 +34,11 @@ class CheraxxxEmbeddedLoader:
         exec(source, module.__dict__)
 
 def install_hook(modules_map):
-    sys.meta_path.insert(0, CheraxxxEmbeddedLoader(modules_map))
+    sys.meta_path.insert(0, InterlockEmbeddedLoader(modules_map))
 )python";
 
 inline constexpr std::string_view CORE_MAIN = R"python(
-import cheraxxx_core_bind as core
+import interlock_core_bind as core
 
 # FastAPI/Uvicorn removed in favor of direct C++ -> Swift Interop.
 # Logic is now driven by the C++ Master Core directly.
@@ -56,7 +56,7 @@ inline const std::map<std::string_view, std::string_view> get_all_embedded_modul
     std::map<std::string_view, std::string_view> all;
 
     // Core Main Entry
-    all["cheraxxx.core_main"] = CORE_MAIN;
+    all["interlock.core_main"] = CORE_MAIN;
 
     // Core & Blackboard
     all.insert(BLACKBOARD_MODULES.begin(), BLACKBOARD_MODULES.end());
@@ -70,7 +70,7 @@ inline const std::map<std::string_view, std::string_view> get_all_embedded_modul
     // Agents
     all.insert(AGENT_MODULES.begin(), AGENT_MODULES.end());
 
-    // Opsec
+    // Risk
     all.insert(OPSEC_MODULES.begin(), OPSEC_MODULES.end());
 
     // Payloads
@@ -79,4 +79,4 @@ inline const std::map<std::string_view, std::string_view> get_all_embedded_modul
     return all;
 }
 
-} // namespace cheraxxx::embedded
+} // namespace interlock::embedded

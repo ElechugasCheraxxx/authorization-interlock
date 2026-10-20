@@ -7,7 +7,7 @@
 #include <vector>
 #include <mutex>
 
-namespace cheraxxx {
+namespace interlock {
 
 class TicketDispatcher {
 public:
@@ -29,4 +29,4 @@ private:
     std::string selectBestAgent(const std::string& instruction, int priority);
 };
 
-} // namespace cheraxxx
+} // namespace interlock

@@ -1,7 +1,7 @@
 #include "DepthCacheManager.hpp"
 #include <chrono>
 
-namespace cheraxxx {
+namespace interlock {
 
 void DepthCacheManager::pushInsight(const std::string& alias, const std::vector<float>& state, const std::string& summary) {
     std::lock_guard<std::mutex> lock(mtx);
@@ -37,4 +37,4 @@ void DepthCacheManager::clear(const std::string& alias) {
     cache.erase(alias);
 }
 
-} // namespace cheraxxx
+} // namespace interlock

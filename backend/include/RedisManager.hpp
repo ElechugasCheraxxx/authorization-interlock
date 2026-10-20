@@ -3,7 +3,7 @@
 #include <nlohmann/json.hpp>
 #include <mutex>
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
  * @brief Gestiona el estado efímero y coordinación en tiempo real (Blackboard Live).
@@ -24,4 +24,4 @@ private:
     // Aquí iría la integración con hiredis o sw/redis-plus-plus
 };
 
-} // namespace cheraxxx
+} // namespace interlock

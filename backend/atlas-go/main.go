@@ -9,10 +9,10 @@ import (
 	"os/signal"
 	"syscall"
 
-	"cheraxxx/atlas/internal/blackboard"
-	"cheraxxx/atlas/internal/oracle"
-	"cheraxxx/atlas/internal/parser"
-	"cheraxxx/atlas/pb"
+	"interlock/atlas/internal/blackboard"
+	"interlock/atlas/internal/oracle"
+	"interlock/atlas/internal/parser"
+	"interlock/atlas/pb"
 	"google.golang.org/grpc"
 	"sync"
 	"strings"
@@ -55,7 +55,7 @@ func (s *atlasServer) RouteMessage(ctx context.Context, msg *pb.Message) (*pb.Ro
 	// SI EL MENSAJE ES UN OUTPUT DE RAZONAMIENTO DE CIPHER, LO PARSEAMOS
 	if msg.Subject == "REASONING_OUTPUT" && s.blackboard != nil {
 		go func() {
-			subtasks := parser.ParseSubtasks(string(msg.Payload), msg.From)
+			subtasks := parser.ParseSubtasks(string(msg.Artifact), msg.From)
 			if len(subtasks) > 0 {
 				// VALIDACIÓN FORMAL VÍA GLASSWING ORACLE
 				taskTitles := make([]string, len(subtasks))
@@ -81,11 +81,11 @@ func (s *atlasServer) RouteMessage(ctx context.Context, msg *pb.Message) (*pb.Ro
 	// ACTUALIZACIONES DE MISIÓN DESDE AGENTES DE NIVEL 4 (REX, GHOST, WRAITH)
 	if msg.Subject == "MISSION_UPDATE" && s.blackboard != nil {
 		go func() {
-			parts := strings.SplitN(string(msg.Payload), ":", 2)
+			parts := strings.SplitN(string(msg.Artifact), ":", 2)
 			if len(parts) == 2 {
 				s.blackboard.PublishMissionUpdate(parts[0], parts[1])
 			} else {
-				s.blackboard.PublishMissionUpdate(msg.From, string(msg.Payload))
+				s.blackboard.PublishMissionUpdate(msg.From, string(msg.Artifact))
 			}
 		}()
 	}
@@ -93,8 +93,8 @@ func (s *atlasServer) RouteMessage(ctx context.Context, msg *pb.Message) (*pb.Ro
 	if msg.Subject == "MISSION_RESULT" && s.blackboard != nil {
 		go func() {
 			// Aquí podríamos validar formalmente el resultado si hay un invariante
-			log.Printf("[Atlas] Mission Result from %s: %s", msg.From, string(msg.Payload))
-			s.blackboard.PublishMissionUpdate(msg.From+"_RESULT", string(msg.Payload))
+			log.Printf("[Atlas] Mission Result from %s: %s", msg.From, string(msg.Artifact))
+			s.blackboard.PublishMissionUpdate(msg.From+"_RESULT", string(msg.Artifact))
 		}()
 	}
 
@@ -160,7 +160,7 @@ func (s *atlasServer) TunnelTelemetria(stream pb.SwarmOrchestrator_TunnelTelemet
 			log.Printf("[Atlas] Tunnel closed: %v", err)
 			return err
 		}
-		log.Printf("[Atlas] Received Telemetry from %s: %d bytes", data.AgentId, len(data.Payload))
+		log.Printf("[Atlas] Received Telemetry from %s: %d bytes", data.AgentId, len(data.Artifact))
 
 		// Responder con un comando de control (ejemplo: KeepAlive)
 		err = stream.Send(&pb.ControlCommand{
@@ -182,7 +182,7 @@ func main() {
 	}
 
 	// Socket Unix para C++ Core
-	socketPath := "/tmp/cheraxxx_atlas.sock"
+	socketPath := "/tmp/interlock_atlas.sock"
 	if _, err := os.Stat(socketPath); err == nil {
 		if err := os.Remove(socketPath); err != nil {
 			log.Fatalf("failed to remove stale socket: %v", err)

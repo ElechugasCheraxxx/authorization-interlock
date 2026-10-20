@@ -5,7 +5,7 @@
 #include <string>
 #include <map>
 
-namespace cheraxxx {
+namespace interlock {
 
 struct AttackChain {
     std::vector<std::string> primitive_ids;
@@ -36,4 +36,4 @@ private:
     void traverseGraph(const std::string& start_node, AttackChain current_chain, std::vector<AttackChain>& results);
 };
 
-} // namespace cheraxxx
+} // namespace interlock

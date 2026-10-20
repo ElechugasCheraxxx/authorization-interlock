@@ -9,10 +9,10 @@
 #include <functional>
 #include <condition_variable>
 
-namespace cheraxxx::streaming {
+namespace interlock::streaming {
 
 /**
- * @brief High-performance Asynchronous Discovery & Payload Streamer.
+ * @brief High-performance Asynchronous Discovery & Artifact Streamer.
  * Inspired by stream manager (referencia previa).
  * Features:
  * - 4-channel parallel I/O.
@@ -88,4 +88,4 @@ private:
     std::atomic<bool> m_stop;
 };
 
-} // namespace cheraxxx::streaming
+} // namespace interlock::streaming

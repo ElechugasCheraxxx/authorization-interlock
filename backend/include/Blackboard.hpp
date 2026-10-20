@@ -6,7 +6,7 @@
 #include <vector>
 #include <map>
 
-namespace cheraxxx {
+namespace interlock {
 
 class Blackboard {
 public:
@@ -99,4 +99,4 @@ private:
     size_t max_bus_size = 1000;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

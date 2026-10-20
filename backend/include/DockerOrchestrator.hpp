@@ -4,10 +4,10 @@
 #include <vector>
 #include <memory>
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
- * @brief Manages ephemeral Docker containers for exploit execution and validation.
+ * @brief Manages ephemeral Docker containers for assess execution and validation.
  * Milestone 1.1 of GLASSWING.
  */
 class DockerOrchestrator {
@@ -46,4 +46,4 @@ private:
     std::string runDockerCLI(const std::string& args);
 };
 
-} // namespace cheraxxx
+} // namespace interlock

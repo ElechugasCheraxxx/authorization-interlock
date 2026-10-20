@@ -45,7 +45,7 @@ Rectangle {
             Text { text: "✓ Executive Summary"; color: Theme.success; font.pixelSize: 9; font.family: Theme.monoFont }
             Text { text: "✓ Operation Overview"; color: Theme.success; font.pixelSize: 9; font.family: Theme.monoFont }
             Text { text: "✓ Timeline"; color: Theme.success; font.pixelSize: 9; font.family: Theme.monoFont }
-            Text { text: "○ Attack Path Analysis"; color: Theme.muted; font.pixelSize: 9; font.family: Theme.monoFont }
+            Text { text: "○ Assess Path Analysis"; color: Theme.muted; font.pixelSize: 9; font.family: Theme.monoFont }
         }
 
         Button {

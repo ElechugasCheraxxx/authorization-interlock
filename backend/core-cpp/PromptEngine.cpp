@@ -5,7 +5,7 @@
 #include <iostream>
 #include <algorithm>
 
-namespace cheraxxx {
+namespace interlock {
 
 // Helper to wrap content in CDATA to protect special characters (scripts, payloads, etc)
 static std::string wrapCDATA(const std::string& data) {
@@ -25,7 +25,7 @@ AdaptivePromptEngine::AdaptivePromptEngine() {
     // Inicialización de metadatos básicos por defecto
     operation_metadata = {
         {"op_id", "OPERACION_ALPHA"},
-        {"security_level", "RED_TEAM_STRICT"},
+        {"security_level", "ASSESSMENT_STRICT"},
         {"scope", "INTERNAL_NETWORK"}
     };
 }
@@ -113,4 +113,4 @@ std::string AdaptivePromptEngine::buildAgentPrompt(const std::string& agent_alia
     return ss.str();
 }
 
-} // namespace cheraxxx
+} // namespace interlock

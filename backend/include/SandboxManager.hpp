@@ -5,11 +5,11 @@
 #include <memory>
 #include <functional>
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
  * @brief Manages isolated execution environments (Docker/Custom Sandboxes).
- * Instrumentated with ASan/UBSan for crash detection and exploit validation.
+ * Instrumentated with ASan/UBSan for crash detection and assess validation.
  */
 class SandboxManager {
 public:
@@ -28,7 +28,7 @@ public:
     }
 
     /**
-     * @brief Prepares an isolated environment for a specific exploit target.
+     * @brief Prepares an isolated environment for a specific assess target.
      */
     bool prepareEnvironment(const std::string& env_id, const std::string& docker_image);
 
@@ -48,4 +48,4 @@ private:
     std::string parseSanitizerOutput(const std::string& raw_stderr);
 };
 
-} // namespace cheraxxx
+} // namespace interlock

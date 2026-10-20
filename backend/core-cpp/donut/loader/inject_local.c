@@ -60,8 +60,8 @@ BOOL injectPIC(LPVOID code, DWORD codeLen) {
     LPVOID  cs;
     DWORD   t;
 
-    // 1. allocate read-write (RW) memory for payload
-    printf("  [ allocating memory for payload.\n");
+    // 1. allocate read-write (RW) memory for artifact
+    printf("  [ allocating memory for artifact.\n");
     cs=VirtualAlloc(NULL, codeLen, 
       MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
 
@@ -71,7 +71,7 @@ BOOL injectPIC(LPVOID code, DWORD codeLen) {
     }
 
     printf("  [ writing code to 0x%p.\n", cs);
-    // 2. copy the payload to remote memory
+    // 2. copy the artifact to remote memory
     memcpy(cs, code, codeLen);
     //WriteProcessMemory(hp, cs, code, codeLen, &wr); 
     VirtualProtect(cs, codeLen, PAGE_EXECUTE_READ, &t);
@@ -79,7 +79,7 @@ BOOL injectPIC(LPVOID code, DWORD codeLen) {
     printf("  [ press any key to continue.\n");
     getchar();
 
-    // 3. execute payload in remote process
+    // 3. execute artifact in remote process
     printf("  [ jumping to shellcode.\n");
     void (*function)();
     function = (void (*)())cs;
@@ -124,7 +124,7 @@ int main(int argc, char *argv[]){
     // pic
     code_len = getdata(argv[1], &code);
     if(code_len == 0) {
-      printf("  [ unable to read payload.\n");
+      printf("  [ unable to read artifact.\n");
       return 0;
     }
     injectPIC(code, code_len);

@@ -19,7 +19,7 @@ NativeBridge::NativeBridge(QObject *parent) : QObject(parent) {
 }
 
 NativeBridge::~NativeBridge() {
-    cheraxxx::CheraxxxCore::shutdown();
+    interlock::InterlockCore::shutdown();
 }
 
 void NativeBridge::boot() {
@@ -45,9 +45,9 @@ void NativeBridge::boot() {
     qDebug() << "[NativeBridge] Root Resource Path:" << resourcePath;
 
     // Inyectar el path raíz al Core C++
-    cheraxxx::CheraxxxCore::setBasePath(resourcePath.toUtf8().constData());
-    cheraxxx::CheraxxxCore::setEventCallback(NativeBridge::onNativeEvent);
-    cheraxxx::CheraxxxCore::boot();
+    interlock::InterlockCore::setBasePath(resourcePath.toUtf8().constData());
+    interlock::InterlockCore::setEventCallback(NativeBridge::onNativeEvent);
+    interlock::InterlockCore::boot();
 
     m_isBooted = true;
     m_metricsTimer->start(1000);
@@ -55,36 +55,36 @@ void NativeBridge::boot() {
 }
 
 void NativeBridge::createOperation(const QString &name, const QString &preset) {
-    cheraxxx::CheraxxxCore::createOperation(name.toUtf8().constData(), preset.toUtf8().constData());
+    interlock::InterlockCore::createOperation(name.toUtf8().constData(), preset.toUtf8().constData());
 }
 
 void NativeBridge::joinOperation(const QString &opId) {
-    cheraxxx::CheraxxxCore::joinOperation(opId.toUtf8().constData());
+    interlock::InterlockCore::joinOperation(opId.toUtf8().constData());
 }
 
 void NativeBridge::executeAction(const QString &action) {
     qDebug() << "[NativeBridge] Action Triggered:" << action;
     if (action == "ADVANCE_PHASE") {
-        cheraxxx::CheraxxxCore::advancePhase();
+        interlock::InterlockCore::advancePhase();
     }
 }
 
 void NativeBridge::injectMessage(const QString &to, const QString &content) {
-    cheraxxx::CheraxxxCore::injectMessage(to.toUtf8().constData(), content.toUtf8().constData());
+    interlock::InterlockCore::injectMessage(to.toUtf8().constData(), content.toUtf8().constData());
 }
 
 void NativeBridge::selectModel(const QString &modelId) {
-    cheraxxx::CheraxxxCore::selectModel(modelId.toUtf8().constData());
+    interlock::InterlockCore::selectModel(modelId.toUtf8().constData());
 }
 
 QString NativeBridge::processInference(const QString &prompt) {
-    std::string result = cheraxxx::CheraxxxCore::searchIntelligence(prompt.toUtf8().constData());
+    std::string result = interlock::InterlockCore::searchIntelligence(prompt.toUtf8().constData());
     return QString::fromStdString(result);
 }
 
 QString NativeBridge::deployPayload(uint32_t seed) {
-    std::string payload = cheraxxx::CheraxxxCore::triggerZigPayload(seed);
-    return QString::fromStdString(payload);
+    std::string artifact = interlock::InterlockCore::triggerZigPayload(seed);
+    return QString::fromStdString(artifact);
 }
 
 QVariantList NativeBridge::simulateSignalPropagation(const QVariantList &transmitters, const QVariantList &obstacles) {
@@ -111,7 +111,7 @@ QVariantList NativeBridge::simulateSignalPropagation(const QVariantList &transmi
     std::string t_json = QJsonDocument(t_array).toJson(QJsonDocument::Compact).toStdString();
     std::string o_json = QJsonDocument(o_array).toJson(QJsonDocument::Compact).toStdString();
 
-    std::string result_json = cheraxxx::CheraxxxCore::simulateSignalPropagation(t_json, o_json);
+    std::string result_json = interlock::InterlockCore::simulateSignalPropagation(t_json, o_json);
     QJsonDocument res_doc = QJsonDocument::fromJson(QByteArray::fromStdString(result_json));
 
     if (res_doc.isArray()) {
@@ -127,7 +127,7 @@ bool NativeBridge::distributeTicket(uint32_t type, const QString &base64Data, co
     }
     QString pidsCsv = pidStrings.join(",");
 
-    return cheraxxx::CheraxxxCore::distributeTicket(
+    return interlock::InterlockCore::distributeTicket(
         type,
         base64Data.toUtf8().constData(),
         pidsCsv.toUtf8().constData()
@@ -135,19 +135,19 @@ bool NativeBridge::distributeTicket(uint32_t type, const QString &base64Data, co
 }
 
 QVariantMap NativeBridge::compileChrx(const QString &source) {
-    std::string result = cheraxxx::CheraxxxCore::compileChrx(source.toUtf8().constData());
+    std::string result = interlock::InterlockCore::compileChrx(source.toUtf8().constData());
     QJsonDocument doc = QJsonDocument::fromJson(QByteArray::fromStdString(result));
     if (doc.isObject()) return doc.object().toVariantMap();
     return QVariantMap{{"success", false}, {"error", "Invalid compiler response"}};
 }
 
 bool NativeBridge::validateChoreography(const QString &chrxJson) {
-    return cheraxxx::CheraxxxCore::validateChoreography(chrxJson.toUtf8().constData());
+    return interlock::InterlockCore::validateChoreography(chrxJson.toUtf8().constData());
 }
 
 void NativeBridge::updateMetrics() {
     // 1. Snapshot Sync (Estado de la misión)
-    std::string snapshotJson = cheraxxx::CheraxxxCore::getSnapshotJSON();
+    std::string snapshotJson = interlock::InterlockCore::getSnapshotJSON();
     QJsonDocument doc = QJsonDocument::fromJson(QByteArray::fromStdString(snapshotJson));
     if (!doc.isNull() && doc.isObject()) {
         QVariantMap newSnapshot = doc.object().toVariantMap();
@@ -158,7 +158,7 @@ void NativeBridge::updateMetrics() {
     }
 
     // 2. Hardware Telemetry Sync
-    std::string hardwareJson = cheraxxx::CheraxxxCore::getHardwareMetricsJSON();
+    std::string hardwareJson = interlock::InterlockCore::getHardwareMetricsJSON();
     QJsonDocument hwDoc = QJsonDocument::fromJson(QByteArray::fromStdString(hardwareJson));
     if (!hwDoc.isNull() && hwDoc.isArray()) {
         QVariantList newHw = hwDoc.array().toVariantList();
@@ -169,7 +169,7 @@ void NativeBridge::updateMetrics() {
     }
 
     // 3. Network Stats Sync
-    cheraxxx::NetworkStats ns = cheraxxx::NetworkBridge::getInstance().getStats();
+    interlock::NetworkStats ns = interlock::NetworkBridge::getInstance().getStats();
     QVariantMap newNetwork;
     newNetwork["bytesSent"] = (qulonglong)ns.bytesSent;
     newNetwork["bytesReceived"] = (qulonglong)ns.bytesReceived;

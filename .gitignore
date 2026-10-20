@@ -64,3 +64,16 @@ backend/core-cpp/obfuscator/obscura-*/
 
 # Sistema
 Thumbs.db
+
+# Coq / OCaml build artifacts
+*.aux
+*.cmi
+*.cmo
+*.cmx
+*.cmt
+*.cmti
+*.vo
+*.vos
+*.vok
+*.glob
+.*.aux

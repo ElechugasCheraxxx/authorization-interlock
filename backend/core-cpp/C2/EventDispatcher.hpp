@@ -7,7 +7,7 @@
 #include <memory>
 #include <any>
 
-namespace cheraxxx::c2 {
+namespace interlock::c2 {
 
 /**
  * @brief High-performance Event Dispatcher for C2 Operations.
@@ -50,4 +50,4 @@ private:
     std::map<EventType, std::vector<Callback>> m_subscribers;
 };
 
-} // namespace cheraxxx::c2
+} // namespace interlock::c2

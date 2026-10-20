@@ -6,7 +6,7 @@
 #include <condition_variable>
 #include <functional>
 
-namespace cheraxxx {
+namespace interlock {
 
 class PgConnectionPool {
 public:
@@ -70,4 +70,4 @@ private:
     std::condition_variable cv;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

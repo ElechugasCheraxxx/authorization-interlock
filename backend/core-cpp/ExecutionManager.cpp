@@ -5,7 +5,7 @@
 #include <signal.h>
 #include <vector>
 
-namespace cheraxxx {
+namespace interlock {
 
 int ExecutionManager::spawnProcess(const std::string& command, const std::vector<std::string>& args, bool isolated) {
     std::lock_guard<std::mutex> lock(mtx);
@@ -82,4 +82,4 @@ void ExecutionManager::setAffinity(int pid, int core_id) {
     // Platform specific affinity setting
 }
 
-} // namespace cheraxxx
+} // namespace interlock

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <chrono>
 
-namespace cheraxxx {
+namespace interlock {
 
 void TicketDispatcher::dispatch(const Ticket& ticket) {
     std::cout << "[TicketDispatcher] Processing Ticket: " << ticket.id << " -> " << ticket.instruction << std::endl;
@@ -40,7 +40,7 @@ std::string TicketDispatcher::selectBestAgent(const std::string& instruction, in
     // En una implementación real, esto usaría un clasificador de texto o reglas de negocio
 
     // Clasificación basada en palabras clave con priorización
-    if (instruction.find("Exploit") != std::string::npos || instruction.find("Buffer") != std::string::npos) {
+    if (instruction.find("Assess") != std::string::npos || instruction.find("Buffer") != std::string::npos) {
         return "apex"; // Especialista en explotación
     }
     if (instruction.find("Scan") != std::string::npos || instruction.find("Recon") != std::string::npos || instruction.find("Network") != std::string::npos) {
@@ -53,7 +53,7 @@ std::string TicketDispatcher::selectBestAgent(const std::string& instruction, in
         return "skyline"; // Especialista en nube
     }
 
-    return priority > 2 ? "apex" : "rex"; // Rex es el trabajador general, Apex toma tareas críticas
+    return priority > 2 ? "apex" : "rex"; // Coordinator es el trabajador general, Apex toma tareas críticas
 }
 
 void TicketDispatcher::auditTicket(const std::string& ticket_id) {
@@ -79,4 +79,4 @@ void TicketDispatcher::auditTicket(const std::string& ticket_id) {
     }
 }
 
-} // namespace cheraxxx
+} // namespace interlock

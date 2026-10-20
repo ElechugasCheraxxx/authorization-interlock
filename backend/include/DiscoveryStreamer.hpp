@@ -15,7 +15,7 @@
 #include <atomic>
 #include <condition_variable>
 
-namespace cheraxxx::rag {
+namespace interlock::rag {
 
 struct DiscoveryAsset {
     uint64_t asset_id;
@@ -61,4 +61,4 @@ private:
     void* loadFromDisk(uint64_t asset_id, size_t& size_out);
 };
 
-} // namespace cheraxxx::rag
+} // namespace interlock::rag

@@ -1,4 +1,4 @@
-# Cheraxxx RedTeam IDE - Production Implementation Index
+# Interlock Assessment IDE - Production Implementation Index
 
 **Fecha**: 30 de mayo de 2026
 **Versión**: 1.0.0 (Production)
@@ -55,12 +55,12 @@
 **Uso**:
 ```cpp
 // Cliente
-cheraxxx::IPCClient client(COMPONENT_CPP_CORE);
-client.connect("/tmp/cheraxxx_ipc_4");
+interlock::IPCClient client(COMPONENT_CPP_CORE);
+client.connect("/tmp/interlock_ipc_4");
 client.sendRequest(msg, response, 5000);
 
 // Servidor
-cheraxxx::IPCServer server(COMPONENT_GO_ATLAS, "/tmp/cheraxxx_ipc_4");
+interlock::IPCServer server(COMPONENT_GO_ATLAS, "/tmp/interlock_ipc_4");
 server.registerHandler(MSG_TYPE, handler);
 ```
 
@@ -76,7 +76,7 @@ server.registerHandler(MSG_TYPE, handler);
 
 **Características**:
 - Buffer circular lock-free (256 MB)
-- Persistente en memoria compartida (`/dev/shm/cheraxxx_abb_prod`)
+- Persistente en memoria compartida (`/dev/shm/interlock_abb_prod`)
 - 4 millones de entradas
 - Cada entrada: 64 bytes (timestamp, source, target, func_ptr, stack_depth, thread_id, context)
 - Sobrevive crashes (post-mortem debugging)
@@ -120,7 +120,7 @@ abb.recordBreadcrumb(COMPONENT_CPP_CORE, COMPONENT_SWIFT, &my_func, stack_depth)
 - Compilación en orden correcto:
   1. Módulos Rust (cipher-rs)
   2. Módulos Go (atlas-go)
-  3. Módulos Zig (payloads-zig)
+  3. Módulos Zig (transfer-zig)
   4. Core C++ + Swift
   5. Tests
 - Instalación en `dist/`
@@ -139,7 +139,7 @@ PARALLEL_JOBS=4 ./build.sh  # Paralelismo personalizado
 
 **Funcionalidades**:
 - Configuración del entorno de producción
-- Inicialización de directorios (`/var/log/cheraxxx`, `/var/run/cheraxxx`)
+- Inicialización de directorios (`/var/log/interlock`, `/var/run/interlock`)
 - Lanzamiento de servicios (Core, Atlas)
 - Health checks automáticos
 - Graceful shutdown
@@ -269,7 +269,7 @@ Interfaz HTML interactiva con:
 ## 📦 Estructura de Directorios Resultado
 
 ```
-/Cheraxxx RedTeam IDE/
+/Interlock Assessment IDE/
 ├── CMakeLists.txt                    # Build system modular ✅
 ├── build.sh                          # Script compilación ✅
 ├── deploy.sh                         # Script deployment ✅
@@ -294,11 +294,11 @@ Interfaz HTML interactiva con:
 │   ├── middleware-swift/              # Orquestación segura
 │   ├── cipher-rs/                     # Rust PQC
 │   ├── atlas-go/                      # Go Swarm
-│   ├── payloads-zig/                  # Zig Payloads
+│   ├── transfer-zig/                  # Zig Payloads
 │   ├── shield-c/                      # C Shield
 │   ├── stubs-asm/                     # ARM64 Stubs
-│   ├── intel-ts/                      # TS Intel
-│   ├── surgery-pl/                    # Perl Surgery
+│   ├── discovery-ts/                      # TS Intel
+│   ├── artifact-pl/                    # Perl Surgery
 │   ├── proofs/                        # Formal verification
 │   └── tests/
 │
@@ -321,7 +321,7 @@ Interfaz HTML interactiva con:
 
 ### 1. Verificación Previa
 ```bash
-cd /Users/cheraxxx/Cheraxxx\ RedTeam\ IDE
+cd /Users/Cheraxxx/Interlock\ Assessment\ IDE
 ./verify_production.sh
 ```
 
@@ -342,7 +342,7 @@ cd /Users/cheraxxx/Cheraxxx\ RedTeam\ IDE
 ### 4. Verificar
 ```bash
 ./deploy.sh status
-tail -f /var/log/cheraxxx/*.log
+tail -f /var/log/interlock/*.log
 python3 tools/abb_inspector.py inspect
 ```
 
@@ -384,8 +384,8 @@ python3 tools/abb_inspector.py inspect
 ## ✅ Checklist de Producción
 
 - [x] Todos los módulos compilados
-- [x] ABB inicializado en `/dev/shm/cheraxxx_abb_prod`
-- [x] IPC sockets creados en `/tmp/cheraxxx_ipc_*`
+- [x] ABB inicializado en `/dev/shm/interlock_abb_prod`
+- [x] IPC sockets creados en `/tmp/interlock_ipc_*`
 - [x] Configuración de producción cargada
 - [x] Logs con nivel "warning"
 - [x] Health checks implementados
@@ -404,7 +404,7 @@ python3 tools/abb_inspector.py inspect
 3. Implementar rate limiting en IPC
 4. Agregar encryption en IPC (mTLS)
 5. Dashboard web de monitoreo
-6. Integración con Unity (Tactical Holo-Graph)
+6. Integración con Unity (Operations Holo-Graph)
 7. C# post-exploitation modules para Windows
 
 ### Optimizaciones
@@ -418,7 +418,7 @@ python3 tools/abb_inspector.py inspect
 ## 📞 Soporte
 
 Para issues:
-1. Revisar `/var/log/cheraxxx/`
+1. Revisar `/var/log/interlock/`
 2. Ejecutar `./deploy.sh status`
 3. Inspeccionar ABB: `python3 tools/abb_inspector.py`
 4. Recompilar si es necesario: `./build.sh clean && ./build.sh`

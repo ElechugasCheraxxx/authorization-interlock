@@ -16,7 +16,7 @@ struct common_sampler;
 
 namespace mlx { namespace core { class array; } } // MLX Forward decl
 
-namespace cheraxxx {
+namespace interlock {
 
     struct InferenceRequest {
         std::string model_id;
@@ -142,4 +142,4 @@ private:
     std::map<std::string, void*> vram_pools;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

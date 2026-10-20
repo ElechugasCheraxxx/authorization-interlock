@@ -6,7 +6,7 @@
 #include <functional>
 #include <mutex>
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
  * ToolDispatcher (M4 Pro Native)
@@ -40,4 +40,4 @@ private:
     std::mutex mtx;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

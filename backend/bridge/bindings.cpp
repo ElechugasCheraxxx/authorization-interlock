@@ -10,12 +10,12 @@
 #include "InferenceEngine.hpp"
 #include "SessionManager.hpp"
 #include "GPUAllocator.hpp"
-#include "OpsecManager.hpp"
+#include "RiskManager.hpp"
 #include "ScopeGuard.hpp"
 #include "AutomationModule.hpp"
 #include "C2Manager.hpp"
 #include "PivotingManager.hpp"
-#include "PayloadManager.hpp"
+#include "ArtifactManager.hpp"
 #include "RAGEngine.hpp"
 #include "PDGEngine.hpp"
 #include "EvolutionEngine.hpp"
@@ -28,9 +28,9 @@
 
 namespace nb = nanobind;
 using namespace nb::literals;
-using namespace cheraxxx;
+using namespace interlock;
 
-NB_MODULE(cheraxxx_core_bind, m) {
+NB_MODULE(interlock_core_bind, m) {
     nb::enum_<MessagePriority>(m, "MessagePriority")
         .value("LOW", MessagePriority::LOW)
         .value("NORMAL", MessagePriority::NORMAL)
@@ -279,18 +279,18 @@ NB_MODULE(cheraxxx_core_bind, m) {
         .def_ro("is_debugged", &OpsecStatus::is_debugged)
         .def_ro("detected_edr", &OpsecStatus::detected_edr);
 
-    nb::class_<OpsecManager>(m, "OpsecManager")
-        .def_static("get_instance", &OpsecManager::getInstance, nb::rv_policy::reference)
-        .def("secure_wipe", &OpsecManager::secureWipe, "path"_a, "passes"_a = 3)
-        .def("timestomp", &OpsecManager::timestomp, "target"_a, "reference"_a = "")
-        .def("scrub_logs", &OpsecManager::scrubLogs)
-        .def("wipe_shell_history", &OpsecManager::wipeShellHistory)
-        .def("detect_analysis_env", &OpsecManager::detectAnalysisEnv)
-        .def("check_anti_debugging", &OpsecManager::checkAntiDebugging)
-        .def("detect_edr", &OpsecManager::detectEDR)
-        .def("get_status", &OpsecManager::getStatus)
-        .def("report_deviation", &OpsecManager::reportDeviation)
-        .def("trigger_self_destruct", &OpsecManager::triggerSelfDestruct);
+    nb::class_<RiskManager>(m, "RiskManager")
+        .def_static("get_instance", &RiskManager::getInstance, nb::rv_policy::reference)
+        .def("secure_wipe", &RiskManager::secureWipe, "path"_a, "passes"_a = 3)
+        .def("timestomp", &RiskManager::timestomp, "target"_a, "reference"_a = "")
+        .def("scrub_logs", &RiskManager::scrubLogs)
+        .def("wipe_shell_history", &RiskManager::wipeShellHistory)
+        .def("detect_analysis_env", &RiskManager::detectAnalysisEnv)
+        .def("check_anti_debugging", &RiskManager::checkAntiDebugging)
+        .def("detect_edr", &RiskManager::detectEDR)
+        .def("get_status", &RiskManager::getStatus)
+        .def("report_deviation", &RiskManager::reportDeviation)
+        .def("trigger_self_destruct", &RiskManager::triggerSelfDestruct);
 
     // --- C2 Manager Bindings ---
     nb::class_<C2Session>(m, "C2Session")
@@ -325,15 +325,15 @@ NB_MODULE(cheraxxx_core_bind, m) {
         .def("create_tunnel", &PivotingManager::createTunnel)
         .def("close_tunnel", &PivotingManager::closeTunnel);
 
-    // --- Payload Manager Bindings ---
-    nb::class_<PayloadManager>(m, "PayloadManager")
-        .def_static("get_instance", &PayloadManager::getInstance, nb::rv_policy::reference)
-        .def("obfuscate_strings", &PayloadManager::obfuscateStrings)
-        .def("add_junk_code", &PayloadManager::addJunkCode)
-        .def("b64_encode_layer", &PayloadManager::b64EncodeLayer)
-        .def("xor_encode_layer", &PayloadManager::xorEncodeLayer, "code"_a, "key"_a = 42)
-        .def("generate_variants", &PayloadManager::generateVariants, "original"_a, "count"_a = 3)
-        .def("wrap_for_os", &PayloadManager::wrapForOS);
+    // --- Artifact Manager Bindings ---
+    nb::class_<ArtifactManager>(m, "ArtifactManager")
+        .def_static("get_instance", &ArtifactManager::getInstance, nb::rv_policy::reference)
+        .def("obfuscate_strings", &ArtifactManager::obfuscateStrings)
+        .def("add_junk_code", &ArtifactManager::addJunkCode)
+        .def("b64_encode_layer", &ArtifactManager::b64EncodeLayer)
+        .def("xor_encode_layer", &ArtifactManager::xorEncodeLayer, "code"_a, "key"_a = 42)
+        .def("generate_variants", &ArtifactManager::generateVariants, "original"_a, "count"_a = 3)
+        .def("wrap_for_os", &ArtifactManager::wrapForOS);
 
     // --- Event System Bindings ---
     nb::class_<Event>(m, "Event")

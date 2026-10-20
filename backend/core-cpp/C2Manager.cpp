@@ -9,7 +9,7 @@
 #include <vector>
 #include <thread>
 
-namespace cheraxxx {
+namespace interlock {
 
 bool C2Manager::startListener(const std::string& type, const std::string& host, int port) {
     std::lock_guard<std::mutex> lock(mtx);
@@ -73,7 +73,7 @@ void C2Manager::acceptLoop() {
 
         std::lock_guard<std::mutex> lock(mtx);
 
-        // Use TacticalPool for ultra-fast session allocation
+        // Use ResourcePool for ultra-fast session allocation
         C2Session* session = session_pool.construct();
         if (!session) {
             std::cerr << "[C2Manager] Pool exhausted! Dropping connection." << std::endl;
@@ -97,7 +97,7 @@ void C2Manager::stopListener(const std::string& type, int port) {
 }
 
 std::string C2Manager::generateImplant(const std::string& type, const std::string& listener_url, const json& config) {
-    // Aquí se delega al PayloadManager para generar el binario/script
+    // Aquí se delega al ArtifactManager para generar el binario/script
     return "implant_payload_here";
 }
 
@@ -135,4 +135,4 @@ void C2Manager::closeSession(const std::string& session_id) {
     }
 }
 
-} // namespace cheraxxx
+} // namespace interlock

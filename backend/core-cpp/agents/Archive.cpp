@@ -1,7 +1,7 @@
 #include "Archive.hpp"
 #include <iostream>
 
-namespace cheraxxx {
+namespace interlock {
 
 ArchiveAgent::ArchiveAgent(const std::string& model_path)
     : NativeAgent("archive", model_path) {}
@@ -11,4 +11,4 @@ void ArchiveAgent::onResponseGenerated(const std::string& raw_output) {
     std::cout << "[Archive] Committing evidence to vault..." << std::endl;
 }
 
-} // namespace cheraxxx
+} // namespace interlock

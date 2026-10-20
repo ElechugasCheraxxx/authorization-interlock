@@ -6,7 +6,7 @@
 #include <mutex>
 #include "Schema.hpp"
 
-namespace cheraxxx {
+namespace interlock {
 
 struct GhidraAnalysis {
     std::string function_name;
@@ -51,4 +51,4 @@ private:
     bool is_initialized = false;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

@@ -4,7 +4,7 @@
 #include <map>
 #include <mutex>
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
  * DepthCacheManager: Inspirado en Mixture-of-Depths (MoDA).
@@ -38,4 +38,4 @@ private:
     std::mutex mtx;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

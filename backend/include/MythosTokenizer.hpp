@@ -3,7 +3,7 @@
 #include <vector>
 #include "llama.h"
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
  * MythosTokenizer (Native BPE)
@@ -23,4 +23,4 @@ private:
     const struct llama_model* model;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

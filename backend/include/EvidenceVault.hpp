@@ -3,7 +3,7 @@
 #include <vector>
 #include <nlohmann/json.hpp>
 
-namespace cheraxxx {
+namespace interlock {
 
 struct Evidence {
     std::string id;
@@ -33,4 +33,4 @@ private:
     EvidenceVault() = default;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

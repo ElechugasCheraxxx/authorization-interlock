@@ -52,11 +52,11 @@ let () =
     exit 1;
 
   let cmd = args.(1) in
-  let payload = args.(2) in
+  let artifact = args.(2) in
 
   match cmd with
   | "is_acyclic" ->
-      let ids = String.split_on_char ',' payload in
+      let ids = String.split_on_char ',' artifact in
       let primitives = List.map (fun id ->
         { pid = coq_string_of_string id;
           impact_weight = O;
@@ -67,7 +67,7 @@ let () =
       else
         (print_endline "false"; exit 1)
   | "is_legal_transition" ->
-      let phases = String.split_on_char ',' payload in
+      let phases = String.split_on_char ',' artifact in
       (match phases with
       | [f; t] ->
           let from_p = phase_of_string f in
@@ -78,7 +78,7 @@ let () =
             (print_endline "false"; exit 1)
       | _ -> exit 1)
   | "check_integrity" ->
-      let parts = String.split_on_char ',' payload in
+      let parts = String.split_on_char ',' artifact in
       (match parts with
       | [raw; id; src; hash; corr] ->
           let art = {

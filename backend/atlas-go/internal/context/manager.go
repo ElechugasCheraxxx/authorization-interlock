@@ -7,7 +7,7 @@ import (
 )
 
 // FileMap representa un mapa de archivos con su resumen o símbolos.
-// Basado en la lógica de Plandex para optimización de tokens (MLA en Cheraxxx).
+// Basado en la lógica de Plandex para optimización de tokens (MLA en Interlock).
 type FileMap struct {
 	Paths   map[string]string // Path -> Resumen/Símbolos
 	Tokens  map[string]int    // Path -> Token count

@@ -4,7 +4,7 @@
 #include "interop/AtlasSwarmClient.hpp"
 #include <iostream>
 
-namespace cheraxxx {
+namespace interlock {
 
 OverseerAgent::OverseerAgent(const std::string& model_path)
     : NativeAgent("overseer", model_path) {}
@@ -32,10 +32,10 @@ void OverseerAgent::onResponseGenerated(const std::string& raw_output) {
 
         // Reporting to Atlas Orchestrator
         try {
-            network::AtlasSwarmClient client("/tmp/cheraxxx_atlas.sock");
+            network::AtlasSwarmClient client("/tmp/interlock_atlas.sock");
             client.route_message("overseer", "atlas", "MISSION_UPDATE", "OPSEC_AUDIT_PASSED");
         } catch (...) {}
     }
 }
 
-} // namespace cheraxxx
+} // namespace interlock

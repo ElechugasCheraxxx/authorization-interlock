@@ -5,7 +5,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
  * MoERouter: Implementación nativa del gating de DeepSeek-V3.
@@ -36,4 +36,4 @@ private:
     float softmax(const std::vector<float>& logits, std::vector<float>& scores);
 };
 
-} // namespace cheraxxx
+} // namespace interlock

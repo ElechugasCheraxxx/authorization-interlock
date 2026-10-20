@@ -14,7 +14,7 @@
 #include <cstring>
 #include <sys/select.h>
 
-namespace cheraxxx {
+namespace interlock {
 
 // ============================================================================
 // IPCServer
@@ -279,4 +279,4 @@ std::string IPCBridge::getSocketPath(IPCComponentType component) {
     return std::string(SOCKET_BASE) + std::to_string(static_cast<int>(component));
 }
 
-} // namespace cheraxxx
+} // namespace interlock

@@ -438,7 +438,7 @@ int main(int argc, char *argv[]) {
       if(VirtualProtect((LPVOID)inst, fs.st_size, PAGE_EXECUTE_READ, &old)) {
         printf("Running...");
 
-        // run payload with instance
+        // run artifact with instance
         h = DonutLoader(inst);
 
         if(h != (HANDLE)-1 && inst->oep != 0) {

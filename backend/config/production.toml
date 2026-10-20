@@ -1,4 +1,4 @@
-# Configuración de Producción para Cheraxxx RedTeam IDE
+# Configuración de Producción para Interlock Assessment IDE
 # Archivo: config/production.toml
 
 [system]
@@ -26,14 +26,14 @@ anti_edits_tactics = "extreme"
 [infraestructure.abb]
 enabled = true
 buffer_size_mb = 256
-mmap_path = "build/abb/cheraxxx_abb_prod"
+mmap_path = "build/abb/interlock_abb_prod"
 persistence_mode = "mmap"  # Sobrevive crashes
 
 # IPC Bridge para comunicación inter-lenguajes
 [infraestructure.ipc]
 enabled = true
 protocol = "unix_domain_socket"
-socket_base_path = "/tmp/cheraxxx_ipc_"
+socket_base_path = "/tmp/interlock_ipc_"
 timeout_ms = 5000
 max_connections_per_component = 100
 
@@ -78,7 +78,7 @@ grpc_endpoints = [
 ]
 enable_telemetry = false  # Production: deshabilitar telemetría
 
-# Payload Orchestrator (Zig)
+# Artifact Orchestrator (Zig)
 [modules.zig_payloads]
 enabled = true
 compile_mode = "release_fast"
@@ -124,7 +124,7 @@ cores = 8
 memory_gb = 16
 gpu = "metal"
 
-# C2 & Payload Configuration
+# C2 & Artifact Configuration
 [c2]
 protocol = "https"
 callback_interval_sec = 300
@@ -158,8 +158,8 @@ audit_logging = true
 [database.connection]
 host = "localhost"
 port = 5432
-database = "cheraxxx_prod"
-# Use environment variable: CHERAXXX_DB_PASSWORD
+database = "interlock_prod"
+# Use environment variable: INTERLOCK_DB_PASSWORD
 ssl_mode = "require"
 
 # Cache Strategy
@@ -174,7 +174,7 @@ serialization = "flatbuffers"
 endpoints = [
     "127.0.0.1:6379"
 ]
-password_env_var = "CHERAXXX_REDIS_PASSWORD"
+password_env_var = "INTERLOCK_REDIS_PASSWORD"
 
 # Monitoring & Observability
 [monitoring]

@@ -2,7 +2,7 @@
 #include "NativeAgent.hpp"
 #include "GrammarLibrary.hpp"
 
-namespace cheraxxx {
+namespace interlock {
 
 class AtlasAgent : public NativeAgent {
 public:
@@ -12,4 +12,4 @@ protected:
     std::string getGrammar() const override { return GrammarLibrary::ATLAS_GBNF; }
 };
 
-} // namespace cheraxxx
+} // namespace interlock

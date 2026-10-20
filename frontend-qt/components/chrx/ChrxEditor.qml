@@ -10,7 +10,7 @@ Rectangle {
     radius: 4
 
     property alias text: textArea.text
-    property string title: "CHERAXXX SCRIPT"
+    property string title: "INTERLOCK SCRIPT"
 
     ColumnLayout {
         anchors.fill: parent

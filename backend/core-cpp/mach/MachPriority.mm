@@ -5,7 +5,7 @@
 #include <iostream>
 #include "mach/MachPriority.hpp"
 
-namespace cheraxxx::mach {
+namespace interlock::mach {
 
 void SetThreadPriority(thread_port_t thread_port, TaskPriority priority) {
     if (thread_port == 0) {
@@ -72,4 +72,4 @@ void SetThreadAffinity(thread_port_t thread_port, int tag) {
     }
 }
 
-} // namespace cheraxxx::mach
+} // namespace interlock::mach

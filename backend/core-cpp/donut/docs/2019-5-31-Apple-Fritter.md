@@ -14,7 +14,7 @@ Today, we released version v0.9.1. The major features include:
 * Dual-Mode shellcode that can run in either x64 for x86 (WOW64) processes.
 * Automatic detection of the CLR version required for .NET Assembly payloads.
 * AMSI bypassing for version .NET 4.8 that ensure all Assemblies can be safely loaded.
-* Modular system for adding bypasses. Your choide of bypass functionality is compiled into payload.exe based on compiler flags.
+* Modular system for adding bypasses. Your choide of bypass functionality is compiled into artifact.exe based on compiler flags.
 * Bypass for Device Guard policy preventing execution of dynamically generated .NET code
 * Better handling of Main functions (Entry Points) that use an object array containing string arrays, rather than an array of strings
 
@@ -35,9 +35,9 @@ And the logic:
 ```assembly
 0x31C0  xor eax, eax        // null eax
 0x48    dec eax             // decrement eax to produce an underflow
-0x0F88  js dword x86_code   // jump to x86 payload if we are in a WOW64 process
-<x64_code>                  // the x64 PIC machine code for the payload
-<x86_code>                  // the x86 PIC machine code for the payload
+0x0F88  js dword x86_code   // jump to x86 artifact if we are in a WOW64 process
+<x64_code>                  // the x64 PIC machine code for the artifact
+<x86_code>                  // the x86 PIC machine code for the artifact
 ```
 
 There are two ways this code can execute.
@@ -102,18 +102,18 @@ I must strongly emphasize, the fact that 4.8 AMSI can be bypassed like in PowerS
 
 ### Modular Bypass System
 
-As we researched bypasses for AMSI, it became clear that there is many ways to do it. It would be silly to force users of Donut to have to use whatever we came up with. As such, we ensured that you may easily add your own bypass or customize one of ours. The bypasses are defined in ```payload/bypass.c```. You may either modify our C code, or add your own. Each bypass implements the same ```BOOL DisableAMSI(PDONUT_INSTANCE inst)``` function and is wrapped in an ```#ifdef BYPASS_NAME``` preprocessor directive. To change which bypass is used, change the Makefile to define the bypass name specified by the directive.
+As we researched bypasses for AMSI, it became clear that there is many ways to do it. It would be silly to force users of Donut to have to use whatever we came up with. As such, we ensured that you may easily add your own bypass or customize one of ours. The bypasses are defined in ```artifact/bypass.c```. You may either modify our C code, or add your own. Each bypass implements the same ```BOOL DisableAMSI(PDONUT_INSTANCE inst)``` function and is wrapped in an ```#ifdef BYPASS_NAME``` preprocessor directive. To change which bypass is used, change the Makefile to define the bypass name specified by the directive.
 
-For example, you could change the relevant line in ```payload/Makefile.msvc``` from
+For example, you could change the relevant line in ```artifact/Makefile.msvc``` from
 
 ```
-cl -DBYPASS_AMSI_A -DBYPASS_WLDP_A -Zp8 -c -nologo -Os -O1 -Gm- -GR- -EHa -Oi -GS- -I ..\include payload.c ..\hash.c ..\encrypt.c bypass.c clib.c
+cl -DBYPASS_AMSI_A -DBYPASS_WLDP_A -Zp8 -c -nologo -Os -O1 -Gm- -GR- -EHa -Oi -GS- -I ..\include artifact.c ..\hash.c ..\encrypt.c bypass.c clib.c
 ```
 
 To:
 
 ```
-cl -DBYPASS_AMSI_B -DBYPASS_WLDP_A -Zp8 -c -nologo -Os -O1 -Gm- -GR- -EHa -Oi -GS- -I ..\include payload.c ..\hash.c ..\encrypt.c bypass.c clib.c
+cl -DBYPASS_AMSI_B -DBYPASS_WLDP_A -Zp8 -c -nologo -Os -O1 -Gm- -GR- -EHa -Oi -GS- -I ..\include artifact.c ..\hash.c ..\encrypt.c bypass.c clib.c
 ```
 
 In order to switch from using BypassA to BypassB.
@@ -140,7 +140,7 @@ Below is the current version release plan for Donut.
   * Dual-Mode shellcode that can run in either x64 for x86 (WOW64) processes.
   * Automatic detection of the CLR version required for .NET Assembly payloads.
   * AMSI bypassing for version .NET 4.8 that ensure all Assemblies can be safely loaded.
-  * Modular system for adding bypasses. Your choide of bypass functionality is compiled into payload.exe based on compiler flags.
+  * Modular system for adding bypasses. Your choide of bypass functionality is compiled into artifact.exe based on compiler flags.
   * Bypass for Device Guard policy preventing execution of dynamically generated .NET code
   * Better handling of Main functions (Entry Points) that use an object array containing string arrays, rather than an array of strings
 * v1.0:

@@ -613,7 +613,7 @@ pe_cleanup:
       inst->api.CloseHandle(hSection);
     }
 
-    DPRINT("Wiping payload from Donut module in memory.");
+    DPRINT("Wiping artifact from Donut module in memory.");
     Memset(base, 0, mod->len);
 }
 

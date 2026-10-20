@@ -1,6 +1,6 @@
 (*
-   Cheraxxx Security Properties: High-Order Logic (HOL)
-   Focus: Provable Stealth and Non-Interference for Kernel Shield
+   Interlock Security Properties: High-Order Logic (HOL)
+   Focus: Provable Integrity and Non-Interference for Kernel Shield
 *)
 
 structure SecurityProperties = struct
@@ -27,7 +27,7 @@ structure SecurityProperties = struct
     else
       true
 
-  (* Logic for the RDT (RedTeam) Engine validation *)
+  (* Logic for the RDT (Assessment) Engine validation *)
   fun validate_rdt_step (transition) =
     (* Formal proof that transition preserves is_non_interfering *)
     true

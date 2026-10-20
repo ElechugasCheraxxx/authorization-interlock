@@ -19,10 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	SwarmOrchestrator_RegisterAgent_FullMethodName     = "/cheraxxx.atlas.SwarmOrchestrator/RegisterAgent"
-	SwarmOrchestrator_TunnelTelemetria_FullMethodName  = "/cheraxxx.atlas.SwarmOrchestrator/TunnelTelemetria"
-	SwarmOrchestrator_RouteMessage_FullMethodName      = "/cheraxxx.atlas.SwarmOrchestrator/RouteMessage"
-	SwarmOrchestrator_SubscribeMessages_FullMethodName = "/cheraxxx.atlas.SwarmOrchestrator/SubscribeMessages"
+	SwarmOrchestrator_RegisterAgent_FullMethodName     = "/interlock.atlas.SwarmOrchestrator/RegisterAgent"
+	SwarmOrchestrator_TunnelTelemetria_FullMethodName  = "/interlock.atlas.SwarmOrchestrator/TunnelTelemetria"
+	SwarmOrchestrator_RouteMessage_FullMethodName      = "/interlock.atlas.SwarmOrchestrator/RouteMessage"
+	SwarmOrchestrator_SubscribeMessages_FullMethodName = "/interlock.atlas.SwarmOrchestrator/SubscribeMessages"
 )
 
 // SwarmOrchestratorClient is the client API for SwarmOrchestrator service.
@@ -210,7 +210,7 @@ type SwarmOrchestrator_SubscribeMessagesServer = grpc.ServerStreamingServer[Mess
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var SwarmOrchestrator_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "cheraxxx.atlas.SwarmOrchestrator",
+	ServiceName: "interlock.atlas.SwarmOrchestrator",
 	HandlerType: (*SwarmOrchestratorServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

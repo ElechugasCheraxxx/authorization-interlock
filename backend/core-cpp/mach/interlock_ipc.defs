@@ -1,0 +1,46 @@
+/*
+ * interlock_ipc.defs - Mach Interface Generator definition for Interlock Assessment IDE
+ * Production-ready IPC for M4 Pro (XNU Kernel Native)
+ */
+
+subsystem interlock_ipc 5000;
+
+#include <mach/std_types.defs>
+#include <mach/mach_types.defs>
+
+import "interlock_shared_types.h";
+
+/* Definición de un mensaje táctico base */
+type tact_msg_payload_t = array[*:1024] of char;
+
+/*
+ * interlock_dispatch_tactical_node
+ * Envía un mensaje de comando o telemetría a través de Mach Ports.
+ * RPC síncrono que garantiza la entrega en el subsistema Mach.
+ */
+routine interlock_dispatch_tactical_node(
+        server_port     : mach_port_t;
+        sender_id       : int;
+        msg_type        : int;
+        priority        : int;
+        artifact         : tact_msg_payload_t
+);
+
+/*
+ * interlock_fetch_blackboard_state
+ * Recupera el estado actual de un nodo del Blackboard directamente desde el Core.
+ */
+routine interlock_fetch_blackboard_state(
+        server_port     : mach_port_t;
+    out state_data      : tact_msg_payload_t
+);
+
+/*
+ * interlock_signal_escalation
+ * Señal de alta prioridad (Escalación) que interrumpe otros procesos Mach.
+ */
+simpleroutine interlock_signal_escalation(
+        server_port     : mach_port_t;
+        escalation_lvl  : int;
+        reason_code     : int
+);

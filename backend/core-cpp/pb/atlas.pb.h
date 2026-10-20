@@ -57,7 +57,7 @@ struct TableStruct_atlas_2eproto {
 extern "C" {
 extern const ::google::protobuf::internal::DescriptorTable descriptor_table_atlas_2eproto;
 }  // extern "C"
-namespace cheraxxx {
+namespace interlock {
 namespace atlas {
 class AgentInfo;
 struct AgentInfoGlobalsTypeInternal;
@@ -124,13 +124,13 @@ extern const ::google::protobuf::internal::ClassDataFull TelemetryData_MetadataE
 extern const TelemetryData_MetadataEntry_DoNotUseGlobalsTypeInternal TelemetryData_MetadataEntry_DoNotUse_globals_;
 #endif  // PROTOBUF_MESSAGE_GLOBALS
 }  // namespace atlas
-}  // namespace cheraxxx
+}  // namespace interlock
 namespace google {
 namespace protobuf {
 }  // namespace protobuf
 }  // namespace google
 
-namespace cheraxxx {
+namespace interlock {
 namespace atlas {
 
 // ===================================================================
@@ -188,7 +188,7 @@ class PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED TelemetryData_MetadataEntry_DoNotUse
 // -------------------------------------------------------------------
 
 class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED SubscribeRequest final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:cheraxxx.atlas.SubscribeRequest) */ {
+/* @@protoc_insertion_point(class_definition:interlock.atlas.SubscribeRequest) */ {
  public:
   inline SubscribeRequest() : SubscribeRequest(nullptr) {}
   ~SubscribeRequest() PROTOBUF_FINAL;
@@ -310,7 +310,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED SubscribeRequest final : public ::g
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "cheraxxx.atlas.SubscribeRequest"; }
+  static ::absl::string_view FullMessageName() { return "interlock.atlas.SubscribeRequest"; }
 
   explicit SubscribeRequest(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   SubscribeRequest(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const SubscribeRequest& from);
@@ -380,7 +380,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED SubscribeRequest final : public ::g
   ::std::string* PROTOBUF_NONNULL _internal_mutable_client_id();
 
   public:
-  // @@protoc_insertion_point(class_scope:cheraxxx.atlas.SubscribeRequest)
+  // @@protoc_insertion_point(class_scope:interlock.atlas.SubscribeRequest)
  private:
   class _Internal;
   using ParseTableT_ =
@@ -423,7 +423,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED SubscribeRequest final : public ::g
 // -------------------------------------------------------------------
 
 class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED RouteResponse final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:cheraxxx.atlas.RouteResponse) */ {
+/* @@protoc_insertion_point(class_definition:interlock.atlas.RouteResponse) */ {
  public:
   inline RouteResponse() : RouteResponse(nullptr) {}
   ~RouteResponse() PROTOBUF_FINAL;
@@ -545,7 +545,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED RouteResponse final : public ::goog
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "cheraxxx.atlas.RouteResponse"; }
+  static ::absl::string_view FullMessageName() { return "interlock.atlas.RouteResponse"; }
 
   explicit RouteResponse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   RouteResponse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const RouteResponse& from);
@@ -598,7 +598,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED RouteResponse final : public ::goog
   void _internal_set_delivered(bool value);
 
   public:
-  // @@protoc_insertion_point(class_scope:cheraxxx.atlas.RouteResponse)
+  // @@protoc_insertion_point(class_scope:interlock.atlas.RouteResponse)
  private:
   class _Internal;
   using ParseTableT_ =
@@ -641,7 +641,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED RouteResponse final : public ::goog
 // -------------------------------------------------------------------
 
 class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED RegistrationResponse final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:cheraxxx.atlas.RegistrationResponse) */ {
+/* @@protoc_insertion_point(class_definition:interlock.atlas.RegistrationResponse) */ {
  public:
   inline RegistrationResponse() : RegistrationResponse(nullptr) {}
   ~RegistrationResponse() PROTOBUF_FINAL;
@@ -763,7 +763,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED RegistrationResponse final : public
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "cheraxxx.atlas.RegistrationResponse"; }
+  static ::absl::string_view FullMessageName() { return "interlock.atlas.RegistrationResponse"; }
 
   explicit RegistrationResponse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   RegistrationResponse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const RegistrationResponse& from);
@@ -832,7 +832,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED RegistrationResponse final : public
   void _internal_set_success(bool value);
 
   public:
-  // @@protoc_insertion_point(class_scope:cheraxxx.atlas.RegistrationResponse)
+  // @@protoc_insertion_point(class_scope:interlock.atlas.RegistrationResponse)
  private:
   class _Internal;
   using ParseTableT_ =
@@ -876,7 +876,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED RegistrationResponse final : public
 // -------------------------------------------------------------------
 
 class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED Message final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:cheraxxx.atlas.Message) */ {
+/* @@protoc_insertion_point(class_definition:interlock.atlas.Message) */ {
  public:
   inline Message() : Message(nullptr) {}
   ~Message() PROTOBUF_FINAL;
@@ -998,7 +998,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED Message final : public ::google::pr
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "cheraxxx.atlas.Message"; }
+  static ::absl::string_view FullMessageName() { return "interlock.atlas.Message"; }
 
   explicit Message(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   Message(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Message& from);
@@ -1091,9 +1091,9 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED Message final : public ::google::pr
   ::std::string* PROTOBUF_NONNULL _internal_mutable_subject();
 
   public:
-  // bytes payload = 5;
+  // bytes artifact = 5;
   void clear_payload() ;
-  [[nodiscard]] const ::std::string& payload() const;
+  [[nodiscard]] const ::std::string& artifact() const;
   template <typename Arg_ = const ::std::string&, typename... Args_>
   void set_payload(Arg_&& arg, Args_... args);
   ::std::string* PROTOBUF_NONNULL mutable_payload();
@@ -1126,7 +1126,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED Message final : public ::google::pr
   void _internal_set_priority(::uint32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:cheraxxx.atlas.Message)
+  // @@protoc_insertion_point(class_scope:interlock.atlas.Message)
  private:
   class _Internal;
   using ParseTableT_ =
@@ -1174,7 +1174,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED Message final : public ::google::pr
 // -------------------------------------------------------------------
 
 class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED ControlCommand final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:cheraxxx.atlas.ControlCommand) */ {
+/* @@protoc_insertion_point(class_definition:interlock.atlas.ControlCommand) */ {
  public:
   inline ControlCommand() : ControlCommand(nullptr) {}
   ~ControlCommand() PROTOBUF_FINAL;
@@ -1296,7 +1296,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED ControlCommand final : public ::goo
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "cheraxxx.atlas.ControlCommand"; }
+  static ::absl::string_view FullMessageName() { return "interlock.atlas.ControlCommand"; }
 
   explicit ControlCommand(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   ControlCommand(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const ControlCommand& from);
@@ -1370,7 +1370,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED ControlCommand final : public ::goo
   ::std::string* PROTOBUF_NONNULL _internal_mutable_params();
 
   public:
-  // @@protoc_insertion_point(class_scope:cheraxxx.atlas.ControlCommand)
+  // @@protoc_insertion_point(class_scope:interlock.atlas.ControlCommand)
  private:
   class _Internal;
   using ParseTableT_ =
@@ -1414,7 +1414,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED ControlCommand final : public ::goo
 // -------------------------------------------------------------------
 
 class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED AgentInfo final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:cheraxxx.atlas.AgentInfo) */ {
+/* @@protoc_insertion_point(class_definition:interlock.atlas.AgentInfo) */ {
  public:
   inline AgentInfo() : AgentInfo(nullptr) {}
   ~AgentInfo() PROTOBUF_FINAL;
@@ -1536,7 +1536,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED AgentInfo final : public ::google::
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "cheraxxx.atlas.AgentInfo"; }
+  static ::absl::string_view FullMessageName() { return "interlock.atlas.AgentInfo"; }
 
   explicit AgentInfo(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   AgentInfo(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const AgentInfo& from);
@@ -1626,7 +1626,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED AgentInfo final : public ::google::
   ::std::string* PROTOBUF_NONNULL _internal_mutable_connection_type();
 
   public:
-  // @@protoc_insertion_point(class_scope:cheraxxx.atlas.AgentInfo)
+  // @@protoc_insertion_point(class_scope:interlock.atlas.AgentInfo)
  private:
   class _Internal;
   using ParseTableT_ =
@@ -1671,7 +1671,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED AgentInfo final : public ::google::
 // -------------------------------------------------------------------
 
 class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED TelemetryData final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:cheraxxx.atlas.TelemetryData) */ {
+/* @@protoc_insertion_point(class_definition:interlock.atlas.TelemetryData) */ {
  public:
   inline TelemetryData() : TelemetryData(nullptr) {}
   ~TelemetryData() PROTOBUF_FINAL;
@@ -1793,7 +1793,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED TelemetryData final : public ::goog
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "cheraxxx.atlas.TelemetryData"; }
+  static ::absl::string_view FullMessageName() { return "interlock.atlas.TelemetryData"; }
 
   explicit TelemetryData(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   TelemetryData(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const TelemetryData& from);
@@ -1838,9 +1838,9 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED TelemetryData final : public ::goog
   ::std::string* PROTOBUF_NONNULL _internal_mutable_agent_id();
 
   public:
-  // bytes payload = 3;
+  // bytes artifact = 3;
   void clear_payload() ;
-  [[nodiscard]] const ::std::string& payload() const;
+  [[nodiscard]] const ::std::string& artifact() const;
   template <typename Arg_ = const ::std::string&, typename... Args_>
   void set_payload(Arg_&& arg, Args_... args);
   ::std::string* PROTOBUF_NONNULL mutable_payload();
@@ -1879,7 +1879,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED TelemetryData final : public ::goog
   ::google::protobuf::Map<::std::string, ::std::string>* PROTOBUF_NONNULL _internal_mutable_metadata();
 
   public:
-  // @@protoc_insertion_point(class_scope:cheraxxx.atlas.TelemetryData)
+  // @@protoc_insertion_point(class_scope:interlock.atlas.TelemetryData)
  private:
   class _Internal;
   using ParseTableT_ =
@@ -1946,7 +1946,7 @@ inline void Message::clear_id() {
 }
 inline const ::std::string& Message::id() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.Message.id)
+  // @@protoc_insertion_point(field_get:interlock.atlas.Message.id)
   return _internal_id();
 }
 template <typename Arg_, typename... Args_>
@@ -1954,13 +1954,13 @@ PROTOBUF_ALWAYS_INLINE void Message::set_id(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.Message.id)
+  // @@protoc_insertion_point(field_set:interlock.atlas.Message.id)
 }
 inline ::std::string* PROTOBUF_NONNULL Message::mutable_id()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_id();
-  // @@protoc_insertion_point(field_mutable:cheraxxx.atlas.Message.id)
+  // @@protoc_insertion_point(field_mutable:interlock.atlas.Message.id)
   return _s;
 }
 inline const ::std::string& Message::_internal_id() const {
@@ -1977,7 +1977,7 @@ inline ::std::string* PROTOBUF_NONNULL Message::_internal_mutable_id() {
 }
 inline ::std::string* PROTOBUF_NULLABLE Message::release_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:cheraxxx.atlas.Message.id)
+  // @@protoc_insertion_point(field_release:interlock.atlas.Message.id)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -1999,7 +1999,7 @@ inline void Message::set_allocated_id(::std::string* PROTOBUF_NULLABLE value) {
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.id_.IsDefault()) {
     _impl_.id_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:cheraxxx.atlas.Message.id)
+  // @@protoc_insertion_point(field_set_allocated:interlock.atlas.Message.id)
 }
 
 // string from = 2;
@@ -2010,7 +2010,7 @@ inline void Message::clear_from() {
 }
 inline const ::std::string& Message::from() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.Message.from)
+  // @@protoc_insertion_point(field_get:interlock.atlas.Message.from)
   return _internal_from();
 }
 template <typename Arg_, typename... Args_>
@@ -2018,13 +2018,13 @@ PROTOBUF_ALWAYS_INLINE void Message::set_from(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.from_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.Message.from)
+  // @@protoc_insertion_point(field_set:interlock.atlas.Message.from)
 }
 inline ::std::string* PROTOBUF_NONNULL Message::mutable_from()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_from();
-  // @@protoc_insertion_point(field_mutable:cheraxxx.atlas.Message.from)
+  // @@protoc_insertion_point(field_mutable:interlock.atlas.Message.from)
   return _s;
 }
 inline const ::std::string& Message::_internal_from() const {
@@ -2041,7 +2041,7 @@ inline ::std::string* PROTOBUF_NONNULL Message::_internal_mutable_from() {
 }
 inline ::std::string* PROTOBUF_NULLABLE Message::release_from() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:cheraxxx.atlas.Message.from)
+  // @@protoc_insertion_point(field_release:interlock.atlas.Message.from)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -2063,7 +2063,7 @@ inline void Message::set_allocated_from(::std::string* PROTOBUF_NULLABLE value) 
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.from_.IsDefault()) {
     _impl_.from_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:cheraxxx.atlas.Message.from)
+  // @@protoc_insertion_point(field_set_allocated:interlock.atlas.Message.from)
 }
 
 // string to = 3;
@@ -2074,7 +2074,7 @@ inline void Message::clear_to() {
 }
 inline const ::std::string& Message::to() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.Message.to)
+  // @@protoc_insertion_point(field_get:interlock.atlas.Message.to)
   return _internal_to();
 }
 template <typename Arg_, typename... Args_>
@@ -2082,13 +2082,13 @@ PROTOBUF_ALWAYS_INLINE void Message::set_to(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   _impl_.to_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.Message.to)
+  // @@protoc_insertion_point(field_set:interlock.atlas.Message.to)
 }
 inline ::std::string* PROTOBUF_NONNULL Message::mutable_to()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   ::std::string* _s = _internal_mutable_to();
-  // @@protoc_insertion_point(field_mutable:cheraxxx.atlas.Message.to)
+  // @@protoc_insertion_point(field_mutable:interlock.atlas.Message.to)
   return _s;
 }
 inline const ::std::string& Message::_internal_to() const {
@@ -2105,7 +2105,7 @@ inline ::std::string* PROTOBUF_NONNULL Message::_internal_mutable_to() {
 }
 inline ::std::string* PROTOBUF_NULLABLE Message::release_to() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:cheraxxx.atlas.Message.to)
+  // @@protoc_insertion_point(field_release:interlock.atlas.Message.to)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000004U)) {
     return nullptr;
   }
@@ -2127,7 +2127,7 @@ inline void Message::set_allocated_to(::std::string* PROTOBUF_NULLABLE value) {
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.to_.IsDefault()) {
     _impl_.to_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:cheraxxx.atlas.Message.to)
+  // @@protoc_insertion_point(field_set_allocated:interlock.atlas.Message.to)
 }
 
 // string subject = 4;
@@ -2138,7 +2138,7 @@ inline void Message::clear_subject() {
 }
 inline const ::std::string& Message::subject() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.Message.subject)
+  // @@protoc_insertion_point(field_get:interlock.atlas.Message.subject)
   return _internal_subject();
 }
 template <typename Arg_, typename... Args_>
@@ -2146,13 +2146,13 @@ PROTOBUF_ALWAYS_INLINE void Message::set_subject(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
   _impl_.subject_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.Message.subject)
+  // @@protoc_insertion_point(field_set:interlock.atlas.Message.subject)
 }
 inline ::std::string* PROTOBUF_NONNULL Message::mutable_subject()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
   ::std::string* _s = _internal_mutable_subject();
-  // @@protoc_insertion_point(field_mutable:cheraxxx.atlas.Message.subject)
+  // @@protoc_insertion_point(field_mutable:interlock.atlas.Message.subject)
   return _s;
 }
 inline const ::std::string& Message::_internal_subject() const {
@@ -2169,7 +2169,7 @@ inline ::std::string* PROTOBUF_NONNULL Message::_internal_mutable_subject() {
 }
 inline ::std::string* PROTOBUF_NULLABLE Message::release_subject() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:cheraxxx.atlas.Message.subject)
+  // @@protoc_insertion_point(field_release:interlock.atlas.Message.subject)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000008U)) {
     return nullptr;
   }
@@ -2191,18 +2191,18 @@ inline void Message::set_allocated_subject(::std::string* PROTOBUF_NULLABLE valu
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.subject_.IsDefault()) {
     _impl_.subject_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:cheraxxx.atlas.Message.subject)
+  // @@protoc_insertion_point(field_set_allocated:interlock.atlas.Message.subject)
 }
 
-// bytes payload = 5;
+// bytes artifact = 5;
 inline void Message::clear_payload() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.payload_.ClearToEmpty();
   ClearHasBit(_impl_._has_bits_[0], 0x00000010U);
 }
-inline const ::std::string& Message::payload() const
+inline const ::std::string& Message::artifact() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.Message.payload)
+  // @@protoc_insertion_point(field_get:interlock.atlas.Message.artifact)
   return _internal_payload();
 }
 template <typename Arg_, typename... Args_>
@@ -2210,13 +2210,13 @@ PROTOBUF_ALWAYS_INLINE void Message::set_payload(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000010U);
   _impl_.payload_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.Message.payload)
+  // @@protoc_insertion_point(field_set:interlock.atlas.Message.artifact)
 }
 inline ::std::string* PROTOBUF_NONNULL Message::mutable_payload()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000010U);
   ::std::string* _s = _internal_mutable_payload();
-  // @@protoc_insertion_point(field_mutable:cheraxxx.atlas.Message.payload)
+  // @@protoc_insertion_point(field_mutable:interlock.atlas.Message.artifact)
   return _s;
 }
 inline const ::std::string& Message::_internal_payload() const {
@@ -2233,7 +2233,7 @@ inline ::std::string* PROTOBUF_NONNULL Message::_internal_mutable_payload() {
 }
 inline ::std::string* PROTOBUF_NULLABLE Message::release_payload() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:cheraxxx.atlas.Message.payload)
+  // @@protoc_insertion_point(field_release:interlock.atlas.Message.artifact)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000010U)) {
     return nullptr;
   }
@@ -2255,7 +2255,7 @@ inline void Message::set_allocated_payload(::std::string* PROTOBUF_NULLABLE valu
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.payload_.IsDefault()) {
     _impl_.payload_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:cheraxxx.atlas.Message.payload)
+  // @@protoc_insertion_point(field_set_allocated:interlock.atlas.Message.artifact)
 }
 
 // uint32 priority = 6;
@@ -2265,13 +2265,13 @@ inline void Message::clear_priority() {
   ClearHasBit(_impl_._has_bits_[0], 0x00000040U);
 }
 inline ::uint32_t Message::priority() const {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.Message.priority)
+  // @@protoc_insertion_point(field_get:interlock.atlas.Message.priority)
   return _internal_priority();
 }
 inline void Message::set_priority(::uint32_t value) {
   _internal_set_priority(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000040U);
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.Message.priority)
+  // @@protoc_insertion_point(field_set:interlock.atlas.Message.priority)
 }
 inline ::uint32_t Message::_internal_priority() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -2289,13 +2289,13 @@ inline void Message::clear_timestamp() {
   ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
 }
 inline ::uint64_t Message::timestamp() const {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.Message.timestamp)
+  // @@protoc_insertion_point(field_get:interlock.atlas.Message.timestamp)
   return _internal_timestamp();
 }
 inline void Message::set_timestamp(::uint64_t value) {
   _internal_set_timestamp(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000020U);
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.Message.timestamp)
+  // @@protoc_insertion_point(field_set:interlock.atlas.Message.timestamp)
 }
 inline ::uint64_t Message::_internal_timestamp() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -2317,13 +2317,13 @@ inline void RouteResponse::clear_delivered() {
   ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
 }
 inline bool RouteResponse::delivered() const {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.RouteResponse.delivered)
+  // @@protoc_insertion_point(field_get:interlock.atlas.RouteResponse.delivered)
   return _internal_delivered();
 }
 inline void RouteResponse::set_delivered(bool value) {
   _internal_set_delivered(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.RouteResponse.delivered)
+  // @@protoc_insertion_point(field_set:interlock.atlas.RouteResponse.delivered)
 }
 inline bool RouteResponse::_internal_delivered() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -2342,7 +2342,7 @@ inline void RouteResponse::clear_error() {
 }
 inline const ::std::string& RouteResponse::error() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.RouteResponse.error)
+  // @@protoc_insertion_point(field_get:interlock.atlas.RouteResponse.error)
   return _internal_error();
 }
 template <typename Arg_, typename... Args_>
@@ -2350,13 +2350,13 @@ PROTOBUF_ALWAYS_INLINE void RouteResponse::set_error(Arg_&& arg, Args_... args) 
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.error_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.RouteResponse.error)
+  // @@protoc_insertion_point(field_set:interlock.atlas.RouteResponse.error)
 }
 inline ::std::string* PROTOBUF_NONNULL RouteResponse::mutable_error()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_error();
-  // @@protoc_insertion_point(field_mutable:cheraxxx.atlas.RouteResponse.error)
+  // @@protoc_insertion_point(field_mutable:interlock.atlas.RouteResponse.error)
   return _s;
 }
 inline const ::std::string& RouteResponse::_internal_error() const {
@@ -2373,7 +2373,7 @@ inline ::std::string* PROTOBUF_NONNULL RouteResponse::_internal_mutable_error() 
 }
 inline ::std::string* PROTOBUF_NULLABLE RouteResponse::release_error() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:cheraxxx.atlas.RouteResponse.error)
+  // @@protoc_insertion_point(field_release:interlock.atlas.RouteResponse.error)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -2395,7 +2395,7 @@ inline void RouteResponse::set_allocated_error(::std::string* PROTOBUF_NULLABLE 
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.error_.IsDefault()) {
     _impl_.error_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:cheraxxx.atlas.RouteResponse.error)
+  // @@protoc_insertion_point(field_set_allocated:interlock.atlas.RouteResponse.error)
 }
 
 // -------------------------------------------------------------------
@@ -2410,7 +2410,7 @@ inline void SubscribeRequest::clear_client_id() {
 }
 inline const ::std::string& SubscribeRequest::client_id() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.SubscribeRequest.client_id)
+  // @@protoc_insertion_point(field_get:interlock.atlas.SubscribeRequest.client_id)
   return _internal_client_id();
 }
 template <typename Arg_, typename... Args_>
@@ -2418,13 +2418,13 @@ PROTOBUF_ALWAYS_INLINE void SubscribeRequest::set_client_id(Arg_&& arg, Args_...
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.client_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.SubscribeRequest.client_id)
+  // @@protoc_insertion_point(field_set:interlock.atlas.SubscribeRequest.client_id)
 }
 inline ::std::string* PROTOBUF_NONNULL SubscribeRequest::mutable_client_id()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_client_id();
-  // @@protoc_insertion_point(field_mutable:cheraxxx.atlas.SubscribeRequest.client_id)
+  // @@protoc_insertion_point(field_mutable:interlock.atlas.SubscribeRequest.client_id)
   return _s;
 }
 inline const ::std::string& SubscribeRequest::_internal_client_id() const {
@@ -2441,7 +2441,7 @@ inline ::std::string* PROTOBUF_NONNULL SubscribeRequest::_internal_mutable_clien
 }
 inline ::std::string* PROTOBUF_NULLABLE SubscribeRequest::release_client_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:cheraxxx.atlas.SubscribeRequest.client_id)
+  // @@protoc_insertion_point(field_release:interlock.atlas.SubscribeRequest.client_id)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -2463,7 +2463,7 @@ inline void SubscribeRequest::set_allocated_client_id(::std::string* PROTOBUF_NU
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.client_id_.IsDefault()) {
     _impl_.client_id_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:cheraxxx.atlas.SubscribeRequest.client_id)
+  // @@protoc_insertion_point(field_set_allocated:interlock.atlas.SubscribeRequest.client_id)
 }
 
 // repeated string topics = 2;
@@ -2485,17 +2485,17 @@ inline ::std::string* PROTOBUF_NONNULL SubscribeRequest::add_topics()
       _internal_mutable_topics()->InternalAddWithArena(
           ::google::protobuf::MessageLite::internal_visibility(), GetArena());
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_add_mutable:cheraxxx.atlas.SubscribeRequest.topics)
+  // @@protoc_insertion_point(field_add_mutable:interlock.atlas.SubscribeRequest.topics)
   return _s;
 }
 inline const ::std::string& SubscribeRequest::topics(int index) const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.SubscribeRequest.topics)
+  // @@protoc_insertion_point(field_get:interlock.atlas.SubscribeRequest.topics)
   return _internal_topics().Get(index);
 }
 inline ::std::string* PROTOBUF_NONNULL SubscribeRequest::mutable_topics(int index)
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_mutable:cheraxxx.atlas.SubscribeRequest.topics)
+  // @@protoc_insertion_point(field_mutable:interlock.atlas.SubscribeRequest.topics)
   return _internal_mutable_topics()->Mutable(index);
 }
 template <typename Arg_, typename... Args_>
@@ -2503,7 +2503,7 @@ inline void SubscribeRequest::set_topics(int index, Arg_&& value, Args_... args)
   ::google::protobuf::internal::AssignToString(
       *_internal_mutable_topics()->Mutable(index),
       ::std::forward<Arg_>(value), args... );
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.SubscribeRequest.topics)
+  // @@protoc_insertion_point(field_set:interlock.atlas.SubscribeRequest.topics)
 }
 template <typename Arg_, typename... Args_>
 inline void SubscribeRequest::add_topics(Arg_&& value, Args_... args) {
@@ -2513,17 +2513,17 @@ inline void SubscribeRequest::add_topics(Arg_&& value, Args_... args) {
       *_internal_mutable_topics(), ::std::forward<Arg_>(value),
       args... );
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_add:cheraxxx.atlas.SubscribeRequest.topics)
+  // @@protoc_insertion_point(field_add:interlock.atlas.SubscribeRequest.topics)
 }
 inline const ::google::protobuf::RepeatedPtrField<::std::string>& SubscribeRequest::topics()
     const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_list:cheraxxx.atlas.SubscribeRequest.topics)
+  // @@protoc_insertion_point(field_list:interlock.atlas.SubscribeRequest.topics)
   return _internal_topics();
 }
 inline ::google::protobuf::RepeatedPtrField<::std::string>* PROTOBUF_NONNULL
 SubscribeRequest::mutable_topics() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_mutable_list:cheraxxx.atlas.SubscribeRequest.topics)
+  // @@protoc_insertion_point(field_mutable_list:interlock.atlas.SubscribeRequest.topics)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   return _internal_mutable_topics();
 }
@@ -2550,7 +2550,7 @@ inline void AgentInfo::clear_agent_id() {
 }
 inline const ::std::string& AgentInfo::agent_id() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.AgentInfo.agent_id)
+  // @@protoc_insertion_point(field_get:interlock.atlas.AgentInfo.agent_id)
   return _internal_agent_id();
 }
 template <typename Arg_, typename... Args_>
@@ -2558,13 +2558,13 @@ PROTOBUF_ALWAYS_INLINE void AgentInfo::set_agent_id(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.agent_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.AgentInfo.agent_id)
+  // @@protoc_insertion_point(field_set:interlock.atlas.AgentInfo.agent_id)
 }
 inline ::std::string* PROTOBUF_NONNULL AgentInfo::mutable_agent_id()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_agent_id();
-  // @@protoc_insertion_point(field_mutable:cheraxxx.atlas.AgentInfo.agent_id)
+  // @@protoc_insertion_point(field_mutable:interlock.atlas.AgentInfo.agent_id)
   return _s;
 }
 inline const ::std::string& AgentInfo::_internal_agent_id() const {
@@ -2581,7 +2581,7 @@ inline ::std::string* PROTOBUF_NONNULL AgentInfo::_internal_mutable_agent_id() {
 }
 inline ::std::string* PROTOBUF_NULLABLE AgentInfo::release_agent_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:cheraxxx.atlas.AgentInfo.agent_id)
+  // @@protoc_insertion_point(field_release:interlock.atlas.AgentInfo.agent_id)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -2603,7 +2603,7 @@ inline void AgentInfo::set_allocated_agent_id(::std::string* PROTOBUF_NULLABLE v
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.agent_id_.IsDefault()) {
     _impl_.agent_id_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:cheraxxx.atlas.AgentInfo.agent_id)
+  // @@protoc_insertion_point(field_set_allocated:interlock.atlas.AgentInfo.agent_id)
 }
 
 // string target_os = 2;
@@ -2614,7 +2614,7 @@ inline void AgentInfo::clear_target_os() {
 }
 inline const ::std::string& AgentInfo::target_os() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.AgentInfo.target_os)
+  // @@protoc_insertion_point(field_get:interlock.atlas.AgentInfo.target_os)
   return _internal_target_os();
 }
 template <typename Arg_, typename... Args_>
@@ -2622,13 +2622,13 @@ PROTOBUF_ALWAYS_INLINE void AgentInfo::set_target_os(Arg_&& arg, Args_... args) 
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.target_os_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.AgentInfo.target_os)
+  // @@protoc_insertion_point(field_set:interlock.atlas.AgentInfo.target_os)
 }
 inline ::std::string* PROTOBUF_NONNULL AgentInfo::mutable_target_os()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_target_os();
-  // @@protoc_insertion_point(field_mutable:cheraxxx.atlas.AgentInfo.target_os)
+  // @@protoc_insertion_point(field_mutable:interlock.atlas.AgentInfo.target_os)
   return _s;
 }
 inline const ::std::string& AgentInfo::_internal_target_os() const {
@@ -2645,7 +2645,7 @@ inline ::std::string* PROTOBUF_NONNULL AgentInfo::_internal_mutable_target_os() 
 }
 inline ::std::string* PROTOBUF_NULLABLE AgentInfo::release_target_os() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:cheraxxx.atlas.AgentInfo.target_os)
+  // @@protoc_insertion_point(field_release:interlock.atlas.AgentInfo.target_os)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -2667,7 +2667,7 @@ inline void AgentInfo::set_allocated_target_os(::std::string* PROTOBUF_NULLABLE 
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.target_os_.IsDefault()) {
     _impl_.target_os_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:cheraxxx.atlas.AgentInfo.target_os)
+  // @@protoc_insertion_point(field_set_allocated:interlock.atlas.AgentInfo.target_os)
 }
 
 // string arch = 3;
@@ -2678,7 +2678,7 @@ inline void AgentInfo::clear_arch() {
 }
 inline const ::std::string& AgentInfo::arch() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.AgentInfo.arch)
+  // @@protoc_insertion_point(field_get:interlock.atlas.AgentInfo.arch)
   return _internal_arch();
 }
 template <typename Arg_, typename... Args_>
@@ -2686,13 +2686,13 @@ PROTOBUF_ALWAYS_INLINE void AgentInfo::set_arch(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   _impl_.arch_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.AgentInfo.arch)
+  // @@protoc_insertion_point(field_set:interlock.atlas.AgentInfo.arch)
 }
 inline ::std::string* PROTOBUF_NONNULL AgentInfo::mutable_arch()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   ::std::string* _s = _internal_mutable_arch();
-  // @@protoc_insertion_point(field_mutable:cheraxxx.atlas.AgentInfo.arch)
+  // @@protoc_insertion_point(field_mutable:interlock.atlas.AgentInfo.arch)
   return _s;
 }
 inline const ::std::string& AgentInfo::_internal_arch() const {
@@ -2709,7 +2709,7 @@ inline ::std::string* PROTOBUF_NONNULL AgentInfo::_internal_mutable_arch() {
 }
 inline ::std::string* PROTOBUF_NULLABLE AgentInfo::release_arch() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:cheraxxx.atlas.AgentInfo.arch)
+  // @@protoc_insertion_point(field_release:interlock.atlas.AgentInfo.arch)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000004U)) {
     return nullptr;
   }
@@ -2731,7 +2731,7 @@ inline void AgentInfo::set_allocated_arch(::std::string* PROTOBUF_NULLABLE value
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.arch_.IsDefault()) {
     _impl_.arch_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:cheraxxx.atlas.AgentInfo.arch)
+  // @@protoc_insertion_point(field_set_allocated:interlock.atlas.AgentInfo.arch)
 }
 
 // string connection_type = 4;
@@ -2742,7 +2742,7 @@ inline void AgentInfo::clear_connection_type() {
 }
 inline const ::std::string& AgentInfo::connection_type() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.AgentInfo.connection_type)
+  // @@protoc_insertion_point(field_get:interlock.atlas.AgentInfo.connection_type)
   return _internal_connection_type();
 }
 template <typename Arg_, typename... Args_>
@@ -2750,13 +2750,13 @@ PROTOBUF_ALWAYS_INLINE void AgentInfo::set_connection_type(Arg_&& arg, Args_... 
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
   _impl_.connection_type_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.AgentInfo.connection_type)
+  // @@protoc_insertion_point(field_set:interlock.atlas.AgentInfo.connection_type)
 }
 inline ::std::string* PROTOBUF_NONNULL AgentInfo::mutable_connection_type()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
   ::std::string* _s = _internal_mutable_connection_type();
-  // @@protoc_insertion_point(field_mutable:cheraxxx.atlas.AgentInfo.connection_type)
+  // @@protoc_insertion_point(field_mutable:interlock.atlas.AgentInfo.connection_type)
   return _s;
 }
 inline const ::std::string& AgentInfo::_internal_connection_type() const {
@@ -2773,7 +2773,7 @@ inline ::std::string* PROTOBUF_NONNULL AgentInfo::_internal_mutable_connection_t
 }
 inline ::std::string* PROTOBUF_NULLABLE AgentInfo::release_connection_type() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:cheraxxx.atlas.AgentInfo.connection_type)
+  // @@protoc_insertion_point(field_release:interlock.atlas.AgentInfo.connection_type)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000008U)) {
     return nullptr;
   }
@@ -2795,7 +2795,7 @@ inline void AgentInfo::set_allocated_connection_type(::std::string* PROTOBUF_NUL
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.connection_type_.IsDefault()) {
     _impl_.connection_type_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:cheraxxx.atlas.AgentInfo.connection_type)
+  // @@protoc_insertion_point(field_set_allocated:interlock.atlas.AgentInfo.connection_type)
 }
 
 // -------------------------------------------------------------------
@@ -2809,13 +2809,13 @@ inline void RegistrationResponse::clear_success() {
   ClearHasBit(_impl_._has_bits_[0], 0x00000004U);
 }
 inline bool RegistrationResponse::success() const {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.RegistrationResponse.success)
+  // @@protoc_insertion_point(field_get:interlock.atlas.RegistrationResponse.success)
   return _internal_success();
 }
 inline void RegistrationResponse::set_success(bool value) {
   _internal_set_success(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.RegistrationResponse.success)
+  // @@protoc_insertion_point(field_set:interlock.atlas.RegistrationResponse.success)
 }
 inline bool RegistrationResponse::_internal_success() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -2834,7 +2834,7 @@ inline void RegistrationResponse::clear_session_token() {
 }
 inline const ::std::string& RegistrationResponse::session_token() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.RegistrationResponse.session_token)
+  // @@protoc_insertion_point(field_get:interlock.atlas.RegistrationResponse.session_token)
   return _internal_session_token();
 }
 template <typename Arg_, typename... Args_>
@@ -2842,13 +2842,13 @@ PROTOBUF_ALWAYS_INLINE void RegistrationResponse::set_session_token(Arg_&& arg, 
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.session_token_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.RegistrationResponse.session_token)
+  // @@protoc_insertion_point(field_set:interlock.atlas.RegistrationResponse.session_token)
 }
 inline ::std::string* PROTOBUF_NONNULL RegistrationResponse::mutable_session_token()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_session_token();
-  // @@protoc_insertion_point(field_mutable:cheraxxx.atlas.RegistrationResponse.session_token)
+  // @@protoc_insertion_point(field_mutable:interlock.atlas.RegistrationResponse.session_token)
   return _s;
 }
 inline const ::std::string& RegistrationResponse::_internal_session_token() const {
@@ -2865,7 +2865,7 @@ inline ::std::string* PROTOBUF_NONNULL RegistrationResponse::_internal_mutable_s
 }
 inline ::std::string* PROTOBUF_NULLABLE RegistrationResponse::release_session_token() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:cheraxxx.atlas.RegistrationResponse.session_token)
+  // @@protoc_insertion_point(field_release:interlock.atlas.RegistrationResponse.session_token)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -2887,7 +2887,7 @@ inline void RegistrationResponse::set_allocated_session_token(::std::string* PRO
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.session_token_.IsDefault()) {
     _impl_.session_token_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:cheraxxx.atlas.RegistrationResponse.session_token)
+  // @@protoc_insertion_point(field_set_allocated:interlock.atlas.RegistrationResponse.session_token)
 }
 
 // string error_message = 3;
@@ -2898,7 +2898,7 @@ inline void RegistrationResponse::clear_error_message() {
 }
 inline const ::std::string& RegistrationResponse::error_message() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.RegistrationResponse.error_message)
+  // @@protoc_insertion_point(field_get:interlock.atlas.RegistrationResponse.error_message)
   return _internal_error_message();
 }
 template <typename Arg_, typename... Args_>
@@ -2906,13 +2906,13 @@ PROTOBUF_ALWAYS_INLINE void RegistrationResponse::set_error_message(Arg_&& arg, 
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.error_message_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.RegistrationResponse.error_message)
+  // @@protoc_insertion_point(field_set:interlock.atlas.RegistrationResponse.error_message)
 }
 inline ::std::string* PROTOBUF_NONNULL RegistrationResponse::mutable_error_message()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_error_message();
-  // @@protoc_insertion_point(field_mutable:cheraxxx.atlas.RegistrationResponse.error_message)
+  // @@protoc_insertion_point(field_mutable:interlock.atlas.RegistrationResponse.error_message)
   return _s;
 }
 inline const ::std::string& RegistrationResponse::_internal_error_message() const {
@@ -2929,7 +2929,7 @@ inline ::std::string* PROTOBUF_NONNULL RegistrationResponse::_internal_mutable_e
 }
 inline ::std::string* PROTOBUF_NULLABLE RegistrationResponse::release_error_message() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:cheraxxx.atlas.RegistrationResponse.error_message)
+  // @@protoc_insertion_point(field_release:interlock.atlas.RegistrationResponse.error_message)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -2951,7 +2951,7 @@ inline void RegistrationResponse::set_allocated_error_message(::std::string* PRO
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.error_message_.IsDefault()) {
     _impl_.error_message_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:cheraxxx.atlas.RegistrationResponse.error_message)
+  // @@protoc_insertion_point(field_set_allocated:interlock.atlas.RegistrationResponse.error_message)
 }
 
 // -------------------------------------------------------------------
@@ -2968,7 +2968,7 @@ inline void TelemetryData::clear_agent_id() {
 }
 inline const ::std::string& TelemetryData::agent_id() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.TelemetryData.agent_id)
+  // @@protoc_insertion_point(field_get:interlock.atlas.TelemetryData.agent_id)
   return _internal_agent_id();
 }
 template <typename Arg_, typename... Args_>
@@ -2976,13 +2976,13 @@ PROTOBUF_ALWAYS_INLINE void TelemetryData::set_agent_id(Arg_&& arg, Args_... arg
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.agent_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.TelemetryData.agent_id)
+  // @@protoc_insertion_point(field_set:interlock.atlas.TelemetryData.agent_id)
 }
 inline ::std::string* PROTOBUF_NONNULL TelemetryData::mutable_agent_id()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_agent_id();
-  // @@protoc_insertion_point(field_mutable:cheraxxx.atlas.TelemetryData.agent_id)
+  // @@protoc_insertion_point(field_mutable:interlock.atlas.TelemetryData.agent_id)
   return _s;
 }
 inline const ::std::string& TelemetryData::_internal_agent_id() const {
@@ -2999,7 +2999,7 @@ inline ::std::string* PROTOBUF_NONNULL TelemetryData::_internal_mutable_agent_id
 }
 inline ::std::string* PROTOBUF_NULLABLE TelemetryData::release_agent_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:cheraxxx.atlas.TelemetryData.agent_id)
+  // @@protoc_insertion_point(field_release:interlock.atlas.TelemetryData.agent_id)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -3021,7 +3021,7 @@ inline void TelemetryData::set_allocated_agent_id(::std::string* PROTOBUF_NULLAB
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.agent_id_.IsDefault()) {
     _impl_.agent_id_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:cheraxxx.atlas.TelemetryData.agent_id)
+  // @@protoc_insertion_point(field_set_allocated:interlock.atlas.TelemetryData.agent_id)
 }
 
 // uint64 timestamp = 2;
@@ -3031,13 +3031,13 @@ inline void TelemetryData::clear_timestamp() {
   ClearHasBit(_impl_._has_bits_[0], 0x00000004U);
 }
 inline ::uint64_t TelemetryData::timestamp() const {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.TelemetryData.timestamp)
+  // @@protoc_insertion_point(field_get:interlock.atlas.TelemetryData.timestamp)
   return _internal_timestamp();
 }
 inline void TelemetryData::set_timestamp(::uint64_t value) {
   _internal_set_timestamp(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.TelemetryData.timestamp)
+  // @@protoc_insertion_point(field_set:interlock.atlas.TelemetryData.timestamp)
 }
 inline ::uint64_t TelemetryData::_internal_timestamp() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -3048,15 +3048,15 @@ inline void TelemetryData::_internal_set_timestamp(::uint64_t value) {
   _impl_.timestamp_ = value;
 }
 
-// bytes payload = 3;
+// bytes artifact = 3;
 inline void TelemetryData::clear_payload() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.payload_.ClearToEmpty();
   ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
 }
-inline const ::std::string& TelemetryData::payload() const
+inline const ::std::string& TelemetryData::artifact() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.TelemetryData.payload)
+  // @@protoc_insertion_point(field_get:interlock.atlas.TelemetryData.artifact)
   return _internal_payload();
 }
 template <typename Arg_, typename... Args_>
@@ -3064,13 +3064,13 @@ PROTOBUF_ALWAYS_INLINE void TelemetryData::set_payload(Arg_&& arg, Args_... args
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.payload_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.TelemetryData.payload)
+  // @@protoc_insertion_point(field_set:interlock.atlas.TelemetryData.artifact)
 }
 inline ::std::string* PROTOBUF_NONNULL TelemetryData::mutable_payload()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_payload();
-  // @@protoc_insertion_point(field_mutable:cheraxxx.atlas.TelemetryData.payload)
+  // @@protoc_insertion_point(field_mutable:interlock.atlas.TelemetryData.artifact)
   return _s;
 }
 inline const ::std::string& TelemetryData::_internal_payload() const {
@@ -3087,7 +3087,7 @@ inline ::std::string* PROTOBUF_NONNULL TelemetryData::_internal_mutable_payload(
 }
 inline ::std::string* PROTOBUF_NULLABLE TelemetryData::release_payload() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:cheraxxx.atlas.TelemetryData.payload)
+  // @@protoc_insertion_point(field_release:interlock.atlas.TelemetryData.artifact)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -3109,7 +3109,7 @@ inline void TelemetryData::set_allocated_payload(::std::string* PROTOBUF_NULLABL
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.payload_.IsDefault()) {
     _impl_.payload_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:cheraxxx.atlas.TelemetryData.payload)
+  // @@protoc_insertion_point(field_set_allocated:interlock.atlas.TelemetryData.artifact)
 }
 
 // map<string, string> metadata = 4;
@@ -3129,7 +3129,7 @@ inline const ::google::protobuf::Map<::std::string, ::std::string>& TelemetryDat
   return _impl_.metadata_.GetMap();
 }
 inline const ::google::protobuf::Map<::std::string, ::std::string>& TelemetryData::metadata() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_map:cheraxxx.atlas.TelemetryData.metadata)
+  // @@protoc_insertion_point(field_map:interlock.atlas.TelemetryData.metadata)
   return _internal_metadata();
 }
 inline ::google::protobuf::Map<::std::string, ::std::string>* PROTOBUF_NONNULL TelemetryData::_internal_mutable_metadata() {
@@ -3139,7 +3139,7 @@ inline ::google::protobuf::Map<::std::string, ::std::string>* PROTOBUF_NONNULL T
 inline ::google::protobuf::Map<::std::string, ::std::string>* PROTOBUF_NONNULL TelemetryData::mutable_metadata()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  // @@protoc_insertion_point(field_mutable_map:cheraxxx.atlas.TelemetryData.metadata)
+  // @@protoc_insertion_point(field_mutable_map:interlock.atlas.TelemetryData.metadata)
   return _internal_mutable_metadata();
 }
 
@@ -3155,7 +3155,7 @@ inline void ControlCommand::clear_command_id() {
 }
 inline const ::std::string& ControlCommand::command_id() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.ControlCommand.command_id)
+  // @@protoc_insertion_point(field_get:interlock.atlas.ControlCommand.command_id)
   return _internal_command_id();
 }
 template <typename Arg_, typename... Args_>
@@ -3163,13 +3163,13 @@ PROTOBUF_ALWAYS_INLINE void ControlCommand::set_command_id(Arg_&& arg, Args_... 
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.command_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.ControlCommand.command_id)
+  // @@protoc_insertion_point(field_set:interlock.atlas.ControlCommand.command_id)
 }
 inline ::std::string* PROTOBUF_NONNULL ControlCommand::mutable_command_id()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_command_id();
-  // @@protoc_insertion_point(field_mutable:cheraxxx.atlas.ControlCommand.command_id)
+  // @@protoc_insertion_point(field_mutable:interlock.atlas.ControlCommand.command_id)
   return _s;
 }
 inline const ::std::string& ControlCommand::_internal_command_id() const {
@@ -3186,7 +3186,7 @@ inline ::std::string* PROTOBUF_NONNULL ControlCommand::_internal_mutable_command
 }
 inline ::std::string* PROTOBUF_NULLABLE ControlCommand::release_command_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:cheraxxx.atlas.ControlCommand.command_id)
+  // @@protoc_insertion_point(field_release:interlock.atlas.ControlCommand.command_id)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -3208,7 +3208,7 @@ inline void ControlCommand::set_allocated_command_id(::std::string* PROTOBUF_NUL
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.command_id_.IsDefault()) {
     _impl_.command_id_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:cheraxxx.atlas.ControlCommand.command_id)
+  // @@protoc_insertion_point(field_set_allocated:interlock.atlas.ControlCommand.command_id)
 }
 
 // string action = 2;
@@ -3219,7 +3219,7 @@ inline void ControlCommand::clear_action() {
 }
 inline const ::std::string& ControlCommand::action() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.ControlCommand.action)
+  // @@protoc_insertion_point(field_get:interlock.atlas.ControlCommand.action)
   return _internal_action();
 }
 template <typename Arg_, typename... Args_>
@@ -3227,13 +3227,13 @@ PROTOBUF_ALWAYS_INLINE void ControlCommand::set_action(Arg_&& arg, Args_... args
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.action_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.ControlCommand.action)
+  // @@protoc_insertion_point(field_set:interlock.atlas.ControlCommand.action)
 }
 inline ::std::string* PROTOBUF_NONNULL ControlCommand::mutable_action()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_action();
-  // @@protoc_insertion_point(field_mutable:cheraxxx.atlas.ControlCommand.action)
+  // @@protoc_insertion_point(field_mutable:interlock.atlas.ControlCommand.action)
   return _s;
 }
 inline const ::std::string& ControlCommand::_internal_action() const {
@@ -3250,7 +3250,7 @@ inline ::std::string* PROTOBUF_NONNULL ControlCommand::_internal_mutable_action(
 }
 inline ::std::string* PROTOBUF_NULLABLE ControlCommand::release_action() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:cheraxxx.atlas.ControlCommand.action)
+  // @@protoc_insertion_point(field_release:interlock.atlas.ControlCommand.action)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -3272,7 +3272,7 @@ inline void ControlCommand::set_allocated_action(::std::string* PROTOBUF_NULLABL
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.action_.IsDefault()) {
     _impl_.action_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:cheraxxx.atlas.ControlCommand.action)
+  // @@protoc_insertion_point(field_set_allocated:interlock.atlas.ControlCommand.action)
 }
 
 // bytes params = 3;
@@ -3283,7 +3283,7 @@ inline void ControlCommand::clear_params() {
 }
 inline const ::std::string& ControlCommand::params() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:cheraxxx.atlas.ControlCommand.params)
+  // @@protoc_insertion_point(field_get:interlock.atlas.ControlCommand.params)
   return _internal_params();
 }
 template <typename Arg_, typename... Args_>
@@ -3291,13 +3291,13 @@ PROTOBUF_ALWAYS_INLINE void ControlCommand::set_params(Arg_&& arg, Args_... args
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   _impl_.params_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:cheraxxx.atlas.ControlCommand.params)
+  // @@protoc_insertion_point(field_set:interlock.atlas.ControlCommand.params)
 }
 inline ::std::string* PROTOBUF_NONNULL ControlCommand::mutable_params()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   ::std::string* _s = _internal_mutable_params();
-  // @@protoc_insertion_point(field_mutable:cheraxxx.atlas.ControlCommand.params)
+  // @@protoc_insertion_point(field_mutable:interlock.atlas.ControlCommand.params)
   return _s;
 }
 inline const ::std::string& ControlCommand::_internal_params() const {
@@ -3314,7 +3314,7 @@ inline ::std::string* PROTOBUF_NONNULL ControlCommand::_internal_mutable_params(
 }
 inline ::std::string* PROTOBUF_NULLABLE ControlCommand::release_params() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:cheraxxx.atlas.ControlCommand.params)
+  // @@protoc_insertion_point(field_release:interlock.atlas.ControlCommand.params)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000004U)) {
     return nullptr;
   }
@@ -3336,7 +3336,7 @@ inline void ControlCommand::set_allocated_params(::std::string* PROTOBUF_NULLABL
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.params_.IsDefault()) {
     _impl_.params_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:cheraxxx.atlas.ControlCommand.params)
+  // @@protoc_insertion_point(field_set_allocated:interlock.atlas.ControlCommand.params)
 }
 
 #ifdef __GNUC__
@@ -3345,7 +3345,7 @@ inline void ControlCommand::set_allocated_params(::std::string* PROTOBUF_NULLABL
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace atlas
-}  // namespace cheraxxx
+}  // namespace interlock
 
 
 // @@protoc_insertion_point(global_scope)

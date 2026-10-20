@@ -1,4 +1,4 @@
-(* Cheraxxx Formal Specification: Sovereign Bridge & Kernel Invariants *)
+(* Interlock Formal Specification: Sovereign Bridge & Kernel Invariants *)
 Require Import String.
 Require Import ZArith.
 Require Import List.
@@ -26,7 +26,7 @@ Section Kernel_Sovereignty.
   Definition SystemSafe (ks : KernelState) : Prop :=
     forall p, In p ks.(processes) -> ProcessSafe p.
 
-  (* Precondition for Payload Injection: Target must not be the Core itself *)
+  (* Precondition for Artifact Injection: Target must not be the Core itself *)
   Definition SafeToInject (target_pid : Z) (core_pid : Z) : Prop :=
     target_pid <> core_pid.
 

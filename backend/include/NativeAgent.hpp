@@ -7,7 +7,7 @@
 #include <future>
 #include <memory>
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
  * NativeAgent (M4 Pro Hardened)
@@ -47,4 +47,4 @@ protected:
     long long last_used_timestamp = 0;
 };
 
-} // namespace cheraxxx
+} // namespace interlock

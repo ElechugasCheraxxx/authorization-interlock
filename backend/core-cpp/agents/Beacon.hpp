@@ -2,7 +2,7 @@
 #include "NativeAgent.hpp"
 #include "GrammarLibrary.hpp"
 
-namespace cheraxxx {
+namespace interlock {
 
 class BeaconAgent : public NativeAgent {
 public:
@@ -12,4 +12,4 @@ protected:
     std::string getGrammar() const override { return GrammarLibrary::BEACON_GBNF; }
 };
 
-} // namespace cheraxxx
+} // namespace interlock

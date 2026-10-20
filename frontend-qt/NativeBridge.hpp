@@ -9,7 +9,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QTimer>
-#include "CheraxxxCore.h"
+#include "InterlockCore.h"
 
 class NativeBridge : public QObject {
     Q_OBJECT

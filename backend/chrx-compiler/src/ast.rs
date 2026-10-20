@@ -94,8 +94,8 @@ pub struct Swarm {
 pub struct Agent {
     pub name: String,
     pub role: String,
-    pub payload: Option<String>,
-    pub stealth: Option<String>,
+    pub artifact: Option<String>,
+    pub integrity: Option<String>,
     pub target: Option<String>,
     pub trigger: Option<String>,
     pub on_success: Option<String>,

@@ -3,7 +3,7 @@
 #include <chrono>
 #include <algorithm>
 
-namespace cheraxxx {
+namespace interlock {
 
 int ContextManager::prepareContext(const std::string& alias, const std::vector<llama_token>& current_prompt_tokens, int max_ctx) {
     std::lock_guard<std::mutex> lock(mtx);
@@ -72,4 +72,4 @@ void ContextManager::resetContext(const std::string& alias) {
     std::cout << "[ContextManager] Context cleared for agent: " << alias << std::endl;
 }
 
-} // namespace cheraxxx
+} // namespace interlock

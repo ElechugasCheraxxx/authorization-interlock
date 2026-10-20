@@ -3,7 +3,7 @@
 
 typedef uint64_t SYSCALL_RET;
 
-// Estructura de contexto para el Shield (Opsec-Safe)
+// Estructura de contexto para el Shield (Risk-Safe)
 typedef struct {
     uint8_t encryption_key[32];
     uint32_t process_id;
@@ -39,10 +39,10 @@ void shield_init(ShieldContext* ctx) {
 }
 
 /**
- * @brief Ejecución de payload en modo sigilo
+ * @brief Ejecución de artifact en modo sigilo
  */
-int execute_payload_stealth(const uint8_t* payload, size_t size) {
-    if (!payload || size == 0) return -1;
+int execute_payload_stealth(const uint8_t* artifact, size_t size) {
+    if (!artifact || size == 0) return -1;
     // Lógica PIC para saltar a la dirección del shellcode
     // Se integrará con Zig en la Fase 9
     return 0;

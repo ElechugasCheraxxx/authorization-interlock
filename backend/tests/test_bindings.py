@@ -5,10 +5,10 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'build'))
 
 try:
-    import cheraxxx_core_bind as core
-    print("Successfully imported cheraxxx_core_bind")
+    import interlock_core_bind as core
+    print("Successfully imported interlock_core_bind")
 except ImportError as e:
-    print(f"Failed to import cheraxxx_core_bind: {e}")
+    print(f"Failed to import interlock_core_bind: {e}")
     sys.exit(1)
 
 def test_blackboard():

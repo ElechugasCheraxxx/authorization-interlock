@@ -20,7 +20,7 @@
 namespace fs = std::filesystem;
 namespace mx = mlx::core;
 
-namespace cheraxxx {
+namespace interlock {
 
 void InferenceEngine::initializeMLX() {
     @autoreleasepool {
@@ -131,4 +131,4 @@ std::future<InferenceResponse> InferenceEngine::generateMLX(const InferenceReque
     });
 }
 
-} // namespace cheraxxx
+} // namespace interlock

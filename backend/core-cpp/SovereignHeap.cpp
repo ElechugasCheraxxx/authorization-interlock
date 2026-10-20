@@ -5,7 +5,7 @@
 #include <cassert>
 #include <algorithm>
 
-namespace cheraxxx::memory {
+namespace interlock::memory {
 
 void SovereignHeap::init(size_t total_size) {
     std::lock_guard<std::mutex> lock(mtx);
@@ -153,4 +153,4 @@ void SovereignHeap::tidy() {
     }
 }
 
-} // namespace cheraxxx::memory
+} // namespace interlock::memory

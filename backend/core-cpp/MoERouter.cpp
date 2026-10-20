@@ -2,7 +2,7 @@
 #include <numeric>
 #include <cmath>
 
-namespace cheraxxx {
+namespace interlock {
 
 MoERouter::MoERouter(int n_routed, int n_activated, int n_shared)
     : n_routed(n_routed), n_activated(n_activated), n_shared(n_shared) {
@@ -69,4 +69,4 @@ MoERouter::RoutingDecision MoERouter::route(const std::vector<float>& task_embed
     return decision;
 }
 
-} // namespace cheraxxx
+} // namespace interlock

@@ -15,7 +15,7 @@ typedef struct {
 
 void shield_init(ShieldContext* ctx);
 void shield_mem_wipe(void* ptr, size_t len);
-int execute_payload_stealth(const uint8_t* payload, size_t size);
+int execute_payload_stealth(const uint8_t* artifact, size_t size);
 
 #ifdef __cplusplus
 }

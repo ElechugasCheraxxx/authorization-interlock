@@ -5,7 +5,7 @@
 #include <caml/memory.h>
 #include <iostream>
 
-namespace cheraxxx {
+namespace interlock {
 
 void init_ocaml_runtime(char** argv) {
     static bool initialized = false;
@@ -186,4 +186,4 @@ bool ocaml_verify_buffer_purge(const std::string& buffer_id) {
     CAMLreturnT(bool, Bool_val(res));
 }
 
-} // namespace cheraxxx
+} // namespace interlock

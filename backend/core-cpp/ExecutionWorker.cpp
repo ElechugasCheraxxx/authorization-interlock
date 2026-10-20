@@ -11,7 +11,7 @@
 #include <libproc.h>
 #endif
 
-namespace cheraxxx {
+namespace interlock {
 
 std::future<ProcessResult> ExecutionWorker::execute(const std::string& command, const std::vector<std::string>& args) {
     return std::async(std::launch::async, [command, args]() {
@@ -94,4 +94,4 @@ void ExecutionWorker::monitorProcess(int pid) {
 #endif
 }
 
-} // namespace cheraxxx
+} // namespace interlock

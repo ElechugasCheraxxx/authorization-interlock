@@ -7,10 +7,10 @@ import json
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'build'))
 
 try:
-    import cheraxxx_core_bind as core
-    print("[E2E] Successfully imported cheraxxx_core_bind")
+    import interlock_core_bind as core
+    print("[E2E] Successfully imported interlock_core_bind")
 except ImportError as e:
-    print(f"[E2E] ERROR: Failed to import cheraxxx_core_bind: {e}")
+    print(f"[E2E] ERROR: Failed to import interlock_core_bind: {e}")
     sys.exit(1)
 
 def run_mission():

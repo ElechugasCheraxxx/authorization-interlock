@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include <atomic>
 
-namespace cheraxxx {
+namespace interlock {
 
 /**
  * @struct BreadcrumbEntry
@@ -47,7 +47,7 @@ class AutonomousBreadcrumbBuffer {
 public:
     static constexpr size_t ABB_SIZE = 256 * 1024 * 1024;  // 256 MB
     static constexpr size_t MAX_ENTRIES = ABB_SIZE / sizeof(BreadcrumbEntry);
-    static constexpr const char* ABB_MMAP_PATH = "/dev/shm/cheraxxx_abb_prod";
+    static constexpr const char* ABB_MMAP_PATH = "/dev/shm/interlock_abb_prod";
 
     /**
      * @brief Inicializa el ABB
@@ -129,4 +129,4 @@ enum ComponentID : uint32_t {
     COMPONENT_PERL_SURGERY = 9,
 };
 
-} // namespace cheraxxx
+} // namespace interlock

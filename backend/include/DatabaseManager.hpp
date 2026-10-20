@@ -2,7 +2,7 @@
 #include <string>
 #include <pqxx/pqxx>
 
-namespace cheraxxx {
+namespace interlock {
 
 class DatabaseManager {
 public:
@@ -18,4 +18,4 @@ private:
     void applyPending(pqxx::work& txn, int current);
 };
 
-} // namespace cheraxxx
+} // namespace interlock
