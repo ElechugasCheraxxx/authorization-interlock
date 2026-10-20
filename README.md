@@ -70,6 +70,62 @@ security assessment work.
 
 ---
 
+## Offensive capability and the authorization interlock
+
+This platform contains adversary-emulation modules. They are listed here
+explicitly rather than left for a reader to discover, because their
+existence is the reason the rest of the architecture exists.
+
+| Module | What it is |
+|---|---|
+| `core-cpp/C2Manager` | Session and listener management for authorized engagements |
+| `core-cpp/PivotingManager` | Network reachability within a documented scope |
+| `core-cpp/GhidraBridge` | Binary analysis bridge for target triage |
+| `core-cpp/donut/` | Vendored [TheWover/donut](https://github.com/TheWover/donut) — in-memory .NET loading, used to emulate a documented technique |
+| `shield-c/` · `shield-win/` | Process integrity and anti-tampering |
+
+**Why they are here.** An assessment platform that cannot execute the
+techniques it is asked to evaluate is a documentation tool, not an
+assessment tool. Adversary emulation requires the same primitives an
+adversary uses.
+
+**What is actually gated, and by what.** Two distinct mechanisms exist,
+and they cover different surfaces:
+
+1. **The orchestration path is gated by proof.** The Isabelle/HOL state
+   machine above governs how agents plan and sequence an engagement. The
+   `no_skip_to_validation` theorem makes an active-testing phase
+   unreachable by construction until the authorization phases complete,
+   and the runtime dual-path oracle aborts on divergence between the C++
+   and Coq reference paths. An agent cannot decide to skip authorization.
+
+2. **The capability modules are exposed through Python bindings.**
+   `bridge/bindings.cpp` publishes `C2Manager`, `PivotingManager` and
+   `GhidraBridge` as a nanobind API. `ScopeGuard` exists as a component
+   with an `is_authorized` check, but it is **not yet wired into the call
+   paths of those modules** — calling `start_listener` or
+   `generate_implant` directly from Python does not currently pass
+   through the state machine.
+
+That second point is a known gap, stated here rather than papered over.
+The proof covers the planner; it does not yet cover the binding surface.
+Closing it means routing every capability-module entry point through
+`ScopeGuard` and asserting the current engagement phase, which is
+mechanical work that has not been done.
+
+**What is deliberately absent.** There is no standalone launcher and no
+default configuration that reaches these modules on its own — they are
+reached either through the gated orchestration path or through the
+bindings described above. The licensing system binds execution to
+registered hardware, and every action is written to the EvidenceVault
+chain of custody.
+
+This is the same design principle as an industrial interlock: the
+dangerous capability is present, and the safety property is proved where
+it is proved and documented where it is not.
+
+---
+
 ## Architecture
 
 ### Data flow
