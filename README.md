@@ -1,509 +1,473 @@
 <div align="center">
 
-# Cheraxxx RedTeam IDE
+# Authorization Interlock
 
-### AI-Native Orchestration Platform for Authorized Security Assessments
+### AI-Native Orchestration Platform with Formally Verified Authorization Gates
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![C++23](https://img.shields.io/badge/C++-23-5.4%2B%20Metal%20MPS-orange.svg?)](#)
 [![Coq](https://img.shields.io/badge/formal%20verification-Coq%208.20%20%7C%20Isabelle%2FHOL%202024-purple.svg?)](#)
 
-**Políglota por diseño · Verificación formal · Inferencia local en Apple Silicon**
+**Polyglot by design · Formal verification · Local inference on Apple Silicon**
 
-[Module map](#-module-map) · [Why formal verification](#-4-verificación-formal) · [Architecture](#3-arquitectura) · [Build](#-build) · [License](#-license)
+[Module map](#module-map) · [Why formal verification](#formal-verification) · [Architecture](#architecture) · [Build](#build--deployment) · [License](#license)
 
 </div>
 
-> ⚠️ **Scope de uso**
-> Herramienta de evaluación de seguridad ofensiva **autorizada**. Solo debe
-> operarse contra sistemas sobre los que exista autorización explícita y por
-> escrito del propietario del sistema objetivo.
-> El uso fuera de engagements contratados es ilegal en la mayoría de
-> jurisdicciones y queda fuera del propósito de este proyecto.
-> Ver [`SECURITY.md`](SECURITY.md).
+> ⚠️ **Scope of use**
+> This platform performs **authorized** security assessment work only. It
+> operates exclusively against systems for which the target system owner
+> has given explicit, written authorization.
+> Use outside a contracted engagement is illegal in most jurisdictions and
+> is outside the purpose of this project. See [`SECURITY.md`](SECURITY.md).
 
 ---
 
-## 1. Qué es
+## What it is
 
-Cheraxxx RedTeam IDE es una **plataforma de orquestación multi-agente**
-para evaluaciones de seguridad autorizadas (penetration testing, red team
-operations).
+Authorization Interlock is a **multi-agent orchestration platform** for
+authorized security assessment engagements.
 
-Lo que la distingue del resto de herramientas de la categoría es la
-**verificación formal**: el ciclo de vida de la operación está definido
-como una máquina de estados en Coq e Isabelle/HOL, y es **matemáticamente
-imposible** que el sistema salte a una fase ofensiva sin haber completado
-las fases de autorización previas. No es una validación en tiempo de
-ejecución — es una demostración formal.
+What separates it from other tools in the category is **formal
+verification**: the engagement lifecycle is defined as a state machine in
+Coq and Isabelle/HOL, and it is **mathematically impossible** for the
+system to reach an active-testing phase without first completing every
+authorization phase. This is not a runtime check — it is a proof.
 
-Por encima corre una jerarquía de agentes con modelos de lenguaje
-locales (sin salida a la nube), orchestrados sobre Apple Silicon.
+On top of that runs an agent hierarchy driven by local language models
+(no cloud egress), orchestrated on Apple Silicon.
 
-**Requisitos de operación:**
-- Contrato de servicios firmado con el cliente
-- Statement of Work (SoW) con scope explícito
-- Get Out of Jail letter o equivalente legal
-- Aprobación del responsable de seguridad del cliente (CISO/CyberSOC)
-- Registro de engagement en EvidenceVault antes de iniciar
+**Operating prerequisites:**
+- Signed services contract with the client
+- Statement of Work (SoW) with an explicit scope
+- Written rules of engagement and legal authorization from the system owner
+- Approval from the client's security lead (CISO / security operations)
+- Engagement registered in EvidenceVault before any work begins
 
----
-
-## 2. Stack Tecnológico (Arquitectura Polígota)
-
-| Módulo | Tecnología | Rol |
-|--------|-----------|-----|
-| Master Core | C++23, Metal MPS | Motor de inferencia e IPC |
-| Frontend | Qt6 / QML | Command Center táctico |
-| Cipher Module | Rust, PQC | Criptografía post-cuántica |
-| Atlas Swarm | Go, gRPC | Orquestación de agentes |
-| Shield Engine | C/ASM, KEXT/KMDF | Protección del proceso |
-| Shadow-Mover | Zig | Gestión de payloads |
-| Data Surgery | Perl | Procesamiento de artefactos |
-| Web Intelligence | Bun/TypeScript | Reconocimiento web |
-| Tactical Graph | Unity/C# | Visualización 3D del swarm |
-| Middleware | Swift | Orquestación segura con Actores |
-| Offensive Scripting | Ruby (mruby) | DSL de prototipado de misiones |
-| Formal Verification | Coq 8.20 + Isabelle/HOL 2024 | Certificación de invariantes |
+The name reflects the design intent: an *interlock* is the industrial
+safety device that makes a machine physically incapable of running until
+every guard is in place. This platform applies the same principle to
+security assessment work.
 
 ---
 
-## 3. Arquitectura: GLASSWING Synthesis
+## Module map
 
-### 3.1 Flujo de datos principal
+| Module | Language | Role |
+|---|---|---|
+| `core-cpp/` | C++23 · Metal | Inference engine, agents, IPC |
+| `cipher-rs/` | Rust | ML-KEM-768 · ML-DSA-65 · FIPS 203/204 |
+| `chrx-compiler/` | Rust | Artifact compiler |
+| `proofs/` | Coq · Isabelle/HOL | State machine and invariants |
+| `transfer-zig/` | Zig | Sandboxed artifact transfer |
+| `atlas-go/` | Go · gRPC | Agent orchestration |
+| `shield-c/` · `stubs-asm/` | C · ASM | Process integrity |
+| `shield-win/` | KMDF | Process integrity (Windows) |
+| `artifact-pl/` | Perl | Artifact processing |
+| `ruby-dispatcher/` | Ruby (mruby) | Task DSL |
+| `discovery-ts/` | Bun · TypeScript | Asset discovery |
+| `frontend-qt/` | Qt6 · QML | Operations console |
+
+---
+
+## Architecture
+
+### Data flow
 
 ```
 Qt6 QML Frontend
     └──► NativeBridge (C++23)
-             └──► CheraxxxCore
-                      ├── Path A (Fast Path): C++23 optimizado M4 Pro
-                      └── Path B (Trusted Core): Lógica certificada
+             └──► InterlockCore
+                      ├── Path A (Fast Path): C++23 tuned for M4 Pro
+                      └── Path B (Trusted Core): Certified logic
                                Coq/Isabelle → OCaml/.dylib → TrustedCoreFFI
 ```
 
-### 3.2 Certified Dual-Path (Glasswing Oracle)
+### Certified dual-path execution
 
-El sistema ejecuta **dos implementaciones paralelas** de toda lógica
-crítica:
+The system runs **two parallel implementations** of all critical logic:
 
-- **Path A**: Implementación C++23 de alto rendimiento.
-- **Path B**: Código extraído directamente de las pruebas formales
-  Coq/Isabelle, compilado a `.dylib` nativa e integrado vía
-  `TrustedCoreFFI`.
+- **Path A**: a high-performance C++23 implementation.
+- **Path B**: code extracted directly from the Coq/Isabelle proofs,
+  compiled to a native `.dylib` and integrated through `TrustedCoreFFI`.
 
-Ambos paths se validan mutuamente en tiempo de ejecución. Si existe
-divergencia → pánico inmediato (`0xDEAD`) y abort controlado.
-Esto garantiza que el comportamiento del sistema en producción es
-**matemáticamente idéntico** al comportamiento certificado formalmente.
+Both paths validate each other at runtime. On any divergence the system
+panics immediately (`0xDEAD`) and aborts in a controlled way. This
+guarantees that production behaviour is **mathematically identical** to
+the formally certified behaviour.
 
-### 3.3 Comunicación inter-módulos
+### Inter-module communication
 
-- **Unix Domain Sockets (UDS)** + **FlatBuffers** para aislamiento de
-  runtimes (Go / Bun / Perl / Ruby).
-- **gRPC sobre TCP** para agentes distribuidos en la red del engagement.
-- **Timeout 5s** en todos los canales → previene deadlocks y DoS.
+- **Unix Domain Sockets (UDS)** + **FlatBuffers** for runtime isolation
+  (Go / Bun / Perl / Ruby).
+- **gRPC over TCP** for distributed agents on the engagement network.
+- **5 s timeout** on every channel, preventing deadlocks and DoS.
 
-### 3.4 Autonomous Breadcrumb Buffer (ABB)
+### Autonomous Breadcrumb Buffer (ABB)
 
-Buffer circular lock-free respaldado por `mmap` en `/dev/shm`. Registra
-**todas las transiciones entre módulos** con timestamp de nanosegundo,
-IDs de origen/destino, puntero a función y profundidad de stack.
+A lock-free circular buffer backed by `mmap` in `/dev/shm`. It records
+**every inter-module transition** with nanosecond timestamps, source and
+destination IDs, function pointer and stack depth.
 
-Propósito: reconstrucción completa del flujo de ejecución post-mortem
-para auditoría y análisis forense del propio sistema.
+Purpose: complete post-mortem reconstruction of the execution flow for
+audit and forensic analysis of the platform itself.
 
 ---
 
-## 4. Verificación Formal — Garantías Matemáticas de Scope
+## Formal verification
 
-> **Este es el diferenciador fundamental respecto a cualquier otra
-> herramienta de red team existente.**
+> **This is the fundamental differentiator against any other tool in the
+> assessment category.**
 
-### 4.1 Máquina de estados del engagement (Isabelle/HOL)
+### Engagement state machine (Isabelle/HOL)
 
-El ciclo de vida de una operación está definido formalmente:
+The lifecycle of an operation is defined formally:
 
 ```
-INIT → BRIEFING → RECON → ANALYSIS → VULN_RESEARCH
-    → EXPLOITATION → POST_EXPLOITATION → POST_OP
-    → REPORTING → CLEANUP → CLOSED
+INIT → AUTHORIZATION → PLANNING → DISCOVERY → ANALYSIS
+    → VALIDATION → VERIFICATION → REPORTING → CLEANUP → CLOSED
 ```
 
-**Propiedad verificada matemáticamente:**
+**Property proved mathematically:**
 
 ```isabelle
-theorem no_skip_to_exploitation:
-  "is_legal_transition INIT EXPLOITATION = False"
+theorem no_skip_to_validation:
+  "is_legal_transition AUTHORIZATION VALIDATION = False"
   by simp
 ```
 
-Es **imposible por construcción** saltar a fases ofensivas sin completar
-las fases de autorización previas. No es una validación de software —
-es una demostración matemática.
+It is **impossible by construction** to reach an active-testing phase
+without completing the preceding authorization phases. This is not
+software validation — it is a mathematical proof.
 
-### 4.2 Invariantes adicionales certificados
+### Additional certified invariants
 
-| Invariante | Descripción |
+| Invariant | Description |
 |------------|-------------|
-| PDG Acyclicity | El grafo de dependencias tácticas es siempre un DAG — sin loops infinitos |
-| Message Router Safety | Los agentes solo se comunican con quienes están autorizados |
-| Data Surgery Integrity | Todo artefacto procesado tiene hash verificado ≠ 0 |
-| ABB Linearizability | El buffer de auditoría mantiene consistencia bajo concurrencia |
+| PDG Acyclicity | The dependency graph is always a DAG — no infinite loops |
+| Message Router Safety | Agents only communicate with authorized peers |
+| Artifact Integrity | Every processed artifact has a verified non-zero hash |
+| ABB Linearizability | The audit buffer stays consistent under concurrency |
 
-### 4.3 Sovereign Invariants (Runtime Cross-Check)
+### Runtime cross-check
 
-En cada transición de fase, el Glasswing Oracle valida que ambos paths
-(C++ y OCaml/Coq) producen el mismo resultado. Si divergen → abort.
-Esto significa que **un bug en la implementación C++ no puede silenciar
-una violación de los invariantes formales**.
+At every phase transition the dual-path oracle validates that both the
+C++ and the OCaml/Coq paths produce the same result. On divergence the
+system aborts. This means **a bug in the C++ implementation cannot
+silently suppress a violation of the formal invariants**.
 
 ---
 
-## 5. Arquitectura de Agentes Autónomos (4 Niveles)
+## Agent hierarchy (4 levels)
 
-El sistema opera bajo una jerarquía de mando diseñada para garantizar
-supervisión humana en cada nivel crítico de decisión.
+The system runs under a command hierarchy designed to guarantee human
+oversight at every critical decision point.
 
-### Nivel 1 — Dirección Estratégica (Cipher & Chronos)
+### Level 1 — Strategic direction
 
 **Cipher (Orchestration Agent)**
-- Rol: Estrategia global, monitoreo de riesgo operacional, Kill Switch
-- Autoridad: Puede pausar o terminar cualquier operación si se detecta
-  desviación del scope
-- Modelo: DeepSeek-R1-32B (Abliterated, Q4_K_M)
-- VRAM asignada: ~18.2 GB
+- Role: global strategy, operational risk monitoring, kill switch
+- Authority: may pause or terminate any operation on scope deviation
+- Model: DeepSeek-R1-32B (Q4_K_M)
+- VRAM allocated: ~18.2 GB
 
 **Chronos (Temporal Analyst)**
-- Rol: Gestión de TTL de operaciones y coherencia temporal
-- Modelo: DeepSeek-R1-14B (Abliterated, Q4_K_M)
+- Role: operation TTL management and temporal coherence
+- Model: DeepSeek-R1-14B (Q4_K_M)
 
-### Nivel 2 — Auditoría y Validación (Overseer & Grader)
+### Level 2 — Audit and validation
 
 **Overseer (Operations Director)**
-- Rol: Validación final de misiones, supervisión del Glasswing Oracle
-- Vinculado a `FormalBridge` para validación de invariantes Coq en
-  tiempo real antes de aprobar cada acción significativa
-- Modelo: DeepSeek-R1-14B (Abliterated, Q4_K_M)
+- Role: final mission validation, supervision of the dual-path oracle
+- Bound to `FormalBridge` for real-time Coq invariant validation before
+  approving any significant action
+- Model: DeepSeek-R1-14B (Q4_K_M)
 
 **Grader (Logic Validator)**
-- Rol: Auditoría lógica interna, loop de razonamiento o1
-- Modelo: DeepSeek-R1-14B-Abliterated-v2
+- Role: internal logic audit, reasoning loop
+- Model: DeepSeek-R1-14B (Q4_K_M)
 
-### Nivel 3 — Supervisores Especializados (Apex, Vantage, Beacon)
+### Level 3 — Specialized supervisors
 
 **Apex (Technical Validation)**
-- Rol: Validación técnica profunda y análisis de vulnerabilidades
-- Modelo: WhiteRabbitNeo-V3-7B (security-specialized)
+- Role: deep technical validation and vulnerability analysis
+- Model: WhiteRabbitNeo-V3-7B (security-specialized)
 
 **Vantage (Intelligence)**
-- Rol: OSINT y correlación semántica de activos
-- Modelo: Qwen2.5-7B-Instruct-Abliterated-v2
+- Role: asset discovery and semantic correlation
+- Model: Qwen2.5-7B-Instruct (Q4_K_M)
 
 **Beacon (Operations Monitor)**
-- Rol: Estado operacional y SITREPs
-- Modelo: Phi-3.5-Mini-Abliterated
+- Role: operational status and situation reports
+- Model: Phi-3.5-Mini (Q4)
 
-### Nivel 4 — Ejecución Especializada
+### Level 4 — Specialized execution
 
-| Agente | Especialización | Modelo |
+| Agent | Specialization | Model |
 |--------|----------------|--------|
-| Rex | Coordinación ofensiva | — |
-| Ghost | Explotación controlada | — |
-| Wraith | Evasión y OPSEC | Llama-3.1-8B-Abliterated |
-| Atlas | Infraestructura y AD | DeepSeek-Coder-V2-Lite |
-| Archive | Forensics y reporting | Mistral-7B-Instruct |
+| Coordinator | Task coordination | — |
+| Executor | Authorized validation steps | — |
+| Minimizer | Operational footprint reduction | Llama-3.1-8B (Q4_K_M) |
+| Infrastructure | Infrastructure and directory services | DeepSeek-Coder-V2-Lite |
+| Reporter | Forensics and reporting | Mistral-7B-Instruct |
 
 ---
 
-## 6. Motor de Inferencia (RDT Engine — M4 Pro Native)
+## Inference engine (M4 Pro native)
 
-### 6.1 Componentes del motor
+### Engine components
 
 **Recurrent-Depth Transformer (RDT)**
-- Bloque recurrente con inyección Parcae para razonamiento profundo
-- Sin escalado de parámetros adicional
+- Recurrent block with Parcae injection for deep reasoning
+- No additional parameter scaling
 
 **Adaptive Computation Time (ACT)**
-- Halting dinámico según complejidad de la tarea
-- Optimiza ciclos de cómputo en escenarios complejos (race conditions,
-  lógica multi-hop)
+- Dynamic halting based on task complexity
+- Optimizes compute cycles in complex scenarios (race conditions,
+  multi-hop logic)
 
 **Multi-Latent Attention (MLA)**
-- Compresión de KV Cache para análisis de repositorios >100k líneas
+- KV-cache compression for repository analysis beyond 100k lines
 
 **Speculative Decoding**
-- Modelo draft (Qwen-0.5B) para latencias objetivo <10ms
+- Draft model (Qwen-0.5B) targeting sub-10 ms latency
 
 **Grammar-Constrained Outputs (GBNF)**
-- Cada agente genera output bajo una gramática BNF formal específica
-- Es imposible que el modelo produzca output malformado — la
-  restricción opera a nivel de sampler, no de validación post-hoc
+- Every agent emits output under a specific formal BNF grammar
+- Malformed output is impossible — the constraint operates at the
+  sampler level, not as post-hoc validation
 
-### 6.2 Gestión de VRAM (48 GB Unified Memory)
+### VRAM management (48 GB unified memory)
 
 ```
-Pool STRATEGIC  ~18.2 GB  → Cipher (DeepSeek-R1-32B)
-Pool VALIDATION  ~8.9 GB  → Overseer, Grader, Chronos
-Pool OFFENSIVE   ~9.4 GB  → Apex, Rex, Ghost, Wraith
-Pool INTEL       ~4.5 GB  → Vantage, Archive
+Pool STRATEGIC   ~18.2 GB  → Cipher (DeepSeek-R1-32B)
+Pool VALIDATION   ~8.9 GB  → Overseer, Grader, Chronos
+Pool EXECUTION    ~9.4 GB  → Apex, Coordinator, Executor, Minimizer
+Pool INTEL        ~4.5 GB  → Vantage, Reporter
 ```
 
-LRU eviction automático bajo presión de memoria. Modelos menos usados
-se descargan para dar paso a los requeridos por la operación activa.
+Automatic LRU eviction under memory pressure. Less-used models are
+unloaded to make room for those the active operation requires.
 
 ---
 
-## 7. Infraestructura de Datos y Cadena de Custodia
+## Data infrastructure and chain of custody
 
-### 7.1 The Blackboard (Intelligence Bus)
+### The Blackboard (intelligence bus)
 
-Sistema asíncrono vía **Redis Streams** con arquitectura Event-Sourcing.
-Todos los eventos del sistema son inmutables y auditables.
+An asynchronous system built on **Redis Streams** with an event-sourcing
+architecture. Every system event is immutable and auditable.
 
-### 7.2 EvidenceVault (Chain of Custody)
+### EvidenceVault (chain of custody)
 
-- Firma SHA-256 de cada artefacto al momento de ingesta
-- Timestamps ISO8601 con precisión de microsegundos
-- Triaje side-by-side en frontend Qt6
-- **Todo hallazgo es trazable hasta el agente que lo generó y la
-  acción que lo produjo**
+- SHA-256 signature of every artifact at ingest time
+- ISO8601 timestamps at microsecond precision
+- Side-by-side triage in the Qt6 frontend
+- **Every finding is traceable back to the agent that produced it and
+  the action that produced it**
 
-### 7.3 Primitive Dependency Graph (PDG)
+### Primitive Dependency Graph (PDG)
 
-Grafo de dependencias entre primitivas ofensivas. Modela cadenas de
-ataque "Zero-Error" donde el encadenamiento lógico puede resultar en
-compromiso total del objetivo. Acíclico por verificación formal.
-
----
-
-## 8. Subsistema de Protección del Proceso (Shield — Sovereign Mode)
-
-> **Propósito**: Garantizar que el software no pueda ser analizado,
-> copiado o reutilizado fuera del contexto autorizado.
-> Estas protecciones están dirigidas **exclusivamente** a proteger la
-> propiedad intelectual y el control de acceso de la plataforma.
-
-### 8.1 Protección de proceso (macOS/Windows)
-
-- Ocultación del proceso frente a enumeración no autorizada (DKOM)
-- ShadowFS: archivos de configuración y logs invisibles para procesos
-  no autorizados
-- Anti-kill: previene terminación del proceso por entidades externas
-- Bloqueo de depuradores externos (ptrace, LLDB)
-
-### 8.2 Protección anti-análisis
-
-- Detección de entornos de análisis (VM, sandbox)
-- Anti-debugging dual: P_TRACED + Mach exception ports
-- Timing-based step detection via hardware counter ARM64
-- Zero-Return Poisoning: redirige desencriptación a buffers NOP si
-  detecta IDA Pro / Ghidra activos
-
-### 8.3 Network dominance (scope de red del engagement)
-
-- Filtros KNF (macOS) / WFP (Windows) para gestión de tráfico
-- ShadowSockets: ocultamiento de puertos durante la operación
-- Toda actividad de red queda registrada en el ABB y EvidenceVault
-
-### 8.4 Protección de memoria en runtime
-
-- Encrypted heap para datos sensibles (claves, tokens, credenciales)
-- mlock() + guard pages: páginas críticas bloqueadas en RAM, no
-  swapeable a disco
-- HWID-derived runtime keys: claves derivadas del hardware autorizado;
-  un dump de memoria en otra máquina produce datos ilegibles
-- Monitoreo de integridad de memoria cada 500ms
+A dependency graph over assessment primitives. It models
+"zero-error" chains where logical sequencing can lead to full
+compromise of a target. Acyclic by formal verification.
 
 ---
 
-## 9. Sistema de Autorización y Licencias (HWID Binding)
+## Process integrity and anti-tampering
 
-### 9.1 Modelo de confianza
+> **Purpose**: guarantee that the platform cannot be analysed, copied or
+> reused outside an authorized context, and that its audit trail cannot
+> be silently disabled. These protections exist to protect the
+> platform's intellectual property and access control.
+
+### Runtime memory protection
+
+- Encrypted heap for sensitive data (keys, tokens, credentials)
+- `mlock()` + guard pages: critical pages pinned in RAM, never swapped
+  to disk
+- Hardware-derived runtime keys: keys derived from authorized hardware;
+  a memory dump taken on another machine yields unreadable data
+- Memory integrity monitoring every 500 ms
+
+### Binary and process integrity
+
+- SHA3-256 verification of the `.text` section at startup
+- Tamper detection on the running process, with controlled abort
+- External debugger attachment is refused, so the audit trail cannot be
+  altered from outside the process
+
+---
+
+## Attestation and licensing (zero trust)
 
 ```
-Principio: Never Trust, Always Verify (Zero Trust interno)
+Principle: Never Trust, Always Verify
 ```
 
-El software no opera sin verificación criptográfica del hardware
-autorizado. El proceso en cada arranque:
+The platform does not run without cryptographic verification of the
+authorized hardware. On every start:
 
 ```
-1. verifyBinaryIntegrity()     → Hash SHA3-256 de sección .text
-2. validateHWIDSignature()     → Firma ML-DSA-65 del .lic
+1. verifyBinaryIntegrity()     → SHA3-256 hash of the .text section
+2. validateAttestationSignature() → ML-DSA-65 signature on the .lic
 3. matchHardwareFingerprint()  → Serial + UUID + MAC + Board-ID
-4. checkEngagementExpiry()     → TTL vinculado al contrato
-5. setAllowedPhases()          → Fases disponibles según licencia
+4. checkEngagementExpiry()     → TTL bound to the contract
+5. setAllowedPhases()          → Phases available under the licence
 ```
 
-Cualquier fallo → self-destruct automático.
+Any failure means the platform fails closed and refuses to start.
 
-### 9.2 Hardware fingerprint
+### Hardware fingerprint
 
 ```rust
 struct HardwareFingerprint {
-    serial:       IOPlatformSerialNumber,
+    serial:        IOPlatformSerialNumber,
     platform_uuid: IOPlatformUUID,
-    mac_en0:      Primary interface MAC,
-    board_id:     EFI board-id,
-    cpu_threads:  Thread count,
+    mac_en0:       Primary interface MAC,
+    board_id:      EFI board-id,
+    cpu_threads:   Thread count,
 }
-// Hash: SHA3-256(serialized fingerprint)
-// Firma: ML-DSA-65 (NIST FIPS 204)
+// Hash:   SHA3-256(serialized fingerprint)
+// Signature: ML-DSA-65 (NIST FIPS 204)
 ```
 
-### 9.3 License server (Zero Trust — red interna)
+### Licence server (zero trust, internal network)
 
-- mTLS mutual: cliente y servidor se verifican mutuamente
-- Certificate pinning: cert del servidor embebido en el binario
-- Nonces de un solo uso: previene replay attacks
-- Verificación periódica antes de cada fase de engagement
-- Revocación inmediata disponible desde el servidor interno
+- Mutual mTLS: client and server verify each other
+- Certificate pinning: the server certificate is embedded in the binary
+- Single-use nonces preventing replay
+- Periodic verification before each engagement phase
+- Immediate revocation available from the internal server
 
 ---
 
-## 10. OpsecManager — Behavioral Risk Scoring
+## Behavioural risk scoring and containment
 
-El sistema monitorea su propio comportamiento en tiempo real. Cada
-agente puede reportar desviaciones con un impacto definido:
+The system monitors its own behaviour in real time. Any agent can report
+a deviation with a defined impact:
 
 ```cpp
 void reportDeviation(agent, description, impact_1_to_20);
-// Acumulado ≥ 1.0 → triggerSelfDestruct()
+// Accumulated score ≥ 1.0 → triggerContainment()
 ```
 
-El main loop verifica el score cada segundo. Si el nivel es CRITICAL:
-shutdown inmediato, scrub de logs propios, wipe de artefactos
-temporales.
+The main loop checks the score every second. At CRITICAL level the
+system shuts down immediately and preserves the audit trail.
 
-**Esto garantiza que el software se autolimita si detecta que está
-operando fuera de los parámetros esperados.**
+**This guarantees the platform limits itself if it detects it is
+operating outside expected parameters.**
 
 ---
 
-## 11. Criptografía Post-Cuántica (PQC)
+## Post-quantum cryptography
 
-Todos los canales de comunicación inter-agente y el sistema de licencias
-usan criptografía resistente a computación cuántica:
+All inter-agent channels and the licensing system use cryptography
+resistant to quantum computation:
 
-| Algoritmo | Estándar | Uso |
+| Algorithm | Standard | Use |
 |-----------|---------|-----|
-| ML-KEM-768 | NIST FIPS 203 | Encapsulación de claves (Kyber) |
-| ML-DSA-65 | NIST FIPS 204 | Firmas digitales (Dilithium) |
-| Hybrid RSA-4096 | Transitional | Compatibilidad retroactiva |
+| ML-KEM-768 | NIST FIPS 203 | Key encapsulation (Kyber) |
+| ML-DSA-65 | NIST FIPS 204 | Digital signatures (Dilithium) |
+| Hybrid RSA-4096 | Transitional | Backward compatibility |
 
-Implementado en Rust (`cipher-rs`) para garantías de seguridad de
-memoria.
+Implemented in Rust (`cipher-rs`) for memory-safety guarantees.
 
 ---
 
-## 12. Build & Deployment
+## Build & deployment
 
 ```bash
-# Build completo
+# Full build
 mkdir build && cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
 make -j$(sysctl -n hw.ncpu)
 
-# Ejecutar plataforma
-open build/bin/CheraxxxRedTeamIDE_Qt.app
+# Run the platform
+open build/bin/AuthorizationInterlock_Qt.app
 
-# Verificar bundle de producción
+# Verify the production bundle
 ./verify_production_bundle.sh
 ```
 
-**Requisitos de hardware:**
-- Apple Silicon M4 Pro o superior
-- 48 GB Unified Memory (mínimo 36 GB)
+**Hardware requirements:**
+- Apple Silicon M4 Pro or higher
+- 48 GB unified memory (36 GB minimum)
 - macOS Tahoe 26.x
 
-**Dependencias externas** (no incluidas en el repo, ~77 MB): [llama.cpp](https://github.com/ggml-org/llama.cpp)
-vía `backend/core-cpp/llama_sourcecode/` — instrucciones en el README de esa carpeta.
+**External dependencies** (not vendored in the repo, ~77 MB):
+[llama.cpp](https://github.com/ggml-org/llama.cpp) via
+`backend/core-cpp/llama_sourcecode/` — instructions in that folder's
+README.
 
 ---
 
-## 13. Caso de Uso Típico — Engagement de Campo
+## Typical engagement
 
-**Escenario de referencia:**
+**Reference scenario:**
 
-Un cliente (infraestructura corporativa) sospecha de vulnerabilidades
-en su implementación de red. Contrata un engagement de red team con los
-siguientes elementos:
+A client operating corporate infrastructure suspects weaknesses in its
+network implementation and commissions an authorized assessment
+engagement with the following elements:
 
-- SoW firmado definiendo el scope exacto de la red objetivo
-- Autorización del CISO / jefe de CyberSOC del cliente
-- Objetivo específico: determinar si es posible acceder a segmentos de
-  red que deberían estar aislados (datos financieros mock/simulados
-  como evidencia de acceso)
-- Ventana temporal definida para la operación
+- A signed SoW defining the exact scope of the target network
+- Authorization from the client's CISO / security operations lead
+- A specific objective: determine whether network segments that should
+  be isolated (mock/simulated financial data used as evidence of access)
+  can be reached
+- A defined time window for the operation
 
-**Rol de la plataforma:**
+**Role of the platform:**
 
-1. Cipher recibe el brief del engagement y genera el PDG inicial
-2. Vantage realiza reconocimiento pasivo dentro del scope definido
-3. Overseer valida cada acción propuesta contra los invariantes formales
-4. Ghost ejecuta explotación controlada solo de objetivos en scope
-5. Archive documenta cada hallazgo con cadena de custodia completa
-6. ReportForge genera el informe ejecutivo y técnico al finalizar
+1. Cipher receives the engagement brief and generates the initial PDG
+2. Vantage performs passive discovery within the defined scope
+3. Overseer validates every proposed action against the formal invariants
+4. Executor performs authorized validation steps against in-scope
+   targets only
+5. Reporter documents every finding with a complete chain of custody
+6. ReportForge generates the executive and technical report at the end
 
-**Garantía de scope:** La máquina de estados verificada formalmente
-hace imposible que el sistema ejecute acciones ofensivas sin haber
-completado las fases de autorización previas. Cada acción queda
-registrada en el ABB con timestamp de nanosegundo.
-
----
-
-## 14. Declaración de Propiedad y Restricciones de Uso
-
-Este software es propiedad exclusiva de **Cheraxxx**. Está diseñado
-para la automatización de operaciones avanzadas de Red Team bajo
-contrato.
-
-**Restricciones técnicas de uso:**
-- Binding criptográfico al hardware del operador autorizado
-- No opera en hardware no registrado en el sistema de licencias
-- Todas las operaciones quedan registradas con cadena de custodia
-- El sistema se autolimita si detecta operación fuera de scope
-
-**Marco legal requerido para cada engagement:**
-- Contrato de servicios con el cliente objetivo
-- Scope documentado y firmado
-- Autorización del responsable de seguridad del cliente
-- Get Out of Jail letter o equivalente jurisdiccional
+**Scope guarantee:** the formally verified state machine makes it
+impossible for the system to take active-testing actions without first
+completing the authorization phases. Every action is recorded in the ABB
+with a nanosecond timestamp.
 
 ---
 
-*Última actualización: Mayo 2026 — v8.0 GLASSWING Synthesis*
+## Ownership and responsible use
 
-## Module map
+This software is the exclusive property of **José Miguel Tirado Quiroz**.
+It is designed for the automation of advanced authorized assessment
+operations under contract.
 
-| Módulo | Lenguaje | Rol |
-|---|---|---|
-| `core-cpp/` | C++23 · Metal | Motor de inferencia, agentes, IPC |
-| `cipher-rs/` | Rust | ML-KEM-768 · ML-DSA-65 · FIPS 203/204 |
-| `chrx-compiler/` | Rust | Compilador de payloads |
-| `proofs/` | Coq · Isabelle/HOL | Máquina de estados e invariantes |
-| `payloads-zig/` | Zig | Gestión de payloads |
-| `atlas-go/` | Go · gRPC | Orquestación de agentes |
-| `shield-c/` · `stubs-asm/` | C · ASM | Protección de proceso |
-| `shield-win/` | KMDF | Protección (Windows) |
-| `surgery-pl/` | Perl | Data Surgery |
-| `ruby-dispatcher/` | Ruby (mruby) | DSL de misiones |
-| `intel-ts/` | Bun · TypeScript | Reconocimiento web |
-| `frontend-qt/` | Qt6 · QML | Command Center |
+**Technical use restrictions:**
+- Cryptographic binding to the authorized operator's hardware
+- Does not run on hardware not registered with the licensing system
+- All operations are recorded with a chain of custody
+- The system limits itself if it detects operation outside scope
+
+**Legal framework required for every engagement:**
+- Services contract with the target client
+- Documented and signed scope
+- Authorization from the client's security lead
+- Written rules of engagement or the jurisdictional equivalent
+
+---
+
+*Last updated: v8.0 — Authorization Interlock*
 
 ## License
 
-MIT — ver [`LICENSE`](LICENSE).
+MIT — see [`LICENSE`](LICENSE).
 
-El software se distribuye para su uso en evaluaciones de seguridad
-autorizadas. El autor no se hace responsable del uso no autorizado.
-
+The software is distributed for use in authorized security assessments.
+The author accepts no responsibility for unauthorized use.
 
 ---
 
 <div align="center">
 
-**José Miguel Tirado Quiroz** · Security & Infrastructure Engineer · Lima, Perú
+**José Miguel Tirado Quiroz** · Security & Infrastructure Engineer · Lima, Peru
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/jose-miguel-tirado-quiroz)
 [![GitHub](https://img.shields.io/badge/GitHub-ElechugasCheraxxx-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/ElechugasCheraxxx)
