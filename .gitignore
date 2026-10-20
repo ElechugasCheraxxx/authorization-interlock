@@ -77,3 +77,7 @@ Thumbs.db
 *.vok
 *.glob
 .*.aux
+
+# Binarios compilados de validadores
+backend/proofs/coq/interlock_coq_validator
+backend/proofs/coq/*_validator
